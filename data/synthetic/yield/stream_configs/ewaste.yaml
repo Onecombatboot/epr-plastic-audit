@@ -1,0 +1,71 @@
+stream: ewaste
+certificate_basis: input_tonnes_processed
+assumption: true
+note: Yield/energy ranges are assumptions; cite published figures before quoting.
+processes:
+  it_telecom_dismantling:
+    kwh_per_t:
+    - 60
+    - 220
+    outputs:
+      ferrous:
+        expected: 0.3
+        tolerance: 0.104
+        saleable: true
+      plastics:
+        expected: 0.25
+        tolerance: 0.098
+        saleable: true
+      pcb:
+        expected: 0.08
+        tolerance: 0.062
+        saleable: true
+      copper_cables:
+        expected: 0.09
+        tolerance: 0.065
+        saleable: true
+      aluminium:
+        expected: 0.05
+        tolerance: 0.05
+        saleable: true
+      glass:
+        expected: 0.06
+        tolerance: 0.054
+        saleable: true
+      residue:
+        expected: 0.17
+        tolerance: 0.085
+        saleable: false
+  large_appliance_dismantling:
+    kwh_per_t:
+    - 40
+    - 160
+    outputs:
+      ferrous:
+        expected: 0.52
+        tolerance: 0.114
+        saleable: true
+      plastics:
+        expected: 0.2
+        tolerance: 0.091
+        saleable: true
+      pcb:
+        expected: 0.02
+        tolerance: 0.032
+        saleable: true
+      copper_cables:
+        expected: 0.07
+        tolerance: 0.058
+        saleable: true
+      aluminium:
+        expected: 0.05
+        tolerance: 0.05
+        saleable: true
+      glass:
+        expected: 0.03
+        tolerance: 0.039
+        saleable: true
+      residue:
+        expected: 0.11
+        tolerance: 0.071
+        saleable: false

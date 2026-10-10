@@ -1,0 +1,26 @@
+stream: used_oil
+certificate_basis: input_tonnes_processed
+assumption: true
+note: Yield/energy ranges are assumptions; cite published figures before quoting.
+processes:
+  re_refining:
+    kwh_per_t:
+    - 150
+    - 400
+    outputs:
+      base_oil:
+        expected: 0.68
+        tolerance: 0.095
+        saleable: true
+      light_fuel:
+        expected: 0.11
+        tolerance: 0.064
+        saleable: true
+      asphalt_residue:
+        expected: 0.11
+        tolerance: 0.064
+        saleable: true
+      water_loss:
+        expected: 0.1
+        tolerance: 0.061
+        saleable: false

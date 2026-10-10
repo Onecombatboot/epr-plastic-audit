@@ -1,0 +1,51 @@
+stream: tyre
+certificate_basis: input_tonnes_processed
+assumption: true
+note: Yield/energy ranges are assumptions; cite published figures before quoting.
+processes:
+  pyrolysis:
+    kwh_per_t:
+    - 100
+    - 250
+    outputs:
+      pyrolysis_oil:
+        expected: 0.4
+        tolerance: 0.1
+        saleable: true
+      carbon_black:
+        expected: 0.32
+        tolerance: 0.095
+        saleable: true
+      steel_wire:
+        expected: 0.13
+        tolerance: 0.068
+        saleable: true
+      pyro_gas:
+        expected: 0.1
+        tolerance: 0.061
+        saleable: false
+      residue:
+        expected: 0.05
+        tolerance: 0.044
+        saleable: false
+  crumb_rubber:
+    kwh_per_t:
+    - 300
+    - 600
+    outputs:
+      rubber_granules:
+        expected: 0.72
+        tolerance: 0.079
+        saleable: true
+      steel_wire:
+        expected: 0.16
+        tolerance: 0.065
+        saleable: true
+      textile_fibre:
+        expected: 0.1
+        tolerance: 0.053
+        saleable: true
+      residue:
+        expected: 0.02
+        tolerance: 0.03
+        saleable: false

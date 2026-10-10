@@ -1,0 +1,40 @@
+stream: plastic
+certificate_basis: input_tonnes_processed
+assumption: true
+processes:
+  recycling:
+    kwh_per_t:
+    - 300
+    - 1000
+    outputs:
+      recovered_material:
+        expected: 0.825
+        tolerance: 0.105
+        saleable: true
+  waste_to_oil:
+    kwh_per_t:
+    - 150
+    - 350
+    outputs:
+      recovered_material:
+        expected: 0.5
+        tolerance: 0.13
+        saleable: true
+  co_processing:
+    kwh_per_t:
+    - 20
+    - 80
+    outputs:
+      recovered_material:
+        expected: 0.0
+        tolerance: 0.03
+        saleable: false
+  waste_to_energy:
+    kwh_per_t:
+    - 30
+    - 120
+    outputs:
+      recovered_material:
+        expected: 0.0
+        tolerance: 0.03
+        saleable: false

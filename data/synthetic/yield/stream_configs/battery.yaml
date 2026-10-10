@@ -1,0 +1,55 @@
+stream: battery
+certificate_basis: input_tonnes_processed
+assumption: true
+note: Yield/energy ranges are assumptions; cite published figures before quoting.
+processes:
+  lead_acid_smelting:
+    kwh_per_t:
+    - 150
+    - 350
+    outputs:
+      lead:
+        expected: 0.6
+        tolerance: 0.086
+        saleable: true
+      polypropylene:
+        expected: 0.07
+        tolerance: 0.045
+        saleable: true
+      electrolyte_neutralised:
+        expected: 0.2
+        tolerance: 0.071
+        saleable: false
+      slag_residue:
+        expected: 0.13
+        tolerance: 0.059
+        saleable: false
+  li_ion_black_mass:
+    kwh_per_t:
+    - 200
+    - 500
+    outputs:
+      black_mass:
+        expected: 0.4
+        tolerance: 0.1
+        saleable: true
+      copper:
+        expected: 0.08
+        tolerance: 0.055
+        saleable: true
+      aluminium:
+        expected: 0.06
+        tolerance: 0.048
+        saleable: true
+      steel_casing:
+        expected: 0.18
+        tolerance: 0.078
+        saleable: true
+      plastics:
+        expected: 0.12
+        tolerance: 0.066
+        saleable: true
+      residue:
+        expected: 0.16
+        tolerance: 0.075
+        saleable: false
