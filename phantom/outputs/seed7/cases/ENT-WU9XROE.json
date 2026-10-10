@@ -1,0 +1,119 @@
+{
+ "entity_id": "ENT-WU9XROE",
+ "profile": {
+  "name": "Prakriti Shree Recyclers Pvt Ltd",
+  "state": "Gujarat",
+  "district": "Ahmedabad",
+  "declared_capacity_tpa": 290.0,
+  "connected_load_kw": 34.0,
+  "epr_registered": "2025-10-12"
+ },
+ "scores": {
+  "rule_score": 0.988,
+  "iforest_score": 0.6168,
+  "dominant_score": 37.0202,
+  "ens_score": 0.9572,
+  "ens_pct": 0.9616
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (8% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.444,
+   "text": "Certificates claim more than the declared monthly capacity in 17% of months"
+  },
+  {
+   "rule": "benford_feedstock",
+   "group": "benford",
+   "strength": 0.262,
+   "text": "First-digit pattern of invoice quantities departs from Benford's law (MAD 0.094)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.23,
+   "text": "28% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "very_young_company",
+   "group": "registry",
+   "strength": 0.206,
+   "text": "Company was only 156 days old when it registered under EPR"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.4
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.0805,
+   "population_percentile": 98.0,
+   "shap": -0.386
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3748
+  },
+  {
+   "feature": "net_cycle_feed_share",
+   "label": "feedstock bought inside a loop",
+   "value": 0.0805,
+   "population_percentile": 98.0,
+   "shap": -0.3435
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-3YPJHS1B (Jan 2026: 12,985 kWh for 25.4 t claimed)",
+   "plastic/electricity_bills:BILL-E1AXLN9T (Dec 2025: 7,406 kWh for 14.2 t claimed)",
+   "plastic/electricity_bills:BILL-RUKRIDDK (Nov 2025: 6,341 kWh for 11.9 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-742PBZIEK (13 Oct 2025, 1 t from ENT-NK5KPSP)",
+   "plastic/feedstock_invoices:INV-GN9VL7KNL (22 Jan 2026, 2 t from ENT-NK5KPSP)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-F3IS9FM (23 t supplied; declared capacity 27 t/month; 5 vehicles; registered Feb 2018)",
+   "plastic/collectors:COL-B66SDXG (12 t supplied; declared capacity 84 t/month; 6 vehicles; registered Jan 2019)",
+   "plastic/collectors:COL-D4QOX7N (12 t supplied; declared capacity 31 t/month; 4 vehicles; registered Sep 2017)",
+   "plastic/collectors:COL-RCLVAWN (9 t supplied; declared capacity 65 t/month; 5 vehicles; registered Jan 2020)",
+   "plastic/collectors:COL-9IRA6ZC (9 t supplied; declared capacity 13 t/month; 4 vehicles; registered May 2023)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-03: 29 t of 102 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-NK5KPSP (9 t sold to this plant)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-AYGRSGR Earth Personal Care & Co (51 t)",
+  "PIBO-QQTK22Z Pioneer Pharma Pvt Ltd (23 t)",
+  "PIBO-3ST5FPF Om Retail Pvt Ltd (10 t)",
+  "PIBO-U08T2P6 Durga Personal Care Pvt Ltd (6 t)",
+  "PIBO-CTB5KH8 Om Dairy LLP (4 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Review the invoice quantity distribution; digit patterns can indicate fabricated figures.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Check the company's incorporation and registration history and the source of its capital."
+ ],
+ "rank": 97
+}

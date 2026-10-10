@@ -1,0 +1,115 @@
+{
+ "entity_id": "ENT-4KKCTAM",
+ "profile": {
+  "name": "Earth Prime Granules LLP",
+  "state": "Gujarat",
+  "district": "Surat",
+  "declared_capacity_tpa": 2660.0,
+  "connected_load_kw": 334.0,
+  "epr_registered": "2025-09-10"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6239,
+  "dominant_score": 1.8644,
+  "ens_score": 0.9599,
+  "ens_pct": 0.964
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 25% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 43% of months"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.35x the cost floor)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "62% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "62% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.496,
+   "text": "Certificates sold at 0.40x the market median price"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 96.7,
+   "shap": -0.349
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3455
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.5714,
+   "population_percentile": 88.9,
+   "shap": -0.3384
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.4286,
+   "population_percentile": 97.6,
+   "shap": -0.2812
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-M1BF3OW9 (Jan 2026: 281,294 kWh for 423.1 t claimed)",
+   "plastic/electricity_bills:BILL-UF43JP0K (Feb 2026: 556,876 kWh for 817.1 t claimed)",
+   "plastic/electricity_bills:BILL-6CNGTV09 (Mar 2026: 528,163 kWh for 753.7 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 1,625 t of 2,602 t generated)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-GEF9Y8CY4 (CAT_IV, Rs 499/t to PIBO-CEU539C)",
+   "plastic/certificate_sales:SALE-PO1ZJCSMQ (CAT_IV, Rs 499/t to PIBO-CEU539C)",
+   "plastic/certificate_sales:SALE-SLKRSMFJI (CAT_IV, Rs 499/t to PIBO-CEU539C)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-F3M5AHC Eco Shree Dairy (918 t)",
+  "PIBO-6K12IVJ Laxmi Personal Care (452 t)",
+  "PIBO-R0GS85Z Prime Foods LLP (276 t)",
+  "PIBO-NDLGMI0 Galaxy Personal Care Pvt Ltd (94 t)",
+  "PIBO-5UKD00H Galaxy Pharma Pvt Ltd (93 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 91
+}

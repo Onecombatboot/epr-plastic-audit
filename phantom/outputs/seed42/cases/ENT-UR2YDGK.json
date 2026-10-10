@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-UR2YDGK",
+ "profile": {
+  "name": "Earth Galaxy Granules Pvt Ltd",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 6030.0,
+  "connected_load_kw": 102.0,
+  "epr_registered": "2024-03-10"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6486,
+  "dominant_score": 3.9925,
+  "ens_score": 0.9892,
+  "ens_pct": 0.9944
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 997% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.19x the minimum needed for the tonnes claimed (58 kWh/t against at least 300)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "88% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "70% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 14% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3351
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.2619
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 2.0,
+   "population_percentile": 98.7,
+   "shap": -0.2534
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8794,
+   "population_percentile": 99.8,
+   "shap": -0.2325
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-WVAHFRKU (Feb 2026: 40,094 kWh for 2,473.9 t claimed)",
+   "plastic/electricity_bills:BILL-9KXYQ2M1 (Mar 2025: 40,210 kWh for 2,328.6 t claimed)",
+   "plastic/electricity_bills:BILL-Y72171DL (Mar 2026: 47,275 kWh for 2,397.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-XJYB7DEJ5 (02 Mar 2024, 20 t from COL-9UI5O73)",
+   "plastic/feedstock_invoices:INV-EK238I0SA (04 Mar 2024, 7 t from COL-9UI5O73)",
+   "plastic/feedstock_invoices:INV-WLPX3VLD7 (15 Mar 2024, 3 t from COL-KVJIO89)",
+   "plastic/feedstock_invoices:INV-24JE8FM57 (16 Mar 2024, 15 t from COL-Q929UWD)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-9UI5O73 (5,226 t supplied; declared capacity 38 t/month; 1 vehicles; registered Jan 2024)",
+   "plastic/collectors:COL-Q929UWD (3,242 t supplied; declared capacity 29 t/month; 2 vehicles; registered Nov 2023)",
+   "plastic/collectors:COL-KVJIO89 (2,090 t supplied; declared capacity 7 t/month; 1 vehicles; registered Nov 2023)",
+   "plastic/collectors:COL-47G3NZ5 (1,071 t supplied; declared capacity 28 t/month; 1 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-I1LQAVQ (891 t supplied; declared capacity 13 t/month; 2 vehicles; registered Mar 2024)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-GZCEVGA (754 t bought)",
+   "plastic/offtakers:OFT-FOAKGFA (474 t bought)",
+   "plastic/offtakers:OFT-LS42BHQ (246 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 2, address 2, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-G8IVEDQ Prime Amrit Dairy Pvt Ltd (4,579 t)",
+  "PIBO-7H2KSR5 Green Apex Pharma (676 t)",
+  "PIBO-3MY57EK Jai Consumer Products Pvt Ltd (472 t)",
+  "PIBO-0QR5EFG Global Ganesh Foods Pvt Ltd (394 t)",
+  "PIBO-W8J3EOT Western Unity Consumer Products Pvt Ltd (387 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 15
+}

@@ -1,0 +1,138 @@
+{
+ "entity_id": "ENT-TJIXV4U",
+ "profile": {
+  "name": "Vasundhara Polytech Pvt Ltd",
+  "state": "Karnataka",
+  "district": "Mysuru",
+  "declared_capacity_tpa": 10090.0,
+  "connected_load_kw": 220.0,
+  "epr_registered": "2023-11-02"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6218,
+  "dominant_score": 2.374,
+  "ens_score": 0.9692,
+  "ens_pct": 0.9744
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 245% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "85% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 44%, +42% versus what its process route can produce"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.37x the cost floor)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.506,
+   "text": "Sold products equal only 37% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8525,
+   "population_percentile": 99.6,
+   "shap": -0.2731
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.3103,
+   "population_percentile": 87.3,
+   "shap": -0.2708
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 1.0,
+   "population_percentile": 90.4,
+   "shap": -0.2493
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.636,
+   "population_percentile": 98.5,
+   "shap": -0.2365
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-9ZOSOXAG (Feb 2025: 68,114 kWh for 1,314.1 t claimed)",
+   "plastic/electricity_bills:BILL-3NC1VAOQ (Feb 2026: 64,636 kWh for 1,230.0 t claimed)",
+   "plastic/electricity_bills:BILL-1EJBGD4H (Mar 2026: 64,130 kWh for 1,168.8 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-EL43WXQT4 (05 Nov 2023, 0.98 t from COL-4H8KCXT)",
+   "plastic/feedstock_invoices:INV-D726JIK1J (10 Nov 2023, 2.5 t from COL-58Y9NNY)",
+   "plastic/feedstock_invoices:INV-35G1NQDXD (12 Nov 2023, 2.1 t from COL-B6VSN53)",
+   "plastic/feedstock_invoices:INV-ZVDMJPD4L (17 Dec 2023, 1.36 t from COL-1F4KYGQ)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-B6VSN53 (1,816 t supplied; declared capacity 16 t/month; 1 vehicles; registered Oct 2022)",
+   "plastic/collectors:COL-SU8RZWC (1,344 t supplied; declared capacity 29 t/month; 6 vehicles; registered Sep 2022)",
+   "plastic/collectors:COL-E53U297 (1,242 t supplied; declared capacity 69 t/month; 2 vehicles; registered Apr 2020)",
+   "plastic/collectors:COL-1F4KYGQ (860 t supplied; declared capacity 53 t/month; 5 vehicles; registered Jul 2022)",
+   "plastic/collectors:COL-SJC8ERB (727 t supplied; declared capacity 30 t/month; 3 vehicles; registered Aug 2017)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 3,013 t of 10,702 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-8OK18JV (977 t bought)",
+   "plastic/offtakers:OFT-9IT3BW0 (677 t bought)",
+   "plastic/offtakers:OFT-VAI3ORG (424 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 1, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-33ENX4TUF (CAT_IV, Rs 535/t to PIBO-YKXM7FA)",
+   "plastic/certificate_sales:SALE-8BXHX6B4F (CAT_IV, Rs 535/t to PIBO-YKXM7FA)",
+   "plastic/certificate_sales:SALE-R37EH30EW (CAT_IV, Rs 535/t to PIBO-YKXM7FA)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-FQ2174H Eastern Retail (726 t)",
+  "PIBO-WQIQXTS Jai Beverages (572 t)",
+  "PIBO-YW2OT33 Sai Dairy Pvt Ltd (523 t)",
+  "PIBO-M7DCKIM Supreme Kaveri Foods (459 t)",
+  "PIBO-WAYRF0U Apex Snacks Pvt Ltd (455 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 65
+}

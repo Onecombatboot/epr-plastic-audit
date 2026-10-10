@@ -1,0 +1,128 @@
+{
+ "entity_id": "ENT-QZEQ788",
+ "profile": {
+  "name": "Ganesh Plastics LLP",
+  "state": "Tamil Nadu",
+  "district": "Chennai",
+  "declared_capacity_tpa": 2030.0,
+  "connected_load_kw": 327.0,
+  "epr_registered": "2024-02-15"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6319,
+  "dominant_score": 2.4127,
+  "ens_score": 0.9805,
+  "ens_pct": 0.9844
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 26% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 96% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "61% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "56% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 68%, +66% versus what its process route can produce"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.2936
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6099,
+   "population_percentile": 98.4,
+   "shap": -0.2882
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 3.0,
+   "population_percentile": 96.6,
+   "shap": -0.2669
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2592
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-YA89IIVU (Jan 2025: 415,953 kWh for 447.6 t claimed)",
+   "plastic/electricity_bills:BILL-LUB0K1SI (Dec 2025: 483,361 kWh for 515.4 t claimed)",
+   "plastic/electricity_bills:BILL-NT80LFD2 (Jul 2024: 406,021 kWh for 432.5 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-O4VS6POMS (08 Feb 2024, 4 t from COL-GJETBJH)",
+   "plastic/feedstock_invoices:INV-496M8MIXA (10 Feb 2024, 16 t from COL-TAIVB7F)",
+   "plastic/feedstock_invoices:INV-03NGWJVZU (13 Feb 2024, 7 t from COL-AY9V2O5)",
+   "plastic/feedstock_invoices:INV-Y9X9R0669 (17 Feb 2024, 2 t from COL-QV1OLFS)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-TAIVB7F (2,497 t supplied; declared capacity 14 t/month; 1 vehicles; registered Jan 2024)",
+   "plastic/collectors:COL-AY9V2O5 (1,708 t supplied; declared capacity 21 t/month; 2 vehicles; registered Dec 2023)",
+   "plastic/collectors:COL-QV1OLFS (1,445 t supplied; declared capacity 19 t/month; 2 vehicles; registered Sep 2023)",
+   "plastic/collectors:COL-OSJ2EBZ (1,271 t supplied; declared capacity 39 t/month; 2 vehicles; registered Aug 2023)",
+   "plastic/collectors:COL-Q3XG4KF (826 t supplied; declared capacity 32 t/month; 1 vehicles; registered Jan 2024)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2024-12: 810 t of 11,180 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 1, director 3, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-OJ4D0VQ Sahyadri Home Care Pvt Ltd (718 t)",
+  "PIBO-R23ZOWY Krishna Shri Retail (424 t)",
+  "PIBO-QYGJBG6 Prime National Retail Pvt Ltd (379 t)",
+  "PIBO-H67RBF3 Earth Snacks LLP (374 t)",
+  "PIBO-XJ5LEZ6 Ganga Narmada Beverages Pvt Ltd (353 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 40
+}

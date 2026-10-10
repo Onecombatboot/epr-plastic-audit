@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-O4NNEXN",
+ "profile": {
+  "name": "Apex Krishna Poly Industries",
+  "state": "Maharashtra",
+  "district": "Raigad",
+  "declared_capacity_tpa": 5770.0,
+  "connected_load_kw": 524.0,
+  "epr_registered": "2025-12-12"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6118,
+  "dominant_score": 3.5425,
+  "ens_score": 0.9689,
+  "ens_pct": 0.9756
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 75% of months"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 15% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 58%, +56% versus what its process route can produce"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "58% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.34x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3572
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 2.0,
+   "population_percentile": 94.2,
+   "shap": -0.3141
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.75,
+   "population_percentile": 98.6,
+   "shap": -0.2634
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 90.4,
+   "shap": -0.2552
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-S7M92YVI (Mar 2026: 172,657 kWh for 1,069.5 t claimed)",
+   "plastic/electricity_bills:BILL-IHDQEAWC (Jan 2026: 101,042 kWh for 555.8 t claimed)",
+   "plastic/electricity_bills:BILL-PH180QTQ (Feb 2026: 111,522 kWh for 612.0 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-04: 1,465 t of 2,546 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-NBM35H8 (176 t bought)",
+   "plastic/offtakers:OFT-2LFIRBA (54 t bought)",
+   "plastic/offtakers:OFT-93K765V (53 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 2, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-JC5XDG7ZD (CAT_IV, Rs 486/t to PIBO-077I9OY)",
+   "plastic/certificate_sales:SALE-R2ATKTDD4 (CAT_IV, Rs 487/t to PIBO-0C53BFG)",
+   "plastic/certificate_sales:SALE-ZRPENVQ0O (CAT_IV, Rs 487/t to PIBO-AKQ6555)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-C5WWVLO Sahyadri Pharma & Co (386 t)",
+  "PIBO-TT6P1P1 Royal Ganesh Retail Pvt Ltd (306 t)",
+  "PIBO-MBMR28D Vasundhara Eco Retail Pvt Ltd (182 t)",
+  "PIBO-DWKV09M Prime Apex Beverages Pvt Ltd (95 t)",
+  "PIBO-D63HDKV Pioneer Home Care Pvt Ltd (93 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 62
+}

@@ -1,0 +1,127 @@
+{
+ "entity_id": "ENT-IWKW5OQ",
+ "profile": {
+  "name": "Galaxy Earth Granules Pvt Ltd",
+  "state": "Haryana",
+  "district": "Panipat",
+  "declared_capacity_tpa": 620.0,
+  "connected_load_kw": 15.0,
+  "epr_registered": "2024-12-20"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.635,
+  "dominant_score": 14.1537,
+  "ens_score": 0.977,
+  "ens_pct": 0.9816
+ },
+ "reasons": [
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "80% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "40% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "73% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.5,
+   "text": "Certificates claim more than the declared monthly capacity in 19% of months"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.449,
+   "text": "55% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.3454
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8027,
+   "population_percentile": 99.4,
+   "shap": -0.2933
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.1875,
+   "population_percentile": 95.6,
+   "shap": -0.2668
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 0.3636,
+   "population_percentile": 97.1,
+   "shap": -0.2453
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-4HYSZTKG (Feb 2026: 739 kWh for 134.8 t claimed)",
+   "plastic/electricity_bills:BILL-VRXI1WCT (Mar 2026: 753 kWh for 122.2 t claimed)",
+   "plastic/electricity_bills:BILL-H3AK450P (Mar 2025: 741 kWh for 55.2 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-ILBKT9KDU (24 Dec 2024, 2 t from COL-QCSV2E2)",
+   "plastic/feedstock_invoices:INV-OYQ6TIFXO (24 Jan 2025, 2 t from COL-MIUS8NZ)",
+   "plastic/feedstock_invoices:INV-F4GOJ6NLU (31 Jan 2025, 14 t from COL-QCSV2E2)",
+   "plastic/feedstock_invoices:INV-6WFZ6WN82 (31 Jan 2025, 3 t from COL-1EWAUE9)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-QCSV2E2 (356 t supplied; declared capacity 20 t/month; 1 vehicles; registered Sep 2024)",
+   "plastic/collectors:COL-1EWAUE9 (79 t supplied; declared capacity 21 t/month; 2 vehicles; registered Sep 2024)",
+   "plastic/collectors:COL-MIUS8NZ (61 t supplied; declared capacity 10 t/month; 2 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-91Q8J4T (5 t supplied; declared capacity 97 t/month; 6 vehicles; registered Sep 2018)",
+   "plastic/collectors:COL-95PRN8Z (4 t supplied; declared capacity 3 t/month; 2 vehicles; registered Jul 2016)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 207 t of 510 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-PXM2RTD Durga Personal Care Pvt Ltd (70 t)",
+  "PIBO-JR4BBSN Himalaya Pharma Pvt Ltd (61 t)",
+  "PIBO-3HLMBTZ Unity Navjeevan Home Care Pvt Ltd (61 t)",
+  "PIBO-0KXOMVN Unity Eco Dairy LLP (41 t)",
+  "PIBO-IAM9HE2 Sterling Bharat Dairy Pvt Ltd (29 t)"
+ ],
+ "inspection_checklist": [
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 47
+}

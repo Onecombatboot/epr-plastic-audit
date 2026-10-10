@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-R4X0394",
+ "profile": {
+  "name": "Prakriti Granules Pvt Ltd",
+  "state": "Gujarat",
+  "district": "Surat",
+  "declared_capacity_tpa": 2430.0,
+  "connected_load_kw": 15.0,
+  "epr_registered": "2023-11-16"
+ },
+ "scores": {
+  "rule_score": 0.9992,
+  "iforest_score": 0.6047,
+  "dominant_score": 3.1394,
+  "ens_score": 0.9623,
+  "ens_pct": 0.9704
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 47% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 93% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.71,
+   "text": "54% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.61x the cost floor)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.42,
+   "text": "20% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "collectors_brand_new",
+   "group": "collectors",
+   "strength": 0.262,
+   "text": "66% of feedstock comes from collectors registered under 6 months before their first invoice"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.544,
+   "population_percentile": 98.0,
+   "shap": -0.333
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2756
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.931,
+   "population_percentile": 98.3,
+   "shap": -0.2358
+  },
+  {
+   "feature": "cert_share_CAT_III",
+   "label": "Category III share",
+   "value": 0.6595,
+   "population_percentile": 98.4,
+   "shap": -0.1672
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-Z8AKYVNE (May 2024: 10,906 kWh for 371.3 t claimed)",
+   "plastic/electricity_bills:BILL-19YV3CI6 (Aug 2025: 10,140 kWh for 344.0 t claimed)",
+   "plastic/electricity_bills:BILL-PAJBZKVH (Oct 2025: 10,231 kWh for 344.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-YFQ85KHK0 (02 Nov 2023, 15 t from COL-S8WDI8N)",
+   "plastic/feedstock_invoices:INV-7BUBL6SVH (24 Nov 2023, 10 t from COL-CNR9BOY)",
+   "plastic/feedstock_invoices:INV-K6M4016TT (25 Nov 2023, 11 t from COL-CNR9BOY)",
+   "plastic/feedstock_invoices:INV-Z3CPU53EY (30 Nov 2023, 6 t from COL-FYY44Z4)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-CNR9BOY (2,040 t supplied; declared capacity 32 t/month; 1 vehicles; registered Sep 2023)",
+   "plastic/collectors:COL-FYY44Z4 (1,813 t supplied; declared capacity 22 t/month; 2 vehicles; registered Sep 2023)",
+   "plastic/collectors:COL-S8WDI8N (1,369 t supplied; declared capacity 12 t/month; 1 vehicles; registered Sep 2023)",
+   "plastic/collectors:COL-GCCWEPN (1,101 t supplied; declared capacity 341 t/month; 5 vehicles; registered Sep 2023)",
+   "plastic/collectors:COL-3YS8WRP (1,015 t supplied; declared capacity 104 t/month; 3 vehicles; registered Aug 2019)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-GF8TRLCIK (CAT_IV, Rs 828/t to PIBO-KTXYN5X)",
+   "plastic/certificate_sales:SALE-P9L1I80EV (CAT_IV, Rs 828/t to PIBO-KTXYN5X)",
+   "plastic/certificate_sales:SALE-VVVVMESB8 (CAT_IV, Rs 828/t to PIBO-KTXYN5X)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-VESM9K7 Sahyadri Sunrise Foods LLP (922 t)",
+  "PIBO-12JWBJ3 Sanjeevani Royal Beverages LLP (860 t)",
+  "PIBO-36JTQSA Earth Metro Personal Care Pvt Ltd (805 t)",
+  "PIBO-NYTG3TQ Metro Prime Home Care Pvt Ltd (513 t)",
+  "PIBO-IFTKP7O Southern Foods & Co (210 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 75
+}

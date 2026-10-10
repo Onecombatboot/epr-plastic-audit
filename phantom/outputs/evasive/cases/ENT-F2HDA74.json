@@ -1,0 +1,127 @@
+{
+ "entity_id": "ENT-F2HDA74",
+ "profile": {
+  "name": "Jai Poly Industries Pvt Ltd",
+  "state": "Telangana",
+  "district": "Medchal",
+  "declared_capacity_tpa": 6770.0,
+  "connected_load_kw": 560.0,
+  "epr_registered": "2023-03-24"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6727,
+  "dominant_score": 11.4809,
+  "ens_score": 0.9929,
+  "ens_pct": 0.9972
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (30% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 97% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.7,
+   "text": "54% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "50% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 1 other registered entity(ies)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.492,
+   "text": "35% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 99.3,
+   "shap": -0.3315
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 1.0,
+   "population_percentile": 98.2,
+   "shap": -0.3267
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.3036,
+   "population_percentile": 99.8,
+   "shap": -0.317
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5377,
+   "population_percentile": 98.0,
+   "shap": -0.3144
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-I1SJWLL6 (Oct 2025: 191,934 kWh for 1,680.9 t claimed)",
+   "plastic/electricity_bills:BILL-9TAUCOUN (Jun 2024: 149,894 kWh for 1,302.5 t claimed)",
+   "plastic/electricity_bills:BILL-5N8SCPUW (Oct 2023: 150,168 kWh for 1,303.3 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-XK26GBG5Q (03 Apr 2023, 10 t from COL-KZ2JK76)",
+   "plastic/feedstock_invoices:INV-XS7FEIW2F (04 Apr 2023, 8 t from COL-2N7EHEO)",
+   "plastic/feedstock_invoices:INV-SJSUTHQCS (09 Apr 2023, 4.64 t from COL-FEPPVY1)",
+   "plastic/feedstock_invoices:INV-0J5P2CCWB (09 Apr 2023, 23 t from ENT-Z6B1E6N)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-UITJZ11 (7,260 t supplied; declared capacity 31 t/month; 1 vehicles; registered Jan 2023)",
+   "plastic/collectors:COL-QHG1V8L (3,149 t supplied; declared capacity 210 t/month; 3 vehicles; registered Apr 2016)",
+   "plastic/collectors:COL-KZ2JK76 (3,112 t supplied; declared capacity 18 t/month; 1 vehicles; registered Dec 2022)",
+   "plastic/collectors:COL-XLPQ7MX (2,774 t supplied; declared capacity 40 t/month; 2 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-KTHKRQK (2,440 t supplied; declared capacity 278 t/month; 5 vehicles; registered Nov 2022)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-Z6B1E6N (13,881 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 0, director 1, photos 0)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-QYGJBG6 Prime National Retail Pvt Ltd (2,014 t)",
+  "PIBO-1FT11GK Durga Pharma Pvt Ltd (535 t)",
+  "PIBO-9FILU5F Eastern Global Beverages (391 t)",
+  "PIBO-C5Z5DBP Laxmi Snacks Pvt Ltd (323 t)",
+  "PIBO-8TRZV79 Shree Home Care LLP (313 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 8
+}

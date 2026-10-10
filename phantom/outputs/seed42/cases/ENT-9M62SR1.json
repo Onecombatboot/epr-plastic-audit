@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-9M62SR1",
+ "profile": {
+  "name": "Balaji Polytech Pvt Ltd",
+  "state": "Karnataka",
+  "district": "Mysuru",
+  "declared_capacity_tpa": 4990.0,
+  "connected_load_kw": 494.0,
+  "epr_registered": "2024-08-07"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6223,
+  "dominant_score": 3.3664,
+  "ens_score": 0.9685,
+  "ens_pct": 0.9736
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 45% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.606,
+   "text": "48% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.51x the cost floor)"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 3 other registered entity(ies)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.446,
+   "text": "Claimed tonnage in the busiest month would need 144% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 99.0,
+   "shap": -0.2923
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.4786,
+   "population_percentile": 97.8,
+   "shap": -0.2634
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.45,
+   "population_percentile": 97.5,
+   "shap": -0.2469
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.5102,
+   "population_percentile": 97.1,
+   "shap": -0.2287
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-2UOAOW2Y (Feb 2026: 149,601 kWh for 1,551.5 t claimed)",
+   "plastic/electricity_bills:BILL-UU9BVYQQ (Mar 2026: 178,486 kWh for 1,736.7 t claimed)",
+   "plastic/electricity_bills:BILL-4YVDPRCY (Feb 2025: 162,422 kWh for 1,040.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-OESCAT21U (08 Aug 2024, 11.5 t from COL-EBS0SYT)",
+   "plastic/feedstock_invoices:INV-34VPWMH0Z (23 Aug 2024, 2 t from COL-MEPP7ME)",
+   "plastic/feedstock_invoices:INV-0LXG92HMX (13 Sep 2024, 4 t from COL-JJEBLCA)",
+   "plastic/feedstock_invoices:INV-RV8OIYHZ2 (22 Sep 2024, 10 t from COL-2Z9N2CE)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-VRFEDM5 (1,407 t supplied; declared capacity 15 t/month; 2 vehicles; registered May 2024)",
+   "plastic/collectors:COL-PWNNTVS (1,375 t supplied; declared capacity 176 t/month; 2 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-2Z9N2CE (1,266 t supplied; declared capacity 25 t/month; 2 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-EBS0SYT (1,170 t supplied; declared capacity 184 t/month; 5 vehicles; registered Mar 2015)",
+   "plastic/collectors:COL-91SU9T1 (945 t supplied; declared capacity 15 t/month; 2 vehicles; registered May 2024)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 3, address 0, director 1, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-XSPG742JL (CAT_IV, Rs 709/t to PIBO-71YNK5Y)",
+   "plastic/certificate_sales:SALE-GWOCHQTA2 (CAT_IV, Rs 709/t to PIBO-71YNK5Y)",
+   "plastic/certificate_sales:SALE-WMHWHAKUW (CAT_IV, Rs 709/t to PIBO-71YNK5Y)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-TAX46C0 Pragati Pragati FMCG (1,704 t)",
+  "PIBO-NRLRTQ6 Northern Ganesh Consumer Products (1,641 t)",
+  "PIBO-YRZK2OV Shree Sai Retail (1,199 t)",
+  "PIBO-4L2M3FS National Narmada Home Care Pvt Ltd (983 t)",
+  "PIBO-TQIW34I Bharat FMCG (386 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 67
+}

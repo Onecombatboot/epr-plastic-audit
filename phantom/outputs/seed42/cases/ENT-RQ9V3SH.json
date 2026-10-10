@@ -1,0 +1,123 @@
+{
+ "entity_id": "ENT-RQ9V3SH",
+ "profile": {
+  "name": "Green Recyclers & Co",
+  "state": "Karnataka",
+  "district": "Mysuru",
+  "declared_capacity_tpa": 1480.0,
+  "connected_load_kw": 165.0,
+  "epr_registered": "2025-08-22"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6787,
+  "dominant_score": 1.821,
+  "ens_score": 0.9745,
+  "ens_pct": 0.9788
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (22% of its feedstock)"
+  },
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 45% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.667,
+   "text": "Certificates claim more than the declared monthly capacity in 25% of months"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.45x the cost floor)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.526,
+   "text": "46% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 1 other registered entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.344
+  },
+  {
+   "feature": "net_recycler_in_degree",
+   "label": "net_recycler_in_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2923
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.5,
+   "shap": -0.2879
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2865
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-27Q16Z0P (Feb 2026: 140,163 kWh for 226.9 t claimed)",
+   "plastic/electricity_bills:BILL-EH4SQC2Z (Mar 2026: 127,436 kWh for 198.6 t claimed)",
+   "plastic/electricity_bills:BILL-Y2ZZIN5D (Jan 2026: 71,959 kWh for 110.3 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 395 t of 864 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-78O0DKL (191 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 0, director 5, photos 0)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-RKXR81Z7M (CAT_IV, Rs 658/t to PIBO-S22XCNV)",
+   "plastic/certificate_sales:SALE-0S3DFFU3C (CAT_IV, Rs 658/t to PIBO-S22XCNV)",
+   "plastic/certificate_sales:SALE-IVJY9R47Q (CAT_IV, Rs 658/t to PIBO-S22XCNV)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-BEC1VKN Apex Maa Foods Pvt Ltd (445 t)",
+  "PIBO-2P7A5R0 Pragati Snacks Pvt Ltd (245 t)",
+  "PIBO-TQWF2HF Hind Bharat Pharma (95 t)",
+  "PIBO-J8CZ2TB Earth Snacks (53 t)",
+  "PIBO-14PM04I Pioneer Personal Care LLP (9 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 54
+}

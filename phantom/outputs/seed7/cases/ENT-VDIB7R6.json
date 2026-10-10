@@ -1,0 +1,115 @@
+{
+ "entity_id": "ENT-VDIB7R6",
+ "profile": {
+  "name": "Deccan Recyclers Pvt Ltd",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 2120.0,
+  "connected_load_kw": 392.0,
+  "epr_registered": "2025-02-18"
+ },
+ "scores": {
+  "rule_score": 0.9984,
+  "iforest_score": 0.6158,
+  "dominant_score": 3.683,
+  "ens_score": 0.9608,
+  "ens_pct": 0.9656
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.34x the cost floor)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.535,
+   "text": "Electricity bought is only 0.53x the minimum needed for the tonnes claimed (160 kWh/t against at least 300)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.39x the market median price"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.45,
+   "text": "In 100% of billed months the units consumed cannot support the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 1.0,
+   "population_percentile": 98.5,
+   "shap": -0.3372
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 1.0,
+   "population_percentile": 99.8,
+   "shap": -0.2879
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 1.0,
+   "population_percentile": 91.9,
+   "shap": -0.2849
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 98.8,
+   "shap": -0.2478
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-1CUK5GYI (Sep 2025: 105,341 kWh for 676.6 t claimed)",
+   "plastic/electricity_bills:BILL-VK834N85 (Mar 2026: 132,060 kWh for 846.3 t claimed)",
+   "plastic/electricity_bills:BILL-CMFTBE5B (Nov 2025: 126,130 kWh for 808.0 t claimed)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 1, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-YNMM15HHH (CAT_IV, Rs 486/t to PIBO-TER0AY8)",
+   "plastic/certificate_sales:SALE-4HWMF2X6C (CAT_IV, Rs 486/t to PIBO-YG8YLKZ)",
+   "plastic/certificate_sales:SALE-A9BE94IGK (CAT_IV, Rs 487/t to PIBO-RWS24LJ)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-0P1G651 Laxmi Kaveri FMCG (1,411 t)",
+  "PIBO-ZVO50U4 Northern Consumer Products LLP (655 t)",
+  "PIBO-U1WERGS Eco Personal Care LLP (603 t)",
+  "PIBO-Z3FF14M Sunrise Vasundhara Dairy LLP (391 t)",
+  "PIBO-I6Q5HW6 Southern FMCG Pvt Ltd (357 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 87
+}

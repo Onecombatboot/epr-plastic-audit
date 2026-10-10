@@ -1,0 +1,128 @@
+{
+ "entity_id": "ENT-5CKKJU6",
+ "profile": {
+  "name": "Western Hind Granules Pvt Ltd",
+  "state": "Karnataka",
+  "district": "Bengaluru Urban",
+  "declared_capacity_tpa": 5330.0,
+  "connected_load_kw": 192.0,
+  "epr_registered": "2023-01-02"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6598,
+  "dominant_score": 2.9346,
+  "ens_score": 0.9875,
+  "ens_pct": 0.9912
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (30% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 33% of months"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "31% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 2 other plant(s)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.652,
+   "text": "Electricity bought is only 0.43x the minimum needed for the tonnes claimed (129 kWh/t against at least 300)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.602,
+   "text": "48% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.301,
+   "population_percentile": 99.4,
+   "shap": -0.3484
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3291
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 96.7,
+   "shap": -0.3057
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2883
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-6MS1N15Q (Jun 2024: 60,629 kWh for 489.4 t claimed)",
+   "plastic/electricity_bills:BILL-K2CJJQTT (May 2024: 52,817 kWh for 425.0 t claimed)",
+   "plastic/electricity_bills:BILL-3MWMUI8E (Sep 2025: 54,568 kWh for 438.8 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-R5IP5468F (04 Apr 2023, 18 t from ENT-OG5R6WE)",
+   "plastic/feedstock_invoices:INV-CV847Z3BQ (04 Apr 2023, 11 t from COL-XR4YN7Y)",
+   "plastic/feedstock_invoices:INV-GPDSH0845 (05 Apr 2023, 9 t from COL-L4UJMCO)",
+   "plastic/feedstock_invoices:INV-MZZFKETN1 (08 Apr 2023, 7.5 t from COL-XR4YN7Y)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-XR4YN7Y (2,944 t supplied; declared capacity 8 t/month; 1 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-L4UJMCO (2,104 t supplied; declared capacity 12 t/month; 2 vehicles; registered Jan 2023)",
+   "plastic/collectors:COL-TCGYI4J (1,082 t supplied; declared capacity 96 t/month; 4 vehicles; registered May 2018)",
+   "plastic/collectors:COL-6IU3ZA1 (565 t supplied; declared capacity 55 t/month; 2 vehicles; registered Mar 2022)",
+   "plastic/collectors:COL-XTTPYXS (531 t supplied; declared capacity 49 t/month; 6 vehicles; registered May 2019)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-OG5R6WE (4,561 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 1, director 0, photos 2)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-0P1G651 Laxmi Kaveri FMCG (2,280 t)",
+  "PIBO-MRD88UM Ganesh Apex Snacks Pvt Ltd (1,174 t)",
+  "PIBO-9H6ZHHN Navjeevan Consumer Products (824 t)",
+  "PIBO-8BI6UFS Supreme Ganesh Foods (530 t)",
+  "PIBO-A7P4463 Pragati Dairy & Co (470 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers."
+ ],
+ "rank": 23
+}

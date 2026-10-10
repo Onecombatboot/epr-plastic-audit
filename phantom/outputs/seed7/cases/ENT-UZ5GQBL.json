@@ -1,0 +1,133 @@
+{
+ "entity_id": "ENT-UZ5GQBL",
+ "profile": {
+  "name": "Prakriti Recyclers Pvt Ltd",
+  "state": "Karnataka",
+  "district": "Belagavi",
+  "declared_capacity_tpa": 45410.0,
+  "connected_load_kw": 1069.0,
+  "epr_registered": "2025-01-19"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6651,
+  "dominant_score": 5.9223,
+  "ens_score": 0.9951,
+  "ens_pct": 0.9976
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (30% of its feedstock)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "74% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 59%, +57% versus what its process route can produce"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "61% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.688,
+   "text": "Electricity bought is only 0.40x the minimum needed for the tonnes claimed (119 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.683,
+   "text": "Sold products equal only 21% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.3024,
+   "population_percentile": 99.4,
+   "shap": -0.3316
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3034
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2703
+  },
+  {
+   "feature": "net_recycler_in_degree",
+   "label": "net_recycler_in_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2581
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-H25FXYLV (Apr 2025: 289,220 kWh for 2,518.0 t claimed)",
+   "plastic/electricity_bills:BILL-YMJTDJ8T (Dec 2025: 313,190 kWh for 2,689.5 t claimed)",
+   "plastic/electricity_bills:BILL-BY12FNUF (Jan 2026: 283,356 kWh for 2,424.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-WLVS8OJ8A (02 Jan 2025, 9 t from COL-K53A7G0)",
+   "plastic/feedstock_invoices:INV-64UFWOX7E (02 Jan 2025, 17 t from COL-9RMR64G)",
+   "plastic/feedstock_invoices:INV-OJSZG3F1A (03 Jan 2025, 11 t from COL-AG3CP5H)",
+   "plastic/feedstock_invoices:INV-BXC98T3V8 (03 Jan 2025, 2 t from COL-9RMR64G)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-9RMR64G (6,405 t supplied; declared capacity 20 t/month; 2 vehicles; registered Sep 2024)",
+   "plastic/collectors:COL-AG3CP5H (5,727 t supplied; declared capacity 13 t/month; 2 vehicles; registered Dec 2024)",
+   "plastic/collectors:COL-FHT2YVS (2,355 t supplied; declared capacity 18 t/month; 1 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-D1TCPO8 (1,475 t supplied; declared capacity 281 t/month; 2 vehicles; registered Jul 2023)",
+   "plastic/collectors:COL-K53A7G0 (1,117 t supplied; declared capacity 17 t/month; 1 vehicles; registered Dec 2024)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-04: 4,731 t of 32,332 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-WU9XROE (9,954 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-Z7G5BKS (2,557 t bought)",
+   "plastic/offtakers:OFT-H1F3UCL (982 t bought)",
+   "plastic/offtakers:OFT-G6OD4T2 (745 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-2FFNWFV Sahyadri Home Care LLP (1,318 t)",
+  "PIBO-MRD88UM Ganesh Apex Snacks Pvt Ltd (877 t)",
+  "PIBO-ZG8GVO1 Supreme Retail LLP (867 t)",
+  "PIBO-RP7ZITQ Om Personal Care & Co (797 t)",
+  "PIBO-U08T2P6 Durga Personal Care Pvt Ltd (726 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 7
+}

@@ -1,0 +1,132 @@
+{
+ "entity_id": "ENT-UC4OC6W",
+ "profile": {
+  "name": "Southern Northern Recyclers",
+  "state": "Rajasthan",
+  "district": "Jaipur",
+  "declared_capacity_tpa": 2530.0,
+  "connected_load_kw": 55.0,
+  "epr_registered": "2025-05-27"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6369,
+  "dominant_score": 2.382,
+  "ens_score": 0.9732,
+  "ens_pct": 0.9768
+ },
+ "reasons": [
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "62% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.604,
+   "text": "Claimed tonnage in the busiest month would need 164% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "56% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.35x the cost floor)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.482,
+   "text": "Certificates sold at 0.42x the market median price"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.3084
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6245,
+   "population_percentile": 98.7,
+   "shap": -0.2511
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.555,
+   "population_percentile": 97.5,
+   "shap": -0.2273
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.0909,
+   "population_percentile": 94.6,
+   "shap": -0.2197
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-TQG42W84 (Mar 2026: 15,826 kWh for 219.2 t claimed)",
+   "plastic/electricity_bills:BILL-DXMAJEKI (Feb 2026: 15,307 kWh for 204.2 t claimed)",
+   "plastic/electricity_bills:BILL-QPRWDC5T (Jan 2026: 14,374 kWh for 92.8 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-U2Y912TZG (13 May 2025, 6 t from COL-2UAPAD3)",
+   "plastic/feedstock_invoices:INV-HP80YABRG (18 May 2025, 5 t from COL-GZGE85D)",
+   "plastic/feedstock_invoices:INV-Z2LUKQ3KO (02 Jun 2025, 6 t from COL-2UAPAD3)",
+   "plastic/feedstock_invoices:INV-MGXBRK5O3 (20 Jul 2025, 6.25 t from COL-FXGA829)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-2UAPAD3 (277 t supplied; declared capacity 16 t/month; 2 vehicles; registered Jan 2025)",
+   "plastic/collectors:COL-GZGE85D (238 t supplied; declared capacity 14 t/month; 1 vehicles; registered Feb 2025)",
+   "plastic/collectors:COL-FXGA829 (97 t supplied; declared capacity 19 t/month; 5 vehicles; registered Sep 2021)",
+   "plastic/collectors:COL-26QU518 (52 t supplied; declared capacity 10 t/month; 1 vehicles; registered Aug 2020)",
+   "plastic/collectors:COL-UEFC4BB (45 t supplied; declared capacity 21 t/month; 6 vehicles; registered Apr 2016)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 453 t of 816 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-P5EPAULAW (CAT_IV, Rs 514/t to PIBO-LKGRTGC)",
+   "plastic/certificate_sales:SALE-N5KMK4FWA (CAT_IV, Rs 514/t to PIBO-LKGRTGC)",
+   "plastic/certificate_sales:SALE-JZFQGN747 (CAT_II, Rs 965/t to PIBO-6TIREQE)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-6TIREQE Apex Personal Care & Co (219 t)",
+  "PIBO-S8VN8UB Sai Snacks LLP (132 t)",
+  "PIBO-Y45FFCK Navjeevan Snacks LLP (89 t)",
+  "PIBO-NXNB0Q4 Balaji Consumer Products (77 t)",
+  "PIBO-NSIPRKR Earth Hind Beverages LLP (73 t)"
+ ],
+ "inspection_checklist": [
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 59
+}

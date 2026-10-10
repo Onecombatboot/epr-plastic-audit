@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-I6EAEY0",
+ "profile": {
+  "name": "Northern Poly Industries Ltd",
+  "state": "Tamil Nadu",
+  "district": "Tiruppur",
+  "declared_capacity_tpa": 2070.0,
+  "connected_load_kw": 235.0,
+  "epr_registered": "2024-10-29"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.5995,
+  "dominant_score": 1.4527,
+  "ens_score": 0.9535,
+  "ens_pct": 0.964
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 89% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.787,
+   "text": "59% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 1 other registered entity(ies)"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.45,
+   "text": "In 94% of billed months the units consumed cannot support the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3841
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 1.0,
+   "population_percentile": 98.2,
+   "shap": -0.3605
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5917,
+   "population_percentile": 98.3,
+   "shap": -0.3234
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.309
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-KP8EZ58S (Jun 2025: 61,703 kWh for 308.6 t claimed)",
+   "plastic/electricity_bills:BILL-8CMVS4X9 (May 2025: 65,116 kWh for 324.5 t claimed)",
+   "plastic/electricity_bills:BILL-FRTCR7V6 (Oct 2025: 57,722 kWh for 287.3 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-EGHQ0WDHY (04 Oct 2024, 9 t from COL-3STLMGO)",
+   "plastic/feedstock_invoices:INV-NWLMQNPQ8 (26 Oct 2024, 0.5 t from COL-VMSPDJ5)",
+   "plastic/feedstock_invoices:INV-O528SZCNO (27 Oct 2024, 6.93 t from COL-3STLMGO)",
+   "plastic/feedstock_invoices:INV-7VKXMAHMW (28 Oct 2024, 6 t from COL-4V33PSZ)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-4V33PSZ (1,057 t supplied; declared capacity 37 t/month; 1 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-3STLMGO (861 t supplied; declared capacity 8 t/month; 2 vehicles; registered May 2024)",
+   "plastic/collectors:COL-3NCHJYY (757 t supplied; declared capacity 8 t/month; 1 vehicles; registered Sep 2024)",
+   "plastic/collectors:COL-9WX6ANG (517 t supplied; declared capacity 7 t/month; 2 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-J2AFZSO (509 t supplied; declared capacity 62 t/month; 6 vehicles; registered Apr 2017)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-ZF6WTOK (515 t bought)",
+   "plastic/offtakers:OFT-2TMU751 (261 t bought)",
+   "plastic/offtakers:OFT-27XR797 (261 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 0, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-U23HVEH Sanjeevani Metro Consumer Products LLP (696 t)",
+  "PIBO-KOJSK0M Earth Kaveri Dairy (534 t)",
+  "PIBO-GAW3EDU Pragati FMCG Pvt Ltd (508 t)",
+  "PIBO-QAM1LDA Sanjeevani Personal Care Pvt Ltd (297 t)",
+  "PIBO-84KHFDX Eco Personal Care LLP (291 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 91
+}

@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-CD1I4J2",
+ "profile": {
+  "name": "Eastern Plastics Pvt Ltd",
+  "state": "West Bengal",
+  "district": "Howrah",
+  "declared_capacity_tpa": 15290.0,
+  "connected_load_kw": 247.0,
+  "epr_registered": "2025-08-13"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6351,
+  "dominant_score": 3.3575,
+  "ens_score": 0.9775,
+  "ens_pct": 0.9832
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 14% of expected)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "82% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 4% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "62% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "70% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "capacity_needs_more_power",
+   "group": "energy",
+   "strength": 0.55,
+   "text": "Declared capacity of 15,290 t/yr needs about 2.5x the power the plant is connected for"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.3623
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3607
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.5,
+   "shap": -0.3523
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 2.0,
+   "population_percentile": 93.5,
+   "shap": -0.3096
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-D1O1ENMO (Jan 2026: 97,780 kWh for 171.5 t claimed)",
+   "plastic/electricity_bills:BILL-FGDNDF6Y (Sep 2025: 87,513 kWh for 153.5 t claimed)",
+   "plastic/electricity_bills:BILL-E5KVVACF (Aug 2025: 92,912 kWh for 162.1 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-3F1T0WR7G (07 Aug 2025, 15 t from COL-ZGH25YS)",
+   "plastic/feedstock_invoices:INV-STLF9BRIQ (09 Aug 2025, 17 t from COL-SKFZZTY)",
+   "plastic/feedstock_invoices:INV-15EQ5W2CC (09 Aug 2025, 13 t from COL-164KEI6)",
+   "plastic/feedstock_invoices:INV-2AGH5QJP8 (10 Aug 2025, 9 t from COL-164KEI6)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-SKFZZTY (494 t supplied; declared capacity 29 t/month; 2 vehicles; registered May 2025)",
+   "plastic/collectors:COL-ZGH25YS (304 t supplied; declared capacity 13 t/month; 1 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-164KEI6 (262 t supplied; declared capacity 8 t/month; 1 vehicles; registered Jul 2025)",
+   "plastic/collectors:COL-H3BNVC2 (95 t supplied; declared capacity 10 t/month; 2 vehicles; registered Aug 2025)",
+   "plastic/collectors:COL-9CGGCCD (42 t supplied; declared capacity 7 t/month; 2 vehicles; registered Apr 2025)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-T1LMBMK (23 t bought)",
+   "plastic/offtakers:OFT-88GI4NK (7 t bought)",
+   "plastic/offtakers:OFT-Z8H73IS (3 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-T4ICHY0 Laxmi Ganesh Pharma Pvt Ltd (218 t)",
+  "PIBO-CY5YH6Z Global Snacks Pvt Ltd (154 t)",
+  "PIBO-NBHZ9BZ Sahyadri Pragati Personal Care Pvt Ltd (129 t)",
+  "PIBO-B0LN8QE Laxmi FMCG LLP (107 t)",
+  "PIBO-GC43D13 Laxmi Retail Pvt Ltd (68 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 43
+}

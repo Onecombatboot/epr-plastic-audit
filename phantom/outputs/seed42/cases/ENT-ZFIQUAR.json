@@ -1,0 +1,121 @@
+{
+ "entity_id": "ENT-ZFIQUAR",
+ "profile": {
+  "name": "Bharat Polymers & Co",
+  "state": "Tamil Nadu",
+  "district": "Krishnagiri",
+  "declared_capacity_tpa": 1960.0,
+  "connected_load_kw": 75.0,
+  "epr_registered": "2025-03-12"
+ },
+ "scores": {
+  "rule_score": 0.9986,
+  "iforest_score": 0.6288,
+  "dominant_score": 2.2091,
+  "ens_score": 0.9558,
+  "ens_pct": 0.9636
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.719,
+   "text": "Claimed tonnage in the busiest month would need 178% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.28x the cost floor)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.33x the market median price"
+  },
+  {
+   "rule": "shell_offtakers",
+   "group": "output",
+   "strength": 0.467,
+   "text": "77% of product sales go to buyers incorporated under a year before the invoice"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.463,
+   "text": "42% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.41,
+   "text": "Certificates claim more than the declared monthly capacity in 15% of months"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3644
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 3.0,
+   "population_percentile": 99.4,
+   "shap": -0.3173
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 2.0,
+   "population_percentile": 98.6,
+   "shap": -0.2793
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.4292,
+   "population_percentile": 96.5,
+   "shap": -0.2594
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-F7VLF4JZ (Feb 2026: 20,225 kWh for 309.1 t claimed)",
+   "plastic/electricity_bills:BILL-UT6YKDCW (Mar 2026: 23,584 kWh for 324.7 t claimed)",
+   "plastic/electricity_bills:BILL-CSSPZTUY (Jan 2026: 24,497 kWh for 98.3 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 451 t of 1,075 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-8V4ZSK2 (345 t bought)",
+   "plastic/offtakers:OFT-9H042AJ (320 t bought)",
+   "plastic/offtakers:OFT-GD8JMDB (170 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-Q8HYH5LB1 (CAT_IV, Rs 424/t to PIBO-Z09DR0N)",
+   "plastic/certificate_sales:SALE-NDM4N1V78 (CAT_IV, Rs 424/t to PIBO-Z09DR0N)",
+   "plastic/certificate_sales:SALE-P1OVENSKF (CAT_IV, Rs 424/t to PIBO-Z09DR0N)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-GK8M5T7 Sanjeevani Personal Care (230 t)",
+  "PIBO-0TYMLKA Unity Consumer Products LLP (166 t)",
+  "PIBO-S9G91FE Pioneer Pragati Personal Care Pvt Ltd (119 t)",
+  "PIBO-CYY28PO Pioneer Shri Beverages LLP (104 t)",
+  "PIBO-6QGHXEV Western Snacks Pvt Ltd (87 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months."
+ ],
+ "rank": 92
+}

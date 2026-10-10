@@ -1,0 +1,130 @@
+{
+ "entity_id": "ENT-1MTWUWC",
+ "profile": {
+  "name": "Prime Sunrise Recyclers Pvt Ltd",
+  "state": "Delhi",
+  "district": "North West Delhi",
+  "declared_capacity_tpa": 22790.0,
+  "connected_load_kw": 2053.0,
+  "epr_registered": "2025-06-22"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6384,
+  "dominant_score": 5.0096,
+  "ens_score": 0.9858,
+  "ens_pct": 0.9908
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 30% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "68% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.78,
+   "text": "Claimed tonnage in the busiest month would need 185% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 48%, +46% versus what its process route can produce"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.626,
+   "text": "27% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.36x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 99.0,
+   "shap": -0.2855
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.5,
+   "population_percentile": 87.6,
+   "shap": -0.2379
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6791,
+   "population_percentile": 98.9,
+   "shap": -0.2221
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.4915,
+   "population_percentile": 96.7,
+   "shap": -0.2214
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-FO3FYCC6 (Feb 2026: 548,110 kWh for 8,896.0 t claimed)",
+   "plastic/electricity_bills:BILL-W0FV9J0F (Mar 2026: 654,769 kWh for 9,257.7 t claimed)",
+   "plastic/electricity_bills:BILL-PGMR5GXS (Jan 2026: 566,127 kWh for 3,504.5 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-32L5GQL2E (01 Jun 2025, 7 t from COL-3X2XLZM)",
+   "plastic/feedstock_invoices:INV-Y31H0W7T4 (04 Jun 2025, 1.5 t from COL-JF9VCE0)",
+   "plastic/feedstock_invoices:INV-5ARDMA42V (06 Jun 2025, 6 t from COL-DGBI157)",
+   "plastic/feedstock_invoices:INV-0VVJ8K9GU (08 Jun 2025, 12 t from COL-3X2XLZM)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-BM0ZJWI (7,504 t supplied; declared capacity 21 t/month; 2 vehicles; registered May 2025)",
+   "plastic/collectors:COL-DGBI157 (6,626 t supplied; declared capacity 15 t/month; 1 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-3X2XLZM (4,975 t supplied; declared capacity 36 t/month; 2 vehicles; registered May 2025)",
+   "plastic/collectors:COL-3O3DX7K (2,423 t supplied; declared capacity 800 t/month; 5 vehicles; registered Dec 2016)",
+   "plastic/collectors:COL-XRQUFDF (1,783 t supplied; declared capacity 387 t/month; 4 vehicles; registered Jul 2021)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 15,391 t of 31,315 t generated)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-PLGMWU8EY (CAT_IV, Rs 514/t to PIBO-U2XAO1X)",
+   "plastic/certificate_sales:SALE-UXP0M5B9Y (CAT_IV, Rs 515/t to PIBO-MJF441U)",
+   "plastic/certificate_sales:SALE-V97J6U7P9 (CAT_IV, Rs 515/t to PIBO-CFNZJA5)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-34XGNS2 Galaxy Durga Dairy Pvt Ltd (1,703 t)",
+  "PIBO-L021TAJ Sterling Deccan Home Care Pvt Ltd (1,568 t)",
+  "PIBO-UGSTSNR Northern Foods Ltd (1,241 t)",
+  "PIBO-T6VLRWH Shree Green Retail LLP (1,160 t)",
+  "PIBO-7CBZXFD Balaji Home Care Pvt Ltd (1,032 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 24
+}

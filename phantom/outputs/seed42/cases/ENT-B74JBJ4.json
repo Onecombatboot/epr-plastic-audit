@@ -1,0 +1,120 @@
+{
+ "entity_id": "ENT-B74JBJ4",
+ "profile": {
+  "name": "Galaxy Krishna Enviro Recycling",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 7030.0,
+  "connected_load_kw": 144.0,
+  "epr_registered": "2024-03-02"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6334,
+  "dominant_score": 2.405,
+  "ens_score": 0.969,
+  "ens_pct": 0.974
+ },
+ "reasons": [
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.756,
+   "text": "Electricity bought is only 0.34x the minimum needed for the tonnes claimed (101 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 6% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.31x the cost floor)"
+  },
+  {
+   "rule": "capacity_needs_more_power",
+   "group": "energy",
+   "strength": 0.532,
+   "text": "Declared capacity of 7,030 t/yr needs about 2.0x the power the plant is connected for"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.33x the market median price"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3471
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.3189
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 2.0,
+   "population_percentile": 98.6,
+   "shap": -0.2759
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.5202,
+   "population_percentile": 97.2,
+   "shap": -0.2452
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-N65T10XD (Mar 2026: 9,206 kWh for 429.3 t claimed)",
+   "plastic/electricity_bills:BILL-91ZN6ZPE (Feb 2025: 9,327 kWh for 404.2 t claimed)",
+   "plastic/electricity_bills:BILL-NYFKQ2S2 (Jan 2025: 9,383 kWh for 142.6 t claimed)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-I0IBS6N (64 t bought)",
+   "plastic/offtakers:OFT-RLXYJB0 (22 t bought)",
+   "plastic/offtakers:OFT-RHOFTVH (15 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 2, director 1, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-UM8PVTW1M (CAT_IV, Rs 438/t to PIBO-UR80D7K)",
+   "plastic/certificate_sales:SALE-9ELPAEK3C (CAT_IV, Rs 438/t to PIBO-UR80D7K)",
+   "plastic/certificate_sales:SALE-7YHVW3W7A (CAT_IV, Rs 438/t to PIBO-UR80D7K)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-42B8ON8 Sterling Personal Care LLP (419 t)",
+  "PIBO-WNQIRNZ Eastern Pharma Pvt Ltd (189 t)",
+  "PIBO-GQ55J51 Apex Foods LLP (185 t)",
+  "PIBO-WQIQXTS Jai Beverages (180 t)",
+  "PIBO-49PL1SX Sai Durga Home Care Pvt Ltd (144 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 66
+}

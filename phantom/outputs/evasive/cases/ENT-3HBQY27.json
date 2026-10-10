@@ -1,0 +1,119 @@
+{
+ "entity_id": "ENT-3HBQY27",
+ "profile": {
+  "name": "Laxmi Granules",
+  "state": "Punjab",
+  "district": "Ludhiana",
+  "declared_capacity_tpa": 1030.0,
+  "connected_load_kw": 48.0,
+  "epr_registered": "2025-04-27"
+ },
+ "scores": {
+  "rule_score": 0.9997,
+  "iforest_score": 0.6247,
+  "dominant_score": 1.8618,
+  "ens_score": 0.9652,
+  "ens_pct": 0.9728
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 26% of expected)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.667,
+   "text": "Certificates claim more than the declared monthly capacity in 25% of months"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.55x the cost floor)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "65% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "65% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.648,
+   "population_percentile": 99.2,
+   "shap": -0.3276
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.3045,
+   "population_percentile": 96.6,
+   "shap": -0.3106
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2769
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2621
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-7THPZ64X (Feb 2026: 50,903 kWh for 166.1 t claimed)",
+   "plastic/electricity_bills:BILL-8WWUP7DP (Mar 2026: 65,365 kWh for 197.7 t claimed)",
+   "plastic/electricity_bills:BILL-PX71UIJC (Nov 2025: 17,839 kWh for 52.4 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 543 t of 838 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-M8S4MSGH8 (CAT_IV, Rs 789/t to PIBO-LZI9USH)",
+   "plastic/certificate_sales:SALE-K6XS8Z2VZ (CAT_IV, Rs 794/t to PIBO-DVCWTDD)",
+   "plastic/certificate_sales:SALE-5EVDUE6RC (CAT_IV, Rs 794/t to PIBO-DVCWTDD)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-5A7V7Q4 Metro Star Snacks (226 t)",
+  "PIBO-MG2G815 Hind Pharma LLP (91 t)",
+  "PIBO-JGJ51GR Hind Retail LLP (66 t)",
+  "PIBO-8VTWE6L Deccan Star Personal Care Pvt Ltd (46 t)",
+  "PIBO-MQDIYB3 Star Western Dairy LLP (40 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 69
+}

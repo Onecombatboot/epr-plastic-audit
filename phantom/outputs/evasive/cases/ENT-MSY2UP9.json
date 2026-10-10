@@ -1,0 +1,127 @@
+{
+ "entity_id": "ENT-MSY2UP9",
+ "profile": {
+  "name": "Sterling Granules Pvt Ltd",
+  "state": "Uttar Pradesh",
+  "district": "Meerut",
+  "declared_capacity_tpa": 1530.0,
+  "connected_load_kw": 223.0,
+  "epr_registered": "2023-07-05"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.669,
+  "dominant_score": 3.3677,
+  "ens_score": 0.9853,
+  "ens_pct": 0.99
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (26% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.727,
+   "text": "Certificates claim more than the declared monthly capacity in 27% of months"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 49%, +47% versus what its process route can produce"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.588,
+   "text": "47% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "64% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.403,
+   "text": "19% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 99.3,
+   "shap": -0.3336
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2575,
+   "population_percentile": 99.6,
+   "shap": -0.3316
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.4674,
+   "population_percentile": 97.4,
+   "shap": -0.2955
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.6402,
+   "population_percentile": 99.2,
+   "shap": -0.2951
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-EVPV6JZM (Feb 2025: 50,449 kWh for 695.6 t claimed)",
+   "plastic/electricity_bills:BILL-U04UBAAT (Feb 2026: 53,674 kWh for 724.9 t claimed)",
+   "plastic/electricity_bills:BILL-1X2WGE7L (Mar 2026: 56,613 kWh for 690.5 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-992BYL8EL (02 Jul 2023, 2 t from COL-ECH6FA9)",
+   "plastic/feedstock_invoices:INV-RW4GY5SMN (04 Jul 2023, 4 t from COL-WUBY0JB)",
+   "plastic/feedstock_invoices:INV-EAF2ER2KG (09 Jul 2023, 4 t from COL-IWJWUDQ)",
+   "plastic/feedstock_invoices:INV-CI63FN8QZ (09 Jul 2023, 0.31 t from COL-X3UX52F)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-IWJWUDQ (939 t supplied; declared capacity 8 t/month; 2 vehicles; registered Jan 2023)",
+   "plastic/collectors:COL-WUBY0JB (762 t supplied; declared capacity 10 t/month; 1 vehicles; registered Apr 2023)",
+   "plastic/collectors:COL-NXIMZDU (416 t supplied; declared capacity 32 t/month; 1 vehicles; registered Dec 2015)",
+   "plastic/collectors:COL-CPQ6FLH (379 t supplied; declared capacity 25 t/month; 2 vehicles; registered Apr 2023)",
+   "plastic/collectors:COL-ECH6FA9 (354 t supplied; declared capacity 31 t/month; 1 vehicles; registered Apr 2023)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 1,670 t of 6,902 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-OY4SGL3 (1,805 t sold to this plant)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-QYGJBG6 Prime National Retail Pvt Ltd (452 t)",
+  "PIBO-GDK7Z7V Hind Pharma (377 t)",
+  "PIBO-TIZYZ3H Eastern Personal Care Pvt Ltd (352 t)",
+  "PIBO-FQC9JLG Navjeevan Foods Pvt Ltd (301 t)",
+  "PIBO-P3Y57P0 Balaji Personal Care Pvt Ltd (269 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 26
+}

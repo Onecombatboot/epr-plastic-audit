@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-F1TMUTU",
+ "profile": {
+  "name": "Northern Poly Industries",
+  "state": "Delhi",
+  "district": "West Delhi",
+  "declared_capacity_tpa": 3690.0,
+  "connected_load_kw": 100.0,
+  "epr_registered": "2023-10-16"
+ },
+ "scores": {
+  "rule_score": 0.9994,
+  "iforest_score": 0.6508,
+  "dominant_score": 8.0213,
+  "ens_score": 0.9774,
+  "ens_pct": 0.9824
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (26% of its feedstock)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 2 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.55x the cost floor)"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.45,
+   "text": "In 97% of billed months the units consumed cannot support the tonnes claimed"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.361,
+   "text": "Electricity bought is only 0.68x the minimum needed for the tonnes claimed (205 kWh/t against at least 300)"
+  },
+  {
+   "rule": "shell_offtakers",
+   "group": "output",
+   "strength": 0.339,
+   "text": "64% of product sales go to buyers incorporated under a year before the invoice"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2638,
+   "population_percentile": 99.3,
+   "shap": -0.379
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3695
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3565
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3314
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-OX9ACPD0 (Dec 2024: 39,298 kWh for 201.3 t claimed)",
+   "plastic/electricity_bills:BILL-ILKIX5TG (Apr 2024: 36,470 kWh for 186.3 t claimed)",
+   "plastic/electricity_bills:BILL-QMC3UXID (Jun 2024: 34,877 kWh for 175.7 t claimed)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-K3VTKLF (1,392 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-3M0J03Z (1,772 t bought)",
+   "plastic/offtakers:OFT-4T9GDBW (746 t bought)",
+   "plastic/offtakers:OFT-AWUD57E (725 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 2)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-PY36JKZJ1 (CAT_IV, Rs 727/t to PIBO-9NIQ73O)",
+   "plastic/certificate_sales:SALE-DH8HB4DLZ (CAT_IV, Rs 727/t to PIBO-9NIQ73O)",
+   "plastic/certificate_sales:SALE-VS7516J35 (CAT_IV, Rs 727/t to PIBO-9NIQ73O)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-HMRS39W Sahyadri Consumer Products LLP (730 t)",
+  "PIBO-G9WAYUP Eastern FMCG Pvt Ltd (550 t)",
+  "PIBO-6RY2DX9 Balaji Eastern FMCG Pvt Ltd (516 t)",
+  "PIBO-IXPJ1M5 Unity Retail LLP (422 t)",
+  "PIBO-E35B3U2 Prakriti Consumer Products Pvt Ltd (294 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 45
+}

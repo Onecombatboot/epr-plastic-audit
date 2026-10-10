@@ -1,0 +1,106 @@
+{
+ "entity_id": "ENT-96GGU3Z",
+ "profile": {
+  "name": "Galaxy Plastics Pvt Ltd",
+  "state": "Andhra Pradesh",
+  "district": "Tirupati",
+  "declared_capacity_tpa": 6460.0,
+  "connected_load_kw": 161.0,
+  "epr_registered": "2025-07-27"
+ },
+ "scores": {
+  "rule_score": 0.992,
+  "iforest_score": 0.6255,
+  "dominant_score": 7.2524,
+  "ens_score": 0.9614,
+  "ens_pct": 0.9666
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (12% of its feedstock)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.72x the cost floor)"
+  },
+  {
+   "rule": "capacity_needs_more_power",
+   "group": "energy",
+   "strength": 0.339,
+   "text": "Declared capacity of 6,460 t/yr needs about 1.6x the power the plant is connected for"
+  },
+  {
+   "rule": "shared_address",
+   "group": "identity",
+   "strength": 0.3,
+   "text": "Registered at an address shared with 2 other entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.4391
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.4269
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.1206,
+   "population_percentile": 98.3,
+   "shap": -0.4145
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.37
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-QMGQPYNX (Dec 2025: 43,637 kWh for 90.5 t claimed)",
+   "plastic/electricity_bills:BILL-3ZKT9A9E (Nov 2025: 45,262 kWh for 91.4 t claimed)",
+   "plastic/electricity_bills:BILL-2PM2LVP7 (Jan 2026: 52,452 kWh for 105.5 t claimed)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-SDVXJJ5 (88 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 2, director 0, photos 0)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-RB0YZU8O8 (CAT_IV, Rs 1,080/t to PIBO-JI4ZMJQ)",
+   "plastic/certificate_sales:SALE-LXXA4G9C7 (CAT_IV, Rs 1,080/t to PIBO-JI4ZMJQ)",
+   "plastic/certificate_sales:SALE-CLF1AEA9H (CAT_IV, Rs 1,080/t to PIBO-JI4ZMJQ)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-I6Q5HW6 Southern FMCG Pvt Ltd (127 t)",
+  "PIBO-ZV0NY21 Apex Laxmi Dairy Pvt Ltd (110 t)",
+  "PIBO-P9R3GHU National Amrit Retail Pvt Ltd (91 t)",
+  "PIBO-TT6P1P1 Royal Ganesh Retail Pvt Ltd (82 t)",
+  "PIBO-YXO038O Kaveri Retail Ltd (70 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 85
+}

@@ -1,0 +1,135 @@
+{
+ "entity_id": "ENT-XRUT8TK",
+ "profile": {
+  "name": "Prime Sahyadri Recyclers Pvt Ltd",
+  "state": "Gujarat",
+  "district": "Bharuch",
+  "declared_capacity_tpa": 1430.0,
+  "connected_load_kw": 104.0,
+  "epr_registered": "2025-07-13"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6044,
+  "dominant_score": 2.5796,
+  "ens_score": 0.9614,
+  "ens_pct": 0.9666
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 78% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.638,
+   "text": "Electricity bought is only 0.44x the minimum needed for the tonnes claimed (133 kWh/t against at least 300)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.39x the cost floor)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.512,
+   "text": "Sold products equal only 36% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.509,
+   "text": "23% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3122
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.4147,
+   "population_percentile": 98.3,
+   "shap": -0.2717
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.7778,
+   "population_percentile": 98.7,
+   "shap": -0.2467
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 98.8,
+   "shap": -0.2408
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-3MFP5ENH (Jan 2026: 36,624 kWh for 294.4 t claimed)",
+   "plastic/electricity_bills:BILL-XORUZ4GX (Oct 2025: 41,101 kWh for 323.6 t claimed)",
+   "plastic/electricity_bills:BILL-HC10HFZ9 (Mar 2026: 35,048 kWh for 275.3 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-JYLBA4YLP (12 Jul 2025, 1 t from COL-R6ILWJY)",
+   "plastic/feedstock_invoices:INV-FIGQ0KLM5 (16 Jul 2025, 8 t from COL-4WZAVS3)",
+   "plastic/feedstock_invoices:INV-TR5MBOB13 (28 Jul 2025, 15 t from COL-GHIFR9R)",
+   "plastic/feedstock_invoices:INV-7PHR8A4IZ (04 Aug 2025, 9 t from COL-4XUZ7QF)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-GHIFR9R (418 t supplied; declared capacity 8 t/month; 2 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-4XUZ7QF (416 t supplied; declared capacity 16 t/month; 2 vehicles; registered Feb 2025)",
+   "plastic/collectors:COL-5XD180A (298 t supplied; declared capacity 38 t/month; 2 vehicles; registered Apr 2025)",
+   "plastic/collectors:COL-4WZAVS3 (239 t supplied; declared capacity 27 t/month; 1 vehicles; registered Jul 2025)",
+   "plastic/collectors:COL-99FX6GO (132 t supplied; declared capacity 94 t/month; 2 vehicles; registered Jan 2023)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-K0SO0GE (235 t bought)",
+   "plastic/offtakers:OFT-KPI5GP8 (178 t bought)",
+   "plastic/offtakers:OFT-853KSFJ (111 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-YBL2Y7S3O (CAT_IV, Rs 563/t to PIBO-U019CU7)",
+   "plastic/certificate_sales:SALE-71S776DOD (CAT_IV, Rs 565/t to PIBO-P0AJX3I)",
+   "plastic/certificate_sales:SALE-4JVSKGZKW (CAT_IV, Rs 565/t to PIBO-1KHKCYA)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-E5OFUZG Metro Pharma LLP (949 t)",
+  "PIBO-KUN7KRI Durga Snacks LLP (251 t)",
+  "PIBO-HHIDITV Northern Snacks LLP (119 t)",
+  "PIBO-XIHNB64 Kaveri Shri Retail LLP (96 t)",
+  "PIBO-Y61QWNH Balaji Beverages Pvt Ltd (87 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 84
+}

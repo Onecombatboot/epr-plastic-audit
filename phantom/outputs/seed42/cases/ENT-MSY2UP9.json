@@ -1,0 +1,127 @@
+{
+ "entity_id": "ENT-MSY2UP9",
+ "profile": {
+  "name": "Sterling Granules Pvt Ltd",
+  "state": "Uttar Pradesh",
+  "district": "Meerut",
+  "declared_capacity_tpa": 1530.0,
+  "connected_load_kw": 223.0,
+  "epr_registered": "2023-07-05"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6622,
+  "dominant_score": 2.6584,
+  "ens_score": 0.9809,
+  "ens_pct": 0.9864
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (20% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.727,
+   "text": "Certificates claim more than the declared monthly capacity in 27% of months"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 46%, +44% versus what its process route can produce"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.574,
+   "text": "46% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.568,
+   "text": "25% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "63% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.338
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2019,
+   "population_percentile": 99.0,
+   "shap": -0.3238
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3063
+  },
+  {
+   "feature": "net_recycler_in_degree",
+   "label": "net_recycler_in_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2812
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-E1VK0K9N (Feb 2026: 51,666 kWh for 773.7 t claimed)",
+   "plastic/electricity_bills:BILL-I7NZRUFZ (Feb 2025: 47,796 kWh for 642.3 t claimed)",
+   "plastic/electricity_bills:BILL-RTYKYH56 (Mar 2025: 55,019 kWh for 701.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-SVARH0DJV (09 Jul 2023, 2.69 t from COL-M3I4JNX)",
+   "plastic/feedstock_invoices:INV-XH2J6UAAT (09 Jul 2023, 1 t from COL-4QU4V8C)",
+   "plastic/feedstock_invoices:INV-624VHPS3T (12 Jul 2023, 5 t from COL-28VH324)",
+   "plastic/feedstock_invoices:INV-QDLS9NXG5 (16 Jul 2023, 1.94 t from COL-HMCG9G7)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-28VH324 (948 t supplied; declared capacity 24 t/month; 2 vehicles; registered Jan 2023)",
+   "plastic/collectors:COL-56RUU0G (871 t supplied; declared capacity 20 t/month; 1 vehicles; registered Apr 2023)",
+   "plastic/collectors:COL-157O45U (508 t supplied; declared capacity 45 t/month; 2 vehicles; registered Oct 2019)",
+   "plastic/collectors:COL-M3I4JNX (414 t supplied; declared capacity 95 t/month; 5 vehicles; registered Aug 2017)",
+   "plastic/collectors:COL-V3TDGII (384 t supplied; declared capacity 21 t/month; 1 vehicles; registered Feb 2023)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 1,803 t of 6,902 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-57BJ7DW (1,415 t sold to this plant)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-REC3S1B Prakriti Dairy Pvt Ltd (674 t)",
+  "PIBO-PLGKT4N Amrit Consumer Products Pvt Ltd (626 t)",
+  "PIBO-IO4SFY7 Bharat Pharma Pvt Ltd (364 t)",
+  "PIBO-LNK7W9J Ganesh Dairy Pvt Ltd (351 t)",
+  "PIBO-00ST689 Green Foods Pvt Ltd (324 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 35
+}

@@ -1,0 +1,136 @@
+{
+ "entity_id": "ENT-NK5KPSP",
+ "profile": {
+  "name": "Shree Southern Poly Industries Pvt Ltd",
+  "state": "Uttar Pradesh",
+  "district": "Kanpur",
+  "declared_capacity_tpa": 2330.0,
+  "connected_load_kw": 109.0,
+  "epr_registered": "2023-01-16"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6654,
+  "dominant_score": 2.9142,
+  "ens_score": 0.988,
+  "ens_pct": 0.992
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (31% of its feedstock)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "45% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.682,
+   "text": "Sold products equal only 22% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.638,
+   "text": "Category III share of certificates is 39%, +37% versus what its process route can produce"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.20x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3377
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.3065,
+   "population_percentile": 99.4,
+   "shap": -0.323
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.2883
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2851
+  }
+ ],
+ "evidence": {
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-VW4A85ONU (06 Apr 2023, 3 t from COL-IWRKHIQ)",
+   "plastic/feedstock_invoices:INV-VCZYOH6S6 (11 Apr 2023, 4 t from COL-IPLP4JD)",
+   "plastic/feedstock_invoices:INV-C3O2D070F (29 Apr 2023, 14 t from ENT-1HBHAZD)",
+   "plastic/feedstock_invoices:INV-7IDEXWQN6 (30 Apr 2023, 1 t from COL-WX5Z15E)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-0QK4QAN (679 t supplied; declared capacity 30 t/month; 2 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-IPLP4JD (403 t supplied; declared capacity 30 t/month; 2 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-KLT264O (382 t supplied; declared capacity 12 t/month; 2 vehicles; registered Jan 2023)",
+   "plastic/collectors:COL-IWRKHIQ (367 t supplied; declared capacity 27 t/month; 2 vehicles; registered Nov 2022)",
+   "plastic/collectors:COL-T30TGJ4 (204 t supplied; declared capacity 33 t/month; 2 vehicles; registered Nov 2022)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2024-04: 252 t of 4,826 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-1HBHAZD (1,505 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-7ZUXJFB (232 t bought)",
+   "plastic/offtakers:OFT-UY7QNYE (213 t bought)",
+   "plastic/offtakers:OFT-L2LN05C (136 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 1, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-DLY7FKU4E (CAT_IV, Rs 259/t to PIBO-7X98CZI)",
+   "plastic/certificate_sales:SALE-DH6JF7N9F (CAT_IV, Rs 260/t to PIBO-R0EO5NK)",
+   "plastic/certificate_sales:SALE-4V76L1TH3 (CAT_IV, Rs 260/t to PIBO-Z0M4QUY)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-1ZRQFH0 Royal Pragati Personal Care Pvt Ltd (316 t)",
+  "PIBO-WT9FFSB Amrit FMCG Pvt Ltd (297 t)",
+  "PIBO-ENLZ35O Sterling Snacks LLP (257 t)",
+  "PIBO-3O49KTF Prakriti Personal Care Pvt Ltd (232 t)",
+  "PIBO-TT6P1P1 Royal Ganesh Retail Pvt Ltd (227 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 21
+}

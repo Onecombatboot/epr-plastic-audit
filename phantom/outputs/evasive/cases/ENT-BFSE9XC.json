@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-BFSE9XC",
+ "profile": {
+  "name": "Shree Royal Polytech Pvt Ltd",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 1200.0,
+  "connected_load_kw": 15.0,
+  "epr_registered": "2023-02-26"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.645,
+  "dominant_score": 3.4616,
+  "ens_score": 0.9883,
+  "ens_pct": 0.9912
+ },
+ "reasons": [
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.26x the minimum needed for the tonnes claimed (5 kWh/t against at least 20)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "76% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "74% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "66% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.3307
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7642,
+   "population_percentile": 99.0,
+   "shap": -0.3165
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2603
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 99.2,
+   "shap": -0.2586
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-E9EH7ZEZ (Dec 2024: 3,163 kWh for 629.3 t claimed)",
+   "plastic/electricity_bills:BILL-CBC5F0X2 (Mar 2026: 3,376 kWh for 670.8 t claimed)",
+   "plastic/electricity_bills:BILL-7L23S7H8 (Nov 2025: 3,083 kWh for 612.2 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-LSAPE4R90 (01 Apr 2023, 9 t from COL-2FUGTN3)",
+   "plastic/feedstock_invoices:INV-76QCNAER1 (03 Apr 2023, 24 t from COL-3CH0SO3)",
+   "plastic/feedstock_invoices:INV-QPTW8MUHO (05 Apr 2023, 9 t from COL-M1940JM)",
+   "plastic/feedstock_invoices:INV-ZLAKHDYGI (07 Apr 2023, 2 t from COL-3CH0SO3)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-04CBQUV (4,226 t supplied; declared capacity 11 t/month; 1 vehicles; registered Jan 2023)",
+   "plastic/collectors:COL-3CH0SO3 (3,905 t supplied; declared capacity 15 t/month; 2 vehicles; registered Nov 2022)",
+   "plastic/collectors:COL-2FUGTN3 (3,479 t supplied; declared capacity 21 t/month; 1 vehicles; registered Oct 2022)",
+   "plastic/collectors:COL-G9UTBKL (2,345 t supplied; declared capacity 36 t/month; 2 vehicles; registered Apr 2023)",
+   "plastic/collectors:COL-U9GMZIS (2,082 t supplied; declared capacity 24 t/month; 1 vehicles; registered Oct 2022)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 1, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-1W9L7RH Royal FMCG Pvt Ltd (2,114 t)",
+  "PIBO-HN606OQ Northern Home Care Pvt Ltd (404 t)",
+  "PIBO-TWWCRY9 Shri FMCG & Co (358 t)",
+  "PIBO-ML6V1SO Narmada Home Care Pvt Ltd (259 t)",
+  "PIBO-3BVOWLQ Sai Snacks Pvt Ltd (254 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 23
+}

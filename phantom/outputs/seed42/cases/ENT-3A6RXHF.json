@@ -1,0 +1,125 @@
+{
+ "entity_id": "ENT-3A6RXHF",
+ "profile": {
+  "name": "Sunrise Sunrise Enviro Recycling Pvt Ltd",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 6550.0,
+  "connected_load_kw": 108.0,
+  "epr_registered": "2022-12-13"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6545,
+  "dominant_score": 3.7791,
+  "ens_score": 0.9905,
+  "ens_pct": 0.9948
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 308% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 89% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.20x the minimum needed for the tonnes claimed (60 kWh/t against at least 300)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "83% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 15% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "74% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.304
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.2993
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8339,
+   "population_percentile": 99.5,
+   "shap": -0.2668
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 8.0,
+   "population_percentile": 99.6,
+   "shap": -0.2639
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-NEQ5WHEI (Apr 2025: 40,122 kWh for 706.1 t claimed)",
+   "plastic/electricity_bills:BILL-BVS94799 (May 2024: 38,749 kWh for 681.3 t claimed)",
+   "plastic/electricity_bills:BILL-5ENCDYBP (Jun 2025: 40,365 kWh for 707.3 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-0UY5AJTEW (02 Apr 2023, 8 t from COL-KZE9GWM)",
+   "plastic/feedstock_invoices:INV-AJ98HKR4V (05 Apr 2023, 9 t from COL-H9OVMJL)",
+   "plastic/feedstock_invoices:INV-GRGTPCGAX (09 Apr 2023, 10 t from COL-KZE9GWM)",
+   "plastic/feedstock_invoices:INV-KBHLND53P (09 Apr 2023, 7 t from COL-3OUVGZX)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-H9OVMJL (8,328 t supplied; declared capacity 9 t/month; 2 vehicles; registered Dec 2022)",
+   "plastic/collectors:COL-3OUVGZX (4,710 t supplied; declared capacity 17 t/month; 2 vehicles; registered Oct 2022)",
+   "plastic/collectors:COL-KZE9GWM (2,352 t supplied; declared capacity 19 t/month; 2 vehicles; registered Nov 2022)",
+   "plastic/collectors:COL-657NBFF (1,732 t supplied; declared capacity 34 t/month; 2 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-U5DL9GO (1,429 t supplied; declared capacity 11 t/month; 2 vehicles; registered Jan 2023)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-AY30MDW (2,238 t bought)",
+   "plastic/offtakers:OFT-S1BHTDQ (402 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-TUMR9D7 Balaji Dairy (3,987 t)",
+  "PIBO-UE91ZRW Unity Home Care Ltd (1,556 t)",
+  "PIBO-3I91PN6 Global Prakriti FMCG Pvt Ltd (913 t)",
+  "PIBO-A6H5DBX Deccan Dairy Pvt Ltd (665 t)",
+  "PIBO-8QGAQFP Amrit National Personal Care (618 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 14
+}

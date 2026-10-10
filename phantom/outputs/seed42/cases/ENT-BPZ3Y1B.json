@@ -1,0 +1,115 @@
+{
+ "entity_id": "ENT-BPZ3Y1B",
+ "profile": {
+  "name": "Laxmi Polymers",
+  "state": "Karnataka",
+  "district": "Bengaluru Urban",
+  "declared_capacity_tpa": 1370.0,
+  "connected_load_kw": 149.0,
+  "epr_registered": "2025-02-03"
+ },
+ "scores": {
+  "rule_score": 0.9993,
+  "iforest_score": 0.6208,
+  "dominant_score": 3.4774,
+  "ens_score": 0.962,
+  "ens_pct": 0.9688
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 86% of months"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 50%, +48% versus what its process route can produce"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.41x the cost floor)"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.45,
+   "text": "In 92% of billed months the units consumed cannot support the tonnes claimed"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.417,
+   "text": "Certificates sold at 0.47x the market median price"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.356,
+   "text": "Electricity bought is only 0.69x the minimum needed for the tonnes claimed (207 kWh/t against at least 300)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.3086
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.1955,
+   "population_percentile": 96.0,
+   "shap": -0.2645
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.8571,
+   "population_percentile": 98.5,
+   "shap": -0.2608
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 0.9231,
+   "population_percentile": 98.1,
+   "shap": -0.2174
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-9JFG84HT (Oct 2025: 45,652 kWh for 239.9 t claimed)",
+   "plastic/electricity_bills:BILL-EMPYN1Q3 (Dec 2025: 45,445 kWh for 235.2 t claimed)",
+   "plastic/electricity_bills:BILL-NWPKVW3D (Jun 2025: 38,737 kWh for 192.3 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-01: 388 t of 2,495 t generated)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-L2Z43591Z (CAT_IV, Rs 623/t to PIBO-FUMXWRU)",
+   "plastic/certificate_sales:SALE-GNEIECGBQ (CAT_IV, Rs 623/t to PIBO-FUMXWRU)",
+   "plastic/certificate_sales:SALE-0LG75965A (CAT_IV, Rs 623/t to PIBO-FUMXWRU)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-KE4Y833 Green Consumer Products LLP (408 t)",
+  "PIBO-FQ2174H Eastern Retail (237 t)",
+  "PIBO-ASXFDJC Prime Snacks Pvt Ltd (184 t)",
+  "PIBO-05ECHFE Pioneer Consumer Products Pvt Ltd (183 t)",
+  "PIBO-4HVP983 Earth Shree Snacks & Co (82 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 79
+}

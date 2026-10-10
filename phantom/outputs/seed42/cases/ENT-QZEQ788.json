@@ -1,0 +1,128 @@
+{
+ "entity_id": "ENT-QZEQ788",
+ "profile": {
+  "name": "Ganesh Plastics LLP",
+  "state": "Tamil Nadu",
+  "district": "Chennai",
+  "declared_capacity_tpa": 2090.0,
+  "connected_load_kw": 327.0,
+  "epr_registered": "2024-02-15"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6491,
+  "dominant_score": 3.0492,
+  "ens_score": 0.9855,
+  "ens_pct": 0.9902
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 217% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 88% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "74% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "52% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 69%, +67% versus what its process route can produce"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.2815
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 2.0,
+   "population_percentile": 98.6,
+   "shap": -0.2642
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.3462,
+   "population_percentile": 87.4,
+   "shap": -0.2508
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 3.0,
+   "population_percentile": 96.6,
+   "shap": -0.2303
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-OIQP7095 (Mar 2026: 119,334 kWh for 1,602.1 t claimed)",
+   "plastic/electricity_bills:BILL-CQEM3Q6C (Mar 2025: 141,391 kWh for 1,728.6 t claimed)",
+   "plastic/electricity_bills:BILL-HSG9VCUU (Feb 2026: 127,794 kWh for 1,558.5 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-39EVOVGAB (03 Feb 2024, 15 t from COL-R0UACXU)",
+   "plastic/feedstock_invoices:INV-49EUUIU2L (10 Feb 2024, 8 t from COL-BLLOM3O)",
+   "plastic/feedstock_invoices:INV-SDP5PCNFF (11 Feb 2024, 13 t from COL-R0UACXU)",
+   "plastic/feedstock_invoices:INV-O8N5FLOFJ (18 Feb 2024, 10 t from COL-R0UACXU)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-R0UACXU (3,697 t supplied; declared capacity 22 t/month; 1 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-NXG3X1T (2,457 t supplied; declared capacity 10 t/month; 1 vehicles; registered Dec 2023)",
+   "plastic/collectors:COL-BLLOM3O (2,170 t supplied; declared capacity 20 t/month; 1 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-PPZUSSM (573 t supplied; declared capacity 118 t/month; 2 vehicles; registered Sep 2020)",
+   "plastic/collectors:COL-04794DM (398 t supplied; declared capacity 117 t/month; 4 vehicles; registered Jun 2019)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 4,734 t of 11,180 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 1, director 3, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-IFRU3OV Western Personal Care (3,571 t)",
+  "PIBO-34XGNS2 Galaxy Durga Dairy Pvt Ltd (1,051 t)",
+  "PIBO-Y5C5Y6T Northern Shree Pharma Pvt Ltd (640 t)",
+  "PIBO-2REM54K Eastern FMCG LLP (436 t)",
+  "PIBO-00UIJHX Laxmi Southern Retail Pvt Ltd (415 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 26
+}

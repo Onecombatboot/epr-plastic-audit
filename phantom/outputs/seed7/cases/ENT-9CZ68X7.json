@@ -1,0 +1,128 @@
+{
+ "entity_id": "ENT-9CZ68X7",
+ "profile": {
+  "name": "Apex Plast Pvt Ltd",
+  "state": "Uttar Pradesh",
+  "district": "Kanpur",
+  "declared_capacity_tpa": 2370.0,
+  "connected_load_kw": 47.0,
+  "epr_registered": "2023-02-03"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6469,
+  "dominant_score": 1.5549,
+  "ens_score": 0.9652,
+  "ens_pct": 0.9712
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (18% of its feedstock)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 43%, +41% versus what its process route can produce"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.45x the cost floor)"
+  },
+  {
+   "rule": "capacity_needs_more_power",
+   "group": "energy",
+   "strength": 0.55,
+   "text": "Declared capacity of 2,370 t/yr needs about 2.0x the power the plant is connected for"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3793
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.1812,
+   "population_percentile": 98.6,
+   "shap": -0.3654
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3449
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 96.7,
+   "shap": -0.3382
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-AKKJK5WE (Mar 2024: 16,225 kWh for 67.7 t claimed)",
+   "plastic/electricity_bills:BILL-XBSFP3H4 (May 2024: 16,394 kWh for 68.2 t claimed)",
+   "plastic/electricity_bills:BILL-A10LPTOX (Apr 2024: 15,176 kWh for 62.9 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-01: 115 t of 2,098 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-YULO6AA (384 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-WMK6N6H (372 t bought)",
+   "plastic/offtakers:OFT-AGSLVN3 (229 t bought)",
+   "plastic/offtakers:OFT-KO0UJRN (98 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 1, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-LS2216GTD (CAT_IV, Rs 575/t to PIBO-4KFKITB)",
+   "plastic/certificate_sales:SALE-2XIMSNCNC (CAT_IV, Rs 575/t to PIBO-4KFKITB)",
+   "plastic/certificate_sales:SALE-3EMQ2QOVS (CAT_IV, Rs 575/t to PIBO-FG7X1HB)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-AYGRSGR Earth Personal Care & Co (186 t)",
+  "PIBO-B4FMPMK Shree Pioneer Consumer Products LLP (161 t)",
+  "PIBO-NFPEUY6 Narmada Retail Pvt Ltd (150 t)",
+  "PIBO-K4A01PY Sai Snacks & Co (147 t)",
+  "PIBO-RXXU1HU Amrit Eco Personal Care Ltd (129 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 73
+}

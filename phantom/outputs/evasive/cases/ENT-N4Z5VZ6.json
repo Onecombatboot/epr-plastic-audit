@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-N4Z5VZ6",
+ "profile": {
+  "name": "Western Sahyadri Enviro Recycling Pvt Ltd",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 2330.0,
+  "connected_load_kw": 215.0,
+  "epr_registered": "2024-12-26"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.637,
+  "dominant_score": 13.5834,
+  "ens_score": 0.9938,
+  "ens_pct": 0.998
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 290% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.14x the minimum needed for the tonnes claimed (41 kWh/t against at least 300)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "90% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "78% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.338
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.898,
+   "population_percentile": 99.8,
+   "shap": -0.2971
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 99.2,
+   "shap": -0.28
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2698
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-VLYM0UIC (Dec 2025: 57,901 kWh for 1,517.2 t claimed)",
+   "plastic/electricity_bills:BILL-GLJKW015 (Mar 2025: 58,337 kWh for 1,502.9 t claimed)",
+   "plastic/electricity_bills:BILL-9VFP1NLF (Oct 2025: 53,716 kWh for 1,307.1 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-OCZS1GZKF (02 Dec 2024, 13 t from COL-S752MZJ)",
+   "plastic/feedstock_invoices:INV-IN7QVUBR0 (02 Dec 2024, 5 t from COL-48AT6Z9)",
+   "plastic/feedstock_invoices:INV-GVFPZ9RTO (02 Dec 2024, 5 t from COL-48AT6Z9)",
+   "plastic/feedstock_invoices:INV-ZEBN5MB79 (03 Dec 2024, 9 t from COL-48AT6Z9)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-48AT6Z9 (12,546 t supplied; declared capacity 34 t/month; 2 vehicles; registered Sep 2024)",
+   "plastic/collectors:COL-IZ8GYK1 (2,754 t supplied; declared capacity 37 t/month; 2 vehicles; registered Sep 2024)",
+   "plastic/collectors:COL-S752MZJ (1,872 t supplied; declared capacity 20 t/month; 2 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-8GV0PDY (247 t supplied; declared capacity 39 t/month; 5 vehicles; registered Apr 2017)",
+   "plastic/collectors:COL-XQNSSTG (235 t supplied; declared capacity 43 t/month; 5 vehicles; registered Jul 2022)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 2, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-9AJMCDZ Navjeevan Snacks Pvt Ltd (1,604 t)",
+  "PIBO-VRHSG8U Sunrise Beverages Pvt Ltd (545 t)",
+  "PIBO-UCLAQS0 Sunrise FMCG (271 t)",
+  "PIBO-JCLG5ZH Sahyadri Laxmi Dairy Pvt Ltd (167 t)",
+  "PIBO-4VR9QS1 Ganga Consumer Products Pvt Ltd (166 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 6
+}

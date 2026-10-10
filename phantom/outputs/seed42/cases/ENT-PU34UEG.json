@@ -1,0 +1,131 @@
+{
+ "entity_id": "ENT-PU34UEG",
+ "profile": {
+  "name": "Maa Plast LLP",
+  "state": "Haryana",
+  "district": "Panipat",
+  "declared_capacity_tpa": 12860.0,
+  "connected_load_kw": 928.0,
+  "epr_registered": "2023-05-27"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6367,
+  "dominant_score": 7.2222,
+  "ens_score": 0.984,
+  "ens_pct": 0.988
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 89% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "75% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "69% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.619,
+   "text": "Sold products equal only 27% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.38x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "50% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.325
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.2955
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7498,
+   "population_percentile": 99.2,
+   "shap": -0.2877
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2337
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-P86CNMJN (Dec 2025: 282,565 kWh for 1,667.5 t claimed)",
+   "plastic/electricity_bills:BILL-I361YJ9F (Nov 2024: 242,288 kWh for 1,418.7 t claimed)",
+   "plastic/electricity_bills:BILL-8C2CPEKW (Oct 2023: 253,881 kWh for 1,475.5 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-9W7K198U9 (02 May 2023, 5 t from COL-K84M43C)",
+   "plastic/feedstock_invoices:INV-LM65RG1DW (02 May 2023, 5 t from COL-K84M43C)",
+   "plastic/feedstock_invoices:INV-3NI42GN8K (03 May 2023, 4 t from COL-K84M43C)",
+   "plastic/feedstock_invoices:INV-Z87DHZZ9M (06 May 2023, 8 t from COL-36MD5YG)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-K84M43C (17,639 t supplied; declared capacity 21 t/month; 2 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-36MD5YG (6,676 t supplied; declared capacity 37 t/month; 1 vehicles; registered Jan 2023)",
+   "plastic/collectors:COL-P8KKEQL (3,471 t supplied; declared capacity 34 t/month; 2 vehicles; registered Apr 2023)",
+   "plastic/collectors:COL-XG7FZ0I (2,826 t supplied; declared capacity 5 t/month; 1 vehicles; registered Jan 2023)",
+   "plastic/collectors:COL-QMD0K68 (2,301 t supplied; declared capacity 32 t/month; 1 vehicles; registered Dec 2022)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-9HTIXYK (1,854 t bought)",
+   "plastic/offtakers:OFT-DVFF20R (1,652 t bought)",
+   "plastic/offtakers:OFT-RGC20EW (1,456 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-94MKWINFJ (CAT_IV, Rs 477/t to PIBO-QXG888E)",
+   "plastic/certificate_sales:SALE-HM9ESRNGL (CAT_IV, Rs 477/t to PIBO-SGGH5WR)",
+   "plastic/certificate_sales:SALE-CHSU3BZT3 (CAT_IV, Rs 477/t to PIBO-8RVROPY)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-TWY4K33 Ganga Beverages LLP (5,221 t)",
+  "PIBO-B85IN7B Om Consumer Products (1,936 t)",
+  "PIBO-JEGCCP3 Navjeevan FMCG & Co (1,667 t)",
+  "PIBO-9B7YCXB Pioneer Shree Personal Care & Co (1,300 t)",
+  "PIBO-CLM7W34 Sanjeevani Pharma (1,136 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 31
+}

@@ -1,0 +1,127 @@
+{
+ "entity_id": "ENT-ZFIQUAR",
+ "profile": {
+  "name": "Bharat Polymers & Co",
+  "state": "Tamil Nadu",
+  "district": "Krishnagiri",
+  "declared_capacity_tpa": 370.0,
+  "connected_load_kw": 75.0,
+  "epr_registered": "2025-03-12"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6601,
+  "dominant_score": 2.7477,
+  "ens_score": 0.9913,
+  "ens_pct": 0.996
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 8% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 77% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "77% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "37% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.697,
+   "text": "Claimed tonnage in the busiest month would need 175% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.30x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 3.0,
+   "population_percentile": 99.4,
+   "shap": -0.3367
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.2835
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.7207,
+   "population_percentile": 99.7,
+   "shap": -0.2769
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7674,
+   "population_percentile": 99.1,
+   "shap": -0.2703
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-RZB9A4X1 (Mar 2026: 289,413 kWh for 319.8 t claimed)",
+   "plastic/electricity_bills:BILL-N640FW77 (Jun 2025: 33,083 kWh for 35.9 t claimed)",
+   "plastic/electricity_bills:BILL-GLQLV355 (Jan 2026: 108,508 kWh for 117.2 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-CPYDNR2CK (02 Mar 2025, 10 t from COL-BRA066T)",
+   "plastic/feedstock_invoices:INV-EC3EMIOH7 (21 Mar 2025, 6 t from COL-GSNSERO)",
+   "plastic/feedstock_invoices:INV-0LDQTU11N (31 Mar 2025, 6 t from COL-K7LNC7S)",
+   "plastic/feedstock_invoices:INV-3MNPT055C (03 Apr 2025, 6 t from COL-BRA066T)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-BRA066T (384 t supplied; declared capacity 24 t/month; 1 vehicles; registered Feb 2025)",
+   "plastic/collectors:COL-K7LNC7S (237 t supplied; declared capacity 9 t/month; 1 vehicles; registered Dec 2024)",
+   "plastic/collectors:COL-GSNSERO (220 t supplied; declared capacity 10 t/month; 1 vehicles; registered Jan 2025)",
+   "plastic/collectors:COL-EKO4DF6 (47 t supplied; declared capacity 131 t/month; 5 vehicles; registered Nov 2017)",
+   "plastic/collectors:COL-JZQ3Y6I (40 t supplied; declared capacity 310 t/month; 3 vehicles; registered Jan 2018)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-9CXNH2BLS (CAT_IV, Rs 445/t to PIBO-YWQPLX1)",
+   "plastic/certificate_sales:SALE-8JSMMF0HK (CAT_IV, Rs 445/t to PIBO-YWQPLX1)",
+   "plastic/certificate_sales:SALE-2TT7W2GFD (CAT_IV, Rs 445/t to PIBO-YWQPLX1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-HN606OQ Northern Home Care Pvt Ltd (436 t)",
+  "PIBO-R4CWFUE Metro Dairy Pvt Ltd (222 t)",
+  "PIBO-SZVUQ4A Galaxy Shree Home Care Pvt Ltd (142 t)",
+  "PIBO-J4KS9Y1 Shri Foods Ltd (71 t)",
+  "PIBO-PFXQ8PF National Dairy Pvt Ltd (50 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 11
+}

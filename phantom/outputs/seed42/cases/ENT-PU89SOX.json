@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-PU89SOX",
+ "profile": {
+  "name": "Prime Plast Pvt Ltd",
+  "state": "Maharashtra",
+  "district": "Raigad",
+  "declared_capacity_tpa": 4060.0,
+  "connected_load_kw": 181.0,
+  "epr_registered": "2025-10-30"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6268,
+  "dominant_score": 2.5469,
+  "ens_score": 0.9725,
+  "ens_pct": 0.976
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 33% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "67% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "43% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.21x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "41% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.588,
+   "text": "Sold products equal only 30% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.6667,
+   "population_percentile": 87.8,
+   "shap": -0.2773
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6704,
+   "population_percentile": 98.9,
+   "shap": -0.2632
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.3333,
+   "population_percentile": 97.0,
+   "shap": -0.2413
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.3093,
+   "population_percentile": 96.2,
+   "shap": -0.2344
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-N6UZP4DO (Oct 2025: 20,146 kWh for 66.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-K25OE70EU (09 Oct 2025, 3 t from COL-9RF5XGL)",
+   "plastic/feedstock_invoices:INV-SOY4ZIT0X (15 Oct 2025, 6 t from COL-XKI6SO1)",
+   "plastic/feedstock_invoices:INV-GLWGVLGCG (16 Oct 2025, 3 t from COL-XKI6SO1)",
+   "plastic/feedstock_invoices:INV-MAX434IO8 (28 Oct 2025, 2 t from COL-TGBE1JH)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-6HFVRHR (546 t supplied; declared capacity 28 t/month; 1 vehicles; registered Sep 2025)",
+   "plastic/collectors:COL-XKI6SO1 (418 t supplied; declared capacity 38 t/month; 2 vehicles; registered Jul 2025)",
+   "plastic/collectors:COL-Z23CBB0 (293 t supplied; declared capacity 526 t/month; 6 vehicles; registered Oct 2018)",
+   "plastic/collectors:COL-PZSGFJZ (174 t supplied; declared capacity 6 t/month; 2 vehicles; registered May 2025)",
+   "plastic/collectors:COL-9RF5XGL (153 t supplied; declared capacity 27 t/month; 2 vehicles; registered Jul 2025)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-9XO046P (119 t bought)",
+   "plastic/offtakers:OFT-1II75XI (114 t bought)",
+   "plastic/offtakers:OFT-NWJYU0K (69 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-0SG74RY00 (CAT_IV, Rs 308/t to PIBO-408XGSK)",
+   "plastic/certificate_sales:SALE-B5C3EDGQV (CAT_IV, Rs 313/t to PIBO-FJ13X9B)",
+   "plastic/certificate_sales:SALE-UYK8YJ64H (CAT_IV, Rs 315/t to PIBO-52VT4QB)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-MZUJWUU Deccan Shri Personal Care LLP (569 t)",
+  "PIBO-0RE83W3 Everest Beverages Pvt Ltd (287 t)",
+  "PIBO-CYY28PO Pioneer Shri Beverages LLP (180 t)",
+  "PIBO-216364M Eastern Everest Pharma (158 t)",
+  "PIBO-YN6JZ23 Vasundhara Personal Care LLP (135 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 61
+}

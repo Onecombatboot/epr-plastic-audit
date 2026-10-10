@@ -1,0 +1,128 @@
+{
+ "entity_id": "ENT-30E80C1",
+ "profile": {
+  "name": "Southern Enviro Recycling LLP",
+  "state": "Telangana",
+  "district": "Medchal",
+  "declared_capacity_tpa": 18270.0,
+  "connected_load_kw": 1226.0,
+  "epr_registered": "2024-08-18"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6542,
+  "dominant_score": 4.2298,
+  "ens_score": 0.9884,
+  "ens_pct": 0.994
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 85% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "88% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 66%, +64% versus what its process route can produce"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 14% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "81% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "44% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.2921
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8753,
+   "population_percentile": 99.7,
+   "shap": -0.2677
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.2617
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 2.0,
+   "population_percentile": 98.7,
+   "shap": -0.2462
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-GILD7SK6 (Oct 2025: 341,319 kWh for 2,268.5 t claimed)",
+   "plastic/electricity_bills:BILL-XOI17XKW (Feb 2025: 302,784 kWh for 2,008.8 t claimed)",
+   "plastic/electricity_bills:BILL-NWYKVEBQ (Dec 2025: 277,204 kWh for 1,830.8 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-TDOF4G4PV (02 Aug 2024, 10 t from COL-JGWIE8Z)",
+   "plastic/feedstock_invoices:INV-H4WFP5UAM (03 Aug 2024, 3 t from COL-ARSKWSO)",
+   "plastic/feedstock_invoices:INV-7BIRQONE6 (03 Aug 2024, 6 t from COL-GMFFDRR)",
+   "plastic/feedstock_invoices:INV-PYPYIFWMM (04 Aug 2024, 17 t from COL-UOLZFT7)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-UOLZFT7 (12,018 t supplied; declared capacity 6 t/month; 1 vehicles; registered Feb 2024)",
+   "plastic/collectors:COL-ARSKWSO (6,877 t supplied; declared capacity 14 t/month; 2 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-JK77FGO (5,810 t supplied; declared capacity 5 t/month; 2 vehicles; registered Jun 2024)",
+   "plastic/collectors:COL-9JOMQR2 (4,283 t supplied; declared capacity 30 t/month; 2 vehicles; registered Apr 2024)",
+   "plastic/collectors:COL-GMFFDRR (1,563 t supplied; declared capacity 38 t/month; 2 vehicles; registered Jun 2024)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-01: 3,422 t of 35,140 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-29X8EJW (1,953 t bought)",
+   "plastic/offtakers:OFT-VK1IZYT (1,807 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-TROOMVN Unity FMCG Ltd (873 t)",
+  "PIBO-WFMIXCL Maa Snacks Pvt Ltd (484 t)",
+  "PIBO-VCKWFVW Balaji FMCG & Co (455 t)",
+  "PIBO-FQ2174H Eastern Retail (326 t)",
+  "PIBO-9KP7583 Eco Home Care (306 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 16
+}

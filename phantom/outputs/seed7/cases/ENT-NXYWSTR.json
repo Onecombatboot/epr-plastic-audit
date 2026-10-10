@@ -1,0 +1,123 @@
+{
+ "entity_id": "ENT-NXYWSTR",
+ "profile": {
+  "name": "Vasundhara Polytech Ltd",
+  "state": "Telangana",
+  "district": "Medchal",
+  "declared_capacity_tpa": 590.0,
+  "connected_load_kw": 48.0,
+  "epr_registered": "2023-08-06"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6599,
+  "dominant_score": 10.6757,
+  "ens_score": 0.9908,
+  "ens_pct": 0.9944
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (25% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.75,
+   "text": "Certificates claim more than the declared monthly capacity in 28% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.45x the cost floor)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.552,
+   "text": "Claimed tonnage in the busiest month would need 157% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "61% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3246
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2523,
+   "population_percentile": 99.0,
+   "shap": -0.3066
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 96.7,
+   "shap": -0.2766
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.259
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-TOLINU2Q (Feb 2025: 10,795 kWh for 162.4 t claimed)",
+   "plastic/electricity_bills:BILL-7XIQNXVX (Feb 2026: 12,997 kWh for 183.9 t claimed)",
+   "plastic/electricity_bills:BILL-CY46IE9H (Mar 2026: 11,655 kWh for 162.6 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 441 t of 1,923 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-8B5EU3P (494 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 1, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-NCCAQWWUD (CAT_IV, Rs 592/t to PIBO-IN2ULK3)",
+   "plastic/certificate_sales:SALE-M9I7LRHGY (CAT_IV, Rs 592/t to PIBO-IN2ULK3)",
+   "plastic/certificate_sales:SALE-4810WBAR8 (CAT_IV, Rs 592/t to PIBO-IN2ULK3)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-C5WWVLO Sahyadri Pharma & Co (314 t)",
+  "PIBO-L1OAWZW Western Eco Pharma (305 t)",
+  "PIBO-IB8CCEI Shree Pioneer Pharma (123 t)",
+  "PIBO-IJG2FQZ Northern Snacks Pvt Ltd (122 t)",
+  "PIBO-M2YC7IZ Sai Prakriti Home Care Pvt Ltd (118 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 15
+}

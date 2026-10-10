@@ -1,0 +1,122 @@
+{
+ "entity_id": "ENT-2X5USSN",
+ "profile": {
+  "name": "Jai Poly Industries Pvt Ltd",
+  "state": "Haryana",
+  "district": "Sonipat",
+  "declared_capacity_tpa": 6940.0,
+  "connected_load_kw": 252.0,
+  "epr_registered": "2024-01-04"
+ },
+ "scores": {
+  "rule_score": 0.9998,
+  "iforest_score": 0.6488,
+  "dominant_score": 1.6609,
+  "ens_score": 0.9636,
+  "ens_pct": 0.969
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (9% of its feedstock)"
+  },
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 86% of expected)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.71x the cost floor)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.433,
+   "text": "53% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "shared_contacts",
+   "group": "identity",
+   "strength": 0.3,
+   "text": "Shares a contact phone number with 2 other registered entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.4007
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3798
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3622
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.0916,
+   "population_percentile": 98.0,
+   "shap": -0.3561
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-9RW2YF9A (Mar 2025: 181,152 kWh for 202.3 t claimed)",
+   "plastic/electricity_bills:BILL-CRKU4XJQ (May 2025: 111,123 kWh for 121.5 t claimed)",
+   "plastic/electricity_bills:BILL-FHNMJTNG (Jan 2025: 130,145 kWh for 140.6 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 861 t of 3,255 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-UWV6TI5 (305 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-2U1IVD5Y9 (CAT_IV, Rs 956/t to PIBO-LD8JXIS)",
+   "plastic/certificate_sales:SALE-PWXBQGSHD (CAT_IV, Rs 956/t to PIBO-LD8JXIS)",
+   "plastic/certificate_sales:SALE-45F29L46U (CAT_IV, Rs 956/t to PIBO-LD8JXIS)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-RKDKXZ7 Apex Foods Ltd (314 t)",
+  "PIBO-7MLX772 Green Amrit FMCG (236 t)",
+  "PIBO-G52QXWL Vasundhara Navjeevan Retail Pvt Ltd (175 t)",
+  "PIBO-ZVCQ0QA Metro Ganga FMCG (144 t)",
+  "PIBO-I3Q2P3N Everest Personal Care Pvt Ltd (124 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 79
+}

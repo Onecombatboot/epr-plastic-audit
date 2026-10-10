@@ -1,0 +1,122 @@
+{
+ "entity_id": "ENT-YULO6AA",
+ "profile": {
+  "name": "Sahyadri Polymers Pvt Ltd",
+  "state": "Uttarakhand",
+  "district": "Haridwar",
+  "declared_capacity_tpa": 480.0,
+  "connected_load_kw": 82.0,
+  "epr_registered": "2024-04-15"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6465,
+  "dominant_score": 1.5458,
+  "ens_score": 0.9627,
+  "ens_pct": 0.9672
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (36% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 92% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 54%, +52% versus what its process route can produce"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.61x the cost floor)"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 3 other registered entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.3615,
+   "population_percentile": 99.7,
+   "shap": -0.3497
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3342
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3218
+  },
+  {
+   "feature": "net_cycle_feed_share",
+   "label": "feedstock bought inside a loop",
+   "value": 0.3615,
+   "population_percentile": 99.7,
+   "shap": -0.3053
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-6A2U5F2K (Nov 2024: 23,548 kWh for 72.3 t claimed)",
+   "plastic/electricity_bills:BILL-RR9PKDTE (Mar 2026: 23,844 kWh for 72.5 t claimed)",
+   "plastic/electricity_bills:BILL-VML342BF (Nov 2025: 26,355 kWh for 80.1 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-02: 115 t of 1,601 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-GBBU5U6 (590 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 3, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-8UYZFPLVA (CAT_IV, Rs 880/t to PIBO-8OBEO1D)",
+   "plastic/certificate_sales:SALE-RMDTS5LXM (CAT_IV, Rs 880/t to PIBO-8OBEO1D)",
+   "plastic/certificate_sales:SALE-53265FDAG (CAT_IV, Rs 880/t to PIBO-8OBEO1D)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-KXAXP16 Narmada Sterling Dairy (247 t)",
+  "PIBO-PPA8PO3 Shree FMCG Pvt Ltd (194 t)",
+  "PIBO-TYUBL3T Eco Om Dairy Ltd (178 t)",
+  "PIBO-SHAXG5P Durga Retail Pvt Ltd (125 t)",
+  "PIBO-U4XOZ8T Pragati Snacks Pvt Ltd (104 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 83
+}

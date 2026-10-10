@@ -1,0 +1,120 @@
+{
+ "entity_id": "ENT-KOWGDGG",
+ "profile": {
+  "name": "National Amrit Polytech",
+  "state": "Madhya Pradesh",
+  "district": "Bhopal",
+  "declared_capacity_tpa": 6470.0,
+  "connected_load_kw": 270.0,
+  "epr_registered": "2025-08-24"
+ },
+ "scores": {
+  "rule_score": 0.9997,
+  "iforest_score": 0.6114,
+  "dominant_score": 3.9269,
+  "ens_score": 0.9645,
+  "ens_pct": 0.9708
+ },
+ "reasons": [
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.722,
+   "text": "Electricity bought is only 0.37x the minimum needed for the tonnes claimed (110 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 4% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 87%, +85% versus what its process route can produce"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "53% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.15x the cost floor)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.18x the market median price"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3589
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.53,
+   "population_percentile": 97.5,
+   "shap": -0.2578
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 0.2857,
+   "population_percentile": 97.6,
+   "shap": -0.2005
+  },
+  {
+   "feature": "cert_share_CAT_III",
+   "label": "Category III share",
+   "value": 0.8718,
+   "population_percentile": 100.0,
+   "shap": -0.1924
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-ATZTIQ9I (Mar 2026: 11,703 kWh for 447.0 t claimed)",
+   "plastic/electricity_bills:BILL-R5WLQXT2 (Jan 2026: 12,322 kWh for 134.4 t claimed)",
+   "plastic/electricity_bills:BILL-O3FLQBUZ (Dec 2025: 12,437 kWh for 34.4 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 623 t of 1,176 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-PJ5SU9F (22 t bought)",
+   "plastic/offtakers:OFT-LT0PFBV (9 t bought)",
+   "plastic/offtakers:OFT-EKK18YA (6 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-66H1A3M20 (CAT_IV, Rs 232/t to PIBO-DW32UYG)",
+   "plastic/certificate_sales:SALE-0TITFCMRH (CAT_IV, Rs 232/t to PIBO-DW32UYG)",
+   "plastic/certificate_sales:SALE-TO0HCOXNQ (CAT_IV, Rs 232/t to PIBO-DW32UYG)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-IU9YQUP Sanjeevani Earth Home Care (209 t)",
+  "PIBO-TGPOGVG Maa Laxmi Pharma & Co (162 t)",
+  "PIBO-YAW065G Krishna Home Care Pvt Ltd (158 t)",
+  "PIBO-044NFM8 Galaxy Shree Foods & Co (155 t)",
+  "PIBO-3K6H04B Sunrise Sahyadri FMCG Pvt Ltd (94 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 74
+}

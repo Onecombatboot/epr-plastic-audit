@@ -1,0 +1,125 @@
+{
+ "entity_id": "ENT-NU7PJ2N",
+ "profile": {
+  "name": "Star Om Polymers LLP",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 770.0,
+  "connected_load_kw": 96.0,
+  "epr_registered": "2024-04-02"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6315,
+  "dominant_score": 1.6716,
+  "ens_score": 0.9647,
+  "ens_pct": 0.9716
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 206% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 71% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 59%, +57% versus what its process route can produce"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.24x the cost floor)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.554,
+   "text": "Sold products equal only 32% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.2859
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.375,
+   "population_percentile": 87.4,
+   "shap": -0.2747
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 8.0,
+   "population_percentile": 99.6,
+   "shap": -0.2733
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.7699,
+   "population_percentile": 99.7,
+   "shap": -0.2557
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-TWAYESZX (Feb 2026: 25,046 kWh for 481.0 t claimed)",
+   "plastic/electricity_bills:BILL-TSWE7AWE (Feb 2025: 25,722 kWh for 376.2 t claimed)",
+   "plastic/electricity_bills:BILL-8F9FSQEV (Jan 2025: 29,631 kWh for 204.3 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 1,327 t of 3,316 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-JRE2JFI (249 t bought)",
+   "plastic/offtakers:OFT-0AEW8GC (197 t bought)",
+   "plastic/offtakers:OFT-ENHVAJR (130 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 8, address 1, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-PRFLWNE3W (CAT_IV, Rs 330/t to PIBO-E96PH68)",
+   "plastic/certificate_sales:SALE-830MFQB3L (CAT_IV, Rs 330/t to PIBO-E96PH68)",
+   "plastic/certificate_sales:SALE-PLK6P4CCQ (CAT_IV, Rs 330/t to PIBO-E96PH68)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-PGTYN55 Sahyadri Home Care Pvt Ltd (276 t)",
+  "PIBO-2W2ODRB Durga Foods & Co (259 t)",
+  "PIBO-47PZJ1P Galaxy Home Care (232 t)",
+  "PIBO-0JG27J1 Jai Shri FMCG (185 t)",
+  "PIBO-0CJJJSX Metro National Dairy (180 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 72
+}

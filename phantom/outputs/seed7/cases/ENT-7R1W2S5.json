@@ -1,0 +1,118 @@
+{
+ "entity_id": "ENT-7R1W2S5",
+ "profile": {
+  "name": "Everest Polymers Pvt Ltd",
+  "state": "Andhra Pradesh",
+  "district": "Tirupati",
+  "declared_capacity_tpa": 5120.0,
+  "connected_load_kw": 629.0,
+  "epr_registered": "2024-11-22"
+ },
+ "scores": {
+  "rule_score": 0.998,
+  "iforest_score": 0.6188,
+  "dominant_score": 2.5841,
+  "ens_score": 0.957,
+  "ens_pct": 0.9608
+ },
+ "reasons": [
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 6% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "52% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "72% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 3 other registered entity(ies)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.471,
+   "text": "Certificates claim more than the declared monthly capacity in 18% of months"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3618
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 96.7,
+   "shap": -0.3475
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 98.9,
+   "shap": -0.3189
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.1765,
+   "population_percentile": 95.9,
+   "shap": -0.2911
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-ITITEO85 (Feb 2026: 31,438 kWh for 611.9 t claimed)",
+   "plastic/electricity_bills:BILL-U2HHIBOG (Jan 2026: 31,146 kWh for 211.5 t claimed)",
+   "plastic/electricity_bills:BILL-T7GK030C (Jan 2025: 29,133 kWh for 109.0 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 1,572 t of 3,018 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-4ENFPMH (88 t bought)",
+   "plastic/offtakers:OFT-VJBYET7 (50 t bought)",
+   "plastic/offtakers:OFT-H49Z62T (7 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 3, address 1, director 0, photos 0)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-DWP49WM Laxmi Personal Care LLP (318 t)",
+  "PIBO-WYKGEM7 Everest Beverages & Co (260 t)",
+  "PIBO-M3I31PU Northern Dairy & Co (205 t)",
+  "PIBO-T7O8AOX Global Snacks Pvt Ltd (201 t)",
+  "PIBO-3WBZTUQ Pioneer Personal Care Pvt Ltd (195 t)"
+ ],
+ "inspection_checklist": [
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months."
+ ],
+ "rank": 99
+}

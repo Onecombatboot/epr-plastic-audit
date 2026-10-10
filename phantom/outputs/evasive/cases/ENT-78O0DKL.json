@@ -1,0 +1,130 @@
+{
+ "entity_id": "ENT-78O0DKL",
+ "profile": {
+  "name": "Western Pioneer Recyclers Pvt Ltd",
+  "state": "Karnataka",
+  "district": "Belagavi",
+  "declared_capacity_tpa": 3210.0,
+  "connected_load_kw": 244.0,
+  "epr_registered": "2023-03-03"
+ },
+ "scores": {
+  "rule_score": 0.9989,
+  "iforest_score": 0.6104,
+  "dominant_score": 2.0431,
+  "ens_score": 0.957,
+  "ens_pct": 0.9664
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 48% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 94% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.65,
+   "text": "51% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 3 other registered entity(ies)"
+  },
+  {
+   "rule": "shell_offtakers",
+   "group": "output",
+   "strength": 0.387,
+   "text": "69% of product sales go to buyers incorporated under a year before the invoice"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.337,
+   "text": "17% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5061,
+   "population_percentile": 97.7,
+   "shap": -0.3642
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 99.0,
+   "shap": -0.3629
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 1.0,
+   "population_percentile": 90.4,
+   "shap": -0.2754
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.261
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-KTH6VM9N (Jan 2026: 150,892 kWh for 446.3 t claimed)",
+   "plastic/electricity_bills:BILL-QN5NAOKI (Jul 2025: 136,859 kWh for 404.4 t claimed)",
+   "plastic/electricity_bills:BILL-Q2MQZ5IS (Sep 2025: 134,114 kWh for 390.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-LP617EH8G (04 Apr 2023, 3 t from COL-IIBF63Q)",
+   "plastic/feedstock_invoices:INV-HM2PGS56B (05 Apr 2023, 8 t from COL-IFT00W4)",
+   "plastic/feedstock_invoices:INV-0RGJQ2KJJ (05 Apr 2023, 9 t from COL-7JGIDNO)",
+   "plastic/feedstock_invoices:INV-6TNG97QMM (08 Apr 2023, 1.5 t from COL-WYN56SE)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-7JGIDNO (3,794 t supplied; declared capacity 31 t/month; 2 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-IFT00W4 (2,329 t supplied; declared capacity 9 t/month; 2 vehicles; registered Dec 2022)",
+   "plastic/collectors:COL-H6PDCTV (2,125 t supplied; declared capacity 362 t/month; 4 vehicles; registered Jun 2023)",
+   "plastic/collectors:COL-IIBF63Q (1,715 t supplied; declared capacity 13 t/month; 2 vehicles; registered Dec 2022)",
+   "plastic/collectors:COL-SFIB5D9 (1,350 t supplied; declared capacity 130 t/month; 1 vehicles; registered Feb 2015)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-2D80DZN (5,890 t bought)",
+   "plastic/offtakers:OFT-ZMR6JYA (1,791 t bought)",
+   "plastic/offtakers:OFT-USOQZS2 (1,279 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 3, address 0, director 1, photos 0)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-QYGJBG6 Prime National Retail Pvt Ltd (2,896 t)",
+  "PIBO-9AJMCDZ Navjeevan Snacks Pvt Ltd (737 t)",
+  "PIBO-2SZTYR7 Western Ganga Personal Care Pvt Ltd (730 t)",
+  "PIBO-DRL4XPE Deccan Prakriti Foods Pvt Ltd (644 t)",
+  "PIBO-N4ZDO3B Ganga Dairy & Co (390 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 85
+}

@@ -1,0 +1,118 @@
+{
+ "entity_id": "ENT-5O29880",
+ "profile": {
+  "name": "Eco Plastics Pvt Ltd",
+  "state": "Tamil Nadu",
+  "district": "Chennai",
+  "declared_capacity_tpa": 4760.0,
+  "connected_load_kw": 277.0,
+  "epr_registered": "2024-02-09"
+ },
+ "scores": {
+  "rule_score": 0.9998,
+  "iforest_score": 0.6646,
+  "dominant_score": 33.6709,
+  "ens_score": 0.9851,
+  "ens_pct": 0.99
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (89% of its feedstock)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 4% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 72%, +70% versus what its process route can produce"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.45,
+   "text": "In 80% of billed months the units consumed cannot support the tonnes claimed"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.317,
+   "text": "Electricity bought is only 0.72x the minimum needed for the tonnes claimed (217 kWh/t against at least 300)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.349
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3253
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3221
+  },
+  {
+   "feature": "net_recycler_in_degree",
+   "label": "net_recycler_in_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.302
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-SYC81NXW (May 2024: 13,501 kWh for 75.4 t claimed)",
+   "plastic/electricity_bills:BILL-NM1IDZ0M (Feb 2024: 11,659 kWh for 64.6 t claimed)",
+   "plastic/electricity_bills:BILL-RCDRYWY2 (Sep 2024: 12,710 kWh for 70.0 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-05: 120 t of 1,626 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-3D07CG8 (541 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-5253UMU (21 t bought)",
+   "plastic/offtakers:OFT-C7HQ4VI (8 t bought)",
+   "plastic/offtakers:OFT-7E4993Y (6 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-BEBHSDW Hind Sahyadri Foods & Co (118 t)",
+  "PIBO-MVBRDFX Northern Apex Dairy LLP (62 t)",
+  "PIBO-6VZ5QV3 Ganesh Om FMCG Pvt Ltd (59 t)",
+  "PIBO-84GCGO6 Shri Consumer Products LLP (53 t)",
+  "PIBO-7X0AX6Z Vasundhara Ganesh Beverages LLP (51 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 26
+}

@@ -1,0 +1,132 @@
+{
+ "entity_id": "ENT-43UJ4QI",
+ "profile": {
+  "name": "Sterling Recyclers & Co",
+  "state": "Kerala",
+  "district": "Ernakulam",
+  "declared_capacity_tpa": 2080.0,
+  "connected_load_kw": 54.0,
+  "epr_registered": "2024-10-01"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6158,
+  "dominant_score": 1.4096,
+  "ens_score": 0.9532,
+  "ens_pct": 0.9612
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 245% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "60% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "51% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.50x the cost floor)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "67% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.3322
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6022,
+   "population_percentile": 98.6,
+   "shap": -0.2914
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.1111,
+   "population_percentile": 94.7,
+   "shap": -0.2572
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 89.7,
+   "shap": -0.2353
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-HQN5P2GG (Mar 2026: 19,649 kWh for 321.3 t claimed)",
+   "plastic/electricity_bills:BILL-2TFNKO2Q (Feb 2026: 20,775 kWh for 235.0 t claimed)",
+   "plastic/electricity_bills:BILL-TRVJJP8P (Mar 2025: 19,236 kWh for 153.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-7YFT5ZQT3 (06 Oct 2024, 1.7 t from COL-C9BVJTB)",
+   "plastic/feedstock_invoices:INV-4L83TDIJ7 (11 Dec 2024, 5 t from COL-158VFXK)",
+   "plastic/feedstock_invoices:INV-T15JWGXIK (18 Mar 2025, 6 t from COL-C9BVJTB)",
+   "plastic/feedstock_invoices:INV-UUTH4PNBU (30 Mar 2025, 3.51 t from COL-E7U00XA)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-C9BVJTB (401 t supplied; declared capacity 24 t/month; 3 vehicles; registered Dec 2016)",
+   "plastic/collectors:COL-E7U00XA (294 t supplied; declared capacity 8 t/month; 3 vehicles; registered Jan 2022)",
+   "plastic/collectors:COL-04MHQNY (218 t supplied; declared capacity 22 t/month; 2 vehicles; registered Mar 2016)",
+   "plastic/collectors:COL-V9MQY59 (155 t supplied; declared capacity 40 t/month; 5 vehicles; registered Jul 2020)",
+   "plastic/collectors:COL-FBCDK7X (133 t supplied; declared capacity 39 t/month; 1 vehicles; registered May 2016)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 763 t of 1,490 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-CXOQTV81G (CAT_IV, Rs 715/t to PIBO-NAPEKH3)",
+   "plastic/certificate_sales:SALE-BRDPKE2YO (CAT_IV, Rs 715/t to PIBO-NAPEKH3)",
+   "plastic/certificate_sales:SALE-VJH3EKHW1 (CAT_IV, Rs 715/t to PIBO-NAPEKH3)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-GAOZSZC Northern Pharma & Co (377 t)",
+  "PIBO-C1T63XF Narmada Dairy Pvt Ltd (302 t)",
+  "PIBO-3HLMBTZ Unity Navjeevan Home Care Pvt Ltd (242 t)",
+  "PIBO-0TYMLKA Unity Consumer Products LLP (154 t)",
+  "PIBO-TM4GUJ8 Unity Home Care Pvt Ltd (60 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 98
+}

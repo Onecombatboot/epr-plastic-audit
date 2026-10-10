@@ -1,0 +1,125 @@
+{
+ "entity_id": "ENT-DAPMHRN",
+ "profile": {
+  "name": "Global Polymers & Co",
+  "state": "Haryana",
+  "district": "Sonipat",
+  "declared_capacity_tpa": 4710.0,
+  "connected_load_kw": 24.0,
+  "epr_registered": "2024-02-05"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6363,
+  "dominant_score": 4.6589,
+  "ens_score": 0.9896,
+  "ens_pct": 0.9928
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 305% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 11% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 31% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "68% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.685,
+   "text": "29% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.6777,
+   "population_percentile": 99.6,
+   "shap": -0.3124
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6783,
+   "population_percentile": 98.6,
+   "shap": -0.3019
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.264
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2572
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-3AYBH4UV (Mar 2025: 45,023 kWh for 2,076.8 t claimed)",
+   "plastic/electricity_bills:BILL-H8TY8J2D (Feb 2025: 60,255 kWh for 2,668.8 t claimed)",
+   "plastic/electricity_bills:BILL-DSRBDCQJ (Jan 2025: 23,457 kWh for 1,030.1 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-1KMQ38T4U (04 Feb 2024, 6 t from COL-LLGN9Y9)",
+   "plastic/feedstock_invoices:INV-J7T02U2XE (04 Feb 2024, 7.39 t from COL-BBNPIDJ)",
+   "plastic/feedstock_invoices:INV-4G7QCTM0T (06 Feb 2024, 7 t from COL-BBNPIDJ)",
+   "plastic/feedstock_invoices:INV-WHU00OENV (09 Feb 2024, 1 t from COL-H025O1A)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-BBNPIDJ (3,622 t supplied; declared capacity 21 t/month; 1 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-WF22C7A (2,736 t supplied; declared capacity 27 t/month; 1 vehicles; registered Jan 2024)",
+   "plastic/collectors:COL-KIVXOT8 (2,577 t supplied; declared capacity 39 t/month; 2 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-LLGN9Y9 (1,693 t supplied; declared capacity 27 t/month; 2 vehicles; registered Aug 2023)",
+   "plastic/collectors:COL-L1D7PRM (1,124 t supplied; declared capacity 32 t/month; 1 vehicles; registered Oct 2023)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-12JWBJ3 Sanjeevani Royal Beverages LLP (4,744 t)",
+  "PIBO-T4E5EES Prime Snacks Pvt Ltd (863 t)",
+  "PIBO-PF9CX1J Sai Consumer Products LLP (786 t)",
+  "PIBO-NYTG3TQ Metro Prime Home Care Pvt Ltd (710 t)",
+  "PIBO-1IOPWR7 Prime Personal Care Pvt Ltd (500 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 19
+}

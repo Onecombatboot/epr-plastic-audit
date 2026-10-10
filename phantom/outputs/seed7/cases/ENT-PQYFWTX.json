@@ -1,0 +1,132 @@
+{
+ "entity_id": "ENT-PQYFWTX",
+ "profile": {
+  "name": "Deccan Recyclers",
+  "state": "Kerala",
+  "district": "Ernakulam",
+  "declared_capacity_tpa": 4310.0,
+  "connected_load_kw": 289.0,
+  "epr_registered": "2024-06-23"
+ },
+ "scores": {
+  "rule_score": 0.9991,
+  "iforest_score": 0.6171,
+  "dominant_score": 2.5214,
+  "ens_score": 0.9585,
+  "ens_pct": 0.9624
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.727,
+   "text": "Certificates claim more than the declared monthly capacity in 27% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.613,
+   "text": "48% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.41x the cost floor)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "66% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 3 other registered entity(ies)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.437,
+   "text": "Certificates sold at 0.46x the market median price"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 98.9,
+   "shap": -0.3268
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.4832,
+   "population_percentile": 98.7,
+   "shap": -0.2724
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.2727,
+   "population_percentile": 88.3,
+   "shap": -0.255
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.6615,
+   "population_percentile": 98.9,
+   "shap": -0.2351
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-P54VP3N9 (Mar 2026: 65,384 kWh for 948.1 t claimed)",
+   "plastic/electricity_bills:BILL-03SZI21G (Feb 2026: 65,601 kWh for 843.7 t claimed)",
+   "plastic/electricity_bills:BILL-SKIQL5JF (Feb 2025: 70,162 kWh for 771.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-5NUJB7QVW (04 Jun 2024, 17 t from COL-J9B4XQ1)",
+   "plastic/feedstock_invoices:INV-U7EW2Z5T6 (16 Jun 2024, 0.83 t from COL-0OFOEX9)",
+   "plastic/feedstock_invoices:INV-MWK7BJ74S (26 Jun 2024, 7 t from COL-J9B4XQ1)",
+   "plastic/feedstock_invoices:INV-A37814P7K (30 Jun 2024, 14 t from COL-QEBQZXL)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-J9B4XQ1 (2,249 t supplied; declared capacity 24 t/month; 2 vehicles; registered May 2024)",
+   "plastic/collectors:COL-QEBQZXL (1,300 t supplied; declared capacity 37 t/month; 1 vehicles; registered May 2024)",
+   "plastic/collectors:COL-2L0KO8B (1,248 t supplied; declared capacity 178 t/month; 6 vehicles; registered Apr 2021)",
+   "plastic/collectors:COL-6UJ5B2Z (447 t supplied; declared capacity 60 t/month; 6 vehicles; registered Dec 2020)",
+   "plastic/collectors:COL-2PKYD07 (415 t supplied; declared capacity 76 t/month; 6 vehicles; registered Feb 2016)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 2,594 t of 7,243 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 3, address 0, director 0, photos 0)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-JJRFLTFBF (CAT_IV, Rs 575/t to PIBO-7LAR3HQ)",
+   "plastic/certificate_sales:SALE-VPPAGU00O (CAT_IV, Rs 575/t to PIBO-7LAR3HQ)",
+   "plastic/certificate_sales:SALE-8CVDT7ZMA (CAT_IV, Rs 575/t to PIBO-7LAR3HQ)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-Z096YCK Sterling Foods LLP (813 t)",
+  "PIBO-ZJ6KNRY Northern Snacks Pvt Ltd (714 t)",
+  "PIBO-55OCS1N Green Eastern Dairy & Co (699 t)",
+  "PIBO-TT6P1P1 Royal Ganesh Retail Pvt Ltd (247 t)",
+  "PIBO-RUTM1O2 Unity Retail Pvt Ltd (247 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 95
+}

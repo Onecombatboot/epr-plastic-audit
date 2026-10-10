@@ -1,0 +1,130 @@
+{
+ "entity_id": "ENT-RV4GZV6",
+ "profile": {
+  "name": "Western Eco Poly Industries & Co",
+  "state": "Karnataka",
+  "district": "Mysuru",
+  "declared_capacity_tpa": 4840.0,
+  "connected_load_kw": 50.0,
+  "epr_registered": "2025-09-06"
+ },
+ "scores": {
+  "rule_score": 0.9974,
+  "iforest_score": 0.6076,
+  "dominant_score": 2.5232,
+  "ens_score": 0.9562,
+  "ens_pct": 0.9656
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 59% of expected)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.77x the cost floor)"
+  },
+  {
+   "rule": "capacity_needs_more_power",
+   "group": "energy",
+   "strength": 0.523,
+   "text": "Declared capacity of 4,840 t/yr needs about 2.0x the power the plant is connected for"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 3 other registered entity(ies)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.381,
+   "text": "19% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "collectors_single_client",
+   "group": "collectors",
+   "strength": 0.242,
+   "text": "84% of feedstock comes from collectors who sell to this plant only"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 99.0,
+   "shap": -0.3422
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.1683,
+   "population_percentile": 95.4,
+   "shap": -0.3368
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.3068
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 1.0,
+   "population_percentile": 90.4,
+   "shap": -0.2813
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-U9KJD411 (Feb 2026: 14,305 kWh for 75.5 t claimed)",
+   "plastic/electricity_bills:BILL-QJ4GE5QF (Jan 2026: 17,154 kWh for 90.4 t claimed)",
+   "plastic/electricity_bills:BILL-3J2D4ROY (Dec 2025: 16,611 kWh for 83.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-M2O7OBA4P (13 Sep 2025, 1 t from COL-ATIS9F3)",
+   "plastic/feedstock_invoices:INV-IG2OYZKTK (14 Sep 2025, 1 t from COL-9BVJTBE)",
+   "plastic/feedstock_invoices:INV-PA8WH726A (16 Sep 2025, 2 t from COL-URX1D31)",
+   "plastic/feedstock_invoices:INV-0PYYGJ8YZ (21 Sep 2025, 0.2 t from COL-NUOB45S)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-VNXKVFR (140 t supplied; declared capacity 51 t/month; 3 vehicles; registered Nov 2017)",
+   "plastic/collectors:COL-DXWXYW1 (83 t supplied; declared capacity 9 t/month; 1 vehicles; registered Jun 2025)",
+   "plastic/collectors:COL-FS9NY74 (58 t supplied; declared capacity 15 t/month; 2 vehicles; registered Aug 2025)",
+   "plastic/collectors:COL-URX1D31 (42 t supplied; declared capacity 30 t/month; 2 vehicles; registered Apr 2025)",
+   "plastic/collectors:COL-RPPQBTU (38 t supplied; declared capacity 13 t/month; 5 vehicles; registered Sep 2021)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 3, address 0, director 1, photos 0)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-1BCNVKRPV (CAT_IV, Rs 1,123/t to PIBO-JMI4KOU)",
+   "plastic/certificate_sales:SALE-TNTZREKGS (CAT_IV, Rs 1,125/t to PIBO-F2HVPTE)",
+   "plastic/certificate_sales:SALE-27OZ57Z5S (CAT_IV, Rs 1,144/t to PIBO-62UHG1T)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-E2NUC4Q Ganesh Personal Care Pvt Ltd (128 t)",
+  "PIBO-F5ZA7N8 Sanjeevani Ganesh FMCG Pvt Ltd (45 t)",
+  "PIBO-2RBE0BY Eco Home Care Pvt Ltd (43 t)",
+  "PIBO-SCE7UO6 Global Vasundhara Pharma Pvt Ltd (32 t)",
+  "PIBO-Y90DWPA Narmada Retail LLP (32 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers."
+ ],
+ "rank": 87
+}

@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-U8M8A8I",
+ "profile": {
+  "name": "Laxmi Plastics",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 330.0,
+  "connected_load_kw": 36.0,
+  "epr_registered": "2024-05-01"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6458,
+  "dominant_score": 16.6006,
+  "ens_score": 0.9919,
+  "ens_pct": 0.9956
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 268% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.18x the minimum needed for the tonnes claimed (53 kWh/t against at least 300)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "90% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 80%, +78% versus what its process route can produce"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "60% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.2753
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 2.0,
+   "population_percentile": 98.6,
+   "shap": -0.2686
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.898,
+   "population_percentile": 99.8,
+   "shap": -0.2617
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 1.0,
+   "population_percentile": 99.5,
+   "shap": -0.2312
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-M4LWBMOS (Feb 2026: 11,018 kWh for 217.0 t claimed)",
+   "plastic/electricity_bills:BILL-A9S9UQ5W (Nov 2024: 11,934 kWh for 235.0 t claimed)",
+   "plastic/electricity_bills:BILL-CZVDF4RH (May 2025: 10,789 kWh for 208.2 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-VYA9MQWE2 (25 May 2024, 5 t from COL-0JKML8M)",
+   "plastic/feedstock_invoices:INV-CKHRZ1DGD (31 May 2024, 9 t from COL-POCT840)",
+   "plastic/feedstock_invoices:INV-MXGGQ1QD5 (31 May 2024, 5 t from COL-0JKML8M)",
+   "plastic/feedstock_invoices:INV-0ZS5R7URW (31 May 2024, 7 t from COL-0JKML8M)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-0JKML8M (3,336 t supplied; declared capacity 5 t/month; 1 vehicles; registered Jan 2024)",
+   "plastic/collectors:COL-POCT840 (632 t supplied; declared capacity 17 t/month; 2 vehicles; registered Mar 2024)",
+   "plastic/collectors:COL-MA3VI4W (124 t supplied; declared capacity 79 t/month; 3 vehicles; registered May 2016)",
+   "plastic/collectors:COL-YC6P38F (111 t supplied; declared capacity 30 t/month; 6 vehicles; registered Oct 2018)",
+   "plastic/collectors:COL-WBBPSA8 (52 t supplied; declared capacity 42 t/month; 3 vehicles; registered Apr 2017)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-01: 425 t of 4,331 t generated)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-IP0H3LA Global Himalaya Pharma (536 t)",
+  "PIBO-KAUSTE5 Eco Personal Care Pvt Ltd (290 t)",
+  "PIBO-8VIM18N Ganga Snacks & Co (150 t)",
+  "PIBO-2SDB0QW Earth Pharma & Co (139 t)",
+  "PIBO-3SEWT47 Vasundhara Kaveri Home Care Pvt Ltd (137 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 12
+}

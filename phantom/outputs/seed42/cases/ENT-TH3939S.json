@@ -1,0 +1,134 @@
+{
+ "entity_id": "ENT-TH3939S",
+ "profile": {
+  "name": "Jai Recyclers",
+  "state": "Gujarat",
+  "district": "Ahmedabad",
+  "declared_capacity_tpa": 1190.0,
+  "connected_load_kw": 166.0,
+  "epr_registered": "2025-06-01"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6349,
+  "dominant_score": 2.2366,
+  "ens_score": 0.9677,
+  "ens_pct": 0.9724
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 80% of months"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "45% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 74%, +72% versus what its process route can produce"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.665,
+   "text": "Sold products equal only 23% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.85x the cost floor)"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.2913
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.2772,
+   "population_percentile": 96.7,
+   "shap": -0.2562
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.8,
+   "population_percentile": 98.2,
+   "shap": -0.2559
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 0.8571,
+   "population_percentile": 98.0,
+   "shap": -0.2123
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-XY6WUNNS (Feb 2026: 43,684 kWh for 237.6 t claimed)",
+   "plastic/electricity_bills:BILL-EPLNAR0K (Sep 2025: 39,440 kWh for 209.0 t claimed)",
+   "plastic/electricity_bills:BILL-XYL0TBCU (Oct 2025: 38,317 kWh for 200.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-V7BLQTH6C (02 Jun 2025, 9 t from COL-HJU5S2S)",
+   "plastic/feedstock_invoices:INV-2IJAC2T8F (03 Jun 2025, 6 t from COL-SE5PWJC)",
+   "plastic/feedstock_invoices:INV-RJUJMOL7M (05 Jun 2025, 8 t from COL-KRRSUZ4)",
+   "plastic/feedstock_invoices:INV-A5O7EL33A (09 Jun 2025, 5 t from COL-SE5PWJC)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-SE5PWJC (297 t supplied; declared capacity 30 t/month; 1 vehicles; registered May 2025)",
+   "plastic/collectors:COL-ZM16IUQ (281 t supplied; declared capacity 24 t/month; 1 vehicles; registered Jun 2025)",
+   "plastic/collectors:COL-HJU5S2S (255 t supplied; declared capacity 26 t/month; 1 vehicles; registered May 2025)",
+   "plastic/collectors:COL-HLVNJP4 (223 t supplied; declared capacity 7 t/month; 1 vehicles; registered Jun 2025)",
+   "plastic/collectors:COL-KRRSUZ4 (208 t supplied; declared capacity 26 t/month; 2 vehicles; registered Jan 2025)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-03: 404 t of 1,795 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-WBLTIR4 (159 t bought)",
+   "plastic/offtakers:OFT-GSFSIQV (148 t bought)",
+   "plastic/offtakers:OFT-RJJ7B10 (2 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-YYMAOYZVF (CAT_IV, Rs 1,234/t to PIBO-MJFLADG)",
+   "plastic/certificate_sales:SALE-1TXXRDZ2V (CAT_IV, Rs 1,234/t to PIBO-MJFLADG)",
+   "plastic/certificate_sales:SALE-YSIZGDJ0L (CAT_IV, Rs 1,235/t to PIBO-ZOELGGY)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-FDPO9Y6 Star Unity Home Care & Co (195 t)",
+  "PIBO-CYKFOIS Deccan Amrit Home Care Pvt Ltd (131 t)",
+  "PIBO-F63L2AB Laxmi Eastern Pharma (129 t)",
+  "PIBO-B85IN7B Om Consumer Products (74 t)",
+  "PIBO-MJ2F9TO Prakriti Snacks LLP (52 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 70
+}

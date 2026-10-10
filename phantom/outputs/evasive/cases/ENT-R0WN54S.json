@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-R0WN54S",
+ "profile": {
+  "name": "Prakriti Poly Industries",
+  "state": "Rajasthan",
+  "district": "Jodhpur",
+  "declared_capacity_tpa": 1690.0,
+  "connected_load_kw": 15.0,
+  "epr_registered": "2023-10-18"
+ },
+ "scores": {
+  "rule_score": 0.999,
+  "iforest_score": 0.6082,
+  "dominant_score": 4.4637,
+  "ens_score": 0.9649,
+  "ens_pct": 0.9724
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 9% of expected)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "49% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "61% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "capacity_needs_more_power",
+   "group": "energy",
+   "strength": 0.55,
+   "text": "Declared capacity of 1,690 t/yr needs about 2.3x the power the plant is connected for"
+  },
+  {
+   "rule": "shell_offtakers",
+   "group": "output",
+   "strength": 0.5,
+   "text": "98% of product sales go to buyers incorporated under a year before the invoice"
+  },
+  {
+   "rule": "collectors_brand_new",
+   "group": "collectors",
+   "strength": 0.4,
+   "text": "97% of feedstock comes from collectors registered under 6 months before their first invoice"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.3204
+  },
+  {
+   "feature": "cert_vs_reported",
+   "label": "cert_vs_reported",
+   "value": 1.0,
+   "population_percentile": 97.2,
+   "shap": -0.2359
+  },
+  {
+   "feature": "out_young_offtaker_share",
+   "label": "product sales to newly formed buyers",
+   "value": 0.9782,
+   "population_percentile": 90.6,
+   "shap": -0.2011
+  },
+  {
+   "feature": "out_round_share",
+   "label": "out_round_share",
+   "value": 0.0409,
+   "population_percentile": 87.7,
+   "shap": -0.1866
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-5GYVB0FL (Dec 2023: 6,218 kWh for 36.8 t claimed)",
+   "plastic/electricity_bills:BILL-S4VIGPHD (Jul 2025: 6,159 kWh for 36.4 t claimed)",
+   "plastic/electricity_bills:BILL-ZI10NXSD (Sep 2025: 6,016 kWh for 35.3 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-E13CKSLW6 (09 Oct 2023, 4 t from COL-GYSPTMC)",
+   "plastic/feedstock_invoices:INV-YX6ZX03O1 (14 Oct 2023, 8 t from COL-QD4356I)",
+   "plastic/feedstock_invoices:INV-YTYBINTK8 (21 Oct 2023, 9 t from COL-7L9C7KF)",
+   "plastic/feedstock_invoices:INV-1OK8PVE01 (28 Oct 2023, 6 t from COL-R3DHTPX)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-7L9C7KF (254 t supplied; declared capacity 38 t/month; 2 vehicles; registered Jul 2023)",
+   "plastic/collectors:COL-QD4356I (226 t supplied; declared capacity 22 t/month; 2 vehicles; registered Jun 2023)",
+   "plastic/collectors:COL-3K1R13R (196 t supplied; declared capacity 6 t/month; 2 vehicles; registered May 2023)",
+   "plastic/collectors:COL-R3DHTPX (164 t supplied; declared capacity 11 t/month; 1 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-GYSPTMC (114 t supplied; declared capacity 40 t/month; 2 vehicles; registered Jul 2023)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-9XSFOAI (193 t bought)",
+   "plastic/offtakers:OFT-WRVE2QX (162 t bought)",
+   "plastic/offtakers:OFT-LTHWO1Z (55 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-TWWCRY9 Shri FMCG & Co (153 t)",
+  "PIBO-7G4GWN1 Sanjeevani Foods Ltd (112 t)",
+  "PIBO-YN6HUKY Earth Dairy Pvt Ltd (89 t)",
+  "PIBO-U4J45I8 Vasundhara Eastern FMCG Pvt Ltd (59 t)",
+  "PIBO-BWO0P1L Sahyadri Shree Snacks Pvt Ltd (48 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers."
+ ],
+ "rank": 70
+}

@@ -1,0 +1,125 @@
+{
+ "entity_id": "ENT-VHVK33M",
+ "profile": {
+  "name": "Hind Polytech",
+  "state": "Tamil Nadu",
+  "district": "Krishnagiri",
+  "declared_capacity_tpa": 5000.0,
+  "connected_load_kw": 78.0,
+  "epr_registered": "2025-01-17"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6387,
+  "dominant_score": 5.5687,
+  "ens_score": 0.9794,
+  "ens_pct": 0.9848
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 93% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "79% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "63% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.20x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "55% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.23x the market median price"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 3.0,
+   "population_percentile": 99.4,
+   "shap": -0.3103
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.3076
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7872,
+   "population_percentile": 99.3,
+   "shap": -0.2694
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 5.0,
+   "population_percentile": 99.3,
+   "shap": -0.259
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-35I2ET51 (May 2025: 20,355 kWh for 841.9 t claimed)",
+   "plastic/electricity_bills:BILL-3WE4HQDI (Dec 2025: 23,475 kWh for 961.8 t claimed)",
+   "plastic/electricity_bills:BILL-QCOBIL1S (Feb 2026: 25,566 kWh for 1,046.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-B669BBUZ8 (02 Jan 2025, 9 t from COL-P7LW5CH)",
+   "plastic/feedstock_invoices:INV-F5QRETN0U (07 Jan 2025, 4 t from COL-28X83E7)",
+   "plastic/feedstock_invoices:INV-PKPR8BMG7 (12 Jan 2025, 0.42 t from COL-KO3GCFV)",
+   "plastic/feedstock_invoices:INV-DQZXH13C3 (15 Jan 2025, 17 t from COL-0RCCS7Z)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-0RCCS7Z (3,794 t supplied; declared capacity 19 t/month; 2 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-P7LW5CH (2,483 t supplied; declared capacity 27 t/month; 2 vehicles; registered Sep 2024)",
+   "plastic/collectors:COL-7SZQHJO (2,421 t supplied; declared capacity 34 t/month; 1 vehicles; registered Dec 2024)",
+   "plastic/collectors:COL-28X83E7 (1,070 t supplied; declared capacity 16 t/month; 1 vehicles; registered Dec 2024)",
+   "plastic/collectors:COL-9Q5G6QY (484 t supplied; declared capacity 100 t/month; 6 vehicles; registered Oct 2016)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-3FNNENZIP (CAT_II, Rs 518/t to PIBO-MMCAD94)",
+   "plastic/certificate_sales:SALE-QN2EPP7SZ (CAT_II, Rs 519/t to PIBO-2MIDWGY)",
+   "plastic/certificate_sales:SALE-ODUQXP8D7 (CAT_II, Rs 520/t to PIBO-9ANAZ3O)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-H0PVMI3 Northern Consumer Products Ltd (3,840 t)",
+  "PIBO-JEGCCP3 Navjeevan FMCG & Co (1,220 t)",
+  "PIBO-Z8WTOUV Prime Pharma Ltd (718 t)",
+  "PIBO-TN810O2 Pragati Home Care Pvt Ltd (504 t)",
+  "PIBO-34XGNS2 Galaxy Durga Dairy Pvt Ltd (489 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 39
+}

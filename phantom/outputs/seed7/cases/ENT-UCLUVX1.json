@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-UCLUVX1",
+ "profile": {
+  "name": "Himalaya Eco Enviro Recycling",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 1420.0,
+  "connected_load_kw": 18.0,
+  "epr_registered": "2025-05-14"
+ },
+ "scores": {
+  "rule_score": 0.9991,
+  "iforest_score": 0.61,
+  "dominant_score": 4.0087,
+  "ens_score": 0.961,
+  "ens_pct": 0.966
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 49% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 82% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 3 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.425,
+   "text": "80% of certificate tonnes were sold below the cost of recycling (average 0.88x the cost floor)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.305,
+   "text": "29% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "shared_address",
+   "group": "identity",
+   "strength": 0.3,
+   "text": "Registered at an address shared with 7 other entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 7.0,
+   "population_percentile": 99.7,
+   "shap": -0.3899
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3343
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.2905,
+   "population_percentile": 97.6,
+   "shap": -0.3228
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 3.0,
+   "population_percentile": 99.8,
+   "shap": -0.3149
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-YC1EW3XJ (Feb 2026: 15,737 kWh for 208.1 t claimed)",
+   "plastic/electricity_bills:BILL-L50VD265 (Oct 2025: 15,329 kWh for 202.5 t claimed)",
+   "plastic/electricity_bills:BILL-UMPJ5BUP (Mar 2026: 13,632 kWh for 179.9 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-UDNF2SR8T (03 May 2025, 6 t from COL-2I7W6Z3)",
+   "plastic/feedstock_invoices:INV-PYUEWMFZO (13 May 2025, 3 t from COL-2HZ9TZ2)",
+   "plastic/feedstock_invoices:INV-OCJRYX0GW (14 May 2025, 2 t from COL-JN33OYX)",
+   "plastic/feedstock_invoices:INV-MMWCE0FML (26 May 2025, 1 t from COL-MW0WR3C)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-AZVJXDO (522 t supplied; declared capacity 37 t/month; 2 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-9TQL3UC (412 t supplied; declared capacity 79 t/month; 6 vehicles; registered Nov 2015)",
+   "plastic/collectors:COL-2I7W6Z3 (203 t supplied; declared capacity 28 t/month; 1 vehicles; registered Feb 2025)",
+   "plastic/collectors:COL-2HZ9TZ2 (112 t supplied; declared capacity 38 t/month; 2 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-53SWUSY (82 t supplied; declared capacity 45 t/month; 6 vehicles; registered Jul 2015)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 7, director 0, photos 3)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-B1KPN9HRQ (CAT_IV, Rs 1,298/t to PIBO-LJH7644)",
+   "plastic/certificate_sales:SALE-IACO6CD7E (CAT_IV, Rs 1,298/t to PIBO-LJH7644)",
+   "plastic/certificate_sales:SALE-Q7B5OEJJ9 (CAT_IV, Rs 1,298/t to PIBO-LJH7644)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-ELRIOWP Eastern Beverages Pvt Ltd (371 t)",
+  "PIBO-SHAXG5P Durga Retail Pvt Ltd (324 t)",
+  "PIBO-JSYK8J6 Vasundhara Pharma (169 t)",
+  "PIBO-LFPI0A4 Metro Snacks Pvt Ltd (114 t)",
+  "PIBO-K9XUHRG Pioneer Beverages & Co (84 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers."
+ ],
+ "rank": 86
+}

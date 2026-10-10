@@ -1,0 +1,158 @@
+{
+ "recycler": {
+  "rule_score": {
+   "auc": {
+    "all": 0.9951179487179487,
+    "obvious": 1.0,
+    "moderate": 0.9995082145577195,
+    "subtle": 0.9870519603852937
+   },
+   "precision_at_k": {
+    "25": 1.0,
+    "50": 1.0,
+    "100": 1.0,
+    "225": 0.9244444444444444
+   },
+   "hollow_tonnes_recall_at_k": {
+    "25": 0.389443313888689,
+    "50": 0.4990565608452599,
+    "100": 0.704690905238928,
+    "225": 0.989369181801869
+   },
+   "recall_by_behaviour_at_225": {
+    "ghost_feedstock": 0.9071428571428571,
+    "underprice": 0.930379746835443,
+    "cat3_inflation": 0.9545454545454546,
+    "deadline_burst": 0.9767441860465116,
+    "round_trip": 1.0,
+    "output_fabrication": 0.8557692307692307,
+    "doctored_bill": 1.0,
+    "capacity_inflated": 0.9421487603305785,
+    "photo_reuse": 0.9782608695652174
+   },
+   "recall_by_tier_at_225": {
+    "obvious": 1.0,
+    "moderate": 0.9900990099009901,
+    "subtle": 0.8024691358024691
+   }
+  },
+  "iforest_score": {
+   "auc": {
+    "all": 0.9938051282051282,
+    "obvious": 1.0,
+    "moderate": 0.9998302687411599,
+    "subtle": 0.983003663003663
+   },
+   "precision_at_k": {
+    "25": 1.0,
+    "50": 1.0,
+    "100": 1.0,
+    "225": 0.92
+   },
+   "hollow_tonnes_recall_at_k": {
+    "25": 0.21736517953939924,
+    "50": 0.4831923938836095,
+    "100": 0.7362734226450469,
+    "225": 0.9881381507972792
+   },
+   "recall_by_behaviour_at_225": {
+    "ghost_feedstock": 0.9142857142857143,
+    "underprice": 0.9113924050632911,
+    "cat3_inflation": 0.9393939393939394,
+    "deadline_burst": 0.9883720930232558,
+    "round_trip": 1.0,
+    "output_fabrication": 0.8461538461538461,
+    "doctored_bill": 1.0,
+    "capacity_inflated": 0.9256198347107438,
+    "photo_reuse": 0.9565217391304348
+   },
+   "recall_by_tier_at_225": {
+    "obvious": 1.0,
+    "moderate": 0.9900990099009901,
+    "subtle": 0.7901234567901234
+   }
+  },
+  "dominant_score": {
+   "auc": {
+    "all": 0.8769992673992674,
+    "obvious": 0.9776130845898288,
+    "moderate": 0.897055815471657,
+    "subtle": 0.7985782119115452
+   },
+   "precision_at_k": {
+    "25": 0.84,
+    "50": 0.68,
+    "100": 0.57,
+    "225": 0.4311111111111111
+   },
+   "hollow_tonnes_recall_at_k": {
+    "25": 0.17857787319256527,
+    "50": 0.3146857295142059,
+    "100": 0.4896267821025286,
+    "225": 0.7047984379973243
+   },
+   "recall_by_behaviour_at_225": {
+    "ghost_feedstock": 0.44285714285714284,
+    "underprice": 0.4177215189873418,
+    "cat3_inflation": 0.4090909090909091,
+    "deadline_burst": 0.5116279069767442,
+    "round_trip": 0.6415094339622641,
+    "output_fabrication": 0.2692307692307692,
+    "doctored_bill": 0.25,
+    "capacity_inflated": 0.4049586776859504,
+    "photo_reuse": 0.45652173913043476
+   },
+   "recall_by_tier_at_225": {
+    "obvious": 0.9069767441860465,
+    "moderate": 0.40594059405940597,
+    "subtle": 0.20987654320987653
+   }
+  },
+  "ens_score": {
+   "auc": {
+    "all": 0.996397557997558,
+    "obvious": 1.0,
+    "moderate": 0.9996822979001196,
+    "subtle": 0.990389363722697
+   },
+   "precision_at_k": {
+    "25": 1.0,
+    "50": 1.0,
+    "100": 1.0,
+    "225": 0.92
+   },
+   "hollow_tonnes_recall_at_k": {
+    "25": 0.38503225566350535,
+    "50": 0.49026468682571656,
+    "100": 0.7141950196782499,
+    "225": 0.9888621488963276
+   },
+   "recall_by_behaviour_at_225": {
+    "ghost_feedstock": 0.9142857142857143,
+    "underprice": 0.9113924050632911,
+    "cat3_inflation": 0.9393939393939394,
+    "deadline_burst": 0.9767441860465116,
+    "round_trip": 1.0,
+    "output_fabrication": 0.8365384615384616,
+    "doctored_bill": 0.975,
+    "capacity_inflated": 0.9173553719008265,
+    "photo_reuse": 0.9565217391304348
+   },
+   "recall_by_tier_at_225": {
+    "obvious": 1.0,
+    "moderate": 0.9900990099009901,
+    "subtle": 0.7901234567901234
+   }
+  }
+ },
+ "collector_ghost_auc": 0.8128690003014994,
+ "offtaker_shell_auc": 0.9115244081082127,
+ "brand": {
+  "spearman_exposure_vs_true": 0.8246934206334107,
+  "spearman_hollow_t_est_vs_true": 0.9164931498601459,
+  "total_hollow_t_true": 616688.1129999999,
+  "total_hollow_t_est": 775642.9336444117,
+  "top100_share_of_true_hollow_t": 0.2626877729358796,
+  "top100_overlap_with_true_top100": 83
+ }
+}

@@ -1,0 +1,133 @@
+{
+ "entity_id": "ENT-OQJAMK9",
+ "profile": {
+  "name": "Deccan Sai Recyclers",
+  "state": "Gujarat",
+  "district": "Morbi",
+  "declared_capacity_tpa": 2900.0,
+  "connected_load_kw": 164.0,
+  "epr_registered": "2024-08-11"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6675,
+  "dominant_score": 3.9625,
+  "ens_score": 0.9884,
+  "ens_pct": 0.9936
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (39% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 85% of months"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "33% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.18x the cost floor)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.577,
+   "text": "Sold products equal only 31% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.20x the market median price"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3359
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3012
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.3857,
+   "population_percentile": 99.5,
+   "shap": -0.294
+  },
+  {
+   "feature": "net_cycle_feed_share",
+   "label": "feedstock bought inside a loop",
+   "value": 0.3857,
+   "population_percentile": 99.5,
+   "shap": -0.2485
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-8B8N6XZA (Oct 2025: 64,229 kWh for 357.4 t claimed)",
+   "plastic/electricity_bills:BILL-QRTHHY30 (Mar 2025: 58,684 kWh for 319.6 t claimed)",
+   "plastic/electricity_bills:BILL-6Z4B0PS0 (Sep 2025: 63,791 kWh for 339.8 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-OCCTO60F2 (06 Aug 2024, 2 t from COL-A3IN3CS)",
+   "plastic/feedstock_invoices:INV-7CROMB7GO (08 Aug 2024, 24 t from ENT-MSY2UP9)",
+   "plastic/feedstock_invoices:INV-PF47750JP (11 Aug 2024, 4.46 t from COL-D934T4W)",
+   "plastic/feedstock_invoices:INV-3Y4EC9URV (12 Aug 2024, 2 t from COL-9O2B0P4)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-ZC3ORX5 (447 t supplied; declared capacity 26 t/month; 2 vehicles; registered Jun 2024)",
+   "plastic/collectors:COL-K6FSDWX (348 t supplied; declared capacity 21 t/month; 2 vehicles; registered Apr 2024)",
+   "plastic/collectors:COL-038TUSH (327 t supplied; declared capacity 20 t/month; 2 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-1T8U92W (302 t supplied; declared capacity 14 t/month; 1 vehicles; registered May 2024)",
+   "plastic/collectors:COL-F5VEDVL (268 t supplied; declared capacity 39 t/month; 2 vehicles; registered Mar 2024)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-MSY2UP9 (2,347 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-5W6EO6T (1,288 t bought)",
+   "plastic/offtakers:OFT-SYE0XDE (85 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-2Z9AS7KH9 (CAT_IV, Rs 244/t to PIBO-1CM6ADK)",
+   "plastic/certificate_sales:SALE-8EB45YH3S (CAT_IV, Rs 245/t to PIBO-03BEYB6)",
+   "plastic/certificate_sales:SALE-AGYSWPWWI (CAT_IV, Rs 245/t to PIBO-WD98U8O)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-YN6JZ23 Vasundhara Personal Care LLP (2,233 t)",
+  "PIBO-A1UYMP3 Om Foods Pvt Ltd (495 t)",
+  "PIBO-XEDMZRS Shri Dairy Pvt Ltd (425 t)",
+  "PIBO-CBLVWXO Ganesh Pharma Pvt Ltd (355 t)",
+  "PIBO-RIZHGQS Durga FMCG Ltd (196 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 17
+}

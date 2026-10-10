@@ -1,0 +1,127 @@
+{
+ "entity_id": "ENT-N576HOP",
+ "profile": {
+  "name": "Sterling Sterling Enviro Recycling Pvt Ltd",
+  "state": "Uttar Pradesh",
+  "district": "Kanpur",
+  "declared_capacity_tpa": 17610.0,
+  "connected_load_kw": 996.0,
+  "epr_registered": "2025-02-07"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6471,
+  "dominant_score": 5.2759,
+  "ens_score": 0.9911,
+  "ens_pct": 0.9956
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 17% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 93% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "78% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "61% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 17% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.637,
+   "text": "Claimed tonnage in the busiest month would need 168% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 99.3,
+   "shap": -0.3777
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3523
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.287,
+   "population_percentile": 99.7,
+   "shap": -0.3231
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7754,
+   "population_percentile": 99.2,
+   "shap": -0.3133
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-RDSQF6UX (Dec 2025: 2,090,285 kWh for 3,565.0 t claimed)",
+   "plastic/electricity_bills:BILL-MJNZYP9U (Nov 2025: 1,762,255 kWh for 3,000.6 t claimed)",
+   "plastic/electricity_bills:BILL-0KLNBCLZ (Jun 2025: 2,003,979 kWh for 3,402.2 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-G0O539B2B (01 Feb 2025, 13 t from ENT-3T9EUB9)",
+   "plastic/feedstock_invoices:INV-24YUWBJSS (01 Feb 2025, 15 t from ENT-3T9EUB9)",
+   "plastic/feedstock_invoices:INV-EWLFOEIV5 (01 Feb 2025, 7 t from COL-1QPUWN2)",
+   "plastic/feedstock_invoices:INV-SQCKU2AYR (01 Feb 2025, 3 t from COL-8D12TOC)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-A9E7C6B (6,955 t supplied; declared capacity 19 t/month; 2 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-OY5LLSO (6,946 t supplied; declared capacity 18 t/month; 1 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-1QPUWN2 (3,209 t supplied; declared capacity 9 t/month; 1 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-8D12TOC (2,457 t supplied; declared capacity 31 t/month; 2 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-YAZ0QC7 (1,592 t supplied; declared capacity 36 t/month; 2 vehicles; registered Sep 2024)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-EHK27RQ (2,982 t bought)",
+   "plastic/offtakers:OFT-WNPTXED (1,708 t bought)",
+   "plastic/offtakers:OFT-QYFM552 (648 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-FGCJO6Q Southern Home Care (959 t)",
+  "PIBO-1OW3PWT Deccan Personal Care & Co (616 t)",
+  "PIBO-LX0OLVK Sterling Narmada Pharma Pvt Ltd (554 t)",
+  "PIBO-HPOMGIQ Prime Home Care Pvt Ltd (551 t)",
+  "PIBO-VCFPRD1 Eco Personal Care Pvt Ltd (337 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 12
+}

@@ -1,0 +1,132 @@
+{
+ "entity_id": "ENT-KU3ZDIC",
+ "profile": {
+  "name": "Sai Poly Industries Pvt Ltd",
+  "state": "Telangana",
+  "district": "Medchal",
+  "declared_capacity_tpa": 1250.0,
+  "connected_load_kw": 184.0,
+  "epr_registered": "2025-11-24"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6368,
+  "dominant_score": 2.6222,
+  "ens_score": 0.975,
+  "ens_pct": 0.982
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 40% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.601,
+   "text": "48% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "95% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.45x the cost floor)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "95% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 7.0,
+   "population_percentile": 99.7,
+   "shap": -0.3182
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.6,
+   "population_percentile": 89.0,
+   "shap": -0.2899
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.4754,
+   "population_percentile": 98.6,
+   "shap": -0.2525
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.9476,
+   "population_percentile": 100.0,
+   "shap": -0.2495
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-95U1HZYE (Mar 2026: 39,790 kWh for 219.6 t claimed)",
+   "plastic/electricity_bills:BILL-1365RR1P (Feb 2026: 42,090 kWh for 224.5 t claimed)",
+   "plastic/electricity_bills:BILL-XCDQFXJP (Jan 2026: 30,976 kWh for 88.9 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-5I3UWHP69 (01 Nov 2025, 1 t from COL-NRXWG0I)",
+   "plastic/feedstock_invoices:INV-N5555E8LN (02 Nov 2025, 0.2 t from COL-9SGPWLV)",
+   "plastic/feedstock_invoices:INV-P7NLVXGZA (04 Nov 2025, 3 t from COL-A0A69A7)",
+   "plastic/feedstock_invoices:INV-5BIGBLJ4T (16 Nov 2025, 0.2 t from COL-HR0YNZQ)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-X696UMU (145 t supplied; declared capacity 25 t/month; 2 vehicles; registered Sep 2025)",
+   "plastic/collectors:COL-A0A69A7 (144 t supplied; declared capacity 39 t/month; 1 vehicles; registered Jun 2025)",
+   "plastic/collectors:COL-76WJFAP (59 t supplied; declared capacity 51 t/month; 4 vehicles; registered Sep 2020)",
+   "plastic/collectors:COL-HB9ZM7H (54 t supplied; declared capacity 36 t/month; 2 vehicles; registered Sep 2025)",
+   "plastic/collectors:COL-6UKJF5W (47 t supplied; declared capacity 29 t/month; 4 vehicles; registered May 2020)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 570 t of 602 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 7, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-AEV7Z3TTG (CAT_IV, Rs 660/t to PIBO-DHM4OHZ)",
+   "plastic/certificate_sales:SALE-YT367LRWH (CAT_IV, Rs 668/t to PIBO-BVVG3K3)",
+   "plastic/certificate_sales:SALE-BO96QW34O (CAT_IV, Rs 672/t to PIBO-7VAIMQ1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-5XODN70 Maa Snacks LLP (95 t)",
+  "PIBO-0UIK1C4 Sai Shri Dairy LLP (65 t)",
+  "PIBO-GSE7DTN Maa Sai Beverages & Co (55 t)",
+  "PIBO-2AS7NBP Pragati Retail Pvt Ltd (48 t)",
+  "PIBO-ZBHQU7E Pioneer Om Dairy & Co (47 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 46
+}

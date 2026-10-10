@@ -1,0 +1,113 @@
+{
+ "entity_id": "ENT-N7A1AQQ",
+ "profile": {
+  "name": "Prime Poly Industries LLP",
+  "state": "Telangana",
+  "district": "Medchal",
+  "declared_capacity_tpa": 800.0,
+  "connected_load_kw": 56.0,
+  "epr_registered": "2025-09-23"
+ },
+ "scores": {
+  "rule_score": 0.9992,
+  "iforest_score": 0.6267,
+  "dominant_score": 21.6083,
+  "ens_score": 0.972,
+  "ens_pct": 0.98
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (14% of its feedstock)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.36x the cost floor)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.484,
+   "text": "Certificates sold at 0.41x the market median price"
+  },
+  {
+   "rule": "shared_address",
+   "group": "identity",
+   "strength": 0.3,
+   "text": "Registered at an address shared with 1 other entity(ies)"
+  },
+  {
+   "rule": "very_young_company",
+   "group": "registry",
+   "strength": 0.3,
+   "text": "Company was only 37 days old when it registered under EPR"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.4039
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 96.7,
+   "shap": -0.3927
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.1397,
+   "population_percentile": 98.3,
+   "shap": -0.3806
+  },
+  {
+   "feature": "net_recycler_in_degree",
+   "label": "net_recycler_in_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3627
+  }
+ ],
+ "evidence": {
+  "ring_partners": [
+   "registry/entities:ENT-TGC2AXN (17 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 1, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-ISFWF4Q51 (CAT_IV, Rs 536/t to PIBO-ERI7ZAD)",
+   "plastic/certificate_sales:SALE-7DVTQODE5 (CAT_IV, Rs 536/t to PIBO-ERI7ZAD)",
+   "plastic/certificate_sales:SALE-DNIEK8TF9 (CAT_IV, Rs 536/t to PIBO-ERI7ZAD)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-K8QF7SM Supreme Maa Retail (62 t)",
+  "PIBO-OX77TAQ Galaxy Personal Care LLP (27 t)",
+  "PIBO-Y50YNKG Royal Consumer Products (26 t)",
+  "PIBO-B5ZRA8Y Om Vasundhara FMCG & Co (3 t)",
+  "PIBO-PKCCK9J Sunrise Dairy Pvt Ltd (0 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Check the company's incorporation and registration history and the source of its capital."
+ ],
+ "rank": 51
+}

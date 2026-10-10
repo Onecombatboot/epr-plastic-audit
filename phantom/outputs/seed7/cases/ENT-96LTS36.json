@@ -1,0 +1,130 @@
+{
+ "entity_id": "ENT-96LTS36",
+ "profile": {
+  "name": "Royal Plast Pvt Ltd",
+  "state": "Maharashtra",
+  "district": "Raigad",
+  "declared_capacity_tpa": 2310.0,
+  "connected_load_kw": 107.0,
+  "epr_registered": "2024-05-30"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6602,
+  "dominant_score": 10.4514,
+  "ens_score": 0.9959,
+  "ens_pct": 0.9984
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 74% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "87% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.707,
+   "text": "Electricity bought is only 0.38x the minimum needed for the tonnes claimed (114 kWh/t against at least 300)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "56% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 72%, +70% versus what its process route can produce"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 14% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 98.9,
+   "shap": -0.2946
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 2.0,
+   "population_percentile": 94.2,
+   "shap": -0.2688
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.2552
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8706,
+   "population_percentile": 99.8,
+   "shap": -0.2483
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-Q89M7RSO (Feb 2026: 25,511 kWh for 236.4 t claimed)",
+   "plastic/electricity_bills:BILL-SLPQKBTX (Mar 2026: 23,209 kWh for 214.0 t claimed)",
+   "plastic/electricity_bills:BILL-3C2JK2HX (Apr 2025: 22,802 kWh for 209.2 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-I5C7LRXRC (04 May 2024, 6 t from COL-X946FQL)",
+   "plastic/feedstock_invoices:INV-3JHJIZ6JU (08 May 2024, 11 t from COL-X946FQL)",
+   "plastic/feedstock_invoices:INV-9FZL7JDHJ (10 May 2024, 4 t from COL-X946FQL)",
+   "plastic/feedstock_invoices:INV-D0ZN3ULUB (27 May 2024, 13 t from COL-X946FQL)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-X946FQL (2,832 t supplied; declared capacity 34 t/month; 2 vehicles; registered Apr 2024)",
+   "plastic/collectors:COL-501C1ER (1,201 t supplied; declared capacity 10 t/month; 2 vehicles; registered Feb 2024)",
+   "plastic/collectors:COL-HU2FMC1 (136 t supplied; declared capacity 80 t/month; 4 vehicles; registered Jun 2017)",
+   "plastic/collectors:COL-NRLMZJ2 (135 t supplied; declared capacity 74 t/month; 2 vehicles; registered Apr 2018)",
+   "plastic/collectors:COL-FAVZCNF (131 t supplied; declared capacity 266 t/month; 2 vehicles; registered Apr 2021)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-04: 422 t of 4,559 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-YOUVQ0C (255 t bought)",
+   "plastic/offtakers:OFT-QJMF3YN (89 t bought)",
+   "plastic/offtakers:OFT-OKG7HYP (82 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-9KB7MKD Green Snacks (612 t)",
+  "PIBO-P4DMZQ0 Eastern Foods LLP (351 t)",
+  "PIBO-GKD230J Unity Beverages (326 t)",
+  "PIBO-V68M8EC Eastern Pharma Pvt Ltd (213 t)",
+  "PIBO-J58NP92 Sahyadri Narmada Dairy Pvt Ltd (187 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 5
+}

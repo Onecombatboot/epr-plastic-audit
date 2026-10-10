@@ -1,0 +1,132 @@
+{
+ "entity_id": "ENT-2TWX8UP",
+ "profile": {
+  "name": "Jai Granules Pvt Ltd",
+  "state": "Haryana",
+  "district": "Gurugram",
+  "declared_capacity_tpa": 2200.0,
+  "connected_load_kw": 42.0,
+  "epr_registered": "2024-10-21"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.645,
+  "dominant_score": 37.8832,
+  "ens_score": 0.9912,
+  "ens_pct": 0.9948
+ },
+ "reasons": [
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.25x the minimum needed for the tonnes claimed (76 kWh/t against at least 300)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "93% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 2% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 47%, +45% versus what its process route can produce"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "37% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3015
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.9304,
+   "population_percentile": 99.8,
+   "shap": -0.2536
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 90.4,
+   "shap": -0.1999
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.505,
+   "population_percentile": 97.1,
+   "shap": -0.1959
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-UPF8NJJC (Feb 2026: 2,440 kWh for 128.4 t claimed)",
+   "plastic/electricity_bills:BILL-ACLZBB3H (Feb 2025: 2,434 kWh for 82.5 t claimed)",
+   "plastic/electricity_bills:BILL-4PLPV9IF (Mar 2025: 2,284 kWh for 61.0 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-UMVXGTFFO (31 Oct 2024, 4 t from COL-BOCB0IC)",
+   "plastic/feedstock_invoices:INV-66D6U5MQS (10 Nov 2024, 0.2 t from COL-221ZET6)",
+   "plastic/feedstock_invoices:INV-WTXK4CD7B (18 Nov 2024, 4 t from COL-BOCB0IC)",
+   "plastic/feedstock_invoices:INV-EO5TSLI3E (23 Dec 2024, 3 t from COL-BOCB0IC)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-BOCB0IC (499 t supplied; declared capacity 10 t/month; 1 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-221ZET6 (12 t supplied; declared capacity 22 t/month; 2 vehicles; registered May 2024)",
+   "plastic/collectors:COL-2XQZ5YX (10 t supplied; declared capacity 31 t/month; 1 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-3RLIYR1 (4 t supplied; declared capacity 21 t/month; 4 vehicles; registered Feb 2015)",
+   "plastic/collectors:COL-9289D1Y (3 t supplied; declared capacity 32 t/month; 5 vehicles; registered Feb 2016)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 151 t of 523 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-7MTVQ2D (9 t bought)",
+   "plastic/offtakers:OFT-JYWWPQJ (0 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-HGTXMKE Everest Beverages Pvt Ltd (100 t)",
+  "PIBO-N0W5D2I Galaxy Retail (51 t)",
+  "PIBO-WZUCIWP Eco Personal Care (49 t)",
+  "PIBO-Y3EF0SA Ganesh National Consumer Products Pvt Ltd (47 t)",
+  "PIBO-ZBWSE3P Ganga Home Care Pvt Ltd (41 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 14
+}

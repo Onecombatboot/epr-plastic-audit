@@ -1,0 +1,132 @@
+{
+ "entity_id": "ENT-FJT76D0",
+ "profile": {
+  "name": "Maa Galaxy Recyclers Pvt Ltd",
+  "state": "Delhi",
+  "district": "North West Delhi",
+  "declared_capacity_tpa": 930.0,
+  "connected_load_kw": 163.0,
+  "epr_registered": "2024-12-10"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6261,
+  "dominant_score": 1.8794,
+  "ens_score": 0.9607,
+  "ens_pct": 0.9672
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 62% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.678,
+   "text": "52% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "60% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.43x the cost floor)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.581,
+   "text": "Category III share of certificates is 37%, +35% versus what its process route can produce"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 3.0,
+   "population_percentile": 96.6,
+   "shap": -0.2764
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.625,
+   "population_percentile": 97.8,
+   "shap": -0.2682
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5238,
+   "population_percentile": 98.2,
+   "shap": -0.2579
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.7508,
+   "population_percentile": 99.6,
+   "shap": -0.2202
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-MK9YH4OI (Feb 2026: 65,849 kWh for 374.8 t claimed)",
+   "plastic/electricity_bills:BILL-KVB4SFH9 (Mar 2026: 69,413 kWh for 326.8 t claimed)",
+   "plastic/electricity_bills:BILL-WKCEJVAN (Jan 2026: 65,456 kWh for 161.5 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-1DX1EADIY (01 Dec 2024, 1.11 t from COL-T954H0H)",
+   "plastic/feedstock_invoices:INV-Y27UX5O88 (15 Dec 2024, 1 t from COL-5KVDPRG)",
+   "plastic/feedstock_invoices:INV-37D2LQXXM (28 Dec 2024, 4 t from COL-734HCJF)",
+   "plastic/feedstock_invoices:INV-X4SWGXMWM (11 Jan 2025, 6 t from COL-734HCJF)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-734HCJF (774 t supplied; declared capacity 19 t/month; 2 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-T954H0H (382 t supplied; declared capacity 81 t/month; 1 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-5KVDPRG (227 t supplied; declared capacity 12 t/month; 1 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-ZHJ340X (158 t supplied; declared capacity 183 t/month; 6 vehicles; registered Jan 2019)",
+   "plastic/collectors:COL-HKZU6V2 (75 t supplied; declared capacity 112 t/month; 5 vehicles; registered Apr 2022)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 1,124 t of 1,886 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 3, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-D1T8LNW0L (CAT_IV, Rs 625/t to PIBO-TBILTXX)",
+   "plastic/certificate_sales:SALE-CDVV41ZC0 (CAT_IV, Rs 625/t to PIBO-TBILTXX)",
+   "plastic/certificate_sales:SALE-DINWPL9U5 (CAT_IV, Rs 625/t to PIBO-TBILTXX)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-9O0MJCW Prakriti FMCG Pvt Ltd (343 t)",
+  "PIBO-ZJ337C3 Green Green Foods (126 t)",
+  "PIBO-FQ2174H Eastern Retail (116 t)",
+  "PIBO-DN3C19T Ganga Personal Care Pvt Ltd (109 t)",
+  "PIBO-RPKKEJS Northern Eco Personal Care (98 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 83
+}

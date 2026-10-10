@@ -1,0 +1,122 @@
+{
+ "entity_id": "ENT-QJGREW1",
+ "profile": {
+  "name": "Eco Eco Poly Industries Ltd",
+  "state": "Haryana",
+  "district": "Sonipat",
+  "declared_capacity_tpa": 3580.0,
+  "connected_load_kw": 30.0,
+  "epr_registered": "2025-10-12"
+ },
+ "scores": {
+  "rule_score": 0.9986,
+  "iforest_score": 0.6398,
+  "dominant_score": 3.5996,
+  "ens_score": 0.9692,
+  "ens_pct": 0.9772
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (6% of its feedstock)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.74x the cost floor)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.444,
+   "text": "Certificates claim more than the declared monthly capacity in 17% of months"
+  },
+  {
+   "rule": "shared_contacts",
+   "group": "identity",
+   "strength": 0.3,
+   "text": "Shares a contact phone number with 2 other registered entity(ies)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.297,
+   "text": "32% of all certificates were generated in a single month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3445
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3378
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.0553,
+   "population_percentile": 97.9,
+   "shap": -0.3356
+  },
+  {
+   "feature": "net_cycle_feed_share",
+   "label": "feedstock bought inside a loop",
+   "value": 0.0553,
+   "population_percentile": 97.9,
+   "shap": -0.3236
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-XKM3TLH5 (Jan 2026: 8,748 kWh for 283.4 t claimed)",
+   "plastic/electricity_bills:BILL-D4MPGD6A (Feb 2026: 10,907 kWh for 341.0 t claimed)",
+   "plastic/electricity_bills:BILL-QVLUQII1 (Nov 2025: 4,685 kWh for 140.0 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-04: 431 t of 1,335 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-2X5USSN (75 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-G5GLTRASD (CAT_IV, Rs 1,082/t to PIBO-TZ44U92)",
+   "plastic/certificate_sales:SALE-KXZD4NDKS (CAT_IV, Rs 1,082/t to PIBO-UB2A0KJ)",
+   "plastic/certificate_sales:SALE-VNJ5Q2OZL (CAT_IV, Rs 1,087/t to PIBO-JQBZMP9)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-4E7FDEV Metro Beverages Pvt Ltd (428 t)",
+  "PIBO-BTEDENJ Maa Home Care Ltd (114 t)",
+  "PIBO-8462DRM Western Dairy & Co (105 t)",
+  "PIBO-LAVIY34 Bharat Royal Foods Pvt Ltd (59 t)",
+  "PIBO-W08RGTR Sahyadri Kaveri Snacks (53 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 58
+}

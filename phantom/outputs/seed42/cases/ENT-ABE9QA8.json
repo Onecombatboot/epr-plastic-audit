@@ -1,0 +1,119 @@
+{
+ "entity_id": "ENT-ABE9QA8",
+ "profile": {
+  "name": "Pragati Enviro Recycling Pvt Ltd",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 2680.0,
+  "connected_load_kw": 15.0,
+  "epr_registered": "2025-04-26"
+ },
+ "scores": {
+  "rule_score": 0.9997,
+  "iforest_score": 0.6531,
+  "dominant_score": 28.4999,
+  "ens_score": 0.9808,
+  "ens_pct": 0.986
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (65% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 83% of months"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.585,
+   "text": "98% of certificate tonnes were sold below the cost of recycling (average 0.87x the cost floor)"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.45,
+   "text": "In 100% of billed months the units consumed cannot support the tonnes claimed"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.426,
+   "text": "Electricity bought is only 0.63x the minimum needed for the tonnes claimed (13 kWh/t against at least 20)"
+  },
+  {
+   "rule": "shared_contacts",
+   "group": "identity",
+   "strength": 0.3,
+   "text": "Shares a contact phone number with 2 other registered entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3378
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3303
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.6468,
+   "population_percentile": 99.7,
+   "shap": -0.33
+  },
+  {
+   "feature": "net_cycle_feed_share",
+   "label": "feedstock bought inside a loop",
+   "value": 0.6468,
+   "population_percentile": 99.7,
+   "shap": -0.3038
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-HLYD298I (Jan 2026: 3,780 kWh for 315.4 t claimed)",
+   "plastic/electricity_bills:BILL-I3U6D2Z4 (Nov 2025: 4,202 kWh for 348.7 t claimed)",
+   "plastic/electricity_bills:BILL-ELQV4PTK (Mar 2026: 3,902 kWh for 323.3 t claimed)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-YZBULQH (937 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 2, photos 0)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-Z7ANIHN21 (CAT_IV, Rs 1,253/t to PIBO-M4W4H4J)",
+   "plastic/certificate_sales:SALE-HE9Y0VCWS (CAT_IV, Rs 1,253/t to PIBO-M4W4H4J)",
+   "plastic/certificate_sales:SALE-J6EKF7QNH (CAT_IV, Rs 1,253/t to PIBO-M4W4H4J)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-HAQBL2P Himalaya Shree Retail Pvt Ltd (409 t)",
+  "PIBO-8Y184DY Himalaya Retail Pvt Ltd (314 t)",
+  "PIBO-5JMZVIM Pragati Home Care & Co (238 t)",
+  "PIBO-S7M1PCW Western Pharma Pvt Ltd (153 t)",
+  "PIBO-YUF01DM Hind Retail Pvt Ltd (82 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 36
+}

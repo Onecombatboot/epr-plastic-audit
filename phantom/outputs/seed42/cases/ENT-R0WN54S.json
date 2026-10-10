@@ -1,0 +1,116 @@
+{
+ "entity_id": "ENT-R0WN54S",
+ "profile": {
+  "name": "Prakriti Poly Industries",
+  "state": "Rajasthan",
+  "district": "Jodhpur",
+  "declared_capacity_tpa": 870.0,
+  "connected_load_kw": 15.0,
+  "epr_registered": "2023-10-18"
+ },
+ "scores": {
+  "rule_score": 0.9983,
+  "iforest_score": 0.6195,
+  "dominant_score": 5.1467,
+  "ens_score": 0.9621,
+  "ens_pct": 0.9692
+ },
+ "reasons": [
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.14x the minimum needed for the tonnes claimed (21 kWh/t against at least 150)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 3% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.33x the cost floor)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.34x the market median price"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.45,
+   "text": "In 100% of billed months the units consumed cannot support the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.3182
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2847
+  },
+  {
+   "feature": "out_round_share",
+   "label": "out_round_share",
+   "value": 0.0718,
+   "population_percentile": 90.2,
+   "shap": -0.2209
+  },
+  {
+   "feature": "cert_vs_reported",
+   "label": "cert_vs_reported",
+   "value": 1.0,
+   "population_percentile": 97.2,
+   "shap": -0.1971
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-1986KYWW (Oct 2023: 594 kWh for 32.4 t claimed)",
+   "plastic/electricity_bills:BILL-6MTF6CES (Dec 2023: 679 kWh for 36.8 t claimed)",
+   "plastic/electricity_bills:BILL-CFH26OK3 (Jun 2025: 679 kWh for 36.0 t claimed)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-8GS5XSI (4 t bought)",
+   "plastic/offtakers:OFT-53QIE0N (4 t bought)",
+   "plastic/offtakers:OFT-QPPDHYD (2 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-XFYQBEWON (CAT_II, Rs 783/t to PIBO-A1UYMP3)",
+   "plastic/certificate_sales:SALE-DKQLE6I0B (CAT_II, Rs 785/t to PIBO-13Y840B)",
+   "plastic/certificate_sales:SALE-XW3QIQRYB (CAT_II, Rs 789/t to PIBO-0P6J5MJ)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-ER8KAQA Deccan Pharma LLP (196 t)",
+  "PIBO-2W2ODRB Durga Foods & Co (103 t)",
+  "PIBO-9OTCI7J Shree Supreme Consumer Products Pvt Ltd (54 t)",
+  "PIBO-SQMWJBD Krishna Personal Care (50 t)",
+  "PIBO-M6G3NFU Sanjeevani Prakriti Snacks Pvt Ltd (47 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 78
+}

@@ -1,0 +1,127 @@
+{
+ "entity_id": "ENT-BK45Q2U",
+ "profile": {
+  "name": "Southern Shree Plastics Pvt Ltd",
+  "state": "Uttar Pradesh",
+  "district": "Agra",
+  "declared_capacity_tpa": 18610.0,
+  "connected_load_kw": 638.0,
+  "epr_registered": "2023-04-02"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6856,
+  "dominant_score": 33.2701,
+  "ens_score": 0.9968,
+  "ens_pct": 0.998
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (80% of its feedstock)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 826% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.76,
+   "text": "Electricity bought is only 0.34x the minimum needed for the tonnes claimed (101 kWh/t against at least 300)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "31% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.667,
+   "text": "Certificates claim more than the declared monthly capacity in 25% of months"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.8021,
+   "population_percentile": 99.9,
+   "shap": -0.3123
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2965
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2918
+  },
+  {
+   "feature": "net_cycle_feed_share",
+   "label": "feedstock bought inside a loop",
+   "value": 0.8021,
+   "population_percentile": 99.9,
+   "shap": -0.2497
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-2EOJYK2C (Feb 2026: 260,716 kWh for 12,822.1 t claimed)",
+   "plastic/electricity_bills:BILL-JAOQZ628 (Mar 2024: 226,247 kWh for 10,517.3 t claimed)",
+   "plastic/electricity_bills:BILL-64UFCRNQ (Feb 2024: 238,680 kWh for 10,130.5 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-K230PFTMN (01 Apr 2023, 0.5 t from COL-AXHJU1C)",
+   "plastic/feedstock_invoices:INV-9WZ7R5M2R (02 Apr 2023, 2.08 t from COL-M5BJI0L)",
+   "plastic/feedstock_invoices:INV-OD7KGCNE3 (04 Apr 2023, 4 t from ENT-F2HDA74)",
+   "plastic/feedstock_invoices:INV-6JHKG2K5S (04 Apr 2023, 17 t from ENT-F2HDA74)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-DDOO7ZX (1,670 t supplied; declared capacity 168 t/month; 6 vehicles; registered Oct 2018)",
+   "plastic/collectors:COL-O1DKB88 (1,410 t supplied; declared capacity 130 t/month; 1 vehicles; registered Sep 2018)",
+   "plastic/collectors:COL-M5BJI0L (894 t supplied; declared capacity 84 t/month; 4 vehicles; registered Jan 2019)",
+   "plastic/collectors:COL-UKT2DBL (687 t supplied; declared capacity 78 t/month; 1 vehicles; registered Nov 2019)",
+   "plastic/collectors:COL-S5WV3WF (681 t supplied; declared capacity 48 t/month; 4 vehicles; registered Apr 2016)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-F2HDA74 (42,438 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 3, address 0, director 2, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-TWY4K33 Ganga Beverages LLP (2,372 t)",
+  "PIBO-YKXM7FA Green Everest Dairy (1,587 t)",
+  "PIBO-ZSNBRL1 Earth Snacks (1,545 t)",
+  "PIBO-02KQ34Y Balaji Prime Retail Pvt Ltd (1,043 t)",
+  "PIBO-VQF0VGQ Hind Pharma Pvt Ltd (797 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months."
+ ],
+ "rank": 6
+}

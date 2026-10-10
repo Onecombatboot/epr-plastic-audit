@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-N576HOP",
+ "profile": {
+  "name": "Sterling Sterling Enviro Recycling Pvt Ltd",
+  "state": "Uttar Pradesh",
+  "district": "Kanpur",
+  "declared_capacity_tpa": 24560.0,
+  "connected_load_kw": 996.0,
+  "epr_registered": "2025-02-07"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6418,
+  "dominant_score": 17.5621,
+  "ens_score": 0.9882,
+  "ens_pct": 0.9932
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (75% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 86% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.741,
+   "text": "Electricity bought is only 0.35x the minimum needed for the tonnes claimed (105 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 17% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.685,
+   "text": "29% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.637,
+   "text": "Claimed tonnage in the busiest month would need 168% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3458
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.339
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.7481,
+   "population_percentile": 99.8,
+   "shap": -0.3285
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.3019
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-CTQ02G2I (Jan 2026: 374,189 kWh for 3,679.4 t claimed)",
+   "plastic/electricity_bills:BILL-N8CDBZGG (Dec 2025: 368,225 kWh for 3,565.0 t claimed)",
+   "plastic/electricity_bills:BILL-5YEMDYUV (Feb 2026: 422,338 kWh for 4,066.9 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-4IC8J8S3R (02 Feb 2025, 1.01 t from COL-6FYXKDQ)",
+   "plastic/feedstock_invoices:INV-L7LTYXGPL (02 Feb 2025, 22.27 t from ENT-50V1SLI)",
+   "plastic/feedstock_invoices:INV-AAN4WDV2J (02 Feb 2025, 18 t from ENT-50V1SLI)",
+   "plastic/feedstock_invoices:INV-FCG5Q8I04 (02 Feb 2025, 12 t from ENT-50V1SLI)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-S2NN4T7 (1,923 t supplied; declared capacity 355 t/month; 5 vehicles; registered Jan 2021)",
+   "plastic/collectors:COL-8M2IKB3 (909 t supplied; declared capacity 135 t/month; 3 vehicles; registered Dec 2015)",
+   "plastic/collectors:COL-15TQ01A (883 t supplied; declared capacity 213 t/month; 4 vehicles; registered Sep 2015)",
+   "plastic/collectors:COL-NJIC9P8 (429 t supplied; declared capacity 106 t/month; 4 vehicles; registered Oct 2017)",
+   "plastic/collectors:COL-RRF3LN0 (410 t supplied; declared capacity 87 t/month; 6 vehicles; registered Aug 2021)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-50V1SLI (20,745 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-VU16OEC (1,190 t bought)",
+   "plastic/offtakers:OFT-NJZB8IF (1,043 t bought)",
+   "plastic/offtakers:OFT-JR9U0N5 (986 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-1V0563Y Ganga Consumer Products Pvt Ltd (6,953 t)",
+  "PIBO-JEGCCP3 Navjeevan FMCG & Co (3,643 t)",
+  "PIBO-09Z9XXV Bharat Home Care Pvt Ltd (2,487 t)",
+  "PIBO-05ECHFE Pioneer Consumer Products Pvt Ltd (1,197 t)",
+  "PIBO-2X6XNXU Eastern Sai Dairy LLP (1,071 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 18
+}

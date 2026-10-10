@@ -1,0 +1,127 @@
+{
+ "entity_id": "ENT-4FPEC5P",
+ "profile": {
+  "name": "Northern Southern Enviro Recycling",
+  "state": "Karnataka",
+  "district": "Mysuru",
+  "declared_capacity_tpa": 1210.0,
+  "connected_load_kw": 41.0,
+  "epr_registered": "2024-08-12"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6185,
+  "dominant_score": 2.1862,
+  "ens_score": 0.9602,
+  "ens_pct": 0.9664
+ },
+ "reasons": [
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.788,
+   "text": "59% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.58x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.512,
+   "text": "36% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "60% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 3 other registered entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 99.0,
+   "shap": -0.282
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5926,
+   "population_percentile": 98.5,
+   "shap": -0.2538
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.1,
+   "population_percentile": 94.7,
+   "shap": -0.2405
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.6048,
+   "population_percentile": 98.0,
+   "shap": -0.2368
+  }
+ ],
+ "evidence": {
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-71AIIECE6 (11 Aug 2024, 0.2 t from COL-2M0C6MT)",
+   "plastic/feedstock_invoices:INV-BYOPZPSTJ (14 Aug 2024, 2 t from COL-VRRVJNU)",
+   "plastic/feedstock_invoices:INV-K1NGI2T7Z (22 Sep 2024, 1 t from COL-YPEPMFH)",
+   "plastic/feedstock_invoices:INV-U0ZDWYIAO (28 Oct 2024, 2 t from COL-VRRVJNU)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-VRRVJNU (257 t supplied; declared capacity 7 t/month; 1 vehicles; registered Apr 2024)",
+   "plastic/collectors:COL-YPEPMFH (156 t supplied; declared capacity 17 t/month; 1 vehicles; registered Mar 2024)",
+   "plastic/collectors:COL-2M0C6MT (64 t supplied; declared capacity 26 t/month; 1 vehicles; registered Apr 2024)",
+   "plastic/collectors:COL-XQE9TOL (36 t supplied; declared capacity 125 t/month; 5 vehicles; registered Aug 2018)",
+   "plastic/collectors:COL-DY5407Z (35 t supplied; declared capacity 8 t/month; 6 vehicles; registered Jun 2018)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 262 t of 677 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 3, address 0, director 1, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-L67MQ3GYM (CAT_IV, Rs 807/t to PIBO-DORAPIZ)",
+   "plastic/certificate_sales:SALE-44LJ0T2QL (CAT_IV, Rs 807/t to PIBO-DORAPIZ)",
+   "plastic/certificate_sales:SALE-E0PDU6HIQ (CAT_IV, Rs 807/t to PIBO-DORAPIZ)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-9E4FWBB Sahyadri Pharma Pvt Ltd (229 t)",
+  "PIBO-U8G82TG Sterling Snacks LLP (91 t)",
+  "PIBO-B1B84PT Narmada Personal Care Pvt Ltd (84 t)",
+  "PIBO-H87THBY Unity Himalaya Foods LLP (40 t)",
+  "PIBO-DGFLMV9 Unity Eastern FMCG LLP (30 t)"
+ ],
+ "inspection_checklist": [
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 85
+}

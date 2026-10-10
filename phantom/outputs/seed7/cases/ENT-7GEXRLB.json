@@ -1,0 +1,133 @@
+{
+ "entity_id": "ENT-7GEXRLB",
+ "profile": {
+  "name": "Deccan Metro Plast",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 770.0,
+  "connected_load_kw": 105.0,
+  "epr_registered": "2022-11-24"
+ },
+ "scores": {
+  "rule_score": 0.9996,
+  "iforest_score": 0.6592,
+  "dominant_score": 1.8451,
+  "ens_score": 0.9661,
+  "ens_pct": 0.9724
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (21% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 31% of months"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.417,
+   "text": "52% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.377,
+   "text": "Sold products equal only 48% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.364,
+   "text": "33% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.325,
+   "text": "17% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2076,
+   "population_percentile": 98.8,
+   "shap": -0.3667
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3309
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.3272,
+   "population_percentile": 97.9,
+   "shap": -0.2992
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2919
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-Y5MF8VMP (Mar 2025: 35,772 kWh for 321.4 t claimed)",
+   "plastic/electricity_bills:BILL-U53ZUNFW (Mar 2026: 32,184 kWh for 277.4 t claimed)",
+   "plastic/electricity_bills:BILL-AGY6Y1DE (Mar 2024: 27,564 kWh for 225.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-9PX6H5MIG (10 Apr 2023, 4 t from ENT-3ZAA7X6)",
+   "plastic/feedstock_invoices:INV-U8QQG6Y8R (13 Apr 2023, 1 t from COL-OXELVWJ)",
+   "plastic/feedstock_invoices:INV-MNG2SY9E9 (14 Apr 2023, 3 t from COL-AMA3QTQ)",
+   "plastic/feedstock_invoices:INV-SJBTSADSV (26 Apr 2023, 0.5 t from COL-BDKN2FT)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-AMA3QTQ (522 t supplied; declared capacity 25 t/month; 2 vehicles; registered Dec 2022)",
+   "plastic/collectors:COL-UR6BHKV (392 t supplied; declared capacity 265 t/month; 3 vehicles; registered Jan 2021)",
+   "plastic/collectors:COL-TRW2MDZ (360 t supplied; declared capacity 32 t/month; 2 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-GG8010F (359 t supplied; declared capacity 47 t/month; 3 vehicles; registered Dec 2020)",
+   "plastic/collectors:COL-93GQN8E (207 t supplied; declared capacity 61 t/month; 2 vehicles; registered Apr 2017)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 831 t of 3,347 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-3ZAA7X6 (706 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-B9VL9U5 (371 t bought)",
+   "plastic/offtakers:OFT-IWOFHRX (243 t bought)",
+   "plastic/offtakers:OFT-DQYIWYI (186 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-8FSMVM6 Sai Kaveri Foods & Co (614 t)",
+  "PIBO-SXNONX3 Deccan Shree Snacks (541 t)",
+  "PIBO-DX5X2I6 Western Earth Snacks LLP (423 t)",
+  "PIBO-3LQJ3SW Balaji Snacks LLP (164 t)",
+  "PIBO-0BOGV38 Sanjeevani Retail Pvt Ltd (148 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 70
+}

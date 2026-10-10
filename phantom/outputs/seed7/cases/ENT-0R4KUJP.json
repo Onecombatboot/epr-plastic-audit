@@ -1,0 +1,117 @@
+{
+ "entity_id": "ENT-0R4KUJP",
+ "profile": {
+  "name": "Maa Recyclers Pvt Ltd",
+  "state": "Haryana",
+  "district": "Faridabad",
+  "declared_capacity_tpa": 560.0,
+  "connected_load_kw": 52.0,
+  "epr_registered": "2024-05-26"
+ },
+ "scores": {
+  "rule_score": 0.9996,
+  "iforest_score": 0.6328,
+  "dominant_score": 2.1852,
+  "ens_score": 0.9633,
+  "ens_pct": 0.968
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 96% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.30x the minimum needed for the tonnes claimed (90 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.681,
+   "text": "Sold products equal only 22% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.32x the cost floor)"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.34x the market median price"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3603
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 1.0,
+   "population_percentile": 98.5,
+   "shap": -0.2866
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 1.0,
+   "population_percentile": 99.0,
+   "shap": -0.2838
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.9565,
+   "population_percentile": 99.6,
+   "shap": -0.2701
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-BKHLEQ3F (Dec 2025: 13,629 kWh for 167.3 t claimed)",
+   "plastic/electricity_bills:BILL-YX150GY2 (May 2025: 11,649 kWh for 139.7 t claimed)",
+   "plastic/electricity_bills:BILL-QBYR9A2V (Jun 2025: 11,763 kWh for 139.9 t claimed)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-HRO7TGV (355 t bought)",
+   "plastic/offtakers:OFT-OQNZH68 (58 t bought)",
+   "plastic/offtakers:OFT-YQSCO46 (49 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-DQYOTOOKJ (CAT_IV, Rs 441/t to PIBO-WKVCC3I)",
+   "plastic/certificate_sales:SALE-FN94XMOFS (CAT_IV, Rs 453/t to PIBO-L1OAWZW)",
+   "plastic/certificate_sales:SALE-91P0KDKFF (CAT_IV, Rs 453/t to PIBO-L1OAWZW)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-QD4RULV Star Star Foods Pvt Ltd (413 t)",
+  "PIBO-7JSDJXA Kaveri Vasundhara Home Care (290 t)",
+  "PIBO-JBN4OI9 Amrit Home Care (279 t)",
+  "PIBO-4EXMDH1 Amrit Snacks Pvt Ltd (232 t)",
+  "PIBO-IYH4NDY Unity Pharma Ltd (154 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 81
+}

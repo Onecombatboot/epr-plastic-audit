@@ -1,0 +1,130 @@
+{
+ "entity_id": "ENT-ETUJN0K",
+ "profile": {
+  "name": "Vasundhara Poly Industries Pvt Ltd",
+  "state": "Andhra Pradesh",
+  "district": "Visakhapatnam",
+  "declared_capacity_tpa": 6270.0,
+  "connected_load_kw": 477.0,
+  "epr_registered": "2022-12-24"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.5996,
+  "dominant_score": 1.7435,
+  "ens_score": 0.96,
+  "ens_pct": 0.9688
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 43% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 94% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.765,
+   "text": "58% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.44x the cost floor)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.528,
+   "text": "24% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.578,
+   "population_percentile": 98.2,
+   "shap": -0.3561
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2884
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2748
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.9444,
+   "population_percentile": 98.6,
+   "shap": -0.2241
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-TQST7SP3 (Oct 2025: 329,876 kWh for 809.6 t claimed)",
+   "plastic/electricity_bills:BILL-6EO5SN3K (Oct 2024: 327,958 kWh for 804.6 t claimed)",
+   "plastic/electricity_bills:BILL-Q9L3TY5Z (Aug 2025: 328,784 kWh for 805.5 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-B3AWARD9S (02 Apr 2023, 6 t from COL-DQC8ZRG)",
+   "plastic/feedstock_invoices:INV-WLK9RTGCH (02 Apr 2023, 5.79 t from COL-EU7LMN4)",
+   "plastic/feedstock_invoices:INV-658EY5HKN (02 Apr 2023, 10.91 t from COL-CILJWVA)",
+   "plastic/feedstock_invoices:INV-TV6FK263T (05 Apr 2023, 3 t from COL-DQC8ZRG)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-EU7LMN4 (5,673 t supplied; declared capacity 10 t/month; 2 vehicles; registered Nov 2022)",
+   "plastic/collectors:COL-X8KI7D3 (4,367 t supplied; declared capacity 36 t/month; 2 vehicles; registered Dec 2022)",
+   "plastic/collectors:COL-8O38UMC (3,183 t supplied; declared capacity 349 t/month; 4 vehicles; registered Nov 2015)",
+   "plastic/collectors:COL-CILJWVA (3,145 t supplied; declared capacity 20 t/month; 2 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-4BT08YA (2,983 t supplied; declared capacity 234 t/month; 6 vehicles; registered Mar 2018)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-SE0L6TST4 (CAT_IV, Rs 557/t to PIBO-1FPWY8S)",
+   "plastic/certificate_sales:SALE-BHT9TS6BZ (CAT_IV, Rs 557/t to PIBO-JO3QSN5)",
+   "plastic/certificate_sales:SALE-D5T8UJV6C (CAT_IV, Rs 557/t to PIBO-ET9G9KU)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-CDX1T70 Royal Himalaya Home Care LLP (2,316 t)",
+  "PIBO-OFJ766P Navjeevan Global Retail (2,307 t)",
+  "PIBO-F7TG7Q2 Metro Dairy Pvt Ltd (1,921 t)",
+  "PIBO-BWO0P1L Sahyadri Shree Snacks Pvt Ltd (1,440 t)",
+  "PIBO-56H96X4 Royal Home Care LLP (1,348 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 79
+}

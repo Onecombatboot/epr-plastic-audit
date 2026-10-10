@@ -1,0 +1,133 @@
+{
+ "entity_id": "ENT-8JZPMEM",
+ "profile": {
+  "name": "Everest Plast",
+  "state": "Madhya Pradesh",
+  "district": "Bhopal",
+  "declared_capacity_tpa": 880.0,
+  "connected_load_kw": 91.0,
+  "epr_registered": "2023-05-03"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6164,
+  "dominant_score": 6.9479,
+  "ens_score": 0.9739,
+  "ens_pct": 0.978
+ },
+ "reasons": [
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "62% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.719,
+   "text": "Claimed tonnage in the busiest month would need 178% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.686,
+   "text": "Certificates claim more than the declared monthly capacity in 26% of months"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.40x the cost floor)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "71% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6236,
+   "population_percentile": 98.6,
+   "shap": -0.2746
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.2857,
+   "population_percentile": 87.1,
+   "shap": -0.2586
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.7092,
+   "population_percentile": 99.2,
+   "shap": -0.2432
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.2571,
+   "population_percentile": 96.3,
+   "shap": -0.2184
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-2UUOYCOG (Feb 2026: 23,019 kWh for 390.1 t claimed)",
+   "plastic/electricity_bills:BILL-N091JMXD (Feb 2025: 24,494 kWh for 393.8 t claimed)",
+   "plastic/electricity_bills:BILL-9QM2Z3GM (Mar 2026: 23,456 kWh for 339.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-SDHGUOJJS (30 May 2023, 13 t from COL-SYC3A01)",
+   "plastic/feedstock_invoices:INV-BYLGZ1GZ7 (03 Jun 2023, 1 t from COL-MY5UNLX)",
+   "plastic/feedstock_invoices:INV-GSXCZK0L9 (16 Jun 2023, 12 t from COL-SYC3A01)",
+   "plastic/feedstock_invoices:INV-50LSX5T5V (18 Jun 2023, 1.08 t from COL-ZMXLJUR)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-SYC3A01 (2,552 t supplied; declared capacity 28 t/month; 2 vehicles; registered May 2023)",
+   "plastic/collectors:COL-G29THU5 (425 t supplied; declared capacity 31 t/month; 2 vehicles; registered Apr 2022)",
+   "plastic/collectors:COL-JMKZKTX (283 t supplied; declared capacity 119 t/month; 2 vehicles; registered Jun 2018)",
+   "plastic/collectors:COL-SOF68CN (262 t supplied; declared capacity 28 t/month; 6 vehicles; registered Aug 2022)",
+   "plastic/collectors:COL-MY5UNLX (183 t supplied; declared capacity 163 t/month; 5 vehicles; registered Apr 2022)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 1,039 t of 4,029 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-5KJS21C8Z (CAT_IV, Rs 507/t to PIBO-SEQ7G7Q)",
+   "plastic/certificate_sales:SALE-GIFZASKUD (CAT_IV, Rs 507/t to PIBO-SEQ7G7Q)",
+   "plastic/certificate_sales:SALE-E0AMLC7WY (CAT_IV, Rs 507/t to PIBO-SEQ7G7Q)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-09Z9XXV Bharat Home Care Pvt Ltd (1,031 t)",
+  "PIBO-WD58K54 Metro Foods (529 t)",
+  "PIBO-TN810O2 Pragati Home Care Pvt Ltd (399 t)",
+  "PIBO-72GCU31 Northern Beverages (178 t)",
+  "PIBO-339WA6R Unity Sterling Consumer Products LLP (172 t)"
+ ],
+ "inspection_checklist": [
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 56
+}

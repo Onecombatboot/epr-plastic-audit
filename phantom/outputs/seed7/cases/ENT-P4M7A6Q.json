@@ -1,0 +1,104 @@
+{
+ "entity_id": "ENT-P4M7A6Q",
+ "profile": {
+  "name": "Global Plastics Pvt Ltd",
+  "state": "Tamil Nadu",
+  "district": "Krishnagiri",
+  "declared_capacity_tpa": 570.0,
+  "connected_load_kw": 33.0,
+  "epr_registered": "2025-01-12"
+ },
+ "scores": {
+  "rule_score": 0.9984,
+  "iforest_score": 0.6249,
+  "dominant_score": 21.5424,
+  "ens_score": 0.9691,
+  "ens_pct": 0.9768
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (11% of its feedstock)"
+  },
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 87% of expected)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.245,
+   "text": "Category III share of certificates is 23%, +21% versus what its process route can produce"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.4047
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3551
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.354
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.1087,
+   "population_percentile": 98.2,
+   "shap": -0.3536
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-7YYQE109 (Jun 2025: 14,018 kWh for 42.5 t claimed)",
+   "plastic/electricity_bills:BILL-1AHSAC5W (Apr 2025: 12,232 kWh for 36.4 t claimed)",
+   "plastic/electricity_bills:BILL-KCJIND5R (Dec 2025: 11,334 kWh for 33.3 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-05: 66 t of 488 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-KWGOAUW (54 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-EBEHO5K Star Pragati Retail Pvt Ltd (149 t)",
+  "PIBO-ZVA1PK9 Supreme Dairy Pvt Ltd (67 t)",
+  "PIBO-PMEKYKC Unity Home Care Pvt Ltd (64 t)",
+  "PIBO-J39SEIA Amrit Home Care Pvt Ltd (34 t)",
+  "PIBO-8V95LNI Pioneer Ganga Dairy (33 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 59
+}

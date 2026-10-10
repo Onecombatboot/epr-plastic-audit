@@ -1,0 +1,119 @@
+{
+ "entity_id": "ENT-JPS2YQX",
+ "profile": {
+  "name": "Global Plastics",
+  "state": "Karnataka",
+  "district": "Mysuru",
+  "declared_capacity_tpa": 410.0,
+  "connected_load_kw": 37.0,
+  "epr_registered": "2024-02-13"
+ },
+ "scores": {
+  "rule_score": 0.9998,
+  "iforest_score": 0.6347,
+  "dominant_score": 2.3765,
+  "ens_score": 0.9732,
+  "ens_pct": 0.978
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (17% of its feedstock)"
+  },
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 60% of expected)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.569,
+   "text": "96% of certificate tonnes were sold below the cost of recycling (average 0.82x the cost floor)"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 3 other registered entity(ies)"
+  },
+  {
+   "rule": "very_young_company",
+   "group": "registry",
+   "strength": 0.296,
+   "text": "Company was only 64 days old when it registered under EPR"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 99.3,
+   "shap": -0.3851
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.1705,
+   "population_percentile": 99.5,
+   "shap": -0.3721
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 99.0,
+   "shap": -0.3622
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 5.0,
+   "population_percentile": 99.3,
+   "shap": -0.3276
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-7JURRUVS (Dec 2025: 16,951 kWh for 36.4 t claimed)",
+   "plastic/electricity_bills:BILL-3RI9IY57 (Jun 2025: 15,670 kWh for 33.6 t claimed)",
+   "plastic/electricity_bills:BILL-ICPXJR70 (May 2024: 14,747 kWh for 30.2 t claimed)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-K3VTKLF (125 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 3, address 0, director 5, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-LM9MEYSYV (CAT_IV, Rs 1,140/t to PIBO-JYZPBIQ)",
+   "plastic/certificate_sales:SALE-1EK7BHU6W (CAT_IV, Rs 1,172/t to PIBO-S1VM1XB)",
+   "plastic/certificate_sales:SALE-9659NIYK7 (CAT_IV, Rs 1,172/t to PIBO-S1VM1XB)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-LWZR4FH Eco Personal Care Pvt Ltd (215 t)",
+  "PIBO-KE4FDE6 Western Pharma Pvt Ltd (127 t)",
+  "PIBO-059AOZD Southern Beverages Pvt Ltd (109 t)",
+  "PIBO-6OC8UD8 Earth Dairy LLP (102 t)",
+  "PIBO-021796D Maa Snacks LLP (72 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Check the company's incorporation and registration history and the source of its capital."
+ ],
+ "rank": 56
+}

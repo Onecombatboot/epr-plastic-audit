@@ -1,0 +1,136 @@
+{
+ "entity_id": "ENT-8B5EU3P",
+ "profile": {
+  "name": "Navjeevan Plast & Co",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 1770.0,
+  "connected_load_kw": 203.0,
+  "epr_registered": "2023-12-31"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6669,
+  "dominant_score": 2.2479,
+  "ens_score": 0.9817,
+  "ens_pct": 0.9884
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (26% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 89% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 48%, +46% versus what its process route can produce"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.482,
+   "text": "22% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 7.0,
+   "population_percentile": 99.7,
+   "shap": -0.3232
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3158
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2623,
+   "population_percentile": 99.1,
+   "shap": -0.3148
+  },
+  {
+   "feature": "net_recycler_in_degree",
+   "label": "net_recycler_in_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2529
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-QZL2FK3C (Nov 2024: 60,728 kWh for 298.3 t claimed)",
+   "plastic/electricity_bills:BILL-BI5AC9HW (Feb 2026: 52,335 kWh for 256.4 t claimed)",
+   "plastic/electricity_bills:BILL-9T5UOHDY (Apr 2025: 52,351 kWh for 250.9 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-OD26FJ9IA (10 Dec 2023, 5 t from COL-AYG4AE6)",
+   "plastic/feedstock_invoices:INV-M639V77SI (15 Dec 2023, 16 t from ENT-YUF5CJP)",
+   "plastic/feedstock_invoices:INV-08APHKOVZ (18 Dec 2023, 2 t from COL-EJJAM9Y)",
+   "plastic/feedstock_invoices:INV-4W5XBONNM (24 Dec 2023, 4 t from COL-9ZH4RTP)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-Q6CT720 (757 t supplied; declared capacity 15 t/month; 2 vehicles; registered Jun 2023)",
+   "plastic/collectors:COL-PVS6FPZ (614 t supplied; declared capacity 315 t/month; 1 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-HJIAKEV (467 t supplied; declared capacity 64 t/month; 6 vehicles; registered Jun 2017)",
+   "plastic/collectors:COL-AYG4AE6 (445 t supplied; declared capacity 9 t/month; 2 vehicles; registered Jul 2023)",
+   "plastic/collectors:COL-9ZH4RTP (358 t supplied; declared capacity 27 t/month; 1 vehicles; registered Sep 2023)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2024-12: 550 t of 6,089 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-YUF5CJP (1,625 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-XJK5K74 (435 t bought)",
+   "plastic/offtakers:OFT-G72D6ZI (310 t bought)",
+   "plastic/offtakers:OFT-EJ250KX (284 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 7, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-PTITAYC Ganesh National Foods (845 t)",
+  "PIBO-6IBFIMZ Narmada FMCG Pvt Ltd (684 t)",
+  "PIBO-4UALU3R Sahyadri Pharma Pvt Ltd (485 t)",
+  "PIBO-NORQX3R Metro Pragati Retail (351 t)",
+  "PIBO-EBEHO5K Star Pragati Retail Pvt Ltd (296 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 30
+}

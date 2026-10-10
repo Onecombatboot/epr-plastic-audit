@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-O1U3CQV",
+ "profile": {
+  "name": "Everest Plast Pvt Ltd",
+  "state": "Tamil Nadu",
+  "district": "Krishnagiri",
+  "declared_capacity_tpa": 410.0,
+  "connected_load_kw": 74.0,
+  "epr_registered": "2025-06-19"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6303,
+  "dominant_score": 1.9564,
+  "ens_score": 0.9638,
+  "ens_pct": 0.97
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 70% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 2 other plant(s)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "72% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.81x the cost floor)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.597,
+   "text": "Sold products equal only 29% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "72% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.3214
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3172
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.5,
+   "population_percentile": 87.6,
+   "shap": -0.3108
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 5.0,
+   "population_percentile": 99.3,
+   "shap": -0.2637
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-C1MY2KG6 (Feb 2026: 19,556 kWh for 257.7 t claimed)",
+   "plastic/electricity_bills:BILL-6HLF46VD (Mar 2026: 18,781 kWh for 202.0 t claimed)",
+   "plastic/electricity_bills:BILL-PVJ3U51F (Jan 2026: 19,823 kWh for 103.9 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 567 t of 786 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-4B6NSXV (45 t bought)",
+   "plastic/offtakers:OFT-80Z00RW (26 t bought)",
+   "plastic/offtakers:OFT-16H3MJB (26 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 1, director 5, photos 2)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-3CH0MOM11 (CAT_IV, Rs 1,239/t to PIBO-YN6JZ23)",
+   "plastic/certificate_sales:SALE-H1JXCWBKB (CAT_IV, Rs 1,239/t to PIBO-YN6JZ23)",
+   "plastic/certificate_sales:SALE-LO8KTPP0N (CAT_IV, Rs 1,239/t to PIBO-YN6JZ23)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-97O6H6B Balaji FMCG & Co (374 t)",
+  "PIBO-NRLRTQ6 Northern Ganesh Consumer Products (153 t)",
+  "PIBO-NG70K1X Shri Pharma (63 t)",
+  "PIBO-RKSSURO Prime Unity Home Care (32 t)",
+  "PIBO-K1CTC1B Laxmi FMCG Pvt Ltd (24 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 76
+}

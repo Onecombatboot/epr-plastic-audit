@@ -1,0 +1,130 @@
+{
+ "entity_id": "ENT-XDM7NC0",
+ "profile": {
+  "name": "Shree Narmada Plastics Pvt Ltd",
+  "state": "Telangana",
+  "district": "Medchal",
+  "declared_capacity_tpa": 2530.0,
+  "connected_load_kw": 241.0,
+  "epr_registered": "2023-06-12"
+ },
+ "scores": {
+  "rule_score": 0.9995,
+  "iforest_score": 0.6154,
+  "dominant_score": 2.2822,
+  "ens_score": 0.9631,
+  "ens_pct": 0.9708
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 18% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.706,
+   "text": "Certificates claim more than the declared monthly capacity in 26% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.659,
+   "text": "51% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "66% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.41,
+   "text": "20% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.372,
+   "text": "73% of certificate tonnes were sold below the cost of recycling (average 0.82x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.6636,
+   "population_percentile": 99.4,
+   "shap": -0.3179
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 2.0,
+   "population_percentile": 93.5,
+   "shap": -0.3023
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5116,
+   "population_percentile": 97.8,
+   "shap": -0.2987
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2631
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-0HX81X50 (Feb 2025: 328,155 kWh for 593.7 t claimed)",
+   "plastic/electricity_bills:BILL-26WP51MP (Mar 2025: 310,455 kWh for 559.2 t claimed)",
+   "plastic/electricity_bills:BILL-NOB02M0Z (Feb 2026: 333,820 kWh for 600.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-X5G4MJKC4 (03 Jun 2023, 2 t from COL-IKKF6AP)",
+   "plastic/feedstock_invoices:INV-4I0M2SBUS (09 Jun 2023, 6 t from COL-KWVMWDS)",
+   "plastic/feedstock_invoices:INV-38AVCXWGN (12 Jun 2023, 2 t from COL-K2HXEB1)",
+   "plastic/feedstock_invoices:INV-IM49G478D (18 Jun 2023, 2 t from COL-07DGRIO)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-KWVMWDS (1,023 t supplied; declared capacity 36 t/month; 2 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-I8X5WD0 (916 t supplied; declared capacity 82 t/month; 2 vehicles; registered Mar 2018)",
+   "plastic/collectors:COL-VQDYS7E (893 t supplied; declared capacity 13 t/month; 2 vehicles; registered Apr 2023)",
+   "plastic/collectors:COL-DUY3XIH (829 t supplied; declared capacity 5 t/month; 2 vehicles; registered Apr 2023)",
+   "plastic/collectors:COL-O6W3TNB (512 t supplied; declared capacity 37 t/month; 6 vehicles; registered Apr 2020)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 1,869 t of 6,957 t generated)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-NBNSFN3XX (CAT_IV, Rs 1,049/t to PIBO-VOV99AN)",
+   "plastic/certificate_sales:SALE-TQQBY4G8P (CAT_IV, Rs 1,062/t to PIBO-D1M7WJG)",
+   "plastic/certificate_sales:SALE-3X7D9QBTU (CAT_IV, Rs 1,062/t to PIBO-D1M7WJG)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-A7RYM7E Vasundhara Southern Home Care & Co (714 t)",
+  "PIBO-DQ0OVNB Sai Bharat Home Care LLP (677 t)",
+  "PIBO-XYEMDSY Prime Foods LLP (397 t)",
+  "PIBO-OQEZXEX Star Bharat Pharma LLP (304 t)",
+  "PIBO-NX5RS4Q Balaji Snacks LLP (285 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 74
+}

@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-SCCUUSZ",
+ "profile": {
+  "name": "Amrit Granules Ltd",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 16980.0,
+  "connected_load_kw": 1351.0,
+  "epr_registered": "2024-11-23"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6286,
+  "dominant_score": 9.0318,
+  "ens_score": 0.9838,
+  "ens_pct": 0.988
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 94% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "82% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "70% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "56% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "shell_offtakers",
+   "group": "output",
+   "strength": 0.5,
+   "text": "83% of product sales go to buyers incorporated under a year before the invoice"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 2 other registered entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8226,
+   "population_percentile": 99.5,
+   "shap": -0.3286
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 2.0,
+   "population_percentile": 98.7,
+   "shap": -0.328
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3276
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 5.0,
+   "population_percentile": 99.3,
+   "shap": -0.298
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-AOLT8KXR (May 2025: 409,606 kWh for 2,461.5 t claimed)",
+   "plastic/electricity_bills:BILL-YVUBJP0A (Oct 2025: 455,137 kWh for 2,711.6 t claimed)",
+   "plastic/electricity_bills:BILL-1XRC63DG (Mar 2026: 392,008 kWh for 2,321.8 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-TYJG8ICMJ (01 Nov 2024, 7 t from COL-T43HDH2)",
+   "plastic/feedstock_invoices:INV-3970FFA8Q (01 Nov 2024, 7 t from COL-VQDV9AI)",
+   "plastic/feedstock_invoices:INV-IBK1TZ1YA (02 Nov 2024, 7 t from COL-N9VPGS8)",
+   "plastic/feedstock_invoices:INV-OML4170H6 (02 Nov 2024, 7 t from COL-FCO7KK2)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-FCO7KK2 (14,197 t supplied; declared capacity 11 t/month; 1 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-T43HDH2 (5,732 t supplied; declared capacity 11 t/month; 2 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-N9VPGS8 (3,832 t supplied; declared capacity 27 t/month; 2 vehicles; registered Jun 2024)",
+   "plastic/collectors:COL-VQDV9AI (3,798 t supplied; declared capacity 15 t/month; 2 vehicles; registered Sep 2024)",
+   "plastic/collectors:COL-03BM8EY (3,699 t supplied; declared capacity 7 t/month; 2 vehicles; registered Sep 2024)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-UYHKTLY (25,575 t bought)",
+   "plastic/offtakers:OFT-HV62GZ9 (1,972 t bought)",
+   "plastic/offtakers:OFT-6RQVQFL (1,698 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 2, address 2, director 5, photos 0)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-HOSSCOC Narmada Hind Snacks Pvt Ltd (1,855 t)",
+  "PIBO-CE2Q0CQ Shri Home Care LLP (1,404 t)",
+  "PIBO-5KHGD1Q Southern Laxmi Snacks Pvt Ltd (1,036 t)",
+  "PIBO-MQD8S29 Western Personal Care (942 t)",
+  "PIBO-KFC5PSL Prakriti Personal Care & Co (583 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 31
+}

@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-OY4SGL3",
+ "profile": {
+  "name": "Supreme Royal Poly Industries LLP",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 4790.0,
+  "connected_load_kw": 165.0,
+  "epr_registered": "2025-04-04"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6994,
+  "dominant_score": 5.0515,
+  "ens_score": 0.9972,
+  "ens_pct": 0.9988
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (30% of its feedstock)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 315% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.17x the minimum needed for the tonnes claimed (26 kWh/t against at least 150)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "83% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "69% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2956
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2602
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.297,
+   "population_percentile": 99.3,
+   "shap": -0.2548
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.2424
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-N8CA2QU6 (Nov 2025: 53,054 kWh for 2,106.9 t claimed)",
+   "plastic/electricity_bills:BILL-51T7O9EL (Dec 2025: 64,954 kWh for 2,529.0 t claimed)",
+   "plastic/electricity_bills:BILL-BINCHGPN (Jul 2025: 49,870 kWh for 1,912.1 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-NSOVFN3L2 (01 Apr 2025, 14 t from COL-O9ZG1Q4)",
+   "plastic/feedstock_invoices:INV-IC3TZQ71X (04 Apr 2025, 8 t from ENT-WTSFV1F)",
+   "plastic/feedstock_invoices:INV-OBKND4ACE (04 Apr 2025, 16 t from ENT-WTSFV1F)",
+   "plastic/feedstock_invoices:INV-H2E8JD6YE (04 Apr 2025, 33 t from COL-O9ZG1Q4)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-O9ZG1Q4 (10,554 t supplied; declared capacity 7 t/month; 2 vehicles; registered Jan 2025)",
+   "plastic/collectors:COL-484EDW0 (2,918 t supplied; declared capacity 40 t/month; 1 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-5K0ZGQX (791 t supplied; declared capacity 136 t/month; 4 vehicles; registered Sep 2018)",
+   "plastic/collectors:COL-GGN70Z6 (501 t supplied; declared capacity 105 t/month; 3 vehicles; registered Nov 2018)",
+   "plastic/collectors:COL-TTI8GLZ (209 t supplied; declared capacity 60 t/month; 6 vehicles; registered Apr 2015)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-WTSFV1F (6,824 t sold to this plant)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-PK8DHUX National Dairy Pvt Ltd (1,410 t)",
+  "PIBO-01IP67T Royal Prime Pharma Pvt Ltd (315 t)",
+  "PIBO-J6TWZTN Shri Sunrise Foods LLP (183 t)",
+  "PIBO-N4MVINV Himalaya FMCG (159 t)",
+  "PIBO-LPXY0X5 Prime Foods & Co (139 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 4
+}

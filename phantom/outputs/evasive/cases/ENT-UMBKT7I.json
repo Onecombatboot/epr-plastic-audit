@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-UMBKT7I",
+ "profile": {
+  "name": "Eco Green Plast Pvt Ltd",
+  "state": "Maharashtra",
+  "district": "Nagpur",
+  "declared_capacity_tpa": 620.0,
+  "connected_load_kw": 121.0,
+  "epr_registered": "2025-05-25"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6351,
+  "dominant_score": 9.164,
+  "ens_score": 0.989,
+  "ens_pct": 0.9924
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 20% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 91% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "83% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "44% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 17% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "59% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.3458
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3242
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.3144
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8323,
+   "population_percentile": 99.6,
+   "shap": -0.2742
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-RBFLLOFO (Feb 2026: 121,481 kWh for 123.3 t claimed)",
+   "plastic/electricity_bills:BILL-2QT4WVFK (Dec 2025: 125,065 kWh for 126.8 t claimed)",
+   "plastic/electricity_bills:BILL-Q24VIM49 (Nov 2025: 141,028 kWh for 142.1 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-3ITC0G55R (10 May 2025, 10 t from COL-2QODJ54)",
+   "plastic/feedstock_invoices:INV-TE6JO1NSP (14 May 2025, 0.5 t from COL-SWR7Y3X)",
+   "plastic/feedstock_invoices:INV-JLWU8511K (18 May 2025, 8 t from COL-IVEVNQK)",
+   "plastic/feedstock_invoices:INV-DRH93E2P2 (25 May 2025, 0.4 t from COL-P6V5OKP)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-IVEVNQK (770 t supplied; declared capacity 22 t/month; 1 vehicles; registered Dec 2024)",
+   "plastic/collectors:COL-2QODJ54 (309 t supplied; declared capacity 18 t/month; 2 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-3GZQW2Y (37 t supplied; declared capacity 29 t/month; 1 vehicles; registered Dec 2020)",
+   "plastic/collectors:COL-LZRV714 (27 t supplied; declared capacity 255 t/month; 5 vehicles; registered Oct 2022)",
+   "plastic/collectors:COL-7O02TEL (27 t supplied; declared capacity 12 t/month; 3 vehicles; registered Jul 2019)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-RGRFPV7 (52 t bought)",
+   "plastic/offtakers:OFT-HPZWSOU (43 t bought)",
+   "plastic/offtakers:OFT-RS785GS (34 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-U285AYW Prakriti Personal Care Pvt Ltd (532 t)",
+  "PIBO-9APT2S0 Balaji Metro Retail Pvt Ltd (219 t)",
+  "PIBO-XSJ9D2N Sunrise Dairy Pvt Ltd (63 t)",
+  "PIBO-KOJSK0M Earth Kaveri Dairy (55 t)",
+  "PIBO-62WS0NA Sunrise Snacks LLP (50 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 20
+}

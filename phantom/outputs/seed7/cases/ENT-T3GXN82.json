@@ -1,0 +1,132 @@
+{
+ "entity_id": "ENT-T3GXN82",
+ "profile": {
+  "name": "Himalaya Polytech & Co",
+  "state": "Tamil Nadu",
+  "district": "Tiruppur",
+  "declared_capacity_tpa": 4640.0,
+  "connected_load_kw": 313.0,
+  "epr_registered": "2025-08-24"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6237,
+  "dominant_score": 4.076,
+  "ens_score": 0.9751,
+  "ens_pct": 0.9832
+ },
+ "reasons": [
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "54% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 57%, +55% versus what its process route can produce"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.82x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "70% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.594,
+   "text": "Electricity bought is only 0.48x the minimum needed for the tonnes claimed (144 kWh/t against at least 300)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.3671,
+   "population_percentile": 98.2,
+   "shap": -0.3169
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 1.0,
+   "population_percentile": 99.0,
+   "shap": -0.2958
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 98.8,
+   "shap": -0.2652
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 90.4,
+   "shap": -0.239
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-T0L360ZI (Sep 2025: 13,686 kWh for 124.8 t claimed)",
+   "plastic/electricity_bills:BILL-D03W0HFU (Jan 2026: 18,323 kWh for 151.4 t claimed)",
+   "plastic/electricity_bills:BILL-NZ5VLLS1 (Oct 2025: 17,362 kWh for 120.3 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-BDA9ZES4X (02 Aug 2025, 6 t from COL-YSW93ST)",
+   "plastic/feedstock_invoices:INV-J4BYJB55G (03 Aug 2025, 1 t from COL-STRF5PY)",
+   "plastic/feedstock_invoices:INV-YTWRT38OM (03 Aug 2025, 9 t from COL-7267OJ5)",
+   "plastic/feedstock_invoices:INV-Y1CGN4KF6 (08 Aug 2025, 3 t from COL-6GUOETN)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-6GUOETN (375 t supplied; declared capacity 21 t/month; 1 vehicles; registered Apr 2025)",
+   "plastic/collectors:COL-7267OJ5 (292 t supplied; declared capacity 31 t/month; 2 vehicles; registered May 2025)",
+   "plastic/collectors:COL-YSW93ST (114 t supplied; declared capacity 33 t/month; 1 vehicles; registered Feb 2025)",
+   "plastic/collectors:COL-4P4S6U4 (102 t supplied; declared capacity 24 t/month; 2 vehicles; registered Jul 2025)",
+   "plastic/collectors:COL-GGA9OE8 (51 t supplied; declared capacity 13 t/month; 1 vehicles; registered Jul 2025)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-02: 195 t of 1,007 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-UWUW12VZE (CAT_IV, Rs 1,166/t to PIBO-8EJHQ85)",
+   "plastic/certificate_sales:SALE-P1UIHWMQM (CAT_IV, Rs 1,166/t to PIBO-8EJHQ85)",
+   "plastic/certificate_sales:SALE-AMQVH2HS8 (CAT_IV, Rs 1,166/t to PIBO-8EJHQ85)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-7KQG8IU Shree Retail LLP (156 t)",
+  "PIBO-ETNM66W Durga FMCG Pvt Ltd (143 t)",
+  "PIBO-G21969B Metro Snacks LLP (78 t)",
+  "PIBO-4A3F9IJ Metro Ganga Dairy LLP (60 t)",
+  "PIBO-P675RHJ Star Earth Consumer Products Pvt Ltd (50 t)"
+ ],
+ "inspection_checklist": [
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 43
+}

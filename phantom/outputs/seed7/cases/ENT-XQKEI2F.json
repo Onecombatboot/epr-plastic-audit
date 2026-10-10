@@ -1,0 +1,132 @@
+{
+ "entity_id": "ENT-XQKEI2F",
+ "profile": {
+  "name": "Jai Durga Plast LLP",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 4420.0,
+  "connected_load_kw": 18.0,
+  "epr_registered": "2024-05-08"
+ },
+ "scores": {
+  "rule_score": 0.9949,
+  "iforest_score": 0.6207,
+  "dominant_score": 4.9289,
+  "ens_score": 0.9601,
+  "ens_pct": 0.9644
+ },
+ "reasons": [
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.40x the cost floor)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.545,
+   "text": "44% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.464,
+   "text": "Certificates claim more than the declared monthly capacity in 17% of months"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.448,
+   "text": "Certificates sold at 0.45x the market median price"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.44,
+   "text": "54% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "shared_address",
+   "group": "identity",
+   "strength": 0.3,
+   "text": "Registered at an address shared with 7 other entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 7.0,
+   "population_percentile": 99.7,
+   "shap": -0.363
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.4408,
+   "population_percentile": 98.4,
+   "shap": -0.2931
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.5402,
+   "population_percentile": 97.7,
+   "shap": -0.2384
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.1739,
+   "population_percentile": 95.9,
+   "shap": -0.2308
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-G3JD1T82 (Feb 2026: 6,728 kWh for 545.7 t claimed)",
+   "plastic/electricity_bills:BILL-WDLMVKDB (Feb 2025: 6,010 kWh for 476.5 t claimed)",
+   "plastic/electricity_bills:BILL-ZWTKZ1RJ (Mar 2026: 6,121 kWh for 456.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-PW77LW4ZY (21 May 2024, 7 t from COL-L4ROES8)",
+   "plastic/feedstock_invoices:INV-CFMMNO3CA (17 Jun 2024, 9 t from COL-TTFWQ4F)",
+   "plastic/feedstock_invoices:INV-C92ERZ18D (23 Jun 2024, 0.67 t from COL-7587S98)",
+   "plastic/feedstock_invoices:INV-85R56FC32 (02 Jul 2024, 7 t from COL-L4ROES8)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-TTFWQ4F (1,151 t supplied; declared capacity 30 t/month; 2 vehicles; registered Apr 2024)",
+   "plastic/collectors:COL-L4ROES8 (661 t supplied; declared capacity 34 t/month; 1 vehicles; registered Feb 2024)",
+   "plastic/collectors:COL-T6SB7LS (566 t supplied; declared capacity 97 t/month; 3 vehicles; registered Feb 2016)",
+   "plastic/collectors:COL-H3UV94T (504 t supplied; declared capacity 97 t/month; 2 vehicles; registered Feb 2017)",
+   "plastic/collectors:COL-I0MT6LD (326 t supplied; declared capacity 36 t/month; 6 vehicles; registered Apr 2016)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 1,396 t of 4,621 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 7, director 0, photos 0)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-BBYYX5QSU (CAT_IV, Rs 559/t to PIBO-TK2IS44)",
+   "plastic/certificate_sales:SALE-FQOLMP8ZG (CAT_IV, Rs 559/t to PIBO-TK2IS44)",
+   "plastic/certificate_sales:SALE-IJNQ3A4YX (CAT_IV, Rs 559/t to PIBO-TK2IS44)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-K7IVNWM Narmada Consumer Products Pvt Ltd (736 t)",
+  "PIBO-PAVV8IQ Shree Consumer Products LLP (728 t)",
+  "PIBO-E5OFUZG Metro Pharma LLP (537 t)",
+  "PIBO-X606DPC Eastern Earth FMCG LLP (308 t)",
+  "PIBO-6IBFIMZ Narmada FMCG Pvt Ltd (187 t)"
+ ],
+ "inspection_checklist": [
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 90
+}

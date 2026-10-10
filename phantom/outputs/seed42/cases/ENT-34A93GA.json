@@ -1,0 +1,115 @@
+{
+ "entity_id": "ENT-34A93GA",
+ "profile": {
+  "name": "Himalaya Amrit Enviro Recycling LLP",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 1960.0,
+  "connected_load_kw": 142.0,
+  "epr_registered": "2024-06-08"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6342,
+  "dominant_score": 1.2411,
+  "ens_score": 0.9582,
+  "ens_pct": 0.9648
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 352% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 41% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.25x the minimum needed for the tonnes claimed (75 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.654,
+   "text": "Sold products equal only 24% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 82% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 8 other registered entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3576
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.8182,
+   "population_percentile": 87.9,
+   "shap": -0.2902
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 5.0,
+   "population_percentile": 99.3,
+   "shap": -0.2895
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.4091,
+   "population_percentile": 97.3,
+   "shap": -0.2591
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-CA94VP77 (Mar 2026: 30,963 kWh for 1,217.3 t claimed)",
+   "plastic/electricity_bills:BILL-AW3UZJCD (Feb 2026: 36,930 kWh for 1,174.4 t claimed)",
+   "plastic/electricity_bills:BILL-BTICMTXU (Feb 2025: 33,380 kWh for 907.1 t claimed)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-WPKG4PB (586 t bought)",
+   "plastic/offtakers:OFT-3YIN5I7 (332 t bought)",
+   "plastic/offtakers:OFT-HCV8AX4 (268 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 8, address 2, director 5, photos 0)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-BEC1VKN Apex Maa Foods Pvt Ltd (1,560 t)",
+  "PIBO-6HT86DK Kaveri Prakriti Retail & Co (875 t)",
+  "PIBO-RJ55Q7M Prime Retail Pvt Ltd (685 t)",
+  "PIBO-HHAPLLG Northern Retail Pvt Ltd (412 t)",
+  "PIBO-0CJJJSX Metro National Dairy (355 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 89
+}

@@ -1,0 +1,121 @@
+{
+ "entity_id": "ENT-TGC2AXN",
+ "profile": {
+  "name": "Hind Granules Pvt Ltd",
+  "state": "Maharashtra",
+  "district": "Raigad",
+  "declared_capacity_tpa": 3100.0,
+  "connected_load_kw": 220.0,
+  "epr_registered": "2023-05-19"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6868,
+  "dominant_score": 7.4412,
+  "ens_score": 0.9971,
+  "ens_pct": 0.9992
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (51% of its feedstock)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 214% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 74% of months"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.636,
+   "text": "Sold products equal only 25% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.38x the cost floor)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.38x the market median price"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3054
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.5082,
+   "population_percentile": 99.7,
+   "shap": -0.2906
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 98.9,
+   "shap": -0.2557
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.7714,
+   "population_percentile": 89.1,
+   "shap": -0.2518
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-56RHVZYW (Feb 2026: 58,248 kWh for 2,296.4 t claimed)",
+   "plastic/electricity_bills:BILL-STI0WUY4 (Feb 2025: 52,256 kWh for 2,018.0 t claimed)",
+   "plastic/electricity_bills:BILL-FNVLLMEP (Feb 2024: 63,155 kWh for 2,118.9 t claimed)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-NXYWSTR (5,579 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-AIS14ZO (606 t bought)",
+   "plastic/offtakers:OFT-13OGY8Q (576 t bought)",
+   "plastic/offtakers:OFT-O1XQQCI (362 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-J3Z9BRZH1 (CAT_II, Rs 893/t to PIBO-CBHX1CL)",
+   "plastic/certificate_sales:SALE-QM8O8HFBD (CAT_II, Rs 893/t to PIBO-EF01725)",
+   "plastic/certificate_sales:SALE-OYYGCQ5Q6 (CAT_II, Rs 893/t to PIBO-EF01725)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-SXNONX3 Deccan Shree Snacks (1,736 t)",
+  "PIBO-Z096YCK Sterling Foods LLP (1,337 t)",
+  "PIBO-7QJFXSH Apex Metro Home Care & Co (977 t)",
+  "PIBO-3HLLI2J Bharat Snacks Pvt Ltd (851 t)",
+  "PIBO-WF6YPTX Bharat Hind Consumer Products & Co (672 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 3
+}

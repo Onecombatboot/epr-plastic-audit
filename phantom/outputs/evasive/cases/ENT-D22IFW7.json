@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-D22IFW7",
+ "profile": {
+  "name": "Sterling Unity Enviro Recycling Pvt Ltd",
+  "state": "Gujarat",
+  "district": "Rajkot",
+  "declared_capacity_tpa": 1120.0,
+  "connected_load_kw": 208.0,
+  "epr_registered": "2025-02-22"
+ },
+ "scores": {
+  "rule_score": 0.9992,
+  "iforest_score": 0.6142,
+  "dominant_score": 4.4634,
+  "ens_score": 0.9676,
+  "ens_pct": 0.9752
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 38% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 79% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.693,
+   "text": "53% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.425,
+   "text": "20% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "shell_offtakers",
+   "group": "output",
+   "strength": 0.379,
+   "text": "68% of product sales go to buyers incorporated under a year before the invoice"
+  },
+  {
+   "rule": "weekend_invoices",
+   "group": "feedstock",
+   "strength": 0.307,
+   "text": "8.6% of purchase invoices are dated on Sundays (typical: 1.4%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 4.0,
+   "population_percentile": 99.4,
+   "shap": -0.3854
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5332,
+   "population_percentile": 97.9,
+   "shap": -0.352
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 3.0,
+   "population_percentile": 96.6,
+   "shap": -0.3065
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2669
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-ZQV1HZBT (Dec 2025: 128,843 kWh for 128.3 t claimed)",
+   "plastic/electricity_bills:BILL-FAEZI7ST (May 2025: 124,887 kWh for 124.2 t claimed)",
+   "plastic/electricity_bills:BILL-D5G35XCV (Jan 2026: 129,782 kWh for 128.8 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-8MY1RS1VZ (11 Feb 2025, 7 t from COL-HI53YZR)",
+   "plastic/feedstock_invoices:INV-D8VCYAGHT (16 Feb 2025, 12.71 t from COL-HI53YZR)",
+   "plastic/feedstock_invoices:INV-Z1H81E56Z (25 Feb 2025, 3 t from COL-B84EW3R)",
+   "plastic/feedstock_invoices:INV-GU6ZWM864 (03 Mar 2025, 2 t from COL-2T6J99A)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-HI53YZR (852 t supplied; declared capacity 15 t/month; 2 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-B84EW3R (130 t supplied; declared capacity 17 t/month; 2 vehicles; registered Jan 2025)",
+   "plastic/collectors:COL-NGX258L (125 t supplied; declared capacity 34 t/month; 1 vehicles; registered Dec 2015)",
+   "plastic/collectors:COL-4AV1Q07 (93 t supplied; declared capacity 36 t/month; 1 vehicles; registered Aug 2018)",
+   "plastic/collectors:COL-P2YKQ6X (82 t supplied; declared capacity 1013 t/month; 3 vehicles; registered Oct 2020)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-YC00VI4 (779 t bought)",
+   "plastic/offtakers:OFT-U18EUX6 (144 t bought)",
+   "plastic/offtakers:OFT-0FLN7DJ (97 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-CRB9NGG Eastern Hind FMCG (917 t)",
+  "PIBO-K9I4Q20 Green Retail Pvt Ltd (241 t)",
+  "PIBO-RIDLDX6 Southern Personal Care LLP (58 t)",
+  "PIBO-PSD20Y6 Sterling FMCG Pvt Ltd (50 t)",
+  "PIBO-W6OA4TL Narmada Dairy (47 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 63
+}

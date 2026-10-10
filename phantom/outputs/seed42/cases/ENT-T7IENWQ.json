@@ -1,0 +1,125 @@
+{
+ "entity_id": "ENT-T7IENWQ",
+ "profile": {
+  "name": "Krishna Pragati Plast Pvt Ltd",
+  "state": "Tamil Nadu",
+  "district": "Krishnagiri",
+  "declared_capacity_tpa": 730.0,
+  "connected_load_kw": 118.0,
+  "epr_registered": "2023-09-17"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6361,
+  "dominant_score": 3.811,
+  "ens_score": 0.9756,
+  "ens_pct": 0.9804
+ },
+ "reasons": [
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.666,
+   "text": "Electricity bought is only 0.42x the minimum needed for the tonnes claimed (125 kWh/t against at least 300)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.647,
+   "text": "28% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.611,
+   "text": "48% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.31x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "67% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.32x the market median price"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.3487
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 5.0,
+   "population_percentile": 99.8,
+   "shap": -0.3027
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.4816,
+   "population_percentile": 98.0,
+   "shap": -0.2936
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 5.0,
+   "population_percentile": 99.3,
+   "shap": -0.2868
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-S3Y1VZDC (Jan 2025: 6,175 kWh for 61.4 t claimed)",
+   "plastic/electricity_bills:BILL-6E7UQ58U (Sep 2023: 4,671 kWh for 44.1 t claimed)",
+   "plastic/electricity_bills:BILL-ZX2GGWVQ (Jan 2026: 5,864 kWh for 53.3 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-R96B5WEYZ (03 Sep 2023, 0.2 t from COL-RETA2MN)",
+   "plastic/feedstock_invoices:INV-Y8G4P1A00 (07 Sep 2023, 15 t from COL-Y13S05V)",
+   "plastic/feedstock_invoices:INV-YN1G47DJP (27 Sep 2023, 8 t from COL-PA594EK)",
+   "plastic/feedstock_invoices:INV-8YCVTKCEU (28 Sep 2023, 4 t from COL-PA594EK)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-PA594EK (709 t supplied; declared capacity 6 t/month; 1 vehicles; registered Aug 2023)",
+   "plastic/collectors:COL-Y13S05V (459 t supplied; declared capacity 20 t/month; 2 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-UX2UP1L (220 t supplied; declared capacity 11 t/month; 1 vehicles; registered Jul 2023)",
+   "plastic/collectors:COL-JVHO1Q0 (9 t supplied; declared capacity 15 t/month; 2 vehicles; registered Apr 2017)",
+   "plastic/collectors:COL-0D7ALY5 (7 t supplied; declared capacity 77 t/month; 1 vehicles; registered Jan 2015)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-U7VRLW2M9 (CAT_IV, Rs 396/t to PIBO-U114IWP)",
+   "plastic/certificate_sales:SALE-R1U5PFSZW (CAT_IV, Rs 404/t to PIBO-57GYOKK)",
+   "plastic/certificate_sales:SALE-9LF89HB2O (CAT_IV, Rs 404/t to PIBO-57GYOKK)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-G3AUFVS Sai Snacks & Co (350 t)",
+  "PIBO-M4KBP88 Krishna Beverages Pvt Ltd (151 t)",
+  "PIBO-9GR5XAN Hind Dairy & Co (145 t)",
+  "PIBO-XEDMZRS Shri Dairy Pvt Ltd (124 t)",
+  "PIBO-Q62YCKY Prakriti National Home Care Ltd (97 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 50
+}

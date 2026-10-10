@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-7JXDFSZ",
+ "profile": {
+  "name": "Laxmi Plast Ltd",
+  "state": "West Bengal",
+  "district": "Howrah",
+  "declared_capacity_tpa": 4340.0,
+  "connected_load_kw": 805.0,
+  "epr_registered": "2025-01-15"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6311,
+  "dominant_score": 4.639,
+  "ens_score": 0.9832,
+  "ens_pct": 0.9876
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 10% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 33% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "72% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "44% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "72% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "42% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3468
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7176,
+   "population_percentile": 98.9,
+   "shap": -0.2963
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.7984,
+   "population_percentile": 99.9,
+   "shap": -0.2671
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 2.0,
+   "population_percentile": 93.5,
+   "shap": -0.2537
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-P2ASMB0U (Mar 2026: 1,815,112 kWh for 1,958.9 t claimed)",
+   "plastic/electricity_bills:BILL-FGV3HTI1 (Feb 2026: 1,846,583 kWh for 1,931.6 t claimed)",
+   "plastic/electricity_bills:BILL-QA6QH021 (Oct 2025: 320,718 kWh for 322.1 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-E1IHB5582 (05 Jan 2025, 14 t from COL-64XE75R)",
+   "plastic/feedstock_invoices:INV-CLRL24DBQ (08 Jan 2025, 20 t from COL-Y9OL688)",
+   "plastic/feedstock_invoices:INV-EEGWJTFU2 (16 Jan 2025, 12 t from COL-K7FZ5HF)",
+   "plastic/feedstock_invoices:INV-6EC0F6OCE (16 Jan 2025, 5 t from COL-NGZ23GT)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-64XE75R (2,458 t supplied; declared capacity 10 t/month; 2 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-STB20VW (1,227 t supplied; declared capacity 19 t/month; 1 vehicles; registered Sep 2024)",
+   "plastic/collectors:COL-Y9OL688 (1,189 t supplied; declared capacity 24 t/month; 2 vehicles; registered Dec 2024)",
+   "plastic/collectors:COL-K7FZ5HF (718 t supplied; declared capacity 38 t/month; 1 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-Q5P1GFN (682 t supplied; declared capacity 172 t/month; 2 vehicles; registered Apr 2022)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 5,984 t of 8,263 t generated)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-5554PBR Southern Foods LLP (1,214 t)",
+  "PIBO-KOJSK0M Earth Kaveri Dairy (1,017 t)",
+  "PIBO-BE29RBG Northern Dairy Pvt Ltd (541 t)",
+  "PIBO-H587YDF Amrit Pharma (387 t)",
+  "PIBO-AXJK9HS Pragati Sahyadri Beverages Pvt Ltd (227 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 32
+}

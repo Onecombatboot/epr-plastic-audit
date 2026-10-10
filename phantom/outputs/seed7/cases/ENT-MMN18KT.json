@@ -1,0 +1,137 @@
+{
+ "entity_id": "ENT-MMN18KT",
+ "profile": {
+  "name": "Sunrise Green Enviro Recycling Pvt Ltd",
+  "state": "Maharashtra",
+  "district": "Raigad",
+  "declared_capacity_tpa": 26330.0,
+  "connected_load_kw": 1295.0,
+  "epr_registered": "2025-08-02"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6657,
+  "dominant_score": 13.46,
+  "ens_score": 0.9938,
+  "ens_pct": 0.9964
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (71% of its feedstock)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 16% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.667,
+   "text": "Certificates claim more than the declared monthly capacity in 25% of months"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.639,
+   "text": "28% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.84x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.7051,
+   "population_percentile": 99.8,
+   "shap": -0.3141
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3063
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.75,
+   "population_percentile": 89.0,
+   "shap": -0.28
+  },
+  {
+   "feature": "net_cycle_feed_share",
+   "label": "feedstock bought inside a loop",
+   "value": 0.7051,
+   "population_percentile": 99.8,
+   "shap": -0.275
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-921B9YW7 (Jan 2026: 281,035 kWh for 1,538.9 t claimed)",
+   "plastic/electricity_bills:BILL-VJ0WHTIM (Aug 2025: 100,098 kWh for 262.3 t claimed)",
+   "plastic/electricity_bills:BILL-ESMD6AN6 (Sep 2025: 162,148 kWh for 394.0 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-LVPHIZ55J (06 Aug 2025, 14 t from ENT-P4M7A6Q)",
+   "plastic/feedstock_invoices:INV-6HTQCMIIB (25 Aug 2025, 5 t from ENT-P4M7A6Q)",
+   "plastic/feedstock_invoices:INV-7DYWLLAWY (28 Aug 2025, 20 t from ENT-P4M7A6Q)",
+   "plastic/feedstock_invoices:INV-LRHF1DJF4 (08 Sep 2025, 12 t from ENT-P4M7A6Q)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-YE2V0HC (519 t supplied; declared capacity 496 t/month; 5 vehicles; registered Jul 2020)",
+   "plastic/collectors:COL-M4HS69X (276 t supplied; declared capacity 79 t/month; 4 vehicles; registered Aug 2019)",
+   "plastic/collectors:COL-IMWLIO8 (210 t supplied; declared capacity 83 t/month; 6 vehicles; registered Jan 2016)",
+   "plastic/collectors:COL-85ZE29S (173 t supplied; declared capacity 93 t/month; 3 vehicles; registered Sep 2015)",
+   "plastic/collectors:COL-B37NYYP (162 t supplied; declared capacity 71 t/month; 6 vehicles; registered Feb 2018)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-P4M7A6Q (4,320 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-UT1Q0W6 (794 t bought)",
+   "plastic/offtakers:OFT-C0IY289 (686 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 2, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-1SHUF3Y5O (CAT_IV, Rs 1,260/t to PIBO-54Y1S9E)",
+   "plastic/certificate_sales:SALE-D7Y6E5LIF (CAT_IV, Rs 1,260/t to PIBO-54Y1S9E)",
+   "plastic/certificate_sales:SALE-R80W4BLJO (CAT_IV, Rs 1,301/t to PIBO-EPRQ4N0)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-Y61QWNH Balaji Beverages Pvt Ltd (1,208 t)",
+  "PIBO-196G6H0 Earth Home Care Pvt Ltd (550 t)",
+  "PIBO-8NM3SIP Navjeevan Balaji Foods (368 t)",
+  "PIBO-CCRJFV3 Unity Retail (367 t)",
+  "PIBO-4DOAQH2 Northern Navjeevan Consumer Products Pvt Ltd (360 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 10
+}

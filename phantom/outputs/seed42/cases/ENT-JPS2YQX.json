@@ -1,0 +1,132 @@
+{
+ "entity_id": "ENT-JPS2YQX",
+ "profile": {
+  "name": "Global Plastics",
+  "state": "Karnataka",
+  "district": "Mysuru",
+  "declared_capacity_tpa": 380.0,
+  "connected_load_kw": 37.0,
+  "epr_registered": "2024-02-13"
+ },
+ "scores": {
+  "rule_score": 0.9997,
+  "iforest_score": 0.633,
+  "dominant_score": 10.4416,
+  "ens_score": 0.9738,
+  "ens_pct": 0.9776
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (15% of its feedstock)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.615,
+   "text": "Certificates claim more than the declared monthly capacity in 23% of months"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.54,
+   "text": "93% of certificate tonnes were sold below the cost of recycling (average 0.83x the cost floor)"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 3 other registered entity(ies)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.304,
+   "text": "16% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.4069
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3836
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.1498,
+   "population_percentile": 98.7,
+   "shap": -0.3568
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 99.0,
+   "shap": -0.3364
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-8GZIW4GX (Jan 2025: 9,521 kWh for 33.9 t claimed)",
+   "plastic/electricity_bills:BILL-HQHDXXUM (Feb 2026: 9,512 kWh for 33.1 t claimed)",
+   "plastic/electricity_bills:BILL-SOC8P7HD (May 2024: 8,757 kWh for 30.2 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-RVPU3WVW9 (11 Feb 2024, 1.46 t from ENT-RQ9V3SH)",
+   "plastic/feedstock_invoices:INV-P6GGSW0VY (18 Feb 2024, 0.2 t from COL-2HJLL2T)",
+   "plastic/feedstock_invoices:INV-YFEZJQYK1 (24 Feb 2024, 1 t from COL-B8LS4PG)",
+   "plastic/feedstock_invoices:INV-KMSWUE557 (03 Mar 2024, 0.47 t from COL-30VVFIK)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-CX541E5 (130 t supplied; declared capacity 26 t/month; 4 vehicles; registered Dec 2017)",
+   "plastic/collectors:COL-P4PNW8U (82 t supplied; declared capacity 20 t/month; 1 vehicles; registered Aug 2023)",
+   "plastic/collectors:COL-O3ODICS (80 t supplied; declared capacity 202 t/month; 5 vehicles; registered Dec 2019)",
+   "plastic/collectors:COL-B8LS4PG (50 t supplied; declared capacity 10 t/month; 3 vehicles; registered Sep 2023)",
+   "plastic/collectors:COL-2HJLL2T (36 t supplied; declared capacity 34 t/month; 2 vehicles; registered Dec 2023)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-RQ9V3SH (111 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 3, address 0, director 5, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-XZ9WS7MK3 (CAT_IV, Rs 1,132/t to PIBO-8QEOR77)",
+   "plastic/certificate_sales:SALE-RPGLJ4P2T (CAT_IV, Rs 1,132/t to PIBO-8QEOR77)",
+   "plastic/certificate_sales:SALE-TTJNSZ4SR (CAT_IV, Rs 1,132/t to PIBO-8QEOR77)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-G9WAYUP Eastern FMCG Pvt Ltd (227 t)",
+  "PIBO-A518N2Z Eco Snacks Pvt Ltd (101 t)",
+  "PIBO-UGSTSNR Northern Foods Ltd (97 t)",
+  "PIBO-EEO32ZS Hind Personal Care Pvt Ltd (61 t)",
+  "PIBO-TWY4K33 Ganga Beverages LLP (38 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 57
+}

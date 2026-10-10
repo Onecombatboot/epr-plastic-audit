@@ -1,0 +1,134 @@
+{
+ "entity_id": "ENT-79Y0K8P",
+ "profile": {
+  "name": "Eastern Plast LLP",
+  "state": "Andhra Pradesh",
+  "district": "Visakhapatnam",
+  "declared_capacity_tpa": 2560.0,
+  "connected_load_kw": 410.0,
+  "epr_registered": "2024-10-03"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6189,
+  "dominant_score": 1.331,
+  "ens_score": 0.9607,
+  "ens_pct": 0.9696
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 35% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 89% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.734,
+   "text": "56% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.45x the cost floor)"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3702
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.559,
+   "population_percentile": 98.1,
+   "shap": -0.3047
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2734
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2473
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-4LZU0UG6 (Jun 2025: 356,427 kWh for 425.4 t claimed)",
+   "plastic/electricity_bills:BILL-7EDG7TDD (Oct 2025: 341,070 kWh for 404.9 t claimed)",
+   "plastic/electricity_bills:BILL-GQD6BGJY (Jan 2026: 342,267 kWh for 405.9 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-DR70243MK (06 Oct 2024, 1.8 t from COL-XS0DF37)",
+   "plastic/feedstock_invoices:INV-7M4W95M4L (11 Oct 2024, 8 t from COL-PSPABS4)",
+   "plastic/feedstock_invoices:INV-V7MF1N116 (16 Oct 2024, 9 t from COL-WXMZ6JU)",
+   "plastic/feedstock_invoices:INV-VFFDRZICF (16 Oct 2024, 15 t from COL-WXMZ6JU)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-WXMZ6JU (1,362 t supplied; declared capacity 34 t/month; 2 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-PSPABS4 (1,254 t supplied; declared capacity 31 t/month; 1 vehicles; registered Sep 2024)",
+   "plastic/collectors:COL-BOANH9U (1,063 t supplied; declared capacity 31 t/month; 2 vehicles; registered May 2024)",
+   "plastic/collectors:COL-NOTDHJI (619 t supplied; declared capacity 36 t/month; 1 vehicles; registered Jun 2024)",
+   "plastic/collectors:COL-XHXSXGE (360 t supplied; declared capacity 66 t/month; 4 vehicles; registered Dec 2018)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-OFD3T20 (1,315 t bought)",
+   "plastic/offtakers:OFT-CKYUUHU (618 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-GJJOVBA31 (CAT_IV, Rs 629/t to PIBO-MCFHMEL)",
+   "plastic/certificate_sales:SALE-1WP9OI2QF (CAT_IV, Rs 629/t to PIBO-MCFHMEL)",
+   "plastic/certificate_sales:SALE-N0JZT8BOR (CAT_IV, Rs 631/t to PIBO-1OJEBHA)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-IYJ0HU2 Balaji Snacks LLP (800 t)",
+  "PIBO-KD7PHCD Shree Personal Care Pvt Ltd (647 t)",
+  "PIBO-O85SJFU Western Personal Care LLP (580 t)",
+  "PIBO-YOEZG2V Supreme Star Dairy Pvt Ltd (309 t)",
+  "PIBO-853VOHX Shri Home Care (307 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 77
+}

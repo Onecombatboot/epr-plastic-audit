@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-0YFKEYL",
+ "profile": {
+  "name": "Om Plastics LLP",
+  "state": "Tamil Nadu",
+  "district": "Krishnagiri",
+  "declared_capacity_tpa": 2980.0,
+  "connected_load_kw": 104.0,
+  "epr_registered": "2024-08-14"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6578,
+  "dominant_score": 3.1556,
+  "ens_score": 0.991,
+  "ens_pct": 0.9952
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 95% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "77% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.791,
+   "text": "Electricity bought is only 0.31x the minimum needed for the tonnes claimed (46 kWh/t against at least 150)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.736,
+   "text": "Claimed tonnage in the busiest month would need 180% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "59% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.62,
+   "text": "Sold products equal only 27% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3352
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 3.0,
+   "population_percentile": 99.4,
+   "shap": -0.3058
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.286
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7661,
+   "population_percentile": 99.1,
+   "shap": -0.2622
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-19ZXARIH (Nov 2025: 40,089 kWh for 911.0 t claimed)",
+   "plastic/electricity_bills:BILL-016JRRZY (Dec 2024: 37,681 kWh for 847.8 t claimed)",
+   "plastic/electricity_bills:BILL-SQ2T8AEF (Apr 2025: 40,377 kWh for 903.9 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-UK38KD77R (01 Aug 2024, 8 t from COL-2DBMG4L)",
+   "plastic/feedstock_invoices:INV-9NU9VJ66G (02 Aug 2024, 10 t from COL-2DBMG4L)",
+   "plastic/feedstock_invoices:INV-RHHYJXX4P (08 Aug 2024, 8 t from COL-Z4XPS6W)",
+   "plastic/feedstock_invoices:INV-WADVE5I70 (09 Aug 2024, 9 t from COL-Z4XPS6W)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-D4100BB (4,631 t supplied; declared capacity 21 t/month; 2 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-2DBMG4L (3,864 t supplied; declared capacity 15 t/month; 1 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-Z4XPS6W (3,419 t supplied; declared capacity 19 t/month; 1 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-GF4DQWO (793 t supplied; declared capacity 248 t/month; 4 vehicles; registered Jun 2017)",
+   "plastic/collectors:COL-67TWMWO (518 t supplied; declared capacity 72 t/month; 1 vehicles; registered Feb 2021)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-HO2OHBC (386 t bought)",
+   "plastic/offtakers:OFT-QPSLHTF (300 t bought)",
+   "plastic/offtakers:OFT-IGUOOA9 (269 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-1W9L7RH Royal FMCG Pvt Ltd (1,233 t)",
+  "PIBO-UZEB75V Kaveri Home Care LLP (625 t)",
+  "PIBO-7AY0Q21 Krishna Beverages Pvt Ltd (586 t)",
+  "PIBO-HB6CZ4I Jai FMCG Pvt Ltd (395 t)",
+  "PIBO-3AZ3QD9 Earth Pharma Pvt Ltd (394 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 13
+}

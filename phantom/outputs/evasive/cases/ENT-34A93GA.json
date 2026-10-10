@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-34A93GA",
+ "profile": {
+  "name": "Himalaya Amrit Enviro Recycling LLP",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 2070.0,
+  "connected_load_kw": 142.0,
+  "epr_registered": "2024-06-08"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.642,
+  "dominant_score": 1.6209,
+  "ens_score": 0.9778,
+  "ens_pct": 0.982
+ },
+ "reasons": [
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.28x the minimum needed for the tonnes claimed (84 kWh/t against at least 300)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 91% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "68% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "52% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.618,
+   "text": "Sold products equal only 27% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "54% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3544
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.333
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 8.0,
+   "population_percentile": 99.6,
+   "shap": -0.3293
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 5.0,
+   "population_percentile": 99.3,
+   "shap": -0.2742
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-UKIHZFU4 (Dec 2025: 31,200 kWh for 388.2 t claimed)",
+   "plastic/electricity_bills:BILL-6HT0UZ7E (Mar 2025: 27,909 kWh for 346.8 t claimed)",
+   "plastic/electricity_bills:BILL-WJFPBKOY (Feb 2025: 30,095 kWh for 371.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-IJYP9H7CG (11 Jun 2024, 10 t from COL-4H29G67)",
+   "plastic/feedstock_invoices:INV-VNSE16HHR (14 Jun 2024, 5 t from COL-3NEDAFK)",
+   "plastic/feedstock_invoices:INV-NYCXR8IF6 (21 Jun 2024, 9 t from COL-5BVFA6A)",
+   "plastic/feedstock_invoices:INV-MXPKDLW9U (27 Jun 2024, 3 t from COL-EKYIZ3Z)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-20SMSL5 (1,306 t supplied; declared capacity 16 t/month; 2 vehicles; registered Apr 2024)",
+   "plastic/collectors:COL-3NEDAFK (1,187 t supplied; declared capacity 13 t/month; 1 vehicles; registered May 2024)",
+   "plastic/collectors:COL-B2QRM2H (1,149 t supplied; declared capacity 16 t/month; 1 vehicles; registered Mar 2024)",
+   "plastic/collectors:COL-4H29G67 (685 t supplied; declared capacity 23 t/month; 2 vehicles; registered Jun 2024)",
+   "plastic/collectors:COL-5BVFA6A (636 t supplied; declared capacity 20 t/month; 1 vehicles; registered Feb 2024)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-1YY6IPK (447 t bought)",
+   "plastic/offtakers:OFT-0NZSWTZ (418 t bought)",
+   "plastic/offtakers:OFT-E3ZBFOQ (194 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-7NR2RBI Sunrise Krishna FMCG LLP (1,762 t)",
+  "PIBO-HOSSCOC Narmada Hind Snacks Pvt Ltd (605 t)",
+  "PIBO-YDQV9PP Krishna Pharma LLP (363 t)",
+  "PIBO-3EMU7IX Pioneer Supreme Beverages Pvt Ltd (324 t)",
+  "PIBO-9S7RYDW Eco Snacks & Co (219 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 46
+}

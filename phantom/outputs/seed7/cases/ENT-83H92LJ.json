@@ -1,0 +1,125 @@
+{
+ "entity_id": "ENT-83H92LJ",
+ "profile": {
+  "name": "Deccan Krishna Granules & Co",
+  "state": "Gujarat",
+  "district": "Ahmedabad",
+  "declared_capacity_tpa": 11410.0,
+  "connected_load_kw": 756.0,
+  "epr_registered": "2025-01-13"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6161,
+  "dominant_score": 7.9273,
+  "ens_score": 0.9759,
+  "ens_pct": 0.984
+ },
+ "reasons": [
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "95% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "55% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 6% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.31x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "67% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.35x the market median price"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3184
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.9451,
+   "population_percentile": 99.9,
+   "shap": -0.3125
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 98.8,
+   "shap": -0.2516
+  },
+  {
+   "feature": "cert_vs_reported",
+   "label": "cert_vs_reported",
+   "value": 1.0,
+   "population_percentile": 96.9,
+   "shap": -0.204
+  }
+ ],
+ "evidence": {
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-UGNFTEMEW (03 Jan 2025, 11 t from COL-RN9DIID)",
+   "plastic/feedstock_invoices:INV-US7IYZ6KQ (06 Jan 2025, 7 t from COL-OHBJKBZ)",
+   "plastic/feedstock_invoices:INV-SQ0DYDVGA (07 Jan 2025, 8 t from COL-RT65YNA)",
+   "plastic/feedstock_invoices:INV-I1VB32EJ2 (08 Jan 2025, 10 t from COL-OHBJKBZ)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-RT65YNA (1,712 t supplied; declared capacity 8 t/month; 1 vehicles; registered Sep 2024)",
+   "plastic/collectors:COL-OHBJKBZ (774 t supplied; declared capacity 21 t/month; 1 vehicles; registered Sep 2024)",
+   "plastic/collectors:COL-RN9DIID (483 t supplied; declared capacity 9 t/month; 1 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-S0XRMD3 (46 t supplied; declared capacity 8 t/month; 4 vehicles; registered May 2018)",
+   "plastic/collectors:COL-WPY1LGU (35 t supplied; declared capacity 23 t/month; 6 vehicles; registered Oct 2019)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-8EBBV14 (69 t bought)",
+   "plastic/offtakers:OFT-5ZRSW9U (39 t bought)",
+   "plastic/offtakers:OFT-EDFCNAE (28 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-S4HVQZWR3 (CAT_IV, Rs 440/t to PIBO-B91GDGJ)",
+   "plastic/certificate_sales:SALE-18BRVECXZ (CAT_IV, Rs 442/t to PIBO-12CDT03)",
+   "plastic/certificate_sales:SALE-R1R2EQUPZ (CAT_IV, Rs 442/t to PIBO-12CDT03)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-4YRXDU1 Unity Navjeevan Snacks Pvt Ltd (851 t)",
+  "PIBO-W6ATIYC Pragati Retail Pvt Ltd (296 t)",
+  "PIBO-AH8O00D Durga Snacks Pvt Ltd (287 t)",
+  "PIBO-3M5AN61 Galaxy Foods (275 t)",
+  "PIBO-VH3N6SB Sai Home Care Pvt Ltd (185 t)"
+ ],
+ "inspection_checklist": [
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 41
+}

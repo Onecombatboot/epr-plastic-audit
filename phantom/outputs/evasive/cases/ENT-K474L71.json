@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-K474L71",
+ "profile": {
+  "name": "Eastern Sunrise Plastics Pvt Ltd",
+  "state": "Uttar Pradesh",
+  "district": "Agra",
+  "declared_capacity_tpa": 880.0,
+  "connected_load_kw": 119.0,
+  "epr_registered": "2024-10-19"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6218,
+  "dominant_score": 1.5749,
+  "ens_score": 0.9661,
+  "ens_pct": 0.974
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 27% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "56% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.664,
+   "text": "51% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "47% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 3 other registered entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 99.0,
+   "shap": -0.3117
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.515,
+   "population_percentile": 97.8,
+   "shap": -0.2779
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 2.0,
+   "population_percentile": 93.5,
+   "shap": -0.2776
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 3.0,
+   "population_percentile": 99.5,
+   "shap": -0.2436
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-ICSWMOV3 (Jan 2025: 136,218 kWh for 245.3 t claimed)",
+   "plastic/electricity_bills:BILL-TUAKJ0Z2 (Aug 2025: 130,183 kWh for 232.6 t claimed)",
+   "plastic/electricity_bills:BILL-96SLIJ27 (Feb 2025: 138,727 kWh for 246.0 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-Z0GTF06ZV (02 Oct 2024, 6 t from COL-O21UO8W)",
+   "plastic/feedstock_invoices:INV-PPI2U6K5I (02 Oct 2024, 9 t from COL-5G96W2Q)",
+   "plastic/feedstock_invoices:INV-BL97LGJ2I (05 Oct 2024, 10 t from COL-A1Z3SOC)",
+   "plastic/feedstock_invoices:INV-MAOBY4V2I (16 Oct 2024, 3 t from COL-KKLIDE7)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-A1Z3SOC (1,328 t supplied; declared capacity 40 t/month; 1 vehicles; registered May 2024)",
+   "plastic/collectors:COL-5G96W2Q (489 t supplied; declared capacity 21 t/month; 1 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-O21UO8W (350 t supplied; declared capacity 8 t/month; 1 vehicles; registered May 2024)",
+   "plastic/collectors:COL-7ZZOPI7 (318 t supplied; declared capacity 32 t/month; 1 vehicles; registered May 2024)",
+   "plastic/collectors:COL-AESUE4F (227 t supplied; declared capacity 87 t/month; 3 vehicles; registered Oct 2017)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 3, address 0, director 2, photos 0)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-6VJXZSY Western Southern Retail Pvt Ltd (672 t)",
+  "PIBO-0FSCEO8 Galaxy Earth Snacks Pvt Ltd (335 t)",
+  "PIBO-FIGBV1C Hind Shree Pharma Pvt Ltd (313 t)",
+  "PIBO-7D23MF4 Prakriti Snacks Pvt Ltd (284 t)",
+  "PIBO-71PL1KX Shree Dairy Pvt Ltd (278 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 66
+}

@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-7II58ZS",
+ "profile": {
+  "name": "Deccan Plastics LLP",
+  "state": "Delhi",
+  "district": "North West Delhi",
+  "declared_capacity_tpa": 21400.0,
+  "connected_load_kw": 2105.0,
+  "epr_registered": "2023-09-24"
+ },
+ "scores": {
+  "rule_score": 0.9991,
+  "iforest_score": 0.6175,
+  "dominant_score": 6.3298,
+  "ens_score": 0.9666,
+  "ens_pct": 0.9736
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 58% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "72% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.61x the cost floor)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.445,
+   "text": "Claimed tonnage in the busiest month would need 144% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.435,
+   "text": "Category III share of certificates is 31%, +29% versus what its process route can produce"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.352,
+   "text": "45% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7223,
+   "population_percentile": 99.3,
+   "shap": -0.3071
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.452,
+   "population_percentile": 96.8,
+   "shap": -0.298
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.5806,
+   "population_percentile": 98.0,
+   "shap": -0.2868
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 0.2258,
+   "population_percentile": 97.1,
+   "shap": -0.2156
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-WL5545O0 (Mar 2026: 686,248 kWh for 6,964.7 t claimed)",
+   "plastic/electricity_bills:BILL-I19YDJNS (Mar 2025: 755,008 kWh for 7,397.0 t claimed)",
+   "plastic/electricity_bills:BILL-LA0XO9LA (Feb 2025: 821,942 kWh for 6,868.1 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-JPHNEOK90 (03 Sep 2023, 9.36 t from COL-H0T3WI0)",
+   "plastic/feedstock_invoices:INV-VLATC5FCF (03 Sep 2023, 3.52 t from COL-N2GT8VO)",
+   "plastic/feedstock_invoices:INV-JS4DOBAD7 (18 Sep 2023, 7 t from COL-PER2IX9)",
+   "plastic/feedstock_invoices:INV-3TXIB0HKI (28 Sep 2023, 1.5 t from COL-O931LU4)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-PER2IX9 (13,676 t supplied; declared capacity 793 t/month; 3 vehicles; registered Apr 2020)",
+   "plastic/collectors:COL-N2GT8VO (11,351 t supplied; declared capacity 654 t/month; 2 vehicles; registered Aug 2018)",
+   "plastic/collectors:COL-O931LU4 (8,468 t supplied; declared capacity 762 t/month; 6 vehicles; registered Feb 2016)",
+   "plastic/collectors:COL-HCZKJR3 (7,643 t supplied; declared capacity 255 t/month; 5 vehicles; registered Dec 2016)",
+   "plastic/collectors:COL-WNKMTB9 (5,218 t supplied; declared capacity 625 t/month; 5 vehicles; registered Jun 2017)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 22,710 t of 80,331 t generated)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-PNNQ3RNCA (CAT_IV, Rs 771/t to PIBO-7DBA90D)",
+   "plastic/certificate_sales:SALE-WYI5TKQG3 (CAT_IV, Rs 771/t to PIBO-7DBA90D)",
+   "plastic/certificate_sales:SALE-KBMJMXSCG (CAT_IV, Rs 771/t to PIBO-5XIUON5)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-83H1SLT Shri Unity Consumer Products & Co (2,852 t)",
+  "PIBO-9KB7MKD Green Snacks (2,810 t)",
+  "PIBO-9H6ZHHN Navjeevan Consumer Products (1,612 t)",
+  "PIBO-ES2EV6V Western Beverages Pvt Ltd (1,207 t)",
+  "PIBO-7C76WI2 Shri Foods Pvt Ltd (1,205 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 67
+}

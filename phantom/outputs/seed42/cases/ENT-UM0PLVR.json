@@ -1,0 +1,119 @@
+{
+ "entity_id": "ENT-UM0PLVR",
+ "profile": {
+  "name": "Balaji Plast LLP",
+  "state": "Tamil Nadu",
+  "district": "Coimbatore",
+  "declared_capacity_tpa": 16610.0,
+  "connected_load_kw": 385.0,
+  "epr_registered": "2023-06-12"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6288,
+  "dominant_score": 4.4001,
+  "ens_score": 0.9745,
+  "ens_pct": 0.9784
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 17% of expected)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 52%, +50% versus what its process route can produce"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.639,
+   "text": "Claimed tonnage in the busiest month would need 168% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.49x the cost floor)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.491,
+   "text": "59% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.5,
+   "shap": -0.3535
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.1176,
+   "population_percentile": 94.9,
+   "shap": -0.2574
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.3838,
+   "population_percentile": 97.4,
+   "shap": -0.2505
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.5906,
+   "population_percentile": 97.8,
+   "shap": -0.2492
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-61PYKWI6 (Feb 2024: 364,828 kWh for 1,196.4 t claimed)",
+   "plastic/electricity_bills:BILL-VJSJ3EZD (Mar 2025: 478,333 kWh for 1,565.1 t claimed)",
+   "plastic/electricity_bills:BILL-UBVTFPKC (Mar 2026: 478,559 kWh for 1,565.2 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 4,956 t of 18,168 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-V72DAZQAF (CAT_IV, Rs 633/t to PIBO-2K4R9CA)",
+   "plastic/certificate_sales:SALE-6VTVHNQ6B (CAT_IV, Rs 633/t to PIBO-2K4R9CA)",
+   "plastic/certificate_sales:SALE-AXCYDP4ON (CAT_IV, Rs 633/t to PIBO-2K4R9CA)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-X7NI6X3 Om FMCG LLP (750 t)",
+  "PIBO-0WXD3JL Maa Retail & Co (713 t)",
+  "PIBO-MBNQJS6 Northern Foods & Co (663 t)",
+  "PIBO-TG9AMFT Hind Retail LLP (585 t)",
+  "PIBO-I36KZB6 Himalaya Home Care LLP (574 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 55
+}

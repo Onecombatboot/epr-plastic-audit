@@ -1,0 +1,122 @@
+{
+ "entity_id": "ENT-KTX55YA",
+ "profile": {
+  "name": "Apex Enviro Recycling LLP",
+  "state": "Telangana",
+  "district": "Medchal",
+  "declared_capacity_tpa": 510.0,
+  "connected_load_kw": 24.0,
+  "epr_registered": "2024-10-03"
+ },
+ "scores": {
+  "rule_score": 0.9974,
+  "iforest_score": 0.6117,
+  "dominant_score": 14.5269,
+  "ens_score": 0.9607,
+  "ens_pct": 0.9652
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (27% of its feedstock)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.42x the cost floor)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.425,
+   "text": "Certificates sold at 0.47x the market median price"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.383,
+   "text": "29% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.343,
+   "text": "17% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "weekend_invoices",
+   "group": "feedstock",
+   "strength": 0.26,
+   "text": "7.9% of purchase invoices are dated on Sundays (typical: 1.4%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.4458
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2713,
+   "population_percentile": 99.2,
+   "shap": -0.4098
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3843
+  },
+  {
+   "feature": "net_recycler_in_degree",
+   "label": "net_recycler_in_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3624
+  }
+ ],
+ "evidence": {
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-S45B0P2AA (11 Oct 2024, 2 t from ENT-83AJ6JS)",
+   "plastic/feedstock_invoices:INV-47KX8WGAC (13 Oct 2024, 0.2 t from COL-VV49DWI)",
+   "plastic/feedstock_invoices:INV-K2D5XDZC4 (03 Nov 2024, 0.21 t from COL-VHBF5ZM)",
+   "plastic/feedstock_invoices:INV-E3TM6B6OB (16 Nov 2024, 3 t from ENT-83AJ6JS)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-YT9I5R3 (61 t supplied; declared capacity 37 t/month; 5 vehicles; registered Apr 2016)",
+   "plastic/collectors:COL-LMIK4H9 (26 t supplied; declared capacity 44 t/month; 4 vehicles; registered Nov 2018)",
+   "plastic/collectors:COL-V7K4ZKP (20 t supplied; declared capacity 23 t/month; 1 vehicles; registered Aug 2019)",
+   "plastic/collectors:COL-PBJV7JW (18 t supplied; declared capacity 19 t/month; 2 vehicles; registered Jun 2024)",
+   "plastic/collectors:COL-13O40M9 (17 t supplied; declared capacity 5 t/month; 1 vehicles; registered Aug 2024)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-83AJ6JS (97 t sold to this plant)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-1E9H2XK6R (CAT_IV, Rs 587/t to PIBO-DPBQ9QX)",
+   "plastic/certificate_sales:SALE-IGA9L84O8 (CAT_IV, Rs 601/t to PIBO-4GBZUNW)",
+   "plastic/certificate_sales:SALE-5FY5UP1M9 (CAT_IV, Rs 604/t to PIBO-I0Z831P)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-XJLVO7S Northern Foods LLP (73 t)",
+  "PIBO-4BI9VD5 Earth Western Snacks & Co (38 t)",
+  "PIBO-VFSD6PR Green Retail Pvt Ltd (35 t)",
+  "PIBO-RLVVZPA Sanjeevani Global Consumer Products (27 t)",
+  "PIBO-V68M8EC Eastern Pharma Pvt Ltd (24 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 88
+}

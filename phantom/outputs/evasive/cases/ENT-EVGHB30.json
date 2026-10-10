@@ -1,0 +1,127 @@
+{
+ "entity_id": "ENT-EVGHB30",
+ "profile": {
+  "name": "Northern Plast Pvt Ltd",
+  "state": "Maharashtra",
+  "district": "Raigad",
+  "declared_capacity_tpa": 10790.0,
+  "connected_load_kw": 17.0,
+  "epr_registered": "2025-05-15"
+ },
+ "scores": {
+  "rule_score": 0.9998,
+  "iforest_score": 0.6265,
+  "dominant_score": 12.4588,
+  "ens_score": 0.979,
+  "ens_pct": 0.9832
+ },
+ "reasons": [
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "65% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.81x the cost floor)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "53% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.543,
+   "text": "24% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.43,
+   "text": "53% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6513,
+   "population_percentile": 98.5,
+   "shap": -0.3445
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.5304,
+   "population_percentile": 98.9,
+   "shap": -0.3302
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3114
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2869
+  }
+ ],
+ "evidence": {
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-SO6TYU6NB (04 May 2025, 6 t from COL-HQ0T3IZ)",
+   "plastic/feedstock_invoices:INV-ZDA2YLXAV (18 May 2025, 11 t from COL-88XC603)",
+   "plastic/feedstock_invoices:INV-VCAGWDLYM (18 May 2025, 4 t from COL-HVC24LF)",
+   "plastic/feedstock_invoices:INV-00TUBLFJP (24 May 2025, 1 t from COL-WCNZ6SR)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-HQ0T3IZ (777 t supplied; declared capacity 21 t/month; 2 vehicles; registered Apr 2025)",
+   "plastic/collectors:COL-88XC603 (575 t supplied; declared capacity 20 t/month; 2 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-3Z39S3E (323 t supplied; declared capacity 34 t/month; 2 vehicles; registered Apr 2025)",
+   "plastic/collectors:COL-5EU05BU (187 t supplied; declared capacity 65 t/month; 2 vehicles; registered Apr 2017)",
+   "plastic/collectors:COL-HVC24LF (180 t supplied; declared capacity 27 t/month; 1 vehicles; registered Apr 2025)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 1,488 t of 2,805 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-VEC19C0HQ (CAT_IV, Rs 1,162/t to PIBO-TQBACRI)",
+   "plastic/certificate_sales:SALE-8MTNUD5JY (CAT_IV, Rs 1,182/t to PIBO-F1WQMKD)",
+   "plastic/certificate_sales:SALE-3I327RTVR (CAT_IV, Rs 1,183/t to PIBO-TXRQ05N)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-T4ZMN0T Western Dairy LLP (1,835 t)",
+  "PIBO-C2N3RUY Star Kaveri Home Care Pvt Ltd (176 t)",
+  "PIBO-6VJXZSY Western Southern Retail Pvt Ltd (172 t)",
+  "PIBO-BZXRQ1C Pioneer FMCG LLP (154 t)",
+  "PIBO-FOA6U67 Sterling Consumer Products Pvt Ltd (139 t)"
+ ],
+ "inspection_checklist": [
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 43
+}

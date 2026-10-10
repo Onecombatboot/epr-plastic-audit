@@ -1,0 +1,131 @@
+{
+ "entity_id": "ENT-TH3939S",
+ "profile": {
+  "name": "Jai Recyclers",
+  "state": "Gujarat",
+  "district": "Ahmedabad",
+  "declared_capacity_tpa": 1230.0,
+  "connected_load_kw": 166.0,
+  "epr_registered": "2025-06-01"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6165,
+  "dominant_score": 1.9809,
+  "ens_score": 0.9658,
+  "ens_pct": 0.9736
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 80% of months"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "49% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.636,
+   "text": "Sold products equal only 25% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.604,
+   "text": "48% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.74x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "45% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3624
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.4774,
+   "population_percentile": 97.5,
+   "shap": -0.3164
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 0.7778,
+   "population_percentile": 98.6,
+   "shap": -0.2772
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.8,
+   "population_percentile": 96.7,
+   "shap": -0.2038
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-GF08V8EK (Jan 2026: 41,736 kWh for 217.8 t claimed)",
+   "plastic/electricity_bills:BILL-VCLPMWAU (Mar 2026: 37,702 kWh for 196.1 t claimed)",
+   "plastic/electricity_bills:BILL-MQR3YHN3 (Feb 2026: 46,215 kWh for 237.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-XG69MT514 (07 Jun 2025, 8 t from COL-ZVXK9T5)",
+   "plastic/feedstock_invoices:INV-0IJIMKG52 (21 Jun 2025, 1 t from COL-RM5M6DD)",
+   "plastic/feedstock_invoices:INV-T8UNUJTEQ (22 Jun 2025, 5 t from COL-EG44HQF)",
+   "plastic/feedstock_invoices:INV-WA2CFXKP6 (28 Jun 2025, 1 t from COL-KXBYP3O)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-EG44HQF (409 t supplied; declared capacity 26 t/month; 1 vehicles; registered Feb 2025)",
+   "plastic/collectors:COL-VDL8S3Z (240 t supplied; declared capacity 20 t/month; 2 vehicles; registered Apr 2025)",
+   "plastic/collectors:COL-ZVXK9T5 (220 t supplied; declared capacity 12 t/month; 2 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-S49UWL3 (172 t supplied; declared capacity 38 t/month; 2 vehicles; registered Jan 2025)",
+   "plastic/collectors:COL-YUOXYBF (134 t supplied; declared capacity 26 t/month; 2 vehicles; registered Feb 2025)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-AO90WTF (123 t bought)",
+   "plastic/offtakers:OFT-P06YK5L (91 t bought)",
+   "plastic/offtakers:OFT-RE61V5L (66 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-M9NIQ3MSL (CAT_IV, Rs 1,068/t to PIBO-5K8ORUD)",
+   "plastic/certificate_sales:SALE-7F7B4JH50 (CAT_IV, Rs 1,070/t to PIBO-FVIEHDR)",
+   "plastic/certificate_sales:SALE-SIPA8GBQW (CAT_IV, Rs 1,077/t to PIBO-D8NBXUU)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-BC8YBO0 Om FMCG Pvt Ltd (312 t)",
+  "PIBO-LK4D9FD Pragati Pharma Pvt Ltd (206 t)",
+  "PIBO-G50ZL64 Sunrise Sterling Pharma (194 t)",
+  "PIBO-3Q8VEWW Hind Eastern Personal Care Pvt Ltd (166 t)",
+  "PIBO-FTSEVQ7 Sai Foods & Co (118 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 67
+}

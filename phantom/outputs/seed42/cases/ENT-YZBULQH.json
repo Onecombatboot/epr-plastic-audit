@@ -1,0 +1,122 @@
+{
+ "entity_id": "ENT-YZBULQH",
+ "profile": {
+  "name": "Bharat Shree Plast Pvt Ltd",
+  "state": "Punjab",
+  "district": "Mohali",
+  "declared_capacity_tpa": 1470.0,
+  "connected_load_kw": 235.0,
+  "epr_registered": "2023-08-21"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6509,
+  "dominant_score": 1.3254,
+  "ens_score": 0.9625,
+  "ens_pct": 0.9696
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (18% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.75,
+   "text": "Certificates claim more than the declared monthly capacity in 28% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.45x the cost floor)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "61% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 1 other registered entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.1757,
+   "population_percentile": 98.8,
+   "shap": -0.3882
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3674
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3636
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 1.0,
+   "population_percentile": 98.2,
+   "shap": -0.2864
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-WPEEXOYA (Mar 2025: 83,866 kWh for 454.3 t claimed)",
+   "plastic/electricity_bills:BILL-TKAIYBFV (Feb 2026: 75,954 kWh for 407.1 t claimed)",
+   "plastic/electricity_bills:BILL-WX8OEZ7R (Mar 2026: 85,835 kWh for 423.0 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 1,159 t of 5,079 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-9LAYX5S (907 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-ERFK4SNZO (CAT_IV, Rs 585/t to PIBO-DGFLMV9)",
+   "plastic/certificate_sales:SALE-69VVOTAVM (CAT_IV, Rs 586/t to PIBO-41D9ISX)",
+   "plastic/certificate_sales:SALE-FICEHAUV9 (CAT_IV, Rs 603/t to PIBO-0OAYUZ1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-4L2M3FS National Narmada Home Care Pvt Ltd (888 t)",
+  "PIBO-XTTSNYI Supreme Retail Pvt Ltd (648 t)",
+  "PIBO-FS590SH National Retail LLP (452 t)",
+  "PIBO-0JI4F88 Balaji Beverages LLP (281 t)",
+  "PIBO-D9CRCHF Shri Green Home Care Ltd (272 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 77
+}

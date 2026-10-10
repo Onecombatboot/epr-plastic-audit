@@ -1,0 +1,117 @@
+{
+ "entity_id": "ENT-IWUN16A",
+ "profile": {
+  "name": "Northern Recyclers Pvt Ltd",
+  "state": "Uttar Pradesh",
+  "district": "Kanpur",
+  "declared_capacity_tpa": 6870.0,
+  "connected_load_kw": 31.0,
+  "epr_registered": "2023-10-05"
+ },
+ "scores": {
+  "rule_score": 0.9941,
+  "iforest_score": 0.6364,
+  "dominant_score": 2.5169,
+  "ens_score": 0.9548,
+  "ens_pct": 0.9622
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (10% of its feedstock)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "60% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.46,
+   "text": "84% of certificate tonnes were sold below the cost of recycling (average 0.83x the cost floor)"
+  },
+  {
+   "rule": "shared_address",
+   "group": "identity",
+   "strength": 0.3,
+   "text": "Registered at an address shared with 1 other entity(ies)"
+  },
+  {
+   "rule": "very_young_company",
+   "group": "registry",
+   "strength": 0.227,
+   "text": "Company was only 134 days old when it registered under EPR"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.191,
+   "text": "26% of all certificates were generated in a single month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.4174
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.095,
+   "population_percentile": 98.5,
+   "shap": -0.3921
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.3795
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3653
+  }
+ ],
+ "evidence": {
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 1,030 t of 3,941 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-41J89L7 (381 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 1, director 0, photos 0)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-DE6NDW91N (CAT_IV, Rs 1,107/t to PIBO-6D0ZKSI)",
+   "plastic/certificate_sales:SALE-QAJFALRCF (CAT_IV, Rs 1,107/t to PIBO-6D0ZKSI)",
+   "plastic/certificate_sales:SALE-EB9A9YQGB (CAT_IV, Rs 1,107/t to PIBO-6D0ZKSI)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-FG1H8BL Prime FMCG Pvt Ltd (301 t)",
+  "PIBO-XTTSNYI Supreme Retail Pvt Ltd (230 t)",
+  "PIBO-O6D2QAC Vasundhara Dairy Pvt Ltd (193 t)",
+  "PIBO-JF6BWH7 Navjeevan Himalaya Personal Care Pvt Ltd (193 t)",
+  "PIBO-KM19A94 Global Pharma & Co (159 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Check the company's incorporation and registration history and the source of its capital."
+ ],
+ "rank": 96
+}

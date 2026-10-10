@@ -1,0 +1,131 @@
+{
+ "entity_id": "ENT-YM7RH0S",
+ "profile": {
+  "name": "Sahyadri Poly Industries Pvt Ltd",
+  "state": "West Bengal",
+  "district": "Howrah",
+  "declared_capacity_tpa": 1410.0,
+  "connected_load_kw": 153.0,
+  "epr_registered": "2025-03-20"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6325,
+  "dominant_score": 3.33,
+  "ens_score": 0.9842,
+  "ens_pct": 0.9884
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 31% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 85% of months"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "48% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "53% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.28x the cost floor)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.578,
+   "text": "Sold products equal only 30% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.354
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3214
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 3.0,
+   "population_percentile": 99.5,
+   "shap": -0.2669
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.3777,
+   "population_percentile": 97.0,
+   "shap": -0.262
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-ZHGIYLWF (Mar 2026: 122,544 kWh for 215.7 t claimed)",
+   "plastic/electricity_bills:BILL-FKK08O19 (Oct 2025: 137,738 kWh for 240.4 t claimed)",
+   "plastic/electricity_bills:BILL-RBX5GXHT (Jun 2025: 114,410 kWh for 199.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-JVF668JYE (06 Mar 2025, 4 t from COL-1ZFHBZO)",
+   "plastic/feedstock_invoices:INV-12Q7BC3FJ (14 Mar 2025, 1 t from COL-JX7770B)",
+   "plastic/feedstock_invoices:INV-3UB0BWHUX (20 Mar 2025, 4 t from COL-0S83KP8)",
+   "plastic/feedstock_invoices:INV-S23MS0H65 (21 Mar 2025, 6 t from COL-RX4QPJK)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-0HLIDAY (500 t supplied; declared capacity 14 t/month; 1 vehicles; registered Dec 2024)",
+   "plastic/collectors:COL-0S83KP8 (391 t supplied; declared capacity 18 t/month; 2 vehicles; registered Feb 2025)",
+   "plastic/collectors:COL-UCJ9O0Q (355 t supplied; declared capacity 66 t/month; 4 vehicles; registered Nov 2020)",
+   "plastic/collectors:COL-RX4QPJK (267 t supplied; declared capacity 36 t/month; 1 vehicles; registered Dec 2024)",
+   "plastic/collectors:COL-5ZOBM7B (192 t supplied; declared capacity 19 t/month; 1 vehicles; registered Mar 2025)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-R979GIM (196 t bought)",
+   "plastic/offtakers:OFT-50O4P8S (114 t bought)",
+   "plastic/offtakers:OFT-NKJIAJE (73 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-LO7XMTL8M (CAT_IV, Rs 419/t to PIBO-JL8RYJ2)",
+   "plastic/certificate_sales:SALE-QLQCO7NF3 (CAT_IV, Rs 419/t to PIBO-JL8RYJ2)",
+   "plastic/certificate_sales:SALE-W0QXM3W3H (CAT_IV, Rs 419/t to PIBO-JL8RYJ2)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-5KHGD1Q Southern Laxmi Snacks Pvt Ltd (1,385 t)",
+  "PIBO-DGE7BFG Star Dairy & Co (442 t)",
+  "PIBO-TZXD43M Krishna Star Dairy Ltd (126 t)",
+  "PIBO-G5RFK02 Western Pioneer Foods Pvt Ltd (93 t)",
+  "PIBO-6XGZU7M Himalaya Snacks (37 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 30
+}

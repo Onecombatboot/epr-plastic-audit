@@ -1,0 +1,133 @@
+{
+ "entity_id": "ENT-F2HDA74",
+ "profile": {
+  "name": "Jai Poly Industries Pvt Ltd",
+  "state": "Telangana",
+  "district": "Medchal",
+  "declared_capacity_tpa": 6830.0,
+  "connected_load_kw": 560.0,
+  "epr_registered": "2023-03-24"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6762,
+  "dominant_score": 8.7414,
+  "ens_score": 0.9949,
+  "ens_pct": 0.9976
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (38% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 97% of months"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "47% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.688,
+   "text": "53% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.22x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3438
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2916
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.3803,
+   "population_percentile": 99.5,
+   "shap": -0.2612
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 1.0,
+   "population_percentile": 98.2,
+   "shap": -0.2571
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-VND3W5F0 (Oct 2025: 185,271 kWh for 1,680.9 t claimed)",
+   "plastic/electricity_bills:BILL-4EIMRKSO (Apr 2024: 166,659 kWh for 1,493.7 t claimed)",
+   "plastic/electricity_bills:BILL-38PWC505 (Dec 2025: 170,348 kWh for 1,511.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-JU1QGCK3L (01 Apr 2023, 14 t from COL-C5L9NGV)",
+   "plastic/feedstock_invoices:INV-CJKPTNRAF (01 Apr 2023, 7 t from COL-KH5SNN4)",
+   "plastic/feedstock_invoices:INV-PS5MRS6S9 (03 Apr 2023, 6 t from ENT-F1TMUTU)",
+   "plastic/feedstock_invoices:INV-S9FGOJSP0 (03 Apr 2023, 6 t from COL-C5L9NGV)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-C5L9NGV (8,797 t supplied; declared capacity 28 t/month; 1 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-KH5SNN4 (3,458 t supplied; declared capacity 18 t/month; 1 vehicles; registered Dec 2022)",
+   "plastic/collectors:COL-XKL8KIP (3,196 t supplied; declared capacity 257 t/month; 2 vehicles; registered Mar 2015)",
+   "plastic/collectors:COL-PTDMIYO (2,745 t supplied; declared capacity 36 t/month; 1 vehicles; registered Jan 2023)",
+   "plastic/collectors:COL-RA2BTNI (2,434 t supplied; declared capacity 164 t/month; 6 vehicles; registered Sep 2019)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-F1TMUTU (17,359 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 0, director 1, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-H2ZMOXIRE (CAT_IV, Rs 281/t to PIBO-NSKKFFE)",
+   "plastic/certificate_sales:SALE-8242H62DN (CAT_IV, Rs 283/t to PIBO-7L4CLX9)",
+   "plastic/certificate_sales:SALE-ZVNJRUG6T (CAT_IV, Rs 283/t to PIBO-7L4CLX9)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-WQIQXTS Jai Beverages (4,395 t)",
+  "PIBO-CBLVWXO Ganesh Pharma Pvt Ltd (1,747 t)",
+  "PIBO-TG9AMFT Hind Retail LLP (1,571 t)",
+  "PIBO-JEGCCP3 Navjeevan FMCG & Co (1,546 t)",
+  "PIBO-H0PVMI3 Northern Consumer Products Ltd (1,359 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 7
+}

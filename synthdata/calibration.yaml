@@ -1,0 +1,189 @@
+# Calibration constants for all synthetic generators.
+#
+# Every number here is either (a) taken from a public source (see `source`), or
+# (b) an ASSUMPTION chosen to be physically/economically plausible. Assumptions
+# are marked `assumption: true` and must be verified/cited before any number is
+# quoted in the demo. Generators read ONLY from this file + the scale preset, so
+# re-calibrating never requires code changes.
+
+period:
+  fy_start: "2023-04-01"      # FY2023-24 .. FY2025-26 (Indian financial year Apr-Mar)
+  fy_end: "2026-03-31"
+  annual_return_deadline_mmdd: "06-30"   # plastic EPR annual return due 30 June (verify)
+
+scales:
+  small:   {plastic: 250,  ewaste: 60,  battery: 45,  tyre: 70,  used_oil: 30,  ocems_units: 40,  ocems_days: 45,  bmw_facilities: 2500,  bmw_days: 120, bmw_cbwtf: 25}
+  medium:  {plastic: 1000, ewaste: 250, battery: 180, tyre: 280, used_oil: 120, ocems_units: 150, ocems_days: 90,  bmw_facilities: 10000, bmw_days: 365, bmw_cbwtf: 90}
+  large:   {plastic: 2500, ewaste: 600, battery: 450, tyre: 700, used_oil: 300, ocems_units: 300, ocems_days: 120, bmw_facilities: 20000, bmw_days: 365, bmw_cbwtf: 200}
+  # large ~= real-world order of magnitude: CPCB reported 216 registered e-waste
+  # recyclers (Dec 2024) and ~200 CBWTFs on the barcode system (source: CPCB report
+  # to NGT, EA 04/2024; CPCB BMW barcode guideline).
+
+# EPR start dates per stream; drive registration timing and the "migration" signal.
+epr_launch:
+  plastic:  "2022-04-01"   # plastic packaging EPR guidelines Feb 2022 (verify portal go-live)
+  ewaste:   "2023-04-01"   # E-Waste (Management) Rules 2022 in force 1 Apr 2023
+  battery:  "2022-08-24"   # Battery Waste Management Rules 2022 notified Aug 2022
+  tyre:     "2022-07-21"   # EPR for waste tyres notified Jul 2022
+  used_oil: "2024-04-01"   # HOWM 2nd Amendment 2023, EPR for used oil from 1 Apr 2024
+
+fraud:
+  entity_fraud_rate: {plastic: 0.09, ewaste: 0.07, battery: 0.07, tyre: 0.08, used_oil: 0.10}
+  difficulty_mix: {obvious: 0.30, moderate: 0.40, subtle: 0.30}
+  hollow_fraction:            # share of claimed tonnes with no physical backing
+    obvious:  [0.70, 0.97]
+    moderate: [0.35, 0.70]
+    subtle:   [0.12, 0.35]
+  operator_size_probs:        # number of entities controlled by one fraud operator
+    1: 0.40
+    2: 0.18
+    3: 0.14
+    4: 0.10
+    5: 0.07
+    6: 0.05
+    8: 0.04
+    12: 0.02
+  cross_stream_operator_prob: 0.35
+  late_stream_migration_prob: 0.55   # P(cross-stream operator registers a new shell right after a stream's EPR launch)
+
+benign:
+  consultant_count: 120          # compliance consultancies filing on behalf of many recyclers (shared contacts)
+  consultant_use_prob: 0.55
+  business_group_share: 0.06     # legit groups sharing directors across 2-4 entities
+  solar_adoption_prob: 0.15      # captive rooftop solar -> legitimately low grid bills
+  solar_offset_range: [0.10, 0.40]
+  solar_undeclared_prob: 0.20
+  new_legit_fast_grower_prob: 0.04
+
+# ---------------------------------------------------------------- plastic EPR
+plastic:
+  assumption: true
+  categories: ["CAT_I", "CAT_II", "CAT_III", "CAT_IV"]   # I rigid, II flexible, III multilayer, IV compostable
+  eol_types:
+    recycling:       {share: 0.85, kwh_per_t: [300, 1000], yield: [0.75, 0.90]}
+    waste_to_oil:    {share: 0.07, kwh_per_t: [150, 350],  yield: [0.40, 0.60]}
+    co_processing:   {share: 0.05, kwh_per_t: [20, 80],    yield: [0.00, 0.00]}
+    waste_to_energy: {share: 0.03, kwh_per_t: [30, 120],   yield: [0.00, 0.00]}
+  category_mix:             # Dirichlet means of feedstock mix by eol type
+    recycling:       [0.62, 0.34, 0.02, 0.02]
+    waste_to_oil:    [0.10, 0.55, 0.35, 0.00]
+    co_processing:   [0.05, 0.35, 0.60, 0.00]
+    waste_to_energy: [0.10, 0.45, 0.45, 0.00]
+  capacity_tpa_lognormal: {median: 1500, sigma: 0.95, min: 120, max: 60000}
+  utilization_base: [0.45, 0.88]
+  monsoon_factor: [0.82, 0.95]           # Jul-Sep feedstock dip
+  feedstock_price_inr_per_t: {CAT_I: [18000, 34000], CAT_II: [5000, 12000], CAT_III: [0, 3000], CAT_IV: [2000, 6000]}
+  truckload_t: {aggregator: [4, 12], kabadiwala_coop: [1, 5], ulb_mrf: [5, 15], shg: [0.5, 3], trader: [8, 20]}
+  collector_ratio: 10                    # collectors per recycler
+  collector_types: {aggregator: 0.60, kabadiwala_coop: 0.15, ulb_mrf: 0.10, shg: 0.10, trader: 0.05}
+  collector_monthly_capacity_t_lognormal: {median: 40, sigma: 0.9}
+  brands_per_recycler: 4.8
+  offtakers_per_recycler: 1.6
+  # certificate economics (INR per tonne). Legit sellers price above the recycling
+  # cost floor; hollow certificates carry no recycling cost and can undercut it.
+  cert_cost_floor_inr_per_t: {CAT_I: 3500, CAT_II: 2800, CAT_III: 5000, CAT_IV: 1500}
+  legit_markup: [0.90, 1.60]            # some legit sellers dip below cost when oversupplied
+  efficient_legit_markup: [0.82, 0.98]   # large efficient recyclers below the nominal floor (confounder)
+  hollow_markup:
+    obvious:  [0.20, 0.45]
+    moderate: [0.45, 0.75]
+    subtle:   [0.78, 1.00]
+  demand_to_legit_supply: 1.02           # ~genuine supply: hollow certificates crowd out (undercut) genuine ones
+  tariff_by_state_inr_per_kwh: [6.2, 9.4]
+  fixed_charge_inr_per_kw_month: [110, 420]
+  electricity_duty: [0.05, 0.10]
+
+# ----------------------------------------------------- other EPR streams (yield agent)
+# Output fractions are Dirichlet means; `conc` controls per-entity variation.
+streams:
+  ewaste:
+    assumption: true
+    capacity_tpa_lognormal: {median: 3000, sigma: 1.0, min: 200, max: 90000}
+    processes:
+      it_telecom_dismantling:
+        share: 0.55
+        kwh_per_t: [60, 220]
+        outputs: {ferrous: 0.30, plastics: 0.25, pcb: 0.08, copper_cables: 0.09, aluminium: 0.05, glass: 0.06, residue: 0.17}
+        conc: 120
+      large_appliance_dismantling:
+        share: 0.45
+        kwh_per_t: [40, 160]
+        outputs: {ferrous: 0.52, plastics: 0.20, pcb: 0.02, copper_cables: 0.07, aluminium: 0.05, glass: 0.03, residue: 0.11}
+        conc: 120
+  battery:
+    assumption: true
+    capacity_tpa_lognormal: {median: 6000, sigma: 0.9, min: 300, max: 120000}
+    processes:
+      lead_acid_smelting:
+        share: 0.80
+        kwh_per_t: [150, 350]
+        outputs: {lead: 0.60, polypropylene: 0.07, electrolyte_neutralised: 0.20, slag_residue: 0.13}
+        conc: 200
+      li_ion_black_mass:
+        share: 0.20
+        kwh_per_t: [200, 500]
+        outputs: {black_mass: 0.40, copper: 0.08, aluminium: 0.06, steel_casing: 0.18, plastics: 0.12, residue: 0.16}
+        conc: 150
+  tyre:
+    assumption: true
+    capacity_tpa_lognormal: {median: 4000, sigma: 0.8, min: 300, max: 60000}
+    processes:
+      pyrolysis:
+        share: 0.70
+        kwh_per_t: [100, 250]
+        outputs: {pyrolysis_oil: 0.40, carbon_black: 0.32, steel_wire: 0.13, pyro_gas: 0.10, residue: 0.05}
+        conc: 150
+      crumb_rubber:
+        share: 0.30
+        kwh_per_t: [300, 600]
+        outputs: {rubber_granules: 0.72, steel_wire: 0.16, textile_fibre: 0.10, residue: 0.02}
+        conc: 200
+  used_oil:
+    assumption: true
+    capacity_tpa_lognormal: {median: 5000, sigma: 0.9, min: 500, max: 80000}
+    processes:
+      re_refining:
+        share: 1.0
+        kwh_per_t: [150, 400]
+        outputs: {base_oil: 0.68, light_fuel: 0.11, asphalt_residue: 0.11, water_loss: 0.10}
+        conc: 150
+
+# ------------------------------------------------------------------ OCEMS
+ocems:
+  assumption: true
+  freq_minutes: 15
+  start: "2026-05-01"
+  standards: {cod_mgl: 250, bod_mgl: 30, tss_mgl: 100, ph_min: 5.5, ph_max: 9.0}   # general discharge standards (verify per industry)
+  tamper_unit_rate: 0.22
+  industries:
+    distillery:     {share: 0.10, schedule: continuous, flow_m3h: [40, 250],  cod_mgl: [80, 190],  cod_bod_ratio: [2.2, 3.2]}
+    pulp_paper:     {share: 0.10, schedule: continuous, flow_m3h: [150, 900], cod_mgl: [90, 200],  cod_bod_ratio: [3.0, 5.0]}
+    textile_dyeing: {share: 0.18, schedule: two_shift,  flow_m3h: [20, 180],  cod_mgl: [90, 210],  cod_bod_ratio: [3.0, 5.5]}
+    pharma:         {share: 0.14, schedule: batch,      flow_m3h: [10, 90],   cod_mgl: [70, 200],  cod_bod_ratio: [3.0, 6.0]}
+    chemical:       {share: 0.14, schedule: three_shift,flow_m3h: [15, 140],  cod_mgl: [80, 210],  cod_bod_ratio: [3.5, 6.5]}
+    tannery:        {share: 0.06, schedule: two_shift,  flow_m3h: [10, 60],   cod_mgl: [100, 220], cod_bod_ratio: [2.5, 4.0]}
+    sugar:          {share: 0.08, schedule: continuous, flow_m3h: [30, 200],  cod_mgl: [60, 170],  cod_bod_ratio: [1.8, 2.8]}
+    dairy:          {share: 0.06, schedule: two_shift,  flow_m3h: [10, 80],   cod_mgl: [50, 160],  cod_bod_ratio: [1.6, 2.5]}
+    cetp:           {share: 0.14, schedule: continuous, flow_m3h: [300, 2500],cod_mgl: [100, 220], cod_bod_ratio: [3.0, 4.5]}
+
+# ------------------------------------------------------------------ Biomedical waste
+bmw:
+  assumption: true
+  start: "2025-04-01"
+  facility_types:
+    hospital_large:  {share: 0.03, beds: [200, 1500], kg_per_bed_day: [0.30, 0.60], pickup: daily}
+    hospital_medium: {share: 0.10, beds: [50, 199],   kg_per_bed_day: [0.25, 0.50], pickup: daily}
+    nursing_home:    {share: 0.22, beds: [10, 49],    kg_per_bed_day: [0.20, 0.45], pickup: daily}
+    clinic:          {share: 0.38, patients_day: [15, 120], kg_per_patient: [0.004, 0.015], pickup: alternate}
+    lab:             {share: 0.13, patients_day: [20, 300], kg_per_patient: [0.003, 0.010], pickup: alternate}
+    dental:          {share: 0.09, patients_day: [8, 40],   kg_per_patient: [0.004, 0.012], pickup: twice_weekly}
+    veterinary:      {share: 0.05, patients_day: [5, 40],   kg_per_patient: [0.006, 0.020], pickup: twice_weekly}
+  category_split_mean: {yellow: 0.52, red: 0.36, white: 0.04, blue: 0.08}   # BMW Rules 2016 colour categories
+  occupancy: [0.55, 0.92]
+  vector_borne_season: {months: [8, 9, 10, 11], uplift: [1.05, 1.25]}
+  under_handover_rate: 0.06
+  ghost_pickup_cbwtf_rate: 0.12
+  weight_padding_cbwtf_rate: 0.10
+  overcapacity_cbwtf_rate: 0.08
+  incinerator_kg_per_hr: [50, 500]
+  diesel_l_per_kg_incinerated: [0.08, 0.20]

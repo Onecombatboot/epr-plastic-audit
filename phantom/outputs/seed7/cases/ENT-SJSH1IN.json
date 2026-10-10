@@ -1,0 +1,121 @@
+{
+ "entity_id": "ENT-SJSH1IN",
+ "profile": {
+  "name": "Ganga Navjeevan Recyclers Pvt Ltd",
+  "state": "Uttar Pradesh",
+  "district": "Kanpur",
+  "declared_capacity_tpa": 3340.0,
+  "connected_load_kw": 234.0,
+  "epr_registered": "2025-10-06"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6409,
+  "dominant_score": 6.8523,
+  "ens_score": 0.98,
+  "ens_pct": 0.9864
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (21% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 67% of months"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.51x the cost floor)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.504,
+   "text": "Electricity bought is only 0.56x the minimum needed for the tonnes claimed (168 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.45,
+   "text": "In 100% of billed months the units consumed cannot support the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3666
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2114,
+   "population_percentile": 98.9,
+   "shap": -0.36
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3345
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 96.7,
+   "shap": -0.3338
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-6AQWR8Y3 (Jan 2026: 63,211 kWh for 398.1 t claimed)",
+   "plastic/electricity_bills:BILL-TDY08C34 (Feb 2026: 61,853 kWh for 383.0 t claimed)",
+   "plastic/electricity_bills:BILL-VZCXEMZD (Mar 2026: 67,771 kWh for 416.1 t claimed)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-UZ5GQBL (412 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-298RWQD (246 t bought)",
+   "plastic/offtakers:OFT-HT35NIX (225 t bought)",
+   "plastic/offtakers:OFT-LOGKNCK (155 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-9UHAGCC8F (CAT_IV, Rs 739/t to PIBO-5QC6029)",
+   "plastic/certificate_sales:SALE-41HT0HEEW (CAT_IV, Rs 740/t to PIBO-Z3FF14M)",
+   "plastic/certificate_sales:SALE-6MPPENM2B (CAT_IV, Rs 740/t to PIBO-8TTY6WQ)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-OQ44YKL Jai Snacks Pvt Ltd (765 t)",
+  "PIBO-W4YJOOM Maa FMCG Ltd (278 t)",
+  "PIBO-8VBE3GV Bharat Retail Pvt Ltd (151 t)",
+  "PIBO-QLCZJ6Z Navjeevan Home Care Pvt Ltd (130 t)",
+  "PIBO-7ZDFJ64 Jai Durga Snacks LLP (117 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 35
+}

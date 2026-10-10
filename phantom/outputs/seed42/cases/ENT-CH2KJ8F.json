@@ -1,0 +1,123 @@
+{
+ "entity_id": "ENT-CH2KJ8F",
+ "profile": {
+  "name": "Durga Recyclers Pvt Ltd",
+  "state": "Delhi",
+  "district": "West Delhi",
+  "declared_capacity_tpa": 5440.0,
+  "connected_load_kw": 409.0,
+  "epr_registered": "2023-01-23"
+ },
+ "scores": {
+  "rule_score": 0.9997,
+  "iforest_score": 0.6457,
+  "dominant_score": 4.4197,
+  "ens_score": 0.976,
+  "ens_pct": 0.9812
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (18% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 31% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "74% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.321,
+   "text": "67% of certificate tonnes were sold below the cost of recycling (average 0.81x the cost floor)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.242,
+   "text": "Claimed tonnage in the busiest month would need 120% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.1824,
+   "population_percentile": 98.9,
+   "shap": -0.3713
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3433
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3313
+  },
+  {
+   "feature": "net_cycle_feed_share",
+   "label": "feedstock bought inside a loop",
+   "value": 0.1824,
+   "population_percentile": 98.9,
+   "shap": -0.2721
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-8GFM6TJ4 (Feb 2026: 123,356 kWh for 1,162.6 t claimed)",
+   "plastic/electricity_bills:BILL-1TK6D8F9 (Mar 2024: 129,032 kWh for 1,180.4 t claimed)",
+   "plastic/electricity_bills:BILL-072IOOZ7 (Mar 2025: 118,201 kWh for 1,070.3 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 4,957 t of 18,548 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-3T9EUB9 (3,434 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-6NP67TKEF (CAT_IV, Rs 1,014/t to PIBO-AYN7VGE)",
+   "plastic/certificate_sales:SALE-WJDHVYRKG (CAT_IV, Rs 1,015/t to PIBO-ZWJ5CDB)",
+   "plastic/certificate_sales:SALE-SG47GG598 (CAT_IV, Rs 1,023/t to PIBO-LHXNCPV)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-34XGNS2 Galaxy Durga Dairy Pvt Ltd (991 t)",
+  "PIBO-UVUQ7WR Northern FMCG Ltd (912 t)",
+  "PIBO-XVSHBT3 Sunrise Retail & Co (842 t)",
+  "PIBO-TN810O2 Pragati Home Care Pvt Ltd (499 t)",
+  "PIBO-KF8Y6V0 Om Star Snacks Pvt Ltd (434 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 48
+}

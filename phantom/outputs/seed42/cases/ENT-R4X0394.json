@@ -1,0 +1,127 @@
+{
+ "entity_id": "ENT-R4X0394",
+ "profile": {
+  "name": "Prakriti Granules Pvt Ltd",
+  "state": "Gujarat",
+  "district": "Surat",
+  "declared_capacity_tpa": 5940.0,
+  "connected_load_kw": 15.0,
+  "epr_registered": "2023-11-16"
+ },
+ "scores": {
+  "rule_score": 0.9998,
+  "iforest_score": 0.6335,
+  "dominant_score": 6.8746,
+  "ens_score": 0.9737,
+  "ens_pct": 0.9772
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 19% of expected)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.71,
+   "text": "54% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.621,
+   "text": "Claimed tonnage in the busiest month would need 166% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.47x the cost floor)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.526,
+   "text": "24% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.46,
+   "text": "Certificates claim more than the declared monthly capacity in 17% of months"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.5,
+   "shap": -0.3121
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5438,
+   "population_percentile": 98.3,
+   "shap": -0.2633
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.1724,
+   "population_percentile": 95.4,
+   "shap": -0.2477
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.5552,
+   "population_percentile": 97.5,
+   "shap": -0.2321
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-RQO61596 (Mar 2025: 25,499 kWh for 904.3 t claimed)",
+   "plastic/electricity_bills:BILL-FFEA73OU (Feb 2026: 24,961 kWh for 870.2 t claimed)",
+   "plastic/electricity_bills:BILL-93PUG0BT (Mar 2026: 26,065 kWh for 904.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-8NXJNCMXY (04 Nov 2023, 14 t from COL-NNQIG3G)",
+   "plastic/feedstock_invoices:INV-9JY8EFSIL (15 Dec 2023, 2 t from COL-T2BVYDG)",
+   "plastic/feedstock_invoices:INV-87ZVQIHQX (20 Dec 2023, 2 t from COL-O6FMEOS)",
+   "plastic/feedstock_invoices:INV-QQIK7ANPF (26 Dec 2023, 18 t from COL-NNQIG3G)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-NNQIG3G (4,711 t supplied; declared capacity 14 t/month; 1 vehicles; registered Aug 2023)",
+   "plastic/collectors:COL-7P6IF2H (1,590 t supplied; declared capacity 274 t/month; 6 vehicles; registered Nov 2015)",
+   "plastic/collectors:COL-4DA6OAG (612 t supplied; declared capacity 826 t/month; 3 vehicles; registered Aug 2023)",
+   "plastic/collectors:COL-T2BVYDG (498 t supplied; declared capacity 10 t/month; 2 vehicles; registered Sep 2023)",
+   "plastic/collectors:COL-T9PDCLV (457 t supplied; declared capacity 54 t/month; 2 vehicles; registered May 2022)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-XKOQKEQPX (CAT_IV, Rs 632/t to PIBO-FBSOUG7)",
+   "plastic/certificate_sales:SALE-VUHOUQIOF (CAT_IV, Rs 632/t to PIBO-FBSOUG7)",
+   "plastic/certificate_sales:SALE-4AO0WZ3TB (CAT_IV, Rs 632/t to PIBO-FBSOUG7)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-WQIQXTS Jai Beverages (508 t)",
+  "PIBO-CYY28PO Pioneer Shri Beverages LLP (351 t)",
+  "PIBO-OIINU7B Kaveri Foods Pvt Ltd (270 t)",
+  "PIBO-05ECHFE Pioneer Consumer Products Pvt Ltd (248 t)",
+  "PIBO-WKSW7UR Krishna Sunrise Snacks Pvt Ltd (235 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months."
+ ],
+ "rank": 58
+}

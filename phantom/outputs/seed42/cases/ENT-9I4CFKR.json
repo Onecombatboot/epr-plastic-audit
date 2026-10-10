@@ -1,0 +1,120 @@
+{
+ "entity_id": "ENT-9I4CFKR",
+ "profile": {
+  "name": "Kaveri Poly Industries Pvt Ltd",
+  "state": "Tamil Nadu",
+  "district": "Krishnagiri",
+  "declared_capacity_tpa": 2580.0,
+  "connected_load_kw": 137.0,
+  "epr_registered": "2025-04-29"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6905,
+  "dominant_score": 20.2033,
+  "ens_score": 0.9973,
+  "ens_pct": 0.9992
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (78% of its feedstock)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 343% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 16% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.683,
+   "text": "Electricity bought is only 0.40x the minimum needed for the tonnes claimed (121 kWh/t against at least 300)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.667,
+   "text": "Certificates claim more than the declared monthly capacity in 25% of months"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.30x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3146
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2967
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 3.0,
+   "population_percentile": 99.4,
+   "shap": -0.2832
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2777
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-UATMWBWP (Mar 2026: 40,488 kWh for 1,143.4 t claimed)",
+   "plastic/electricity_bills:BILL-G8PDHI7X (Feb 2026: 39,684 kWh for 863.7 t claimed)",
+   "plastic/electricity_bills:BILL-FSNK1FJD (Jan 2026: 42,541 kWh for 359.6 t claimed)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-FBIB9FW (1,506 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-Q6A9GYY (209 t bought)",
+   "plastic/offtakers:OFT-JGZQ7W0 (176 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-I685IXHDR (CAT_IV, Rs 436/t to PIBO-EX1O8HV)",
+   "plastic/certificate_sales:SALE-YLTKJ4Y72 (CAT_IV, Rs 436/t to PIBO-EX1O8HV)",
+   "plastic/certificate_sales:SALE-NF0UWY243 (CAT_IV, Rs 438/t to PIBO-1V0QAMD)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-P8N967Y Earth Beverages Pvt Ltd (1,298 t)",
+  "PIBO-BWRC7DG Galaxy Amrit FMCG Pvt Ltd (486 t)",
+  "PIBO-Y45FFCK Navjeevan Snacks LLP (145 t)",
+  "PIBO-K9EN4Q0 Apex Retail LLP (120 t)",
+  "PIBO-9R5JHSA Pragati Prime Consumer Products Pvt Ltd (119 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 3
+}

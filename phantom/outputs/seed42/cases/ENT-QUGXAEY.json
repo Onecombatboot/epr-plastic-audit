@@ -1,0 +1,116 @@
+{
+ "entity_id": "ENT-QUGXAEY",
+ "profile": {
+  "name": "Maa Poly Industries Pvt Ltd",
+  "state": "Haryana",
+  "district": "Panipat",
+  "declared_capacity_tpa": 1490.0,
+  "connected_load_kw": 16.0,
+  "epr_registered": "2025-12-01"
+ },
+ "scores": {
+  "rule_score": 0.9996,
+  "iforest_score": 0.6093,
+  "dominant_score": 11.3728,
+  "ens_score": 0.9644,
+  "ens_pct": 0.9712
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 15% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.24x the cost floor)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.532,
+   "text": "Claimed tonnage in the busiest month would need 155% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.29x the market median price"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.5,
+   "shap": -0.3562
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 1.0,
+   "population_percentile": 99.5,
+   "shap": -0.3421
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 89.7,
+   "shap": -0.2568
+  },
+  {
+   "feature": "cap_ratio_month_max",
+   "label": "cap_ratio_month_max",
+   "value": 4.8614,
+   "population_percentile": 98.9,
+   "shap": -0.1683
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-QLIGMP3F (Mar 2026: 27,037 kWh for 603.6 t claimed)",
+   "plastic/electricity_bills:BILL-LBI4DJ6M (Dec 2025: 8,908 kWh for 184.5 t claimed)",
+   "plastic/electricity_bills:BILL-L7QQOBV5 (Jan 2026: 14,208 kWh for 288.4 t claimed)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-DC4DEB8UN (CAT_II, Rs 665/t to PIBO-C703T77)",
+   "plastic/certificate_sales:SALE-Q5L8R89S4 (CAT_II, Rs 665/t to PIBO-W0QETQ7)",
+   "plastic/certificate_sales:SALE-Y5I8LH7FY (CAT_II, Rs 666/t to PIBO-PS1ZDLW)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-IFRU3OV Western Personal Care (971 t)",
+  "PIBO-PS1ZDLW Galaxy Western Pharma Pvt Ltd (108 t)",
+  "PIBO-N46KOS9 Everest Snacks Pvt Ltd (80 t)",
+  "PIBO-DTIJJTG Shree Personal Care Pvt Ltd (69 t)",
+  "PIBO-4WG15KO Prakriti Home Care & Co (64 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 73
+}

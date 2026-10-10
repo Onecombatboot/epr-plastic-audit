@@ -1,0 +1,135 @@
+{
+ "entity_id": "ENT-ZQZ68DV",
+ "profile": {
+  "name": "National Enviro Recycling LLP",
+  "state": "Madhya Pradesh",
+  "district": "Dhar",
+  "declared_capacity_tpa": 6360.0,
+  "connected_load_kw": 483.0,
+  "epr_registered": "2023-08-22"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6161,
+  "dominant_score": 2.1664,
+  "ens_score": 0.9591,
+  "ens_pct": 0.9656
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 48% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 31% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.659,
+   "text": "51% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.39x the cost floor)"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 3 other registered entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.5,
+   "shap": -0.3719
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5121,
+   "population_percentile": 98.1,
+   "shap": -0.3655
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.3418
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 99.0,
+   "shap": -0.3109
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-DDQYGX03 (Apr 2025: 347,673 kWh for 562.4 t claimed)",
+   "plastic/electricity_bills:BILL-5REV2SP5 (Jul 2025: 296,046 kWh for 474.7 t claimed)",
+   "plastic/electricity_bills:BILL-SA974II0 (Nov 2023: 334,772 kWh for 535.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-5VW1Z3VRT (03 Aug 2023, 8.5 t from COL-RYIC5HX)",
+   "plastic/feedstock_invoices:INV-PH0HVF98E (15 Aug 2023, 7 t from COL-MV57EAW)",
+   "plastic/feedstock_invoices:INV-2N8O27EAM (16 Aug 2023, 8 t from COL-BNGOIU4)",
+   "plastic/feedstock_invoices:INV-W0GERFMQ9 (20 Aug 2023, 9.2 t from COL-PD8SFRY)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-BNGOIU4 (4,171 t supplied; declared capacity 38 t/month; 1 vehicles; registered May 2023)",
+   "plastic/collectors:COL-7RIPUSE (2,984 t supplied; declared capacity 37 t/month; 2 vehicles; registered Jun 2023)",
+   "plastic/collectors:COL-RYIC5HX (1,595 t supplied; declared capacity 135 t/month; 5 vehicles; registered Sep 2020)",
+   "plastic/collectors:COL-PD8SFRY (978 t supplied; declared capacity 21 t/month; 1 vehicles; registered Jul 2023)",
+   "plastic/collectors:COL-6XEFJMY (800 t supplied; declared capacity 56 t/month; 3 vehicles; registered May 2016)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-LVNJN28 (2,288 t bought)",
+   "plastic/offtakers:OFT-O0TXE2U (1,511 t bought)",
+   "plastic/offtakers:OFT-8QYM9OW (843 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 3, address 0, director 0, photos 0)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-MGRWWEWG0 (CAT_IV, Rs 504/t to PIBO-4LWX78B)",
+   "plastic/certificate_sales:SALE-KJ8AMV9XF (CAT_IV, Rs 509/t to PIBO-MAL37NG)",
+   "plastic/certificate_sales:SALE-ZEN3MZK00 (CAT_IV, Rs 510/t to PIBO-52Z2HDZ)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-9O0MJCW Prakriti FMCG Pvt Ltd (1,850 t)",
+  "PIBO-WQIQXTS Jai Beverages (1,573 t)",
+  "PIBO-YM4G8XS Om Bharat Consumer Products (1,403 t)",
+  "PIBO-IFRU3OV Western Personal Care (1,075 t)",
+  "PIBO-H0PVMI3 Northern Consumer Products Ltd (688 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 87
+}

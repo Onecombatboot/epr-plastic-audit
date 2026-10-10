@@ -1,0 +1,121 @@
+{
+ "entity_id": "ENT-3HBQY27",
+ "profile": {
+  "name": "Laxmi Granules",
+  "state": "Punjab",
+  "district": "Ludhiana",
+  "declared_capacity_tpa": 2170.0,
+  "connected_load_kw": 48.0,
+  "epr_registered": "2025-04-27"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6602,
+  "dominant_score": 10.329,
+  "ens_score": 0.9851,
+  "ens_pct": 0.9892
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (23% of its feedstock)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 3 other plant(s)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "67% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.48x the cost floor)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "67% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "shell_offtakers",
+   "group": "output",
+   "strength": 0.5,
+   "text": "97% of product sales go to buyers incorporated under a year before the invoice"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3409
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3348
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2326,
+   "population_percentile": 99.2,
+   "shap": -0.316
+  },
+  {
+   "feature": "net_recycler_in_degree",
+   "label": "net_recycler_in_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2719
+  }
+ ],
+ "evidence": {
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 562 t of 838 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-V0SVM1Z (199 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-EFF3CTS (206 t bought)",
+   "plastic/offtakers:OFT-XWXKRDZ (7 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 3)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-IQQ82WVV3 (CAT_IV, Rs 714/t to PIBO-WZ1TDJ7)",
+   "plastic/certificate_sales:SALE-NG6P4CN3I (CAT_IV, Rs 714/t to PIBO-WZ1TDJ7)",
+   "plastic/certificate_sales:SALE-1G1M9HPUN (CAT_IV, Rs 717/t to PIBO-Y500XKY)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-KS19MOF National Southern Pharma Pvt Ltd (213 t)",
+  "PIBO-06WAYZV Vasundhara Shree Home Care Pvt Ltd (91 t)",
+  "PIBO-71YNK5Y Hind Pharma (85 t)",
+  "PIBO-QRX21Y2 Sanjeevani Foods LLP (77 t)",
+  "PIBO-IS7NDB7 Shree Personal Care Pvt Ltd (55 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 28
+}

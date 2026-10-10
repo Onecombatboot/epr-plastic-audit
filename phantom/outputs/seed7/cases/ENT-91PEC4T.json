@@ -1,0 +1,116 @@
+{
+ "entity_id": "ENT-91PEC4T",
+ "profile": {
+  "name": "Royal Granules Pvt Ltd",
+  "state": "Tamil Nadu",
+  "district": "Krishnagiri",
+  "declared_capacity_tpa": 2300.0,
+  "connected_load_kw": 61.0,
+  "epr_registered": "2024-10-16"
+ },
+ "scores": {
+  "rule_score": 0.9998,
+  "iforest_score": 0.6596,
+  "dominant_score": 2.9838,
+  "ens_score": 0.978,
+  "ens_pct": 0.9852
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (18% of its feedstock)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.50x the cost floor)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.49,
+   "text": "Category III share of certificates is 33%, +31% versus what its process route can produce"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.476,
+   "text": "43% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.442,
+   "text": "54% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.181,
+   "population_percentile": 98.6,
+   "shap": -0.3355
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3273
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3035
+  },
+  {
+   "feature": "net_recycler_in_degree",
+   "label": "net_recycler_in_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.287
+  }
+ ],
+ "evidence": {
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 426 t of 996 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-847C47G (184 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-NQ099ZK01 (CAT_IV, Rs 717/t to PIBO-9M4JYUP)",
+   "plastic/certificate_sales:SALE-JQKNQRBXZ (CAT_IV, Rs 717/t to PIBO-9M4JYUP)",
+   "plastic/certificate_sales:SALE-JYL5V8OIO (CAT_IV, Rs 717/t to PIBO-9M4JYUP)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-XOUZMKC Kaveri National Home Care Pvt Ltd (319 t)",
+  "PIBO-JI8U577 Sahyadri Supreme Home Care & Co (125 t)",
+  "PIBO-9H6ZHHN Navjeevan Consumer Products (98 t)",
+  "PIBO-MLXTN28 Shri Home Care Pvt Ltd (82 t)",
+  "PIBO-206PMS0 Ganesh Retail Pvt Ltd (77 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 38
+}

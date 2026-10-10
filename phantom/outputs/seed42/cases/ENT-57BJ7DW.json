@@ -1,0 +1,125 @@
+{
+ "entity_id": "ENT-57BJ7DW",
+ "profile": {
+  "name": "Om Sai Plastics & Co",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 1200.0,
+  "connected_load_kw": 159.0,
+  "epr_registered": "2024-11-12"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6666,
+  "dominant_score": 10.5142,
+  "ens_score": 0.9936,
+  "ens_pct": 0.9972
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (68% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.735,
+   "text": "Electricity bought is only 0.36x the minimum needed for the tonnes claimed (107 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 18% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.31x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3338
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3288
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.6755,
+   "population_percentile": 99.8,
+   "shap": -0.3045
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 3.0,
+   "population_percentile": 99.4,
+   "shap": -0.2923
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-7Y5KA57B (Jun 2025: 35,904 kWh for 363.1 t claimed)",
+   "plastic/electricity_bills:BILL-RPF0GGEV (Dec 2025: 34,561 kWh for 343.3 t claimed)",
+   "plastic/electricity_bills:BILL-NQO8LM75 (Oct 2025: 36,987 kWh for 361.1 t claimed)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-UC5WOZO (1,748 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-J0PPJWE (276 t bought)",
+   "plastic/offtakers:OFT-RU0D89F (110 t bought)",
+   "plastic/offtakers:OFT-F2DA2PJ (96 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 2, address 0, director 2, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-MVSDN6N19 (CAT_IV, Rs 428/t to PIBO-U2O893T)",
+   "plastic/certificate_sales:SALE-CVO2I8FGY (CAT_IV, Rs 428/t to PIBO-Z8WTOUV)",
+   "plastic/certificate_sales:SALE-FYDIRF6VQ (CAT_IV, Rs 428/t to PIBO-935UQ8K)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-UIDVOPO Metro Personal Care Pvt Ltd (1,522 t)",
+  "PIBO-WQIQXTS Jai Beverages (983 t)",
+  "PIBO-YRP4XZQ Pioneer Consumer Products Pvt Ltd (468 t)",
+  "PIBO-1ZZTUSO Vasundhara Apex Retail & Co (329 t)",
+  "PIBO-TN810O2 Pragati Home Care Pvt Ltd (288 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 8
+}

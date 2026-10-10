@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-QM40JQX",
+ "profile": {
+  "name": "Himalaya Vasundhara Poly Industries Pvt Ltd",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 6610.0,
+  "connected_load_kw": 627.0,
+  "epr_registered": "2024-03-11"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6366,
+  "dominant_score": 4.8224,
+  "ens_score": 0.987,
+  "ens_pct": 0.9916
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 234% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.24x the minimum needed for the tonnes claimed (73 kWh/t against at least 300)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "88% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 15% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "72% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.3068
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.2956
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 1.0,
+   "population_percentile": 98.0,
+   "shap": -0.2726
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8764,
+   "population_percentile": 99.7,
+   "shap": -0.2714
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-NW5KLVAA (Mar 2026: 241,830 kWh for 3,461.9 t claimed)",
+   "plastic/electricity_bills:BILL-14Q236ZH (Oct 2025: 206,562 kWh for 2,948.2 t claimed)",
+   "plastic/electricity_bills:BILL-64PD699H (Jul 2024: 208,265 kWh for 2,966.5 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-AFI5ORFDH (01 Mar 2024, 10 t from COL-RBQC7JJ)",
+   "plastic/feedstock_invoices:INV-EUF6IWGG9 (02 Mar 2024, 1.5 t from COL-2CQZLEL)",
+   "plastic/feedstock_invoices:INV-JAQH7KUEO (02 Mar 2024, 8 t from COL-RBQC7JJ)",
+   "plastic/feedstock_invoices:INV-J0BO3RW7E (02 Mar 2024, 11 t from COL-10X9VFX)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-C99PUY8 (25,345 t supplied; declared capacity 38 t/month; 1 vehicles; registered Sep 2023)",
+   "plastic/collectors:COL-10X9VFX (21,872 t supplied; declared capacity 25 t/month; 1 vehicles; registered Dec 2023)",
+   "plastic/collectors:COL-RBQC7JJ (8,863 t supplied; declared capacity 15 t/month; 2 vehicles; registered Sep 2023)",
+   "plastic/collectors:COL-RLBFCML (3,757 t supplied; declared capacity 19 t/month; 1 vehicles; registered Dec 2023)",
+   "plastic/collectors:COL-87ICSW9 (1,520 t supplied; declared capacity 142 t/month; 5 vehicles; registered Aug 2015)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-4RK7GJ6 (4,117 t bought)",
+   "plastic/offtakers:OFT-P8QNBDY (1,887 t bought)",
+   "plastic/offtakers:OFT-YCYHMFU (838 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-97O6H6B Balaji FMCG & Co (1,951 t)",
+  "PIBO-PK8DHUX National Dairy Pvt Ltd (1,876 t)",
+  "PIBO-8S0KNV0 Durga Retail & Co (1,610 t)",
+  "PIBO-YRDG0J5 Himalaya Pharma Pvt Ltd (1,162 t)",
+  "PIBO-DZU5O3D Himalaya FMCG Pvt Ltd (1,120 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 22
+}

@@ -1,0 +1,125 @@
+{
+ "entity_id": "ENT-04Z1IJC",
+ "profile": {
+  "name": "National Enviro Recycling LLP",
+  "state": "Tamil Nadu",
+  "district": "Chennai",
+  "declared_capacity_tpa": 7740.0,
+  "connected_load_kw": 798.0,
+  "epr_registered": "2025-10-28"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6188,
+  "dominant_score": 2.8035,
+  "ens_score": 0.9705,
+  "ens_pct": 0.9788
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 50% of months"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 17% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.631,
+   "text": "Electricity bought is only 0.45x the minimum needed for the tonnes claimed (134 kWh/t against at least 300)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.19x the cost floor)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "56% of all certificates were generated in a single month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.3128
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.8333,
+   "population_percentile": 89.1,
+   "shap": -0.3061
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.2713,
+   "population_percentile": 96.6,
+   "shap": -0.2491
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.5,
+   "population_percentile": 97.8,
+   "shap": -0.2393
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-DX6BOFD1 (Feb 2026: 203,141 kWh for 2,976.4 t claimed)",
+   "plastic/electricity_bills:BILL-IJY2MT03 (Jan 2026: 209,860 kWh for 1,178.7 t claimed)",
+   "plastic/electricity_bills:BILL-JJ3438VJ (Oct 2025: 83,985 kWh for 193.9 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-04: 4,452 t of 7,953 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-XSAPT2L (316 t bought)",
+   "plastic/offtakers:OFT-BNOM8VO (214 t bought)",
+   "plastic/offtakers:OFT-DM4SS4O (210 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-XDWOTJNUC (CAT_IV, Rs 268/t to PIBO-QD4RULV)",
+   "plastic/certificate_sales:SALE-MI7YBK475 (CAT_IV, Rs 269/t to PIBO-ZP3WX13)",
+   "plastic/certificate_sales:SALE-2L3XUBRHC (CAT_IV, Rs 269/t to PIBO-JLGRVAH)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-U08T2P6 Durga Personal Care Pvt Ltd (529 t)",
+  "PIBO-31138F2 Maa FMCG Pvt Ltd (407 t)",
+  "PIBO-AVQ1KIX Hind FMCG (380 t)",
+  "PIBO-7JSDJXA Kaveri Vasundhara Home Care (364 t)",
+  "PIBO-8GB66WS Balaji Pragati Dairy LLP (312 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 54
+}

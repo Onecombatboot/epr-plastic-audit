@@ -1,0 +1,122 @@
+{
+ "entity_id": "ENT-OG5R6WE",
+ "profile": {
+  "name": "Kaveri Poly Industries Pvt Ltd",
+  "state": "Karnataka",
+  "district": "Bengaluru Urban",
+  "declared_capacity_tpa": 11400.0,
+  "connected_load_kw": 331.0,
+  "epr_registered": "2023-05-14"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6321,
+  "dominant_score": 2.61,
+  "ens_score": 0.9694,
+  "ens_pct": 0.9776
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (25% of its feedstock)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.698,
+   "text": "Category III share of certificates is 42%, +40% versus what its process route can produce"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.47x the cost floor)"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.42,
+   "text": "Sold products equal only 44% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3867
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2546,
+   "population_percentile": 99.0,
+   "shap": -0.37
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.3587
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.343
+  }
+ ],
+ "evidence": {
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-04: 483 t of 8,949 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-O72BZCW (2,320 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-GW7HG2M (697 t bought)",
+   "plastic/offtakers:OFT-139NZ6C (532 t bought)",
+   "plastic/offtakers:OFT-G1S9Y1J (435 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 2, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-0B6JLQH0N (CAT_IV, Rs 622/t to PIBO-0DORGM0)",
+   "plastic/certificate_sales:SALE-9D9X3A5TJ (CAT_IV, Rs 622/t to PIBO-0DORGM0)",
+   "plastic/certificate_sales:SALE-YP6ULQWPI (CAT_IV, Rs 622/t to PIBO-0DORGM0)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-QD4RULV Star Star Foods Pvt Ltd (491 t)",
+  "PIBO-KAQ52X8 Green Personal Care LLP (463 t)",
+  "PIBO-ES2EV6V Western Beverages Pvt Ltd (382 t)",
+  "PIBO-4KO4XFF Jai National Dairy Pvt Ltd (368 t)",
+  "PIBO-IB8CCEI Shree Pioneer Pharma (245 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 57
+}

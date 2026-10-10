@@ -1,0 +1,133 @@
+{
+ "entity_id": "ENT-GB1KCJQ",
+ "profile": {
+  "name": "Om Plastics Pvt Ltd",
+  "state": "Tamil Nadu",
+  "district": "Chennai",
+  "declared_capacity_tpa": 1500.0,
+  "connected_load_kw": 192.0,
+  "epr_registered": "2025-05-23"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6225,
+  "dominant_score": 1.9049,
+  "ens_score": 0.9662,
+  "ens_pct": 0.9744
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 27% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 36% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.51x the cost floor)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.554,
+   "text": "47% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.493,
+   "text": "41% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.4079,
+   "population_percentile": 97.2,
+   "shap": -0.3256
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.4733,
+   "population_percentile": 98.8,
+   "shap": -0.2988
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.298
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2563
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-FECMGITD (Mar 2026: 254,117 kWh for 353.8 t claimed)",
+   "plastic/electricity_bills:BILL-FGA7D4DG (Nov 2025: 90,054 kWh for 125.2 t claimed)",
+   "plastic/electricity_bills:BILL-PGEXELXF (Dec 2025: 80,080 kWh for 109.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-GK8GNFJMX (05 May 2025, 2 t from COL-W1241CX)",
+   "plastic/feedstock_invoices:INV-JN2VDP3AT (09 May 2025, 3 t from COL-DR5OYOM)",
+   "plastic/feedstock_invoices:INV-BTL4FL8ET (11 May 2025, 0.78 t from COL-UB0G3JY)",
+   "plastic/feedstock_invoices:INV-D3MP75KXJ (14 May 2025, 1 t from COL-Y58X89H)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-UBSXNFZ (464 t supplied; declared capacity 8 t/month; 2 vehicles; registered Dec 2024)",
+   "plastic/collectors:COL-Q16VP8N (196 t supplied; declared capacity 48 t/month; 3 vehicles; registered May 2022)",
+   "plastic/collectors:COL-LW0DVOF (150 t supplied; declared capacity 47 t/month; 5 vehicles; registered Sep 2015)",
+   "plastic/collectors:COL-DR5OYOM (136 t supplied; declared capacity 39 t/month; 2 vehicles; registered Feb 2025)",
+   "plastic/collectors:COL-6CHQA2M (131 t supplied; declared capacity 99 t/month; 5 vehicles; registered Jun 2017)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 792 t of 1,674 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-FJ27TE5HT (CAT_IV, Rs 730/t to PIBO-7Q03T0V)",
+   "plastic/certificate_sales:SALE-KRJ7UPYF4 (CAT_IV, Rs 730/t to PIBO-FXGNDLO)",
+   "plastic/certificate_sales:SALE-61VGSWXBH (CAT_IV, Rs 730/t to PIBO-2VUK0AJ)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-4WPAEIS Laxmi Retail Pvt Ltd (420 t)",
+  "PIBO-JL8RYJ2 Hind Beverages Pvt Ltd (171 t)",
+  "PIBO-CDX1T70 Royal Himalaya Home Care LLP (139 t)",
+  "PIBO-3HZHH8Z Durga Sahyadri Snacks & Co (114 t)",
+  "PIBO-MMLE8XQ Earth FMCG Pvt Ltd (95 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers."
+ ],
+ "rank": 65
+}

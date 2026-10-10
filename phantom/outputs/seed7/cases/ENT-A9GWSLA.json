@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-A9GWSLA",
+ "profile": {
+  "name": "Jai Polymers Pvt Ltd",
+  "state": "Delhi",
+  "district": "North West Delhi",
+  "declared_capacity_tpa": 2550.0,
+  "connected_load_kw": 82.0,
+  "epr_registered": "2024-03-15"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6601,
+  "dominant_score": 4.1888,
+  "ens_score": 0.9927,
+  "ens_pct": 0.996
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 308% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.18x the minimum needed for the tonnes claimed (27 kWh/t against at least 150)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "85% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 17% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "74% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 96.7,
+   "shap": -0.32
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 1.0,
+   "population_percentile": 98.2,
+   "shap": -0.2852
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 1.0,
+   "population_percentile": 98.5,
+   "shap": -0.2692
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8529,
+   "population_percentile": 99.7,
+   "shap": -0.26
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-SZD35WXR (May 2025: 26,766 kWh for 1,050.7 t claimed)",
+   "plastic/electricity_bills:BILL-IG2U5AL4 (Mar 2025: 27,180 kWh for 1,052.0 t claimed)",
+   "plastic/electricity_bills:BILL-QMF1PCKK (Jun 2025: 27,612 kWh for 1,068.3 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-M6VTFKKRL (02 Mar 2024, 21 t from COL-DR22R49)",
+   "plastic/feedstock_invoices:INV-MKCF9K777 (04 Mar 2024, 9 t from COL-EGCUI3I)",
+   "plastic/feedstock_invoices:INV-33US262E8 (05 Mar 2024, 19 t from COL-DR22R49)",
+   "plastic/feedstock_invoices:INV-TNVX9GP5O (06 Mar 2024, 7 t from COL-DR22R49)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-DR22R49 (9,624 t supplied; declared capacity 39 t/month; 2 vehicles; registered Jan 2024)",
+   "plastic/collectors:COL-EGCUI3I (7,633 t supplied; declared capacity 32 t/month; 2 vehicles; registered Jan 2024)",
+   "plastic/collectors:COL-SJ9CNTD (3,903 t supplied; declared capacity 26 t/month; 1 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-81WBZCD (855 t supplied; declared capacity 69 t/month; 5 vehicles; registered Feb 2021)",
+   "plastic/collectors:COL-9OHI70H (546 t supplied; declared capacity 85 t/month; 5 vehicles; registered Jun 2016)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-R4L2XPG (932 t bought)",
+   "plastic/offtakers:OFT-V7KMBAT (588 t bought)",
+   "plastic/offtakers:OFT-GQIJ2ZT (172 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-QS12NZ4 Sterling Snacks (1,102 t)",
+  "PIBO-UJ3228R Laxmi Home Care (1,029 t)",
+  "PIBO-A4SRXM2 Om Ganesh Personal Care Pvt Ltd (906 t)",
+  "PIBO-I3Q2P3N Everest Personal Care Pvt Ltd (484 t)",
+  "PIBO-7KE4P50 Himalaya Personal Care Pvt Ltd (238 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 11
+}

@@ -1,0 +1,128 @@
+{
+ "entity_id": "ENT-DQF3MJB",
+ "profile": {
+  "name": "Shri Enviro Recycling",
+  "state": "Telangana",
+  "district": "Medchal",
+  "declared_capacity_tpa": 1590.0,
+  "connected_load_kw": 116.0,
+  "epr_registered": "2025-03-10"
+ },
+ "scores": {
+  "rule_score": 0.9997,
+  "iforest_score": 0.6249,
+  "dominant_score": 3.0453,
+  "ens_score": 0.9681,
+  "ens_pct": 0.9748
+ },
+ "reasons": [
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 45%, +43% versus what its process route can produce"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.615,
+   "text": "Certificates claim more than the declared monthly capacity in 23% of months"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "74% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.41x the cost floor)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.534,
+   "text": "43% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "75% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 1.0,
+   "population_percentile": 91.9,
+   "shap": -0.2871
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.3077,
+   "population_percentile": 88.4,
+   "shap": -0.2745
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.434,
+   "population_percentile": 98.3,
+   "shap": -0.2563
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.7484,
+   "population_percentile": 99.7,
+   "shap": -0.2213
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-4GQ7NYM2 (Feb 2026: 33,740 kWh for 348.9 t claimed)",
+   "plastic/electricity_bills:BILL-HB2C6UOL (Mar 2026: 30,433 kWh for 293.1 t claimed)",
+   "plastic/electricity_bills:BILL-M0LI3QWL (Jan 2026: 29,695 kWh for 148.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-JXG7MRZI7 (05 Mar 2025, 6 t from COL-18OUE66)",
+   "plastic/feedstock_invoices:INV-S0RK0LIM9 (09 Mar 2025, 2.4 t from COL-679K2I3)",
+   "plastic/feedstock_invoices:INV-Z0B55P5KC (18 Mar 2025, 1 t from COL-31YLJ5V)",
+   "plastic/feedstock_invoices:INV-XGJILE06P (06 Apr 2025, 2.44 t from COL-4OG7EMB)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-18OUE66 (267 t supplied; declared capacity 28 t/month; 1 vehicles; registered Sep 2024)",
+   "plastic/collectors:COL-6GBQBO2 (261 t supplied; declared capacity 128 t/month; 2 vehicles; registered Apr 2018)",
+   "plastic/collectors:COL-2X5JXMI (176 t supplied; declared capacity 21 t/month; 1 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-2DFDWIC (121 t supplied; declared capacity 215 t/month; 5 vehicles; registered Jun 2018)",
+   "plastic/collectors:COL-4OG7EMB (104 t supplied; declared capacity 16 t/month; 2 vehicles; registered Nov 2024)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 1,177 t of 1,592 t generated)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-68BVDA6QJ (CAT_IV, Rs 586/t to PIBO-H0MV3J5)",
+   "plastic/certificate_sales:SALE-VQEQQT34S (CAT_IV, Rs 626/t to PIBO-1WTC20W)",
+   "plastic/certificate_sales:SALE-C825IZ2J5 (CAT_IV, Rs 626/t to PIBO-1WTC20W)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-ZQ3HMO4 Narmada Sanjeevani Retail (215 t)",
+  "PIBO-TT6P1P1 Royal Ganesh Retail Pvt Ltd (207 t)",
+  "PIBO-4U814NS Ganesh Consumer Products LLP (146 t)",
+  "PIBO-FIAR2QB Eco Retail LLP (142 t)",
+  "PIBO-6CZS084 Sunrise FMCG LLP (102 t)"
+ ],
+ "inspection_checklist": [
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers."
+ ],
+ "rank": 64
+}

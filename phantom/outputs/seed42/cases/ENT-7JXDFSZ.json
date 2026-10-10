@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-7JXDFSZ",
+ "profile": {
+  "name": "Laxmi Plast Ltd",
+  "state": "West Bengal",
+  "district": "Howrah",
+  "declared_capacity_tpa": 4270.0,
+  "connected_load_kw": 805.0,
+  "epr_registered": "2025-01-15"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6449,
+  "dominant_score": 3.0186,
+  "ens_score": 0.9781,
+  "ens_pct": 0.9844
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 33% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "72% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "51% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "46% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "75% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.57,
+   "text": "Sold products equal only 31% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3419
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.5333,
+   "population_percentile": 87.7,
+   "shap": -0.2815
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7162,
+   "population_percentile": 99.0,
+   "shap": -0.2606
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 3.0,
+   "population_percentile": 99.5,
+   "shap": -0.2563
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-70C918B9 (Feb 2026: 205,600 kWh for 2,102.2 t claimed)",
+   "plastic/electricity_bills:BILL-KWQ9U0N2 (Mar 2026: 203,619 kWh for 1,837.2 t claimed)",
+   "plastic/electricity_bills:BILL-Q4RDKS9L (Mar 2025: 146,357 kWh for 444.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-W39653ZZE (01 Jan 2025, 4 t from COL-E66WSX7)",
+   "plastic/feedstock_invoices:INV-LQZZKO1F4 (03 Jan 2025, 12 t from COL-M4N58CQ)",
+   "plastic/feedstock_invoices:INV-QTB6J9C66 (07 Jan 2025, 2 t from COL-HMV5MPU)",
+   "plastic/feedstock_invoices:INV-VRJJNF1CI (12 Jan 2025, 5 t from COL-81I6U8B)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-81I6U8B (2,562 t supplied; declared capacity 7 t/month; 1 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-M4N58CQ (2,527 t supplied; declared capacity 24 t/month; 1 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-73VJG4O (685 t supplied; declared capacity 10 t/month; 2 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-P015TOQ (448 t supplied; declared capacity 176 t/month; 5 vehicles; registered Mar 2020)",
+   "plastic/collectors:COL-P0A8ISR (417 t supplied; declared capacity 83 t/month; 6 vehicles; registered May 2023)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 6,193 t of 8,263 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-3DWQ6E2 (796 t bought)",
+   "plastic/offtakers:OFT-S52YFZD (426 t bought)",
+   "plastic/offtakers:OFT-9XUAMPG (261 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-CLBQK7Y Hind Star Personal Care Ltd (424 t)",
+  "PIBO-MTS6HQT Eco Prime Personal Care Pvt Ltd (191 t)",
+  "PIBO-B5BKNI5 Prime Sai Beverages Pvt Ltd (179 t)",
+  "PIBO-M2Y0JM1 Pioneer Pharma Pvt Ltd (130 t)",
+  "PIBO-UKMTEAV Jai Retail & Co (115 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 40
+}

@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-SCCUUSZ",
+ "profile": {
+  "name": "Amrit Granules Ltd",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 33240.0,
+  "connected_load_kw": 1351.0,
+  "epr_registered": "2024-11-23"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6437,
+  "dominant_score": 5.4979,
+  "ens_score": 0.9909,
+  "ens_pct": 0.9952
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 293% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "82% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.784,
+   "text": "Certificates claim more than the declared monthly capacity in 29% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.708,
+   "text": "Electricity bought is only 0.38x the minimum needed for the tonnes claimed (114 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 19% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "65% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3029
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 2.0,
+   "population_percentile": 98.7,
+   "shap": -0.2711
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 5.0,
+   "population_percentile": 99.3,
+   "shap": -0.236
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.9412,
+   "population_percentile": 88.0,
+   "shap": -0.2341
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-UJ5S4ULI (Mar 2026: 373,118 kWh for 9,647.0 t claimed)",
+   "plastic/electricity_bills:BILL-Q0PXVE3G (Feb 2026: 427,316 kWh for 8,905.9 t claimed)",
+   "plastic/electricity_bills:BILL-HMNZW3PK (Mar 2025: 362,262 kWh for 3,314.1 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-3XFO208DN (01 Nov 2024, 4 t from COL-Z2040OE)",
+   "plastic/feedstock_invoices:INV-VTOK4HH9F (03 Nov 2024, 13 t from COL-RUF76K7)",
+   "plastic/feedstock_invoices:INV-L1QNGYZPU (08 Nov 2024, 8 t from COL-CPUF1AS)",
+   "plastic/feedstock_invoices:INV-YCVEYX4OZ (08 Nov 2024, 15 t from COL-CPUF1AS)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-RUF76K7 (6,762 t supplied; declared capacity 32 t/month; 2 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-L6V5XWL (6,241 t supplied; declared capacity 22 t/month; 2 vehicles; registered Sep 2024)",
+   "plastic/collectors:COL-B5B18WC (5,011 t supplied; declared capacity 33 t/month; 1 vehicles; registered Jun 2024)",
+   "plastic/collectors:COL-CPUF1AS (4,558 t supplied; declared capacity 28 t/month; 1 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-TGQ38XI (4,137 t supplied; declared capacity 28 t/month; 1 vehicles; registered Sep 2024)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-S1ZOPEM (2,216 t bought)",
+   "plastic/offtakers:OFT-XGASHA9 (1,342 t bought)",
+   "plastic/offtakers:OFT-OB0AKAK (748 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-71YNK5Y Hind Pharma (3,664 t)",
+  "PIBO-G8IVEDQ Prime Amrit Dairy Pvt Ltd (3,075 t)",
+  "PIBO-JF6BWH7 Navjeevan Himalaya Personal Care Pvt Ltd (2,126 t)",
+  "PIBO-R1DINPS Shri Consumer Products Ltd (1,804 t)",
+  "PIBO-Z8WTOUV Prime Pharma Ltd (1,361 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 13
+}

@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-2LHGY2V",
+ "profile": {
+  "name": "Kaveri Plastics & Co",
+  "state": "Uttar Pradesh",
+  "district": "Kanpur",
+  "declared_capacity_tpa": 3170.0,
+  "connected_load_kw": 193.0,
+  "epr_registered": "2023-07-11"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6396,
+  "dominant_score": 5.4761,
+  "ens_score": 0.9907,
+  "ens_pct": 0.994
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 19% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 97% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "82% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "56% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "62% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3356
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3278
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 1.0,
+   "population_percentile": 98.2,
+   "shap": -0.323
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8155,
+   "population_percentile": 99.4,
+   "shap": -0.3
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-NCG85XFG (Dec 2023: 172,658 kWh for 736.7 t claimed)",
+   "plastic/electricity_bills:BILL-JR67PTXV (Jan 2025: 156,116 kWh for 662.7 t claimed)",
+   "plastic/electricity_bills:BILL-NWMMZKZR (Oct 2023: 175,831 kWh for 744.8 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-OU4OLR2GS (01 Jul 2023, 2 t from COL-ZS89C2C)",
+   "plastic/feedstock_invoices:INV-P3GOJJBQS (01 Jul 2023, 16 t from COL-3U14QE2)",
+   "plastic/feedstock_invoices:INV-NP23BPBNM (11 Jul 2023, 8 t from COL-FB8LTY3)",
+   "plastic/feedstock_invoices:INV-VW8V38SXP (13 Jul 2023, 14 t from COL-Y0VWUWK)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-647E636 (10,079 t supplied; declared capacity 9 t/month; 2 vehicles; registered May 2023)",
+   "plastic/collectors:COL-FB8LTY3 (2,356 t supplied; declared capacity 40 t/month; 1 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-3U14QE2 (1,853 t supplied; declared capacity 39 t/month; 1 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-Y0VWUWK (1,572 t supplied; declared capacity 8 t/month; 1 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-WLYSKEM (1,330 t supplied; declared capacity 103 t/month; 1 vehicles; registered Jan 2023)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 2, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-12JWBJ3 Sanjeevani Royal Beverages LLP (4,122 t)",
+  "PIBO-EDGDZ47 Unity Consumer Products Pvt Ltd (612 t)",
+  "PIBO-CZZMIRY Pioneer Everest FMCG Pvt Ltd (417 t)",
+  "PIBO-ONUZXYE Apex Balaji FMCG Pvt Ltd (377 t)",
+  "PIBO-9ALIQSK Eco Retail Pvt Ltd (318 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 16
+}

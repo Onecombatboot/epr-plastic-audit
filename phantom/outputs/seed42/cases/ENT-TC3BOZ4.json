@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-TC3BOZ4",
+ "profile": {
+  "name": "Unity Plast Pvt Ltd",
+  "state": "Tamil Nadu",
+  "district": "Chennai",
+  "declared_capacity_tpa": 5440.0,
+  "connected_load_kw": 202.0,
+  "epr_registered": "2023-03-22"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6354,
+  "dominant_score": 7.5385,
+  "ens_score": 0.982,
+  "ens_pct": 0.9872
+ },
+ "reasons": [
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "95% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "37% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 5% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "70% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.502,
+   "text": "Electricity bought is only 0.56x the minimum needed for the tonnes claimed (168 kWh/t against at least 300)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.363
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.3319
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.9466,
+   "population_percentile": 99.9,
+   "shap": -0.3113
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 3.0,
+   "population_percentile": 96.6,
+   "shap": -0.2945
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-EJFJZWTC (Nov 2024: 13,397 kWh for 99.1 t claimed)",
+   "plastic/electricity_bills:BILL-PH91Y8ZK (Apr 2023: 10,675 kWh for 78.1 t claimed)",
+   "plastic/electricity_bills:BILL-39LUKH61 (Mar 2025: 13,530 kWh for 96.9 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-XLX05DAJ2 (01 Apr 2023, 7 t from COL-L8RT6A0)",
+   "plastic/feedstock_invoices:INV-340AY5DAO (04 Apr 2023, 11 t from COL-8E7GI5J)",
+   "plastic/feedstock_invoices:INV-IL9X1KVCX (05 Apr 2023, 15 t from COL-8E7GI5J)",
+   "plastic/feedstock_invoices:INV-ZI0E5ZKIY (12 Apr 2023, 15 t from COL-8E7GI5J)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-8E7GI5J (1,565 t supplied; declared capacity 25 t/month; 2 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-L8RT6A0 (1,145 t supplied; declared capacity 23 t/month; 1 vehicles; registered Oct 2022)",
+   "plastic/collectors:COL-1CJZ949 (38 t supplied; declared capacity 24 t/month; 4 vehicles; registered May 2021)",
+   "plastic/collectors:COL-UT1RQK4 (17 t supplied; declared capacity 73 t/month; 6 vehicles; registered Jul 2018)",
+   "plastic/collectors:COL-PJ0N19U (15 t supplied; declared capacity 109 t/month; 3 vehicles; registered May 2020)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-I4SIU1D (48 t bought)",
+   "plastic/offtakers:OFT-4RI42OP (48 t bought)",
+   "plastic/offtakers:OFT-WT9TPXW (7 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 1, director 3, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-E442VKU Prime Ganesh Snacks Ltd (431 t)",
+  "PIBO-TJIN818 Vasundhara Foods LLP (415 t)",
+  "PIBO-18W9G5X Sanjeevani Beverages Pvt Ltd (245 t)",
+  "PIBO-ONXDMDD Shree Global Dairy (192 t)",
+  "PIBO-S8VN8UB Sai Snacks LLP (161 t)"
+ ],
+ "inspection_checklist": [
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 33
+}

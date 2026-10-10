@@ -1,0 +1,133 @@
+{
+ "entity_id": "ENT-9TM2GP3",
+ "profile": {
+  "name": "Global Plast",
+  "state": "Rajasthan",
+  "district": "Jaipur",
+  "declared_capacity_tpa": 620.0,
+  "connected_load_kw": 52.0,
+  "epr_registered": "2024-09-15"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.5954,
+  "dominant_score": 1.3745,
+  "ens_score": 0.9506,
+  "ens_pct": 0.9616
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 31% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 95% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.602,
+   "text": "Category III share of certificates is 38%, +36% versus what its process route can produce"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.79x the cost floor)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.537,
+   "text": "24% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2973
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2891
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.9474,
+   "population_percentile": 98.8,
+   "shap": -0.2765
+  },
+  {
+   "feature": "bill_energy_ratio_min",
+   "label": "worst bill charge vs units x tariff",
+   "value": 0.312,
+   "population_percentile": 2.0,
+   "shap": -0.199
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-K1L93VCS (Dec 2024: 53,633 kWh for 146.9 t claimed)",
+   "plastic/electricity_bills:BILL-UD70HRXQ (Apr 2025: 49,599 kWh for 134.6 t claimed)",
+   "plastic/electricity_bills:BILL-WMHYQ3U5 (Dec 2025: 47,787 kWh for 129.5 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-P0IU80KOH (01 Sep 2024, 2.72 t from COL-5R8SFSR)",
+   "plastic/feedstock_invoices:INV-5C8UEXD2D (06 Sep 2024, 2 t from COL-8ZKPHVS)",
+   "plastic/feedstock_invoices:INV-9X6K391H7 (22 Sep 2024, 0.32 t from COL-1CZA9NM)",
+   "plastic/feedstock_invoices:INV-PTJ9WARRI (27 Sep 2024, 2 t from COL-CB7BNFJ)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-1KY8MNS (316 t supplied; declared capacity 20 t/month; 1 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-BNS03D3 (311 t supplied; declared capacity 28 t/month; 1 vehicles; registered Jun 2024)",
+   "plastic/collectors:COL-LCF8WUS (272 t supplied; declared capacity 28 t/month; 2 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-AZPEH5R (242 t supplied; declared capacity 24 t/month; 2 vehicles; registered Apr 2024)",
+   "plastic/collectors:COL-JYZ8VTY (222 t supplied; declared capacity 25 t/month; 2 vehicles; registered May 2024)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-01: 243 t of 2,439 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-0JJIBEYWO (CAT_IV, Rs 1,095/t to PIBO-ZD55N81)",
+   "plastic/certificate_sales:SALE-6UU7SCB1Q (CAT_IV, Rs 1,108/t to PIBO-8B6GQD1)",
+   "plastic/certificate_sales:SALE-YHIO2K5KP (CAT_IV, Rs 1,120/t to PIBO-KX5Y7Q7)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-3NTQBKB Sai Foods Pvt Ltd (247 t)",
+  "PIBO-MKGWIXG Metro FMCG (237 t)",
+  "PIBO-VMB5GL0 Sahyadri FMCG (203 t)",
+  "PIBO-F7TG7Q2 Metro Dairy Pvt Ltd (202 t)",
+  "PIBO-C5Z5DBP Laxmi Snacks Pvt Ltd (157 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 97
+}

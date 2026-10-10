@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-2LHGY2V",
+ "profile": {
+  "name": "Kaveri Plastics & Co",
+  "state": "Uttar Pradesh",
+  "district": "Kanpur",
+  "declared_capacity_tpa": 12030.0,
+  "connected_load_kw": 193.0,
+  "epr_registered": "2023-07-11"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6592,
+  "dominant_score": 5.1619,
+  "ens_score": 0.9929,
+  "ens_pct": 0.9964
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 308% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "83% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.708,
+   "text": "Electricity bought is only 0.38x the minimum needed for the tonnes claimed (57 kWh/t against at least 150)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "64% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 18% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3243
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3104
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 1.0,
+   "population_percentile": 98.2,
+   "shap": -0.2569
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.9697,
+   "population_percentile": 88.1,
+   "shap": -0.2466
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-XJSKFT2V (Feb 2026: 38,512 kWh for 2,564.5 t claimed)",
+   "plastic/electricity_bills:BILL-FK4LJEIW (Mar 2026: 34,618 kWh for 2,134.1 t claimed)",
+   "plastic/electricity_bills:BILL-6QZ6X3AW (Mar 2025: 37,472 kWh for 2,031.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-8JP0RBAGX (03 Jul 2023, 16 t from COL-2FL5S9Y)",
+   "plastic/feedstock_invoices:INV-MNZDX3O5B (03 Jul 2023, 7 t from COL-0LDOIDJ)",
+   "plastic/feedstock_invoices:INV-0YL0BI0KI (05 Jul 2023, 8 t from COL-H14V4HQ)",
+   "plastic/feedstock_invoices:INV-BWZJAKYGD (07 Jul 2023, 17 t from COL-LPSV8NQ)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-PIM3IJ8 (4,243 t supplied; declared capacity 14 t/month; 1 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-H14V4HQ (2,824 t supplied; declared capacity 12 t/month; 2 vehicles; registered Jun 2023)",
+   "plastic/collectors:COL-0LDOIDJ (2,617 t supplied; declared capacity 32 t/month; 1 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-LPSV8NQ (2,465 t supplied; declared capacity 24 t/month; 2 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-2FL5S9Y (2,352 t supplied; declared capacity 18 t/month; 1 vehicles; registered Apr 2023)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-82OJN3V (594 t bought)",
+   "plastic/offtakers:OFT-DN9QKFU (376 t bought)",
+   "plastic/offtakers:OFT-BJ82E0W (269 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 2, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-71YNK5Y Hind Pharma (4,251 t)",
+  "PIBO-TN810O2 Pragati Home Care Pvt Ltd (991 t)",
+  "PIBO-Y6VLOSY Hind Northern FMCG Pvt Ltd (704 t)",
+  "PIBO-D06DRT2 Star Beverages Pvt Ltd (640 t)",
+  "PIBO-7J505YB Star Krishna FMCG & Co (384 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 10
+}

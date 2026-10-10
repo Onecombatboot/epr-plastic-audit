@@ -1,0 +1,116 @@
+{
+ "entity_id": "ENT-Q3PQX63",
+ "profile": {
+  "name": "Everest Royal Recyclers LLP",
+  "state": "Maharashtra",
+  "district": "Thane",
+  "declared_capacity_tpa": 5460.0,
+  "connected_load_kw": 18.0,
+  "epr_registered": "2023-03-24"
+ },
+ "scores": {
+  "rule_score": 0.9981,
+  "iforest_score": 0.617,
+  "dominant_score": 6.2111,
+  "ens_score": 0.9636,
+  "ens_pct": 0.969
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 249% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.667,
+   "text": "Certificates claim more than the declared monthly capacity in 25% of months"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.24x the cost floor)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.25x the market median price"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.438,
+   "text": "54% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "very_young_company",
+   "group": "registry",
+   "strength": 0.197,
+   "text": "Company was only 165 days old when it registered under EPR"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.5376,
+   "population_percentile": 97.6,
+   "shap": -0.299
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.25,
+   "population_percentile": 96.4,
+   "shap": -0.2574
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 0.1818,
+   "population_percentile": 96.8,
+   "shap": -0.2279
+  },
+  {
+   "feature": "bill_coverage",
+   "label": "months with an electricity bill",
+   "value": 0.6111,
+   "population_percentile": 0.3,
+   "shap": -0.1795
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-QJPVIO57 (Mar 2025: 7,699 kWh for 1,506.6 t claimed)",
+   "plastic/electricity_bills:BILL-7FQZRB6P (Feb 2025: 8,445 kWh for 1,589.8 t claimed)",
+   "plastic/electricity_bills:BILL-ZLC48MYO (Feb 2024: 7,395 kWh for 1,131.1 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 2,970 t of 14,371 t generated)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-58DLFEC20 (CAT_IV, Rs 330/t to PIBO-XZK199Q)",
+   "plastic/certificate_sales:SALE-UQ9SPWCXA (CAT_IV, Rs 330/t to PIBO-XZK199Q)",
+   "plastic/certificate_sales:SALE-U2CPUTKB0 (CAT_IV, Rs 330/t to PIBO-XZK199Q)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-UO2CEWO Star Home Care (679 t)",
+  "PIBO-WT9FFSB Amrit FMCG Pvt Ltd (662 t)",
+  "PIBO-1ZRQFH0 Royal Pragati Personal Care Pvt Ltd (615 t)",
+  "PIBO-QFZ62E2 National Consumer Products (473 t)",
+  "PIBO-8G400NQ Kaveri Personal Care Pvt Ltd (444 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Check the company's incorporation and registration history and the source of its capital."
+ ],
+ "rank": 78
+}

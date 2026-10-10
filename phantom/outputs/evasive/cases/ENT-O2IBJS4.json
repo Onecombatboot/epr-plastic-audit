@@ -1,0 +1,119 @@
+{
+ "entity_id": "ENT-O2IBJS4",
+ "profile": {
+  "name": "Bharat Global Plast LLP",
+  "state": "Gujarat",
+  "district": "Rajkot",
+  "declared_capacity_tpa": 810.0,
+  "connected_load_kw": 85.0,
+  "epr_registered": "2025-10-02"
+ },
+ "scores": {
+  "rule_score": 0.9998,
+  "iforest_score": 0.6171,
+  "dominant_score": 1.4481,
+  "ens_score": 0.9571,
+  "ens_pct": 0.9672
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 67% of months"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 45%, +43% versus what its process route can produce"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.75x the cost floor)"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.45,
+   "text": "In 83% of billed months the units consumed cannot support the tonnes claimed"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.408,
+   "text": "39% of all certificates were generated in a single month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 5.0,
+   "population_percentile": 99.9,
+   "shap": -0.3356
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.3494,
+   "population_percentile": 96.9,
+   "shap": -0.3339
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2951
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 0.8333,
+   "population_percentile": 98.6,
+   "shap": -0.2739
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-EWUPJNNV (Mar 2026: 19,958 kWh for 106.4 t claimed)",
+   "plastic/electricity_bills:BILL-OVP0UR1I (Feb 2026: 21,775 kWh for 110.8 t claimed)",
+   "plastic/electricity_bills:BILL-Y2KBMXVS (Jan 2026: 20,841 kWh for 103.8 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-04: 193 t of 498 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 5, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-RRREODZZH (CAT_IV, Rs 1,096/t to PIBO-0S6BGY1)",
+   "plastic/certificate_sales:SALE-M7MC9UJSM (CAT_IV, Rs 1,096/t to PIBO-0S6BGY1)",
+   "plastic/certificate_sales:SALE-R4AVDB2FB (CAT_IV, Rs 1,096/t to PIBO-0S6BGY1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-2K26CHC Navjeevan Sahyadri FMCG Ltd (159 t)",
+  "PIBO-AAOXGI6 Ganga Ganga Personal Care (151 t)",
+  "PIBO-U5VYM0J Unity Retail Pvt Ltd (30 t)",
+  "PIBO-E10CKQ4 Navjeevan Dairy Pvt Ltd (24 t)",
+  "PIBO-P21XRYA Krishna Global Dairy & Co (20 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 83
+}

@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-9TM2GP3",
+ "profile": {
+  "name": "Global Plast",
+  "state": "Rajasthan",
+  "district": "Jaipur",
+  "declared_capacity_tpa": 2120.0,
+  "connected_load_kw": 52.0,
+  "epr_registered": "2024-09-15"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6183,
+  "dominant_score": 1.5783,
+  "ens_score": 0.961,
+  "ens_pct": 0.9678
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 365% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "65% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.667,
+   "text": "Electricity bought is only 0.42x the minimum needed for the tonnes claimed (125 kWh/t against at least 300)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.38x the cost floor)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.561,
+   "text": "Certificates claim more than the declared monthly capacity in 21% of months"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.3158,
+   "population_percentile": 87.4,
+   "shap": -0.2833
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.2105,
+   "population_percentile": 95.8,
+   "shap": -0.2324
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6545,
+   "population_percentile": 98.8,
+   "shap": -0.2317
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.3352,
+   "population_percentile": 96.3,
+   "shap": -0.2141
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-9YVY7OFS (Mar 2026: 15,302 kWh for 458.3 t claimed)",
+   "plastic/electricity_bills:BILL-Q3ROUYB4 (Feb 2026: 19,150 kWh for 462.2 t claimed)",
+   "plastic/electricity_bills:BILL-PUYMW2YK (Feb 2025: 17,198 kWh for 266.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-ZDQ5S1GPO (22 Sep 2024, 1 t from COL-FCK8BDN)",
+   "plastic/feedstock_invoices:INV-W2BQKURIU (27 Sep 2024, 3 t from COL-CC31GZY)",
+   "plastic/feedstock_invoices:INV-HSF5M70S2 (29 Sep 2024, 1.99 t from COL-U0RNCKN)",
+   "plastic/feedstock_invoices:INV-4ZKTOY48E (12 Oct 2024, 3 t from COL-SWQM1G5)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-MFBHUR4 (534 t supplied; declared capacity 18 t/month; 2 vehicles; registered May 2024)",
+   "plastic/collectors:COL-CC31GZY (437 t supplied; declared capacity 25 t/month; 2 vehicles; registered May 2024)",
+   "plastic/collectors:COL-SWQM1G5 (433 t supplied; declared capacity 22 t/month; 1 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-IHLHNW2 (216 t supplied; declared capacity 13 t/month; 2 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-MD4NK73 (186 t supplied; declared capacity 220 t/month; 3 vehicles; registered Apr 2017)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-51F3PC6CR (CAT_IV, Rs 530/t to PIBO-8F02RDC)",
+   "plastic/certificate_sales:SALE-FCPD7RYC8 (CAT_IV, Rs 530/t to PIBO-8F02RDC)",
+   "plastic/certificate_sales:SALE-1BTJU0EUH (CAT_IV, Rs 534/t to PIBO-NS723S4)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-IP0H3LA Global Himalaya Pharma (355 t)",
+  "PIBO-TW0N17K Metro Personal Care & Co (353 t)",
+  "PIBO-YW2OT33 Sai Dairy Pvt Ltd (339 t)",
+  "PIBO-UEMJ2GW Sterling Eco Beverages Pvt Ltd (173 t)",
+  "PIBO-LAX0EW5 Navjeevan Retail Pvt Ltd (83 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months."
+ ],
+ "rank": 82
+}

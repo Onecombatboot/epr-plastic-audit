@@ -1,0 +1,119 @@
+{
+ "entity_id": "ENT-NOC2738",
+ "profile": {
+  "name": "Ganesh Polymers Pvt Ltd",
+  "state": "Haryana",
+  "district": "Panipat",
+  "declared_capacity_tpa": 10730.0,
+  "connected_load_kw": 1828.0,
+  "epr_registered": "2023-04-17"
+ },
+ "scores": {
+  "rule_score": 0.9991,
+  "iforest_score": 0.6204,
+  "dominant_score": 1.8234,
+  "ens_score": 0.9597,
+  "ens_pct": 0.9684
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 8% of expected)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.667,
+   "text": "Certificates claim more than the declared monthly capacity in 25% of months"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.61,
+   "text": "Sold products equal only 28% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "68% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.456,
+   "text": "In 56% of months, product sales fall far short of the claimed input"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.5556,
+   "population_percentile": 89.0,
+   "shap": -0.3808
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.3401
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.3255
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.313
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-WWN7VYDE (Feb 2024: 2,904,240 kWh for 4,049.3 t claimed)",
+   "plastic/electricity_bills:BILL-VAW2N6WQ (Mar 2025: 3,852,324 kWh for 5,327.1 t claimed)",
+   "plastic/electricity_bills:BILL-BHTTP7FB (Feb 2025: 3,571,399 kWh for 4,930.4 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 13,247 t of 51,156 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-HR2YYTU (3,295 t bought)",
+   "plastic/offtakers:OFT-3ZVY313 (1,707 t bought)",
+   "plastic/offtakers:OFT-N06ZFKL (1,551 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-12JWBJ3 Sanjeevani Royal Beverages LLP (3,482 t)",
+  "PIBO-Q1RDCJW Navjeevan Retail Ltd (1,092 t)",
+  "PIBO-2HJGXGJ Western Retail LLP (494 t)",
+  "PIBO-VU7X5I3 Kaveri Retail Pvt Ltd (386 t)",
+  "PIBO-A8J3B0Y Bharat Supreme Retail & Co (349 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 80
+}

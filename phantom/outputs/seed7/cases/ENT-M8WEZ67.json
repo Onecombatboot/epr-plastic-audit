@@ -1,0 +1,125 @@
+{
+ "entity_id": "ENT-M8WEZ67",
+ "profile": {
+  "name": "Kaveri Plast Pvt Ltd",
+  "state": "Tamil Nadu",
+  "district": "Chennai",
+  "declared_capacity_tpa": 21210.0,
+  "connected_load_kw": 577.0,
+  "epr_registered": "2023-07-20"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6214,
+  "dominant_score": 3.5108,
+  "ens_score": 0.9743,
+  "ens_pct": 0.9808
+ },
+ "reasons": [
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.26x the minimum needed for the tonnes claimed (77 kWh/t against at least 300)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "96% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 1% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "68% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "70% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.9624,
+   "population_percentile": 99.9,
+   "shap": -0.3607
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3448
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 1.0,
+   "population_percentile": 98.5,
+   "shap": -0.3235
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 1.0,
+   "population_percentile": 91.9,
+   "shap": -0.2973
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-B0BX6IOE (Sep 2023: 21,155 kWh for 354.4 t claimed)",
+   "plastic/electricity_bills:BILL-IARE0AYM (Oct 2024: 24,052 kWh for 370.9 t claimed)",
+   "plastic/electricity_bills:BILL-P7Y35DGU (Sep 2025: 22,532 kWh for 340.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-1ETC30MXF (02 Jul 2023, 7 t from COL-6O2EJMF)",
+   "plastic/feedstock_invoices:INV-N6YGKTM33 (02 Jul 2023, 8 t from COL-UJRLGAS)",
+   "plastic/feedstock_invoices:INV-3EEIXTT4H (03 Jul 2023, 11 t from COL-6O2EJMF)",
+   "plastic/feedstock_invoices:INV-DDI9ARHUN (03 Jul 2023, 4 t from COL-NEAKOGO)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-UJRLGAS (2,681 t supplied; declared capacity 26 t/month; 2 vehicles; registered Jun 2023)",
+   "plastic/collectors:COL-6O2EJMF (2,268 t supplied; declared capacity 27 t/month; 1 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-3JUSNTT (2,191 t supplied; declared capacity 27 t/month; 1 vehicles; registered May 2023)",
+   "plastic/collectors:COL-TMY42S8 (1,587 t supplied; declared capacity 33 t/month; 2 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-NEAKOGO (1,126 t supplied; declared capacity 12 t/month; 2 vehicles; registered Mar 2023)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-MN0WGR8 (48 t bought)",
+   "plastic/offtakers:OFT-SCYMQ5I (18 t bought)",
+   "plastic/offtakers:OFT-MKTRIQX (13 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-2NQG1ND Unity Dairy Pvt Ltd (1,389 t)",
+  "PIBO-ES2EV6V Western Beverages Pvt Ltd (1,007 t)",
+  "PIBO-NKDIWRH Pragati Ganesh Pharma LLP (511 t)",
+  "PIBO-U22QBZM Sai Home Care Pvt Ltd (451 t)",
+  "PIBO-WKGK86E Krishna Star Pharma LLP (353 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 49
+}

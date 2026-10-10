@@ -1,0 +1,135 @@
+{
+ "entity_id": "ENT-MMCPJDZ",
+ "profile": {
+  "name": "Green Plast LLP",
+  "state": "Haryana",
+  "district": "Gurugram",
+  "declared_capacity_tpa": 19540.0,
+  "connected_load_kw": 322.0,
+  "epr_registered": "2025-01-16"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6519,
+  "dominant_score": 9.6012,
+  "ens_score": 0.9952,
+  "ens_pct": 0.9988
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 8% of expected)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "97% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 4% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "82% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.31x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3574
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.9728,
+   "population_percentile": 99.9,
+   "shap": -0.3168
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.2921
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2675
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-1CTY89NX (Jan 2025: 140,177 kWh for 854.3 t claimed)",
+   "plastic/electricity_bills:BILL-QT87UR3P (Nov 2025: 115,152 kWh for 697.5 t claimed)",
+   "plastic/electricity_bills:BILL-6O5PWCLB (Feb 2025: 105,198 kWh for 632.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-XCQW1BG5S (01 Jan 2025, 4 t from COL-GIYCOD1)",
+   "plastic/feedstock_invoices:INV-OYQ8T9GM6 (01 Jan 2025, 7 t from COL-P9VBU3P)",
+   "plastic/feedstock_invoices:INV-9NJG9EAYP (01 Jan 2025, 8 t from COL-O1IY0LD)",
+   "plastic/feedstock_invoices:INV-OFO4EXXYF (02 Jan 2025, 7 t from COL-P9VBU3P)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-P9VBU3P (5,419 t supplied; declared capacity 11 t/month; 1 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-O1IY0LD (2,999 t supplied; declared capacity 12 t/month; 1 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-GIYCOD1 (1,566 t supplied; declared capacity 18 t/month; 1 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-70OOEQ6 (47 t supplied; declared capacity 41 t/month; 2 vehicles; registered Sep 2021)",
+   "plastic/collectors:COL-9CLODAM (38 t supplied; declared capacity 9 t/month; 1 vehicles; registered Aug 2015)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-ELKV6TL (78 t bought)",
+   "plastic/offtakers:OFT-QRBLD7K (52 t bought)",
+   "plastic/offtakers:OFT-DJTANYT (29 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 1, director 1, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-7S1K09NBC (CAT_IV, Rs 466/t to PIBO-PWKV3ZB)",
+   "plastic/certificate_sales:SALE-09JDOUGZ3 (CAT_IV, Rs 466/t to PIBO-PWKV3ZB)",
+   "plastic/certificate_sales:SALE-C5A91MNIY (CAT_IV, Rs 466/t to PIBO-PWKV3ZB)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-T4ZMN0T Western Dairy LLP (2,195 t)",
+  "PIBO-CS15EZU Ganga Unity Snacks (1,260 t)",
+  "PIBO-J91PA9Z Western Consumer Products LLP (791 t)",
+  "PIBO-H686T33 Prakriti Foods & Co (539 t)",
+  "PIBO-OLPDWD9 Sai Prime FMCG Pvt Ltd (387 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 4
+}

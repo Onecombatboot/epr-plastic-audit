@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-RL1QDBN",
+ "profile": {
+  "name": "Pioneer Vasundhara Plast Pvt Ltd",
+  "state": "Gujarat",
+  "district": "Bharuch",
+  "declared_capacity_tpa": 8240.0,
+  "connected_load_kw": 287.0,
+  "epr_registered": "2025-06-18"
+ },
+ "scores": {
+  "rule_score": 0.9995,
+  "iforest_score": 0.6248,
+  "dominant_score": 1.8884,
+  "ens_score": 0.9571,
+  "ens_pct": 0.9612
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 18% of expected)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "66% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.51x the cost floor)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "66% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.371,
+   "text": "Sold products equal only 48% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3446
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.3,
+   "population_percentile": 88.4,
+   "shap": -0.3204
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.2773,
+   "population_percentile": 97.6,
+   "shap": -0.2781
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.6592,
+   "population_percentile": 98.8,
+   "shap": -0.2742
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-IPOLH3GR (Mar 2026: 595,014 kWh for 815.4 t claimed)",
+   "plastic/electricity_bills:BILL-4SYIEF8R (Feb 2026: 482,053 kWh for 659.9 t claimed)",
+   "plastic/electricity_bills:BILL-MN49BU6P (Jan 2026: 308,051 kWh for 390.1 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 1,875 t of 2,844 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-YWXSVUL (294 t bought)",
+   "plastic/offtakers:OFT-QVOYE8K (228 t bought)",
+   "plastic/offtakers:OFT-5MTHS8T (120 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-0G5QXBLG6 (CAT_IV, Rs 731/t to PIBO-NIFCY58)",
+   "plastic/certificate_sales:SALE-10266WSZ9 (CAT_IV, Rs 731/t to PIBO-NIFCY58)",
+   "plastic/certificate_sales:SALE-VYZVWV6U2 (CAT_IV, Rs 741/t to PIBO-0WE98S7)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-VTINGS0 Ganga Personal Care Pvt Ltd (647 t)",
+  "PIBO-ECD861K Earth Snacks LLP (632 t)",
+  "PIBO-KBZY1X5 Sunrise Retail LLP (508 t)",
+  "PIBO-U8F29R8 Metro Pragati FMCG Pvt Ltd (454 t)",
+  "PIBO-BFXKBIK Deccan Hind Foods Pvt Ltd (148 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 98
+}

@@ -1,0 +1,111 @@
+{
+ "entity_id": "ENT-7VI9JA5",
+ "profile": {
+  "name": "Ganga Poly Industries LLP",
+  "state": "Haryana",
+  "district": "Gurugram",
+  "declared_capacity_tpa": 4590.0,
+  "connected_load_kw": 639.0,
+  "epr_registered": "2023-01-02"
+ },
+ "scores": {
+  "rule_score": 0.9992,
+  "iforest_score": 0.6504,
+  "dominant_score": 2.2341,
+  "ens_score": 0.9715,
+  "ens_pct": 0.9772
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.718,
+   "text": "Electricity bought is only 0.37x the minimum needed for the tonnes claimed (111 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 17% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.45,
+   "text": "In 100% of billed months the units consumed cannot support the tonnes claimed"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.383,
+   "text": "Claimed tonnage in the busiest month would need 137% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3896
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.3445
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 3.0,
+   "population_percentile": 99.4,
+   "shap": -0.3272
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 5.0,
+   "population_percentile": 99.3,
+   "shap": -0.3009
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-HXLITSDP (Oct 2024: 183,995 kWh for 1,728.9 t claimed)",
+   "plastic/electricity_bills:BILL-UPJ21NXY (Dec 2023: 219,149 kWh for 2,057.9 t claimed)",
+   "plastic/electricity_bills:BILL-MBRMUIV8 (Jun 2025: 190,473 kWh for 1,763.6 t claimed)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-6XX4KDC (6,528 t bought)",
+   "plastic/offtakers:OFT-E16PXUS (745 t bought)",
+   "plastic/offtakers:OFT-MLSQRL6 (111 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-1FT11GK Durga Pharma Pvt Ltd (1,021 t)",
+  "PIBO-SDT0MZX Balaji FMCG Pvt Ltd (1,016 t)",
+  "PIBO-HN606OQ Northern Home Care Pvt Ltd (893 t)",
+  "PIBO-90X2TRY Eastern Home Care Pvt Ltd (822 t)",
+  "PIBO-18C9SII Ganesh Beverages Pvt Ltd (740 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 58
+}

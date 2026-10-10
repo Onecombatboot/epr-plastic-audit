@@ -1,0 +1,122 @@
+{
+ "entity_id": "ENT-RPGHKSP",
+ "profile": {
+  "name": "Himalaya Plastics Pvt Ltd",
+  "state": "Rajasthan",
+  "district": "Khairthal-Tijara",
+  "declared_capacity_tpa": 3000.0,
+  "connected_load_kw": 15.0,
+  "epr_registered": "2024-04-06"
+ },
+ "scores": {
+  "rule_score": 0.9994,
+  "iforest_score": 0.6468,
+  "dominant_score": 4.1465,
+  "ens_score": 0.9745,
+  "ens_pct": 0.9812
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (8% of its feedstock)"
+  },
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 86% of expected)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.71x the cost floor)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.471,
+   "text": "57% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "shared_address",
+   "group": "identity",
+   "strength": 0.3,
+   "text": "Registered at an address shared with 2 other entity(ies)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.258,
+   "text": "30% of all certificates were generated in a single month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3632
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3508
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.0822,
+   "population_percentile": 98.0,
+   "shap": -0.3487
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.3419
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-TPM6YTDQ (Mar 2026: 6,274 kWh for 83.8 t claimed)",
+   "plastic/electricity_bills:BILL-UWW9FKWW (Mar 2025: 5,872 kWh for 76.1 t claimed)",
+   "plastic/electricity_bills:BILL-80MX7F8A (Feb 2025: 6,204 kWh for 78.8 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 329 t of 1,094 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-91PEC4T (92 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 2, director 0, photos 0)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-RMTV6DP54 (CAT_II, Rs 1,842/t to PIBO-MEENXV6)",
+   "plastic/certificate_sales:SALE-SSRDBZ70K (CAT_II, Rs 1,847/t to PIBO-P7VSSGF)",
+   "plastic/certificate_sales:SALE-CQPV795JN (CAT_II, Rs 1,847/t to PIBO-P7VSSGF)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-6AXY2XF Star Home Care LLP (179 t)",
+  "PIBO-3N1FCBV Bharat Beverages Pvt Ltd (112 t)",
+  "PIBO-QIZ71M0 Balaji Southern Foods Pvt Ltd (106 t)",
+  "PIBO-196G6H0 Earth Home Care Pvt Ltd (92 t)",
+  "PIBO-NIFCY58 Supreme Dairy Ltd (92 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 48
+}

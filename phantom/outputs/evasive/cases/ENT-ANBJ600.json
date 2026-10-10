@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-ANBJ600",
+ "profile": {
+  "name": "Krishna Polymers",
+  "state": "Rajasthan",
+  "district": "Jodhpur",
+  "declared_capacity_tpa": 400.0,
+  "connected_load_kw": 20.0,
+  "epr_registered": "2025-04-29"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.633,
+  "dominant_score": 1.9407,
+  "ens_score": 0.9799,
+  "ens_pct": 0.984
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 256% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 92% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.21x the minimum needed for the tonnes claimed (63 kWh/t against at least 300)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "45% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.31x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3376
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.2906,
+   "population_percentile": 96.4,
+   "shap": -0.2921
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 1.0,
+   "population_percentile": 98.0,
+   "shap": -0.2691
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 99.2,
+   "shap": -0.2684
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-GWG22949 (Jan 2026: 7,043 kWh for 118.0 t claimed)",
+   "plastic/electricity_bills:BILL-CPYHPPEM (Mar 2026: 6,554 kWh for 109.4 t claimed)",
+   "plastic/electricity_bills:BILL-I43S3BDJ (Nov 2025: 7,906 kWh for 124.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-6JYIDHYNL (08 Apr 2025, 2 t from COL-T34Q0DB)",
+   "plastic/feedstock_invoices:INV-9309771CT (23 Apr 2025, 3 t from COL-9B7FM0W)",
+   "plastic/feedstock_invoices:INV-ZSYF4OIV0 (26 Apr 2025, 1.5 t from COL-GW6CMTI)",
+   "plastic/feedstock_invoices:INV-CC6HUFOE2 (26 Apr 2025, 9 t from COL-XVAGEJM)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-XVAGEJM (319 t supplied; declared capacity 23 t/month; 1 vehicles; registered Feb 2025)",
+   "plastic/collectors:COL-GZBTEGM (243 t supplied; declared capacity 31 t/month; 2 vehicles; registered Dec 2024)",
+   "plastic/collectors:COL-FBYRI0R (158 t supplied; declared capacity 33 t/month; 2 vehicles; registered Dec 2024)",
+   "plastic/collectors:COL-74TQY46 (108 t supplied; declared capacity 34 t/month; 2 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-9B7FM0W (93 t supplied; declared capacity 40 t/month; 1 vehicles; registered Jan 2025)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-6PHGRR11V (CAT_IV, Rs 447/t to PIBO-C38JCPO)",
+   "plastic/certificate_sales:SALE-TV1MAS8MV (CAT_IV, Rs 447/t to PIBO-C38JCPO)",
+   "plastic/certificate_sales:SALE-C8C2VGYOB (CAT_IV, Rs 448/t to PIBO-PTTW14V)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-QTRM8NP Balaji Beverages Pvt Ltd (123 t)",
+  "PIBO-PGOP2U2 Metro Western Retail LLP (79 t)",
+  "PIBO-FY0Z4UT National Retail LLP (76 t)",
+  "PIBO-N1UBY4B Krishna Unity Dairy Pvt Ltd (61 t)",
+  "PIBO-6ZUGVLW Ganesh Consumer Products (60 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 41
+}

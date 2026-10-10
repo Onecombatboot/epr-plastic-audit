@@ -1,0 +1,128 @@
+{
+ "entity_id": "ENT-FK9O65W",
+ "profile": {
+  "name": "Balaji Pragati Poly Industries LLP",
+  "state": "Uttar Pradesh",
+  "district": "Kanpur",
+  "declared_capacity_tpa": 5680.0,
+  "connected_load_kw": 260.0,
+  "epr_registered": "2025-05-29"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6503,
+  "dominant_score": 10.0464,
+  "ens_score": 0.9887,
+  "ens_pct": 0.992
+ },
+ "reasons": [
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "40% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 5% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.78x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "77% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3703
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3678
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3335
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 1.0,
+   "population_percentile": 98.2,
+   "shap": -0.2978
+  }
+ ],
+ "evidence": {
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-F4L7G27N6 (01 May 2025, 19 t from COL-2ZAI1P1)",
+   "plastic/feedstock_invoices:INV-5X0KQXWYY (02 May 2025, 8 t from COL-OHJHBQ0)",
+   "plastic/feedstock_invoices:INV-71VU63BRT (10 May 2025, 6 t from COL-2ZAI1P1)",
+   "plastic/feedstock_invoices:INV-CP2PXRAM3 (14 May 2025, 7 t from COL-UT4BWCC)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-2ZAI1P1 (277 t supplied; declared capacity 34 t/month; 2 vehicles; registered Jan 2025)",
+   "plastic/collectors:COL-OHJHBQ0 (225 t supplied; declared capacity 30 t/month; 2 vehicles; registered Jan 2025)",
+   "plastic/collectors:COL-3HLJ012 (123 t supplied; declared capacity 26 t/month; 2 vehicles; registered Dec 2024)",
+   "plastic/collectors:COL-UT4BWCC (75 t supplied; declared capacity 24 t/month; 2 vehicles; registered May 2025)",
+   "plastic/collectors:COL-D8I5E54 (65 t supplied; declared capacity 36 t/month; 1 vehicles; registered Apr 2025)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-3EUGMOL (7 t bought)",
+   "plastic/offtakers:OFT-7S19YS1 (6 t bought)",
+   "plastic/offtakers:OFT-XMKBJEO (5 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 2, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-YU8FMIY1W (CAT_IV, Rs 1,156/t to PIBO-O1L8M9O)",
+   "plastic/certificate_sales:SALE-3M51OEN2T (CAT_IV, Rs 1,156/t to PIBO-O1L8M9O)",
+   "plastic/certificate_sales:SALE-SOOVSTOZE (CAT_IV, Rs 1,156/t to PIBO-O1L8M9O)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-91NQMBM Prakriti Deccan FMCG Pvt Ltd (544 t)",
+  "PIBO-7XB97D3 Sterling Foods Ltd (130 t)",
+  "PIBO-T0MAXW6 Kaveri Green Consumer Products & Co (33 t)",
+  "PIBO-MQNUBJQ Balaji Personal Care LLP (24 t)",
+  "PIBO-US7ZMTM Navjeevan Personal Care Pvt Ltd (13 t)"
+ ],
+ "inspection_checklist": [
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 21
+}

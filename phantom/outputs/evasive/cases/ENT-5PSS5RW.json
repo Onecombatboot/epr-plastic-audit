@@ -1,0 +1,125 @@
+{
+ "entity_id": "ENT-5PSS5RW",
+ "profile": {
+  "name": "Everest Prakriti Recyclers Pvt Ltd",
+  "state": "Maharashtra",
+  "district": "Aurangabad",
+  "declared_capacity_tpa": 13570.0,
+  "connected_load_kw": 265.0,
+  "epr_registered": "2025-04-25"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6143,
+  "dominant_score": 4.5214,
+  "ens_score": 0.9755,
+  "ens_pct": 0.98
+ },
+ "reasons": [
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.30x the minimum needed for the tonnes claimed (89 kWh/t against at least 300)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "96% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "61% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "66% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "capacity_needs_more_power",
+   "group": "energy",
+   "strength": 0.55,
+   "text": "Declared capacity of 13,570 t/yr needs about 2.1x the power the plant is connected for"
+  },
+  {
+   "rule": "shell_offtakers",
+   "group": "output",
+   "strength": 0.5,
+   "text": "96% of product sales go to buyers incorporated under a year before the invoice"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.9615,
+   "population_percentile": 99.9,
+   "shap": -0.4011
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 8.0,
+   "population_percentile": 99.6,
+   "shap": -0.3621
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 99.2,
+   "shap": -0.3438
+  },
+  {
+   "feature": "out_young_offtaker_share",
+   "label": "product sales to newly formed buyers",
+   "value": 0.9628,
+   "population_percentile": 90.5,
+   "shap": -0.2444
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-9BDYM5ZT (Apr 2025: 13,215 kWh for 170.5 t claimed)",
+   "plastic/electricity_bills:BILL-5WAMQBA5 (Nov 2025: 14,988 kWh for 183.0 t claimed)",
+   "plastic/electricity_bills:BILL-JCG3GHWD (Mar 2026: 15,264 kWh for 181.5 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-2WKEQ5I1E (09 Apr 2025, 15 t from COL-H82U3VE)",
+   "plastic/feedstock_invoices:INV-SBVD893HL (12 Apr 2025, 12 t from COL-H82U3VE)",
+   "plastic/feedstock_invoices:INV-EAXQBLUG1 (16 Apr 2025, 11 t from COL-FICXCUF)",
+   "plastic/feedstock_invoices:INV-Y2CHMUHX3 (19 Apr 2025, 17 t from COL-H82U3VE)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-H82U3VE (868 t supplied; declared capacity 31 t/month; 2 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-FICXCUF (620 t supplied; declared capacity 14 t/month; 1 vehicles; registered Jan 2025)",
+   "plastic/collectors:COL-JUICW5P (500 t supplied; declared capacity 13 t/month; 1 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-XU2YM67 (18 t supplied; declared capacity 30 t/month; 4 vehicles; registered Jul 2021)",
+   "plastic/collectors:COL-IXELTR7 (17 t supplied; declared capacity 22 t/month; 5 vehicles; registered Jul 2018)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-UYHKTLY (876 t bought)",
+   "plastic/offtakers:OFT-HV62GZ9 (658 t bought)",
+   "plastic/offtakers:OFT-GJH2L4N (33 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-VYK2XR9 Sahyadri Jai Dairy Pvt Ltd (212 t)",
+  "PIBO-OGWTF3S Prime Consumer Products Pvt Ltd (77 t)",
+  "PIBO-0ZRZ41X Eco Consumer Products Pvt Ltd (59 t)",
+  "PIBO-FLG5EHK Ganga Royal Pharma Pvt Ltd (56 t)",
+  "PIBO-0BRND18 Om FMCG & Co (55 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 51
+}

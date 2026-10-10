@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-YM7RH0S",
+ "profile": {
+  "name": "Sahyadri Poly Industries Pvt Ltd",
+  "state": "West Bengal",
+  "district": "Howrah",
+  "declared_capacity_tpa": 1410.0,
+  "connected_load_kw": 153.0,
+  "epr_registered": "2025-03-20"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6321,
+  "dominant_score": 3.5655,
+  "ens_score": 0.9779,
+  "ens_pct": 0.984
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 85% of months"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "41% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.606,
+   "text": "48% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.27x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "46% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3039
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.2639
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 3.0,
+   "population_percentile": 99.5,
+   "shap": -0.253
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.479,
+   "population_percentile": 97.9,
+   "shap": -0.2493
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-7VDS5103 (Jan 2026: 38,182 kWh for 215.2 t claimed)",
+   "plastic/electricity_bills:BILL-Z67OZC89 (Sep 2025: 30,300 kWh for 168.1 t claimed)",
+   "plastic/electricity_bills:BILL-JDR2EEC0 (Nov 2025: 37,190 kWh for 204.5 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-TJLHXT22P (03 Mar 2025, 11 t from COL-CGSCSHB)",
+   "plastic/feedstock_invoices:INV-1A6NPPQ47 (08 Mar 2025, 1 t from COL-0YMJRUJ)",
+   "plastic/feedstock_invoices:INV-QLSUNKQH6 (22 Mar 2025, 1 t from COL-FNUQJVA)",
+   "plastic/feedstock_invoices:INV-5UGGAEJI9 (31 Mar 2025, 5 t from COL-AZ45HTL)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-AZ45HTL (948 t supplied; declared capacity 38 t/month; 1 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-CGSCSHB (493 t supplied; declared capacity 36 t/month; 2 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-TKS2U7V (164 t supplied; declared capacity 11 t/month; 1 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-N46NIIT (146 t supplied; declared capacity 45 t/month; 2 vehicles; registered Apr 2016)",
+   "plastic/collectors:COL-MAPOCGL (81 t supplied; declared capacity 134 t/month; 4 vehicles; registered Sep 2020)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 2, director 2, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-GJ49QLYY8 (CAT_IV, Rs 397/t to PIBO-O81BOJS)",
+   "plastic/certificate_sales:SALE-0JLASIWZ1 (CAT_IV, Rs 397/t to PIBO-O81BOJS)",
+   "plastic/certificate_sales:SALE-7KNNAX2R9 (CAT_IV, Rs 397/t to PIBO-O81BOJS)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-GK8M5T7 Sanjeevani Personal Care (765 t)",
+  "PIBO-0346CUP Pragati Personal Care Pvt Ltd (668 t)",
+  "PIBO-IFRU3OV Western Personal Care (390 t)",
+  "PIBO-QQT11YJ National Consumer Products LLP (95 t)",
+  "PIBO-PGTYN55 Sahyadri Home Care Pvt Ltd (81 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 41
+}

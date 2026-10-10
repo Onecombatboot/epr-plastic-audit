@@ -1,0 +1,133 @@
+{
+ "entity_id": "ENT-NU7PJ2N",
+ "profile": {
+  "name": "Star Om Polymers LLP",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 830.0,
+  "connected_load_kw": 96.0,
+  "epr_registered": "2024-04-02"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6155,
+  "dominant_score": 1.3945,
+  "ens_score": 0.9576,
+  "ens_pct": 0.9676
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 31% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 96% of months"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "42% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 54%, +52% versus what its process route can produce"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.78x the cost floor)"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 8 other registered entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 8.0,
+   "population_percentile": 99.6,
+   "shap": -0.3462
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.3165
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.0798,
+   "population_percentile": 94.6,
+   "shap": -0.3041
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2511
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-1KH7O94C (Jul 2025: 72,368 kWh for 125.2 t claimed)",
+   "plastic/electricity_bills:BILL-877PMYMQ (Nov 2024: 85,018 kWh for 146.4 t claimed)",
+   "plastic/electricity_bills:BILL-MKKKZ2XK (Dec 2024: 99,862 kWh for 171.2 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-AU308MMXO (13 Apr 2024, 3 t from COL-5TBBW66)",
+   "plastic/feedstock_invoices:INV-FTVQRJM6J (13 Apr 2024, 3 t from COL-1AAVB0E)",
+   "plastic/feedstock_invoices:INV-SMXBE654L (17 Apr 2024, 3 t from COL-54YVCDS)",
+   "plastic/feedstock_invoices:INV-049BA241J (23 Apr 2024, 2 t from COL-PY1IPIN)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-5TBBW66 (809 t supplied; declared capacity 39 t/month; 2 vehicles; registered Dec 2023)",
+   "plastic/collectors:COL-W67MBRG (537 t supplied; declared capacity 34 t/month; 2 vehicles; registered Apr 2024)",
+   "plastic/collectors:COL-1AAVB0E (269 t supplied; declared capacity 6 t/month; 1 vehicles; registered Jan 2024)",
+   "plastic/collectors:COL-GKBOTBW (226 t supplied; declared capacity 28 t/month; 1 vehicles; registered Feb 2024)",
+   "plastic/collectors:COL-54YVCDS (214 t supplied; declared capacity 15 t/month; 1 vehicles; registered Nov 2023)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-07: 306 t of 3,316 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 8, address 1, director 0, photos 0)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-2BYG5L4QA (CAT_IV, Rs 1,068/t to PIBO-KD55BBG)",
+   "plastic/certificate_sales:SALE-N0RWK351D (CAT_IV, Rs 1,068/t to PIBO-KD55BBG)",
+   "plastic/certificate_sales:SALE-6O0IAHRUI (CAT_IV, Rs 1,068/t to PIBO-KD55BBG)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-BB0FDBO Western Pharma (985 t)",
+  "PIBO-75E0OXW Narmada Sunrise Retail LLP (371 t)",
+  "PIBO-ERC0U2S Himalaya Global Consumer Products LLP (277 t)",
+  "PIBO-LHEPA8K Jai Home Care LLP (255 t)",
+  "PIBO-FPA98ZG Jai Ganesh Consumer Products LLP (110 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 82
+}

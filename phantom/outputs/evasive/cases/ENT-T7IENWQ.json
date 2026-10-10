@@ -1,0 +1,130 @@
+{
+ "entity_id": "ENT-T7IENWQ",
+ "profile": {
+  "name": "Krishna Pragati Plast Pvt Ltd",
+  "state": "Tamil Nadu",
+  "district": "Krishnagiri",
+  "declared_capacity_tpa": 720.0,
+  "connected_load_kw": 118.0,
+  "epr_registered": "2023-09-17"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6198,
+  "dominant_score": 3.3961,
+  "ens_score": 0.9726,
+  "ens_pct": 0.9776
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 9% of expected)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "44% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.19x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "74% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.19x the market median price"
+  },
+  {
+   "rule": "shell_offtakers",
+   "group": "output",
+   "strength": 0.5,
+   "text": "96% of product sales go to buyers incorporated under a year before the invoice"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.3417
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 5.0,
+   "population_percentile": 99.3,
+   "shap": -0.3376
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 5.0,
+   "population_percentile": 99.8,
+   "shap": -0.2979
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2831
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-SN0OSQ8R (Nov 2023: 43,952 kWh for 49.4 t claimed)",
+   "plastic/electricity_bills:BILL-RMG6OELZ (Nov 2024: 39,710 kWh for 44.3 t claimed)",
+   "plastic/electricity_bills:BILL-LFQ7GIOY (Feb 2024: 38,821 kWh for 43.3 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-6WA0DEZJE (04 Sep 2023, 4 t from COL-S50CYDC)",
+   "plastic/feedstock_invoices:INV-L8AR6I55S (14 Sep 2023, 9 t from COL-ZLN270C)",
+   "plastic/feedstock_invoices:INV-9VMK7X0G3 (18 Sep 2023, 3 t from COL-J8HZ4RE)",
+   "plastic/feedstock_invoices:INV-WRI89S99M (30 Sep 2023, 10 t from COL-ZLN270C)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-ZLN270C (586 t supplied; declared capacity 40 t/month; 2 vehicles; registered May 2023)",
+   "plastic/collectors:COL-COPT8N8 (264 t supplied; declared capacity 20 t/month; 2 vehicles; registered Jun 2023)",
+   "plastic/collectors:COL-8GDI5H1 (182 t supplied; declared capacity 23 t/month; 2 vehicles; registered Apr 2023)",
+   "plastic/collectors:COL-S50CYDC (123 t supplied; declared capacity 14 t/month; 1 vehicles; registered May 2023)",
+   "plastic/collectors:COL-961CUPL (113 t supplied; declared capacity 12 t/month; 1 vehicles; registered May 2023)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-VLELXAK (1,050 t bought)",
+   "plastic/offtakers:OFT-F0RZ52S (33 t bought)",
+   "plastic/offtakers:OFT-LC3XB21 (12 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-R9NUOG824 (CAT_IV, Rs 240/t to PIBO-8WBKK5F)",
+   "plastic/certificate_sales:SALE-CV5KV22H1 (CAT_IV, Rs 240/t to PIBO-8WBKK5F)",
+   "plastic/certificate_sales:SALE-Y5EWBL4UP (CAT_IV, Rs 250/t to PIBO-ZCHZ6S4)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-I72BLJ6 Everest Snacks & Co (253 t)",
+  "PIBO-DGE7BFG Star Dairy & Co (115 t)",
+  "PIBO-7DG1ERE Laxmi Personal Care & Co (90 t)",
+  "PIBO-WE26TET Northern Home Care Pvt Ltd (73 t)",
+  "PIBO-8GXC6X8 Star Foods (59 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 57
+}

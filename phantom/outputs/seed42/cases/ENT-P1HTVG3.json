@@ -1,0 +1,128 @@
+{
+ "entity_id": "ENT-P1HTVG3",
+ "profile": {
+  "name": "Eco Recyclers LLP",
+  "state": "Uttar Pradesh",
+  "district": "Meerut",
+  "declared_capacity_tpa": 1940.0,
+  "connected_load_kw": 83.0,
+  "epr_registered": "2023-11-12"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6502,
+  "dominant_score": 2.3346,
+  "ens_score": 0.9805,
+  "ens_pct": 0.9856
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 279% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 11% of expected)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "66% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.736,
+   "text": "Certificates claim more than the declared monthly capacity in 28% of months"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 59%, +57% versus what its process route can produce"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.5,
+   "shap": -0.3307
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 2.0,
+   "population_percentile": 98.6,
+   "shap": -0.2448
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6558,
+   "population_percentile": 98.8,
+   "shap": -0.2435
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.3103,
+   "population_percentile": 87.3,
+   "shap": -0.2384
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-95FRTXQ5 (Feb 2024: 83,266 kWh for 210.8 t claimed)",
+   "plastic/electricity_bills:BILL-3NVDV57B (Feb 2026: 204,150 kWh for 513.9 t claimed)",
+   "plastic/electricity_bills:BILL-K8R2SQ13 (Jan 2025: 70,439 kWh for 176.3 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-W9N7VAGH2 (02 Nov 2023, 2 t from COL-D3R0AP7)",
+   "plastic/feedstock_invoices:INV-LGZR1IUPZ (05 Nov 2023, 3 t from COL-25RMK6L)",
+   "plastic/feedstock_invoices:INV-PO19MN45E (12 Nov 2023, 0.44 t from COL-8BV9SHJ)",
+   "plastic/feedstock_invoices:INV-C8ER17VAX (14 Nov 2023, 1 t from COL-QC6M3EG)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-25RMK6L (901 t supplied; declared capacity 35 t/month; 1 vehicles; registered Jun 2023)",
+   "plastic/collectors:COL-D3R0AP7 (822 t supplied; declared capacity 32 t/month; 1 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-GRM57GO (629 t supplied; declared capacity 7 t/month; 2 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-B4XMTE4 (348 t supplied; declared capacity 30 t/month; 3 vehicles; registered Dec 2021)",
+   "plastic/collectors:COL-YF36LP7 (312 t supplied; declared capacity 29 t/month; 3 vehicles; registered Jul 2019)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 1,573 t of 4,205 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 1, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-IEECSX7 Sai Maa Consumer Products & Co (310 t)",
+  "PIBO-K55FXEF Krishna Beverages Pvt Ltd (214 t)",
+  "PIBO-O9A0B8V Metro Pharma LLP (180 t)",
+  "PIBO-8WJTEE9 Royal Retail Pvt Ltd (175 t)",
+  "PIBO-0WXD3JL Maa Retail & Co (169 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 37
+}

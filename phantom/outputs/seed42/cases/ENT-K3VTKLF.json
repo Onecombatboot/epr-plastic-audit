@@ -1,0 +1,122 @@
+{
+ "entity_id": "ENT-K3VTKLF",
+ "profile": {
+  "name": "Western Plast Ltd",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 3620.0,
+  "connected_load_kw": 136.0,
+  "epr_registered": "2025-04-21"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6535,
+  "dominant_score": 3.4622,
+  "ens_score": 0.9775,
+  "ens_pct": 0.9836
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (6% of its feedstock)"
+  },
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 87% of expected)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.69x the cost floor)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "51% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.408,
+   "text": "51% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3733
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 4.0,
+   "population_percentile": 99.4,
+   "shap": -0.356
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3517
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.0611,
+   "population_percentile": 98.4,
+   "shap": -0.3467
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-IU63TSZL (Feb 2026: 60,144 kWh for 208.4 t claimed)",
+   "plastic/electricity_bills:BILL-6Q8DIMAB (Dec 2025: 39,204 kWh for 132.6 t claimed)",
+   "plastic/electricity_bills:BILL-8QI75YNQ (Jul 2025: 37,013 kWh for 124.9 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 810 t of 1,596 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-BK45Q2U (99 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 4, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-0YNQ1QF17 (CAT_IV, Rs 1,037/t to PIBO-J6TWZTN)",
+   "plastic/certificate_sales:SALE-EOHWIJ8ZZ (CAT_IV, Rs 1,037/t to PIBO-J6TWZTN)",
+   "plastic/certificate_sales:SALE-DGPXGH02H (CAT_IV, Rs 1,037/t to PIBO-J6TWZTN)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-9W0AZ9R Eastern Himalaya Foods & Co (252 t)",
+  "PIBO-UF5X0OE Hind Navjeevan Snacks Pvt Ltd (132 t)",
+  "PIBO-275OH5W Om Home Care LLP (127 t)",
+  "PIBO-KXWBVBK Krishna Consumer Products LLP (108 t)",
+  "PIBO-GCRDLTF Earth FMCG LLP (91 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 42
+}

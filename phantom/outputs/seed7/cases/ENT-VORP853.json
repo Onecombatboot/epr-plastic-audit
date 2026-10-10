@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-VORP853",
+ "profile": {
+  "name": "Global Enviro Recycling",
+  "state": "Maharashtra",
+  "district": "Thane",
+  "declared_capacity_tpa": 4560.0,
+  "connected_load_kw": 15.0,
+  "epr_registered": "2024-01-24"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.652,
+  "dominant_score": 7.3571,
+  "ens_score": 0.9913,
+  "ens_pct": 0.9952
+ },
+ "reasons": [
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.29x the minimum needed for the tonnes claimed (6 kWh/t against at least 20)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 96% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "84% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "70% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 2 other plant(s)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.632,
+   "text": "Claimed tonnage in the busiest month would need 167% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.3438
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.84,
+   "population_percentile": 99.6,
+   "shap": -0.2777
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 2.0,
+   "population_percentile": 99.2,
+   "shap": -0.244
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.963,
+   "population_percentile": 99.7,
+   "shap": -0.23
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-2FEM8S90 (May 2024: 4,559 kWh for 860.7 t claimed)",
+   "plastic/electricity_bills:BILL-Z49BA4KB (Dec 2024: 4,348 kWh for 803.7 t claimed)",
+   "plastic/electricity_bills:BILL-GW0E8S4T (Jan 2026: 4,008 kWh for 729.0 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-S16AJWPDX (01 Jan 2024, 11 t from COL-PJVJASA)",
+   "plastic/feedstock_invoices:INV-ICH3VDHEI (03 Jan 2024, 16 t from COL-U7NTO92)",
+   "plastic/feedstock_invoices:INV-GSACP7YMA (05 Jan 2024, 16 t from COL-PJVJASA)",
+   "plastic/feedstock_invoices:INV-1ZZZ7X2A1 (05 Jan 2024, 16 t from COL-KATH934)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-KATH934 (5,299 t supplied; declared capacity 7 t/month; 1 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-PJVJASA (4,208 t supplied; declared capacity 25 t/month; 2 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-HAEULJ5 (1,443 t supplied; declared capacity 10 t/month; 1 vehicles; registered Aug 2023)",
+   "plastic/collectors:COL-U7NTO92 (1,433 t supplied; declared capacity 8 t/month; 2 vehicles; registered Sep 2023)",
+   "plastic/collectors:COL-J20L844 (1,364 t supplied; declared capacity 24 t/month; 2 vehicles; registered Aug 2023)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 2, director 0, photos 2)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-ZG8GVO1 Supreme Retail LLP (1,040 t)",
+  "PIBO-PPA8PO3 Shree FMCG Pvt Ltd (898 t)",
+  "PIBO-K7IVNWM Narmada Consumer Products Pvt Ltd (874 t)",
+  "PIBO-81IFXXA Apex FMCG Pvt Ltd (351 t)",
+  "PIBO-CY72FZ4 Deccan Retail Pvt Ltd (331 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 13
+}

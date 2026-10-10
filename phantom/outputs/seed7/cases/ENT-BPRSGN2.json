@@ -1,0 +1,130 @@
+{
+ "entity_id": "ENT-BPRSGN2",
+ "profile": {
+  "name": "Balaji National Granules",
+  "state": "Tamil Nadu",
+  "district": "Chennai",
+  "declared_capacity_tpa": 13360.0,
+  "connected_load_kw": 320.0,
+  "epr_registered": "2025-07-06"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6941,
+  "dominant_score": 4.869,
+  "ens_score": 0.9976,
+  "ens_pct": 1.0
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (29% of its feedstock)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 616% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 33% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "81% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 15% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "69% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2933,
+   "population_percentile": 99.3,
+   "shap": -0.2718
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2585
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 96.7,
+   "shap": -0.2497
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2365
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-YIYKB9JS (Jan 2026: 113,087 kWh for 1,308.7 t claimed)",
+   "plastic/electricity_bills:BILL-8V128EHI (Jul 2025: 47,309 kWh for 289.5 t claimed)",
+   "plastic/electricity_bills:BILL-CE5RFWKQ (Aug 2025: 62,360 kWh for 341.9 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-1Z7JZ77FW (01 Jul 2025, 11 t from COL-CG8RBXM)",
+   "plastic/feedstock_invoices:INV-O1A34VR7J (02 Jul 2025, 15 t from COL-L5RTPNN)",
+   "plastic/feedstock_invoices:INV-WUGU4K1BT (06 Jul 2025, 11 t from COL-L5RTPNN)",
+   "plastic/feedstock_invoices:INV-69C7A7LXC (06 Jul 2025, 19 t from COL-CG8RBXM)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-L5RTPNN (3,468 t supplied; declared capacity 34 t/month; 2 vehicles; registered Apr 2025)",
+   "plastic/collectors:COL-CG8RBXM (3,360 t supplied; declared capacity 23 t/month; 2 vehicles; registered Jan 2025)",
+   "plastic/collectors:COL-7QK41WZ (473 t supplied; declared capacity 9 t/month; 2 vehicles; registered Feb 2025)",
+   "plastic/collectors:COL-I7OASIV (364 t supplied; declared capacity 121 t/month; 5 vehicles; registered Jan 2017)",
+   "plastic/collectors:COL-V4OECK1 (224 t supplied; declared capacity 88 t/month; 3 vehicles; registered May 2019)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-REFGLJ3 (3,718 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-TIO33RH (922 t bought)",
+   "plastic/offtakers:OFT-QY3YVEY (128 t bought)",
+   "plastic/offtakers:OFT-9MPVRYX (81 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-4YRXDU1 Unity Navjeevan Snacks Pvt Ltd (1,794 t)",
+  "PIBO-6ZCZ2HY Sunrise Home Care (1,466 t)",
+  "PIBO-L1OAWZW Western Eco Pharma (1,008 t)",
+  "PIBO-RRSHVTV Pragati Snacks Pvt Ltd (695 t)",
+  "PIBO-MHW8HQR Sunrise Hind Consumer Products Pvt Ltd (425 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 1
+}

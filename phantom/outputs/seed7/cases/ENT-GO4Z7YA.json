@@ -1,0 +1,130 @@
+{
+ "entity_id": "ENT-GO4Z7YA",
+ "profile": {
+  "name": "Sunrise Plastics Pvt Ltd",
+  "state": "Madhya Pradesh",
+  "district": "Dhar",
+  "declared_capacity_tpa": 1120.0,
+  "connected_load_kw": 140.0,
+  "epr_registered": "2023-08-13"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6416,
+  "dominant_score": 3.3126,
+  "ens_score": 0.9848,
+  "ens_pct": 0.9896
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.864,
+   "text": "Claimed tonnage in the busiest month would need 196% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 47% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "71% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "38% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 47%, +45% versus what its process route can produce"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.19x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 98.9,
+   "shap": -0.2994
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.3438,
+   "population_percentile": 88.7,
+   "shap": -0.2581
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 3.0,
+   "population_percentile": 99.6,
+   "shap": -0.2575
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7098,
+   "population_percentile": 99.3,
+   "shap": -0.2452
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-NSO4NSU6 (Mar 2025: 35,444 kWh for 666.5 t claimed)",
+   "plastic/electricity_bills:BILL-24DJNE3Q (Feb 2025: 37,956 kWh for 558.3 t claimed)",
+   "plastic/electricity_bills:BILL-31ZRPWWN (Mar 2024: 38,973 kWh for 451.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-7R1ORMM6B (26 Aug 2023, 3 t from COL-ZKT7DRK)",
+   "plastic/feedstock_invoices:INV-PW267C12U (28 Aug 2023, 2 t from COL-FYP7KTY)",
+   "plastic/feedstock_invoices:INV-7QQGJZDWY (31 Aug 2023, 7 t from COL-GJNO0S9)",
+   "plastic/feedstock_invoices:INV-2SFNS7WIQ (31 Aug 2023, 2 t from COL-HKO0K4U)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-LSUAHZ6 (1,699 t supplied; declared capacity 17 t/month; 1 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-GJNO0S9 (1,294 t supplied; declared capacity 15 t/month; 1 vehicles; registered Apr 2023)",
+   "plastic/collectors:COL-ZKT7DRK (567 t supplied; declared capacity 5 t/month; 2 vehicles; registered Jun 2023)",
+   "plastic/collectors:COL-FYP7KTY (360 t supplied; declared capacity 25 t/month; 1 vehicles; registered Jul 2023)",
+   "plastic/collectors:COL-AN2ZG22 (350 t supplied; declared capacity 79 t/month; 4 vehicles; registered Sep 2022)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 1,697 t of 5,880 t generated)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-W5T7KE84J (CAT_IV, Rs 262/t to PIBO-181RMDY)",
+   "plastic/certificate_sales:SALE-VNQ1CBPU0 (CAT_IV, Rs 262/t to PIBO-181RMDY)",
+   "plastic/certificate_sales:SALE-DH856Y8Y3 (CAT_IV, Rs 262/t to PIBO-181RMDY)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-AX6L100 Supreme Consumer Products Pvt Ltd (328 t)",
+  "PIBO-RJXD4NO Pragati Pharma Pvt Ltd (320 t)",
+  "PIBO-WT9FFSB Amrit FMCG Pvt Ltd (319 t)",
+  "PIBO-K6UOYTR Everest Pharma (247 t)",
+  "PIBO-F5NB9JB Apex Maa Dairy (239 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 27
+}

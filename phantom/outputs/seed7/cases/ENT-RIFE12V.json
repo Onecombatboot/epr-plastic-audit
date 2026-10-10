@@ -1,0 +1,115 @@
+{
+ "entity_id": "ENT-RIFE12V",
+ "profile": {
+  "name": "Jai Metro Plastics & Co",
+  "state": "Tamil Nadu",
+  "district": "Chennai",
+  "declared_capacity_tpa": 1610.0,
+  "connected_load_kw": 47.0,
+  "epr_registered": "2023-07-19"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6578,
+  "dominant_score": 2.5747,
+  "ens_score": 0.9807,
+  "ens_pct": 0.9876
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 1093% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.19x the minimum needed for the tonnes claimed (57 kWh/t against at least 300)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.727,
+   "text": "Certificates claim more than the declared monthly capacity in 27% of months"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 12% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 60%, +58% versus what its process route can produce"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "69% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 96.7,
+   "shap": -0.3133
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3131
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 1.0,
+   "population_percentile": 99.0,
+   "shap": -0.2735
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 1.0,
+   "population_percentile": 91.9,
+   "shap": -0.2612
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-Z1ED6MOL (Feb 2025: 13,702 kWh for 1,221.2 t claimed)",
+   "plastic/electricity_bills:BILL-DRG3EEOW (Mar 2025: 14,969 kWh for 1,249.9 t claimed)",
+   "plastic/electricity_bills:BILL-PMRI7BF1 (Feb 2024: 16,812 kWh for 730.7 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 3,188 t of 10,237 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-QZ9K97M (426 t bought)",
+   "plastic/offtakers:OFT-JEJ6Q0B (285 t bought)",
+   "plastic/offtakers:OFT-59FW0RJ (174 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-5HVTMHP Sanjeevani Northern Dairy Pvt Ltd (541 t)",
+  "PIBO-HV6RQMJ Shri Beverages (369 t)",
+  "PIBO-LGMSJFY Royal Snacks & Co (288 t)",
+  "PIBO-I8UWA5N Ganesh Vasundhara Personal Care LLP (276 t)",
+  "PIBO-2KITGUM Pioneer Personal Care Pvt Ltd (239 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 32
+}

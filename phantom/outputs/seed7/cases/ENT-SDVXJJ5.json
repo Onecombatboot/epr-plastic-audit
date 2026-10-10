@@ -1,0 +1,118 @@
+{
+ "entity_id": "ENT-SDVXJJ5",
+ "profile": {
+  "name": "Northern Granules & Co",
+  "state": "Tamil Nadu",
+  "district": "Tiruppur",
+  "declared_capacity_tpa": 6370.0,
+  "connected_load_kw": 173.0,
+  "epr_registered": "2023-01-10"
+ },
+ "scores": {
+  "rule_score": 0.9995,
+  "iforest_score": 0.6458,
+  "dominant_score": 2.0237,
+  "ens_score": 0.9638,
+  "ens_pct": 0.9696
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (23% of its feedstock)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.64,
+   "text": "Category III share of certificates is 39%, +37% versus what its process route can produce"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.44x the cost floor)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.456,
+   "text": "Certificates sold at 0.44x the market median price"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.419,
+   "text": "52% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "shell_offtakers",
+   "group": "output",
+   "strength": 0.369,
+   "text": "67% of product sales go to buyers incorporated under a year before the invoice"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.397
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2269,
+   "population_percentile": 98.9,
+   "shap": -0.3768
+  },
+  {
+   "feature": "net_recycler_in_degree",
+   "label": "net_recycler_in_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.343
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3318
+  }
+ ],
+ "evidence": {
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 1,223 t of 5,055 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-T6F1USZ (1,165 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-C0UU5MM (1,477 t bought)",
+   "plastic/offtakers:OFT-S7MKJ7J (797 t bought)",
+   "plastic/offtakers:OFT-CGFCQSJ (631 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-YLXNH4778 (CAT_IV, Rs 597/t to PIBO-L1OAWZW)",
+   "plastic/certificate_sales:SALE-1CU4CRUFO (CAT_IV, Rs 597/t to PIBO-L1OAWZW)",
+   "plastic/certificate_sales:SALE-LP41BQHLD (CAT_IV, Rs 597/t to PIBO-L1OAWZW)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-QD4RULV Star Star Foods Pvt Ltd (263 t)",
+  "PIBO-5QREY0I Prime Eastern Snacks Ltd (244 t)",
+  "PIBO-0BOHHTT Amrit Sanjeevani Beverages (206 t)",
+  "PIBO-ZDJVQT8 Om Retail Pvt Ltd (178 t)",
+  "PIBO-H6YTGR5 Sterling FMCG (172 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 77
+}

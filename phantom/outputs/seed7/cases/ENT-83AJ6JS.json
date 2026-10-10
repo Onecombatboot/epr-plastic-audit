@@ -1,0 +1,134 @@
+{
+ "entity_id": "ENT-83AJ6JS",
+ "profile": {
+  "name": "Navjeevan Krishna Recyclers",
+  "state": "Madhya Pradesh",
+  "district": "Bhopal",
+  "declared_capacity_tpa": 11930.0,
+  "connected_load_kw": 218.0,
+  "epr_registered": "2024-12-03"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6732,
+  "dominant_score": 39.9673,
+  "ens_score": 0.9948,
+  "ens_pct": 0.9972
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (95% of its feedstock)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.20x the minimum needed for the tonnes claimed (59 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 3% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.20x the cost floor)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.566,
+   "text": "25% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "capacity_needs_more_power",
+   "group": "energy",
+   "strength": 0.55,
+   "text": "Declared capacity of 11,930 t/yr needs about 2.2x the power the plant is connected for"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.9491,
+   "population_percentile": 100.0,
+   "shap": -0.3544
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3422
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3156
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.3078
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-HT2IJURI (Dec 2024: 11,284 kWh for 250.7 t claimed)",
+   "plastic/electricity_bills:BILL-GV6Q6DX4 (Sep 2025: 12,547 kWh for 234.2 t claimed)",
+   "plastic/electricity_bills:BILL-TOZK1G1I (Nov 2025: 13,893 kWh for 249.3 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-PVF8JTK95 (02 Dec 2024, 13 t from ENT-PEI7TCN)",
+   "plastic/feedstock_invoices:INV-YXS1LTKHL (02 Dec 2024, 21 t from ENT-PEI7TCN)",
+   "plastic/feedstock_invoices:INV-03KKKK66E (04 Dec 2024, 9 t from ENT-PEI7TCN)",
+   "plastic/feedstock_invoices:INV-BC998CEHH (13 Dec 2024, 14 t from ENT-PEI7TCN)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-8LJ1EBH (24 t supplied; declared capacity 21 t/month; 6 vehicles; registered Sep 2016)",
+   "plastic/collectors:COL-42LB9MA (18 t supplied; declared capacity 128 t/month; 1 vehicles; registered Nov 2021)",
+   "plastic/collectors:COL-197GZWE (13 t supplied; declared capacity 29 t/month; 3 vehicles; registered May 2015)",
+   "plastic/collectors:COL-RYREC72 (11 t supplied; declared capacity 10 t/month; 3 vehicles; registered Feb 2021)",
+   "plastic/collectors:COL-1LINCW3 (7 t supplied; declared capacity 36 t/month; 5 vehicles; registered Apr 2022)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-PEI7TCN (2,047 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-24Y86XR (27 t bought)",
+   "plastic/offtakers:OFT-D2CTGFI (25 t bought)",
+   "plastic/offtakers:OFT-ZNELCLT (10 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-PY3CK99LF (CAT_IV, Rs 280/t to PIBO-I7UNCBT)",
+   "plastic/certificate_sales:SALE-1P5LNPB71 (CAT_IV, Rs 280/t to PIBO-I7UNCBT)",
+   "plastic/certificate_sales:SALE-625AJ6HKS (CAT_IV, Rs 280/t to PIBO-I7UNCBT)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-A6FPQRB Earth Beverages Pvt Ltd (905 t)",
+  "PIBO-6TLRKNK Western Green Dairy Pvt Ltd (328 t)",
+  "PIBO-WT9FFSB Amrit FMCG Pvt Ltd (282 t)",
+  "PIBO-GHN9ZNG Shri Global Retail LLP (235 t)",
+  "PIBO-A3LFT5E Amrit Navjeevan Foods LLP (193 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 8
+}

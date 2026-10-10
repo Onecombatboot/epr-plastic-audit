@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-M6MCYTG",
+ "profile": {
+  "name": "Everest Maa Poly Industries",
+  "state": "Karnataka",
+  "district": "Belagavi",
+  "declared_capacity_tpa": 1950.0,
+  "connected_load_kw": 312.0,
+  "epr_registered": "2025-11-07"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6317,
+  "dominant_score": 5.9946,
+  "ens_score": 0.9853,
+  "ens_pct": 0.9896
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 80% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "71% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "42% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "43% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.556,
+   "text": "Sold products equal only 32% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3373
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3186
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7147,
+   "population_percentile": 98.8,
+   "shap": -0.2842
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2778
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-3FOT277D (Jan 2026: 89,691 kWh for 377.0 t claimed)",
+   "plastic/electricity_bills:BILL-D7HRVNH3 (Mar 2026: 115,652 kWh for 480.2 t claimed)",
+   "plastic/electricity_bills:BILL-6948KFN9 (Nov 2025: 45,951 kWh for 159.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-GV4515C90 (01 Nov 2025, 9 t from COL-TXCTJCS)",
+   "plastic/feedstock_invoices:INV-93A1I1LA3 (01 Nov 2025, 4 t from COL-TXCTJCS)",
+   "plastic/feedstock_invoices:INV-R52GYYXL7 (07 Nov 2025, 15 t from COL-HXY3DDF)",
+   "plastic/feedstock_invoices:INV-QVVW5PZK4 (07 Nov 2025, 10 t from COL-TXCTJCS)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-TXCTJCS (983 t supplied; declared capacity 22 t/month; 1 vehicles; registered Sep 2025)",
+   "plastic/collectors:COL-HXY3DDF (204 t supplied; declared capacity 29 t/month; 2 vehicles; registered Aug 2025)",
+   "plastic/collectors:COL-EHOTDJA (109 t supplied; declared capacity 79 t/month; 2 vehicles; registered Sep 2017)",
+   "plastic/collectors:COL-TPQQTBU (95 t supplied; declared capacity 88 t/month; 6 vehicles; registered Jan 2019)",
+   "plastic/collectors:COL-VE5CF09 (76 t supplied; declared capacity 271 t/month; 3 vehicles; registered Aug 2022)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-YCE1M7Q (124 t bought)",
+   "plastic/offtakers:OFT-FOKSOKN (93 t bought)",
+   "plastic/offtakers:OFT-FZEFKCZ (75 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 2, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-J7MZANO Global Home Care LLP (448 t)",
+  "PIBO-2SWEOG7 Eco Snacks Pvt Ltd (270 t)",
+  "PIBO-RJPA904 Everest Star Retail LLP (94 t)",
+  "PIBO-S3ADRK7 Prime Personal Care LLP (88 t)",
+  "PIBO-VF58FRD Ganesh Beverages Pvt Ltd (86 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 27
+}

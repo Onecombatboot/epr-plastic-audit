@@ -1,0 +1,128 @@
+{
+ "entity_id": "ENT-U4M62T0",
+ "profile": {
+  "name": "Durga Sai Plastics LLP",
+  "state": "Gujarat",
+  "district": "Morbi",
+  "declared_capacity_tpa": 6820.0,
+  "connected_load_kw": 569.0,
+  "epr_registered": "2023-10-26"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6596,
+  "dominant_score": 5.9821,
+  "ens_score": 0.9926,
+  "ens_pct": 0.996
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (39% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 97% of months"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "36% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.632,
+   "text": "Electricity bought is only 0.45x the minimum needed for the tonnes claimed (134 kWh/t against at least 300)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.61,
+   "text": "48% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3241
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3099
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.39,
+   "population_percentile": 99.6,
+   "shap": -0.3066
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 1.0,
+   "population_percentile": 98.2,
+   "shap": -0.2619
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-QBDZRAW2 (Dec 2025: 168,844 kWh for 1,305.3 t claimed)",
+   "plastic/electricity_bills:BILL-HTHPEPDP (Jun 2024: 161,277 kWh for 1,245.8 t claimed)",
+   "plastic/electricity_bills:BILL-4XD4DWGT (Feb 2024: 167,215 kWh for 1,289.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-E09AS65UF (01 Oct 2023, 14 t from ENT-ABE9QA8)",
+   "plastic/feedstock_invoices:INV-K8YYN866A (08 Oct 2023, 7 t from ENT-ABE9QA8)",
+   "plastic/feedstock_invoices:INV-II9UOX052 (13 Oct 2023, 3 t from COL-EYLT27S)",
+   "plastic/feedstock_invoices:INV-1WDR1AR1G (17 Oct 2023, 10 t from COL-HZSKOTY)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-HZSKOTY (5,214 t supplied; declared capacity 22 t/month; 2 vehicles; registered Jul 2023)",
+   "plastic/collectors:COL-PF3VIXB (2,356 t supplied; declared capacity 15 t/month; 1 vehicles; registered Aug 2023)",
+   "plastic/collectors:COL-3583HI8 (2,330 t supplied; declared capacity 182 t/month; 6 vehicles; registered Feb 2020)",
+   "plastic/collectors:COL-7RB0YZO (1,896 t supplied; declared capacity 18 t/month; 1 vehicles; registered Jul 2023)",
+   "plastic/collectors:COL-4JGX5DI (1,549 t supplied; declared capacity 170 t/month; 5 vehicles; registered Mar 2017)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-ABE9QA8 (13,562 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 0, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-92QY8L1 Sanjeevani Home Care & Co (2,366 t)",
+  "PIBO-09Z9XXV Bharat Home Care Pvt Ltd (2,321 t)",
+  "PIBO-A3NTNLQ Ganga Pharma & Co (1,245 t)",
+  "PIBO-YRDG0J5 Himalaya Pharma Pvt Ltd (1,210 t)",
+  "PIBO-4CRYNA1 Southern Dairy (925 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers."
+ ],
+ "rank": 11
+}

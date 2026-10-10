@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-K474L71",
+ "profile": {
+  "name": "Eastern Sunrise Plastics Pvt Ltd",
+  "state": "Uttar Pradesh",
+  "district": "Agra",
+  "declared_capacity_tpa": 890.0,
+  "connected_load_kw": 119.0,
+  "epr_registered": "2024-10-19"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6386,
+  "dominant_score": 2.0587,
+  "ens_score": 0.971,
+  "ens_pct": 0.9752
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.76,
+   "text": "57% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "50% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.80x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "50% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.544,
+   "text": "Electricity bought is only 0.52x the minimum needed for the tonnes claimed (157 kWh/t against at least 300)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 99.0,
+   "shap": -0.2819
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 3.0,
+   "population_percentile": 99.5,
+   "shap": -0.2671
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 1.0,
+   "population_percentile": 99.5,
+   "shap": -0.2554
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5749,
+   "population_percentile": 98.4,
+   "shap": -0.2531
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-56BFFTDK (Dec 2025: 42,350 kWh for 280.2 t claimed)",
+   "plastic/electricity_bills:BILL-LMFSSSRB (Feb 2025: 37,403 kWh for 246.0 t claimed)",
+   "plastic/electricity_bills:BILL-G8SJXMP4 (Nov 2025: 39,137 kWh for 253.5 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-8JBU6GIX3 (01 Oct 2024, 7 t from COL-O5GIMMB)",
+   "plastic/feedstock_invoices:INV-B7SDATBGM (08 Oct 2024, 3 t from COL-QRMIQIN)",
+   "plastic/feedstock_invoices:INV-TLNKJ02DN (10 Oct 2024, 7 t from COL-O5GIMMB)",
+   "plastic/feedstock_invoices:INV-7B2IW39BP (18 Oct 2024, 7 t from COL-O5GIMMB)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-4BD5BC8 (1,284 t supplied; declared capacity 29 t/month; 1 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-O5GIMMB (1,131 t supplied; declared capacity 39 t/month; 2 vehicles; registered May 2024)",
+   "plastic/collectors:COL-KW1O8CD (209 t supplied; declared capacity 140 t/month; 5 vehicles; registered Jul 2019)",
+   "plastic/collectors:COL-KAEMDF9 (187 t supplied; declared capacity 21 t/month; 1 vehicles; registered Sep 2024)",
+   "plastic/collectors:COL-3EC0QEY (187 t supplied; declared capacity 49 t/month; 4 vehicles; registered Nov 2016)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-3CCOYA94E (CAT_IV, Rs 1,110/t to PIBO-KEKHIYP)",
+   "plastic/certificate_sales:SALE-ZRDFZT0RV (CAT_IV, Rs 1,110/t to PIBO-KEKHIYP)",
+   "plastic/certificate_sales:SALE-3XI0IIPDT (CAT_IV, Rs 1,110/t to PIBO-KEKHIYP)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-N00YQ02 Pragati Foods Pvt Ltd (852 t)",
+  "PIBO-AYGW94C Shri Metro Dairy Pvt Ltd (303 t)",
+  "PIBO-3Y97MC7 Eco Northern Home Care Pvt Ltd (232 t)",
+  "PIBO-4TACT1O Ganga Home Care (175 t)",
+  "PIBO-BVB1LCE Green Dairy Pvt Ltd (174 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 63
+}

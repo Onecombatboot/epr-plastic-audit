@@ -1,0 +1,135 @@
+{
+ "entity_id": "ENT-OOJ6YX4",
+ "profile": {
+  "name": "Everest Plastics",
+  "state": "Uttar Pradesh",
+  "district": "Agra",
+  "declared_capacity_tpa": 5150.0,
+  "connected_load_kw": 383.0,
+  "epr_registered": "2025-06-28"
+ },
+ "scores": {
+  "rule_score": 0.9997,
+  "iforest_score": 0.6183,
+  "dominant_score": 6.0281,
+  "ens_score": 0.9701,
+  "ens_pct": 0.9784
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 46% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 70% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.475,
+   "text": "22% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.474,
+   "text": "85% of certificate tonnes were sold below the cost of recycling (average 0.88x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3292
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3219
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.3077,
+   "population_percentile": 97.7,
+   "shap": -0.2934
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.7,
+   "population_percentile": 98.4,
+   "shap": -0.2439
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-2FHW0LGI (Sep 2025: 208,674 kWh for 471.4 t claimed)",
+   "plastic/electricity_bills:BILL-JU3O9BS1 (Feb 2026: 213,233 kWh for 475.9 t claimed)",
+   "plastic/electricity_bills:BILL-MII4C2W3 (Nov 2025: 213,907 kWh for 469.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-OAMY3717X (05 Jun 2025, 8 t from COL-9VSYXMQ)",
+   "plastic/feedstock_invoices:INV-KH8GWXLCE (09 Jun 2025, 2 t from COL-5ZWZED7)",
+   "plastic/feedstock_invoices:INV-VUPPE6131 (13 Jun 2025, 18 t from COL-7N5WJNI)",
+   "plastic/feedstock_invoices:INV-FOCVK93D7 (18 Jun 2025, 7 t from COL-6VBVWRA)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-4U9JL78 (674 t supplied; declared capacity 12 t/month; 1 vehicles; registered Jan 2025)",
+   "plastic/collectors:COL-MNQ4ZOD (613 t supplied; declared capacity 195 t/month; 5 vehicles; registered May 2015)",
+   "plastic/collectors:COL-7N5WJNI (549 t supplied; declared capacity 17 t/month; 1 vehicles; registered Jan 2025)",
+   "plastic/collectors:COL-9VSYXMQ (254 t supplied; declared capacity 28 t/month; 2 vehicles; registered Jan 2025)",
+   "plastic/collectors:COL-3U63MKO (253 t supplied; declared capacity 28 t/month; 1 vehicles; registered Jan 2025)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-CVYAME7 (809 t bought)",
+   "plastic/offtakers:OFT-4KWZMIH (689 t bought)",
+   "plastic/offtakers:OFT-BN28IZ3 (41 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-EIL2D9N5G (CAT_IV, Rs 1,303/t to PIBO-ULZFFKJ)",
+   "plastic/certificate_sales:SALE-UFJW7I4CX (CAT_IV, Rs 1,303/t to PIBO-ULZFFKJ)",
+   "plastic/certificate_sales:SALE-H3N2QRKBG (CAT_IV, Rs 1,303/t to PIBO-ULZFFKJ)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-NKDIWRH Pragati Ganesh Pharma LLP (2,442 t)",
+  "PIBO-PLPJ104 Vasundhara Metro Pharma Pvt Ltd (413 t)",
+  "PIBO-DX5X2I6 Western Earth Snacks LLP (206 t)",
+  "PIBO-GWGOCDK Maa Consumer Products Ltd (179 t)",
+  "PIBO-NKN6SU3 Vasundhara Bharat Pharma Pvt Ltd (116 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 55
+}

@@ -1,0 +1,120 @@
+{
+ "entity_id": "ENT-UMBKT7I",
+ "profile": {
+  "name": "Eco Green Plast Pvt Ltd",
+  "state": "Maharashtra",
+  "district": "Nagpur",
+  "declared_capacity_tpa": 2510.0,
+  "connected_load_kw": 121.0,
+  "epr_registered": "2025-05-25"
+ },
+ "scores": {
+  "rule_score": 0.9983,
+  "iforest_score": 0.6109,
+  "dominant_score": 3.7242,
+  "ens_score": 0.9556,
+  "ens_pct": 0.9632
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 21% of expected)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 20% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.30x the cost floor)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.35x the market median price"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "shared_contacts",
+   "group": "identity",
+   "strength": 0.3,
+   "text": "Shares a contact phone number with 2 other registered entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.4149
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.4104
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.3865
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.5,
+   "shap": -0.3686
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-3LW5WRIB (Nov 2025: 135,298 kWh for 142.1 t claimed)",
+   "plastic/electricity_bills:BILL-93ATBX1G (Sep 2025: 124,093 kWh for 129.8 t claimed)",
+   "plastic/electricity_bills:BILL-ZRW72WDU (Jul 2025: 94,022 kWh for 97.4 t claimed)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-KXJKJUT (79 t bought)",
+   "plastic/offtakers:OFT-78PUHM7 (41 t bought)",
+   "plastic/offtakers:OFT-Q6UD2WN (27 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 1, director 0, photos 0)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-CZVFI3FXQ (CAT_IV, Rs 450/t to PIBO-IP0H3LA)",
+   "plastic/certificate_sales:SALE-LUWKQE92R (CAT_IV, Rs 450/t to PIBO-IP0H3LA)",
+   "plastic/certificate_sales:SALE-IZKMDEWEQ (CAT_IV, Rs 450/t to PIBO-IP0H3LA)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-JEGCCP3 Navjeevan FMCG & Co (772 t)",
+  "PIBO-4EV79BQ Om Consumer Products Pvt Ltd (135 t)",
+  "PIBO-IP0H3LA Global Himalaya Pharma (64 t)",
+  "PIBO-TDWC5CM Krishna Snacks Pvt Ltd (60 t)",
+  "PIBO-BBVXXZW Supreme Dairy & Co (37 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 93
+}

@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-ABE9QA8",
+ "profile": {
+  "name": "Pragati Enviro Recycling Pvt Ltd",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 1200.0,
+  "connected_load_kw": 15.0,
+  "epr_registered": "2025-04-26"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6312,
+  "dominant_score": 4.05,
+  "ens_score": 0.9781,
+  "ens_pct": 0.9828
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 92% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "70% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "54% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.86x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "65% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.45,
+   "text": "In 100% of billed months the units consumed cannot support the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7048,
+   "population_percentile": 98.8,
+   "shap": -0.3006
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 2.0,
+   "population_percentile": 93.5,
+   "shap": -0.267
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 2.0,
+   "population_percentile": 98.6,
+   "shap": -0.2653
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 99.2,
+   "shap": -0.2471
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-LPFDHXS5 (Feb 2026: 3,538 kWh for 287.9 t claimed)",
+   "plastic/electricity_bills:BILL-PZTK3HB4 (Nov 2025: 4,296 kWh for 348.7 t claimed)",
+   "plastic/electricity_bills:BILL-844PE70R (Jan 2026: 3,987 kWh for 315.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-H0ZKX5EJA (12 Apr 2025, 13 t from COL-PKFR7FZ)",
+   "plastic/feedstock_invoices:INV-G8R0AZ84Z (13 Apr 2025, 11 t from COL-G0DTLHR)",
+   "plastic/feedstock_invoices:INV-04DF38IRB (16 Apr 2025, 13 t from COL-G0DTLHR)",
+   "plastic/feedstock_invoices:INV-GMS0G3BXN (19 Apr 2025, 8 t from COL-Z4SOR6D)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-G0DTLHR (779 t supplied; declared capacity 18 t/month; 2 vehicles; registered Apr 2025)",
+   "plastic/collectors:COL-PKFR7FZ (647 t supplied; declared capacity 15 t/month; 2 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-Z4SOR6D (555 t supplied; declared capacity 15 t/month; 1 vehicles; registered Jan 2025)",
+   "plastic/collectors:COL-GEMRMJS (334 t supplied; declared capacity 29 t/month; 2 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-NLFT3ZV (257 t supplied; declared capacity 16 t/month; 2 vehicles; registered Jan 2025)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-JSHBA8MEA (CAT_IV, Rs 1,280/t to PIBO-3SCK2L9)",
+   "plastic/certificate_sales:SALE-9J0T2MAD6 (CAT_IV, Rs 1,280/t to PIBO-3SCK2L9)",
+   "plastic/certificate_sales:SALE-ZINHRPYN4 (CAT_IV, Rs 1,280/t to PIBO-3SCK2L9)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-5IFZX7X Deccan Sahyadri Personal Care LLP (175 t)",
+  "PIBO-MMN0NCO Supreme Consumer Products & Co (116 t)",
+  "PIBO-T9MIKFZ Narmada Sterling Personal Care & Co (105 t)",
+  "PIBO-08WTWII Everest Foods (85 t)",
+  "PIBO-FLE5GHY Ganga Dairy Pvt Ltd (61 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 44
+}

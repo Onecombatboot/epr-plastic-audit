@@ -1,0 +1,131 @@
+{
+ "entity_id": "ENT-FHR8BHR",
+ "profile": {
+  "name": "Prime Apex Granules Pvt Ltd",
+  "state": "Andhra Pradesh",
+  "district": "Tirupati",
+  "declared_capacity_tpa": 3210.0,
+  "connected_load_kw": 101.0,
+  "epr_registered": "2023-08-19"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6435,
+  "dominant_score": 8.5818,
+  "ens_score": 0.9896,
+  "ens_pct": 0.9936
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 88% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "86% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.704,
+   "text": "Electricity bought is only 0.38x the minimum needed for the tonnes claimed (115 kWh/t against at least 300)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "68% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 15% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.31x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 98.9,
+   "shap": -0.3132
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.2913
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8591,
+   "population_percentile": 99.8,
+   "shap": -0.27
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 3.0,
+   "population_percentile": 99.6,
+   "shap": -0.2601
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-4HPBFMCG (Dec 2023: 35,817 kWh for 324.2 t claimed)",
+   "plastic/electricity_bills:BILL-ETHUBUPR (Feb 2025: 38,214 kWh for 345.5 t claimed)",
+   "plastic/electricity_bills:BILL-87JSNZ4Z (Mar 2025: 37,482 kWh for 336.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-ZPX2XA0RE (14 Aug 2023, 10 t from COL-G60O2LM)",
+   "plastic/feedstock_invoices:INV-6QEJSFOQI (17 Aug 2023, 10 t from COL-G60O2LM)",
+   "plastic/feedstock_invoices:INV-I6JFJ44R0 (20 Aug 2023, 1.17 t from COL-QEYQZ5T)",
+   "plastic/feedstock_invoices:INV-2SF2E2T0X (22 Aug 2023, 12 t from COL-QPPBN7I)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-G60O2LM (5,797 t supplied; declared capacity 27 t/month; 2 vehicles; registered Jun 2023)",
+   "plastic/collectors:COL-QPPBN7I (2,579 t supplied; declared capacity 24 t/month; 2 vehicles; registered Jul 2023)",
+   "plastic/collectors:COL-R9664JD (344 t supplied; declared capacity 474 t/month; 2 vehicles; registered Nov 2017)",
+   "plastic/collectors:COL-5WZMRCM (181 t supplied; declared capacity 41 t/month; 1 vehicles; registered Feb 2018)",
+   "plastic/collectors:COL-N1L4HBQ (167 t supplied; declared capacity 13 t/month; 6 vehicles; registered Jun 2023)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-QT92O9E (652 t bought)",
+   "plastic/offtakers:OFT-37UHFND (418 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-4SAH4583P (CAT_IV, Rs 409/t to PIBO-TPASNWH)",
+   "plastic/certificate_sales:SALE-DOIIGUFT6 (CAT_IV, Rs 415/t to PIBO-6V4F803)",
+   "plastic/certificate_sales:SALE-R2T1HKLKE (CAT_IV, Rs 415/t to PIBO-6V4F803)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-VR95JFO Bharat Balaji Dairy LLP (941 t)",
+  "PIBO-1AYGE3S Sai Beverages Pvt Ltd (859 t)",
+  "PIBO-GHMJVI5 Vasundhara Star FMCG Ltd (601 t)",
+  "PIBO-8G400NQ Kaveri Personal Care Pvt Ltd (526 t)",
+  "PIBO-ZG8GVO1 Supreme Retail LLP (476 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 17
+}

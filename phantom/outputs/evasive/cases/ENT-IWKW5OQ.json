@@ -1,0 +1,127 @@
+{
+ "entity_id": "ENT-IWKW5OQ",
+ "profile": {
+  "name": "Galaxy Earth Granules Pvt Ltd",
+  "state": "Haryana",
+  "district": "Panipat",
+  "declared_capacity_tpa": 650.0,
+  "connected_load_kw": 15.0,
+  "epr_registered": "2024-12-20"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6314,
+  "dominant_score": 5.3302,
+  "ens_score": 0.9815,
+  "ens_pct": 0.9864
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 13% of expected)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "43% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "67% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.539,
+   "text": "46% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.5,
+   "text": "Certificates claim more than the declared monthly capacity in 19% of months"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.3213
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.3388,
+   "population_percentile": 96.8,
+   "shap": -0.3029
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2897
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.6778,
+   "population_percentile": 99.6,
+   "shap": -0.2788
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-E91C3JXC (Feb 2026: 6,472 kWh for 139.6 t claimed)",
+   "plastic/electricity_bills:BILL-2DPSKI0F (Mar 2026: 5,808 kWh for 121.2 t claimed)",
+   "plastic/electricity_bills:BILL-LL7OX6J4 (Feb 2025: 3,121 kWh for 55.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-HOJSWGIWB (09 Dec 2024, 1 t from COL-ZX9JFP7)",
+   "plastic/feedstock_invoices:INV-LX9X412XI (15 Dec 2024, 0.2 t from COL-4D7SGAH)",
+   "plastic/feedstock_invoices:INV-BUJAS02E7 (25 Dec 2024, 1 t from COL-2YQ7UAK)",
+   "plastic/feedstock_invoices:INV-W773AYJLK (31 Dec 2024, 1 t from COL-AI01S4N)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-2YQ7UAK (136 t supplied; declared capacity 29 t/month; 1 vehicles; registered Dec 2024)",
+   "plastic/collectors:COL-ZX9JFP7 (134 t supplied; declared capacity 14 t/month; 2 vehicles; registered Jun 2024)",
+   "plastic/collectors:COL-AI01S4N (68 t supplied; declared capacity 18 t/month; 2 vehicles; registered Dec 2024)",
+   "plastic/collectors:COL-4D7SGAH (53 t supplied; declared capacity 27 t/month; 1 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-PQDH8ZP (48 t supplied; declared capacity 8 t/month; 2 vehicles; registered Sep 2024)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 237 t of 510 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-149ST7U Global Vasundhara Home Care Pvt Ltd (192 t)",
+  "PIBO-GZ1SQ41 Prime Om Foods Pvt Ltd (62 t)",
+  "PIBO-4XAP0G8 Royal Sanjeevani Home Care Pvt Ltd (55 t)",
+  "PIBO-3NTQBKB Sai Foods Pvt Ltd (25 t)",
+  "PIBO-48NP151 Pioneer Narmada Home Care Pvt Ltd (17 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months."
+ ],
+ "rank": 35
+}

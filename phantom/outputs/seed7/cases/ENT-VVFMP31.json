@@ -1,0 +1,136 @@
+{
+ "entity_id": "ENT-VVFMP31",
+ "profile": {
+  "name": "Balaji Polymers",
+  "state": "Karnataka",
+  "district": "Bengaluru Urban",
+  "declared_capacity_tpa": 1510.0,
+  "connected_load_kw": 28.0,
+  "epr_registered": "2025-11-10"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6671,
+  "dominant_score": 4.8953,
+  "ens_score": 0.9892,
+  "ens_pct": 0.9932
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (20% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 60% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.652,
+   "text": "28% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.52x the cost floor)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.391,
+   "text": "38% of all certificates were generated in a single month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.1985,
+   "population_percentile": 98.6,
+   "shap": -0.2975
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2937
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.2891
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2759
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-3MVC0VTS (Feb 2026: 9,751 kWh for 376.7 t claimed)",
+   "plastic/electricity_bills:BILL-RAPTE6LK (Jan 2026: 6,120 kWh for 162.7 t claimed)",
+   "plastic/electricity_bills:BILL-Z0TJRN0Z (Dec 2025: 4,967 kWh for 72.1 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-3UIVNT5DN (04 Nov 2025, 1 t from COL-N5UDH19)",
+   "plastic/feedstock_invoices:INV-EMN8D48D1 (16 Nov 2025, 1 t from COL-C8JC2JF)",
+   "plastic/feedstock_invoices:INV-VGYWGP95I (21 Nov 2025, 2 t from COL-ZDXVS4U)",
+   "plastic/feedstock_invoices:INV-BEQS21Z5X (24 Nov 2025, 2 t from COL-I738T9I)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-WG76FU8 (180 t supplied; declared capacity 16 t/month; 2 vehicles; registered Sep 2025)",
+   "plastic/collectors:COL-UXTDAKI (100 t supplied; declared capacity 58 t/month; 3 vehicles; registered Feb 2022)",
+   "plastic/collectors:COL-RT32XTF (91 t supplied; declared capacity 351 t/month; 1 vehicles; registered Dec 2015)",
+   "plastic/collectors:COL-LCP2YRR (89 t supplied; declared capacity 37 t/month; 1 vehicles; registered Oct 2025)",
+   "plastic/collectors:COL-ZDXVS4U (73 t supplied; declared capacity 24 t/month; 2 vehicles; registered Jul 2025)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 426 t of 1,127 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-BPRSGN2 (228 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 2, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-5957O91LP (CAT_IV, Rs 763/t to PIBO-XRVZBS0)",
+   "plastic/certificate_sales:SALE-Y4IBK2PTR (CAT_IV, Rs 763/t to PIBO-XRVZBS0)",
+   "plastic/certificate_sales:SALE-ZUUKR6Y8T (CAT_IV, Rs 763/t to PIBO-XRVZBS0)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-5RCI6E6 Sanjeevani Home Care (455 t)",
+  "PIBO-FVBMQX6 Pioneer Home Care Pvt Ltd (249 t)",
+  "PIBO-H8ZETZG Shri Southern FMCG & Co (81 t)",
+  "PIBO-KDJT6UZ Western Northern FMCG (74 t)",
+  "PIBO-MC1R2TJ Shree National Home Care Ltd (65 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 18
+}

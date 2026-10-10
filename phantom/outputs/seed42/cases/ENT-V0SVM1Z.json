@@ -1,0 +1,125 @@
+{
+ "entity_id": "ENT-V0SVM1Z",
+ "profile": {
+  "name": "Pragati Pioneer Polymers",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 1500.0,
+  "connected_load_kw": 228.0,
+  "epr_registered": "2025-06-04"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6814,
+  "dominant_score": 12.2442,
+  "ens_score": 0.9974,
+  "ens_pct": 1.0
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (70% of its feedstock)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 213% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 60% of months"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 68%, +66% versus what its process route can produce"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.698,
+   "text": "Sold products equal only 20% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.17x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2911
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.6999,
+   "population_percentile": 99.8,
+   "shap": -0.2765
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2692
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.2649
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-EZ3FHJZ1 (Mar 2026: 76,835 kWh for 1,180.4 t claimed)",
+   "plastic/electricity_bills:BILL-1NYCPI06 (Feb 2026: 69,724 kWh for 972.9 t claimed)",
+   "plastic/electricity_bills:BILL-ZO8QZ3FK (Jan 2026: 67,049 kWh for 390.4 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 2,114 t of 3,363 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-H60G763 (1,472 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-JRHO2RZ (141 t bought)",
+   "plastic/offtakers:OFT-A5NNZPV (118 t bought)",
+   "plastic/offtakers:OFT-S1BHTDQ (49 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-ADUIP1RO6 (CAT_IV, Rs 241/t to PIBO-89Q2604)",
+   "plastic/certificate_sales:SALE-E5TY2OZKU (CAT_IV, Rs 241/t to PIBO-89Q2604)",
+   "plastic/certificate_sales:SALE-MS349ZYY3 (CAT_IV, Rs 241/t to PIBO-89Q2604)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-P8N967Y Earth Beverages Pvt Ltd (503 t)",
+  "PIBO-WQIQXTS Jai Beverages (476 t)",
+  "PIBO-2T05U6M Green Dairy Pvt Ltd (435 t)",
+  "PIBO-XKBWE75 Southern Sai FMCG Pvt Ltd (229 t)",
+  "PIBO-H0PVMI3 Northern Consumer Products Ltd (188 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 1
+}

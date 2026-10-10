@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-6VVBT4V",
+ "profile": {
+  "name": "Navjeevan Recyclers LLP",
+  "state": "Telangana",
+  "district": "Medchal",
+  "declared_capacity_tpa": 3400.0,
+  "connected_load_kw": 602.0,
+  "epr_registered": "2024-01-28"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6552,
+  "dominant_score": 2.2781,
+  "ens_score": 0.9751,
+  "ens_pct": 0.9824
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 18% of expected)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.728,
+   "text": "55% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 49%, +47% versus what its process route can produce"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.54x the cost floor)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.593,
+   "text": "Certificates claim more than the declared monthly capacity in 22% of months"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "67% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3117
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 96.7,
+   "shap": -0.2989
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.3333,
+   "population_percentile": 88.6,
+   "shap": -0.264
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5548,
+   "population_percentile": 98.8,
+   "shap": -0.2374
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-2PTELHRO (Feb 2025: 871,026 kWh for 947.1 t claimed)",
+   "plastic/electricity_bills:BILL-03GWTX0U (Jan 2026: 342,198 kWh for 371.0 t claimed)",
+   "plastic/electricity_bills:BILL-YMZZE46L (Feb 2026: 861,313 kWh for 901.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-YLW5K8ZXG (14 Jan 2024, 1.6 t from COL-CQWZHTX)",
+   "plastic/feedstock_invoices:INV-14L1RLPFQ (15 Jan 2024, 10 t from COL-6I3LGW2)",
+   "plastic/feedstock_invoices:INV-JIU3P7D1A (30 Jan 2024, 12 t from COL-6I3LGW2)",
+   "plastic/feedstock_invoices:INV-CHXGO2RK6 (04 Feb 2024, 7.49 t from COL-6I3LGW2)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-6I3LGW2 (2,754 t supplied; declared capacity 37 t/month; 1 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-X0BDUP3 (1,777 t supplied; declared capacity 7 t/month; 2 vehicles; registered Jan 2024)",
+   "plastic/collectors:COL-DUTMQZR (1,053 t supplied; declared capacity 149 t/month; 3 vehicles; registered Mar 2021)",
+   "plastic/collectors:COL-FN8QT4C (747 t supplied; declared capacity 192 t/month; 6 vehicles; registered Sep 2017)",
+   "plastic/collectors:COL-QFQ17Y3 (369 t supplied; declared capacity 34 t/month; 3 vehicles; registered Nov 2019)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 2,861 t of 8,051 t generated)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-IZCP1W733 (CAT_IV, Rs 728/t to PIBO-HHIHETO)",
+   "plastic/certificate_sales:SALE-8ZRXEY55Z (CAT_IV, Rs 739/t to PIBO-WJJLAOA)",
+   "plastic/certificate_sales:SALE-5LPZAZTEQ (CAT_IV, Rs 739/t to PIBO-WJJLAOA)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-4E7FDEV Metro Beverages Pvt Ltd (750 t)",
+  "PIBO-QS12NZ4 Sterling Snacks (352 t)",
+  "PIBO-6LS4AHB Everest Bharat Consumer Products Pvt Ltd (317 t)",
+  "PIBO-F3PI4DQ Himalaya Home Care & Co (260 t)",
+  "PIBO-GOGRXTL Western Pragati Beverages Pvt Ltd (204 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months."
+ ],
+ "rank": 45
+}

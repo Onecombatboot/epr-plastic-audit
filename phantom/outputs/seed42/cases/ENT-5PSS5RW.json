@@ -1,0 +1,131 @@
+{
+ "entity_id": "ENT-5PSS5RW",
+ "profile": {
+  "name": "Everest Prakriti Recyclers Pvt Ltd",
+  "state": "Maharashtra",
+  "district": "Aurangabad",
+  "declared_capacity_tpa": 12480.0,
+  "connected_load_kw": 265.0,
+  "epr_registered": "2025-04-25"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.639,
+  "dominant_score": 7.8939,
+  "ens_score": 0.9878,
+  "ens_pct": 0.9928
+ },
+ "reasons": [
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "90% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.79,
+   "text": "Electricity bought is only 0.31x the minimum needed for the tonnes claimed (93 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 4% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "63% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.27x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "68% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.2983
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 8.0,
+   "population_percentile": 99.6,
+   "shap": -0.2743
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.9005,
+   "population_percentile": 99.9,
+   "shap": -0.2499
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.6405,
+   "population_percentile": 98.6,
+   "shap": -0.2355
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-CVPXNGSC (Mar 2026: 13,195 kWh for 663.0 t claimed)",
+   "plastic/electricity_bills:BILL-PPYE65JW (Jan 2026: 12,426 kWh for 263.5 t claimed)",
+   "plastic/electricity_bills:BILL-20ZOLREN (Aug 2025: 12,431 kWh for 53.2 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-BDJ92GUET (02 Apr 2025, 6 t from COL-XJKKHJ7)",
+   "plastic/feedstock_invoices:INV-SCHEI2NT8 (24 Apr 2025, 4 t from COL-L89R40Y)",
+   "plastic/feedstock_invoices:INV-OD8SCOV3E (27 Apr 2025, 5 t from COL-IHX1PYS)",
+   "plastic/feedstock_invoices:INV-EGNQ8168H (30 Apr 2025, 9 t from COL-BJG41ML)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-BJG41ML (520 t supplied; declared capacity 21 t/month; 2 vehicles; registered Dec 2024)",
+   "plastic/collectors:COL-XJKKHJ7 (356 t supplied; declared capacity 10 t/month; 2 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-IHX1PYS (289 t supplied; declared capacity 10 t/month; 1 vehicles; registered Feb 2025)",
+   "plastic/collectors:COL-F404WXQ (275 t supplied; declared capacity 11 t/month; 2 vehicles; registered Apr 2025)",
+   "plastic/collectors:COL-HOO5CU2 (223 t supplied; declared capacity 36 t/month; 1 vehicles; registered Dec 2024)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-YCAZQ9C (26 t bought)",
+   "plastic/offtakers:OFT-G1DD0T5 (18 t bought)",
+   "plastic/offtakers:OFT-Q97WAI6 (14 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-O5HXXNH16 (CAT_IV, Rs 386/t to PIBO-E2XYE52)",
+   "plastic/certificate_sales:SALE-AAH6UPU7E (CAT_IV, Rs 392/t to PIBO-8BEU5AY)",
+   "plastic/certificate_sales:SALE-YG2N62JV3 (CAT_IV, Rs 392/t to PIBO-GIO8W4C)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-KHJTL3E Western Personal Care LLP (948 t)",
+  "PIBO-RG3MWS8 Laxmi Foods Pvt Ltd (166 t)",
+  "PIBO-0D3SM4O Unity FMCG Pvt Ltd (159 t)",
+  "PIBO-2W2ODRB Durga Foods & Co (137 t)",
+  "PIBO-Q62YCKY Prakriti National Home Care Ltd (122 t)"
+ ],
+ "inspection_checklist": [
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 19
+}

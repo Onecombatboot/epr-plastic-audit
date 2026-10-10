@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-LEYSK2F",
+ "profile": {
+  "name": "Shree Recyclers LLP",
+  "state": "Gujarat",
+  "district": "Morbi",
+  "declared_capacity_tpa": 1020.0,
+  "connected_load_kw": 95.0,
+  "epr_registered": "2024-09-24"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6197,
+  "dominant_score": 1.7277,
+  "ens_score": 0.9701,
+  "ens_pct": 0.9764
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 26% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 95% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "61% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "48% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "48% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 1.0,
+   "population_percentile": 98.2,
+   "shap": -0.3308
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6091,
+   "population_percentile": 98.3,
+   "shap": -0.3183
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.272
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2572
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-30AAVJW7 (Oct 2025: 126,307 kWh for 268.5 t claimed)",
+   "plastic/electricity_bills:BILL-4VJ00J8G (Apr 2025: 123,451 kWh for 255.7 t claimed)",
+   "plastic/electricity_bills:BILL-WMGM3M9I (Feb 2026: 116,464 kWh for 240.2 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-2HTF35TAQ (01 Sep 2024, 2 t from COL-9WOC1UR)",
+   "plastic/feedstock_invoices:INV-DI5VVW4V2 (03 Sep 2024, 2 t from COL-QT4MTVG)",
+   "plastic/feedstock_invoices:INV-ORTWLTV2K (03 Sep 2024, 14 t from COL-GCH03JN)",
+   "plastic/feedstock_invoices:INV-L74QGBPH0 (10 Sep 2024, 3 t from COL-IJK2H77)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-ICMMCXH (1,170 t supplied; declared capacity 35 t/month; 1 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-GCH03JN (897 t supplied; declared capacity 10 t/month; 2 vehicles; registered Apr 2024)",
+   "plastic/collectors:COL-N9E878F (614 t supplied; declared capacity 7 t/month; 2 vehicles; registered Mar 2024)",
+   "plastic/collectors:COL-QC8JVFE (232 t supplied; declared capacity 28 t/month; 2 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-UFV9CFA (191 t supplied; declared capacity 152 t/month; 1 vehicles; registered Jul 2019)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 0, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-4X9NJRW Ganga Apex Snacks & Co (312 t)",
+  "PIBO-S2PBG7H Hind Foods Pvt Ltd (296 t)",
+  "PIBO-ERC0U2S Himalaya Global Consumer Products LLP (290 t)",
+  "PIBO-BHVNM74 Sterling Ganga FMCG (215 t)",
+  "PIBO-EVS30QF Ganga Personal Care Pvt Ltd (142 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 60
+}

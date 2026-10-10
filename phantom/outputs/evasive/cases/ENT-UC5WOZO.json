@@ -1,0 +1,119 @@
+{
+ "entity_id": "ENT-UC5WOZO",
+ "profile": {
+  "name": "Galaxy Shri Enviro Recycling & Co",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 7890.0,
+  "connected_load_kw": 77.0,
+  "epr_registered": "2024-09-13"
+ },
+ "scores": {
+  "rule_score": 0.9995,
+  "iforest_score": 0.6152,
+  "dominant_score": 4.7832,
+  "ens_score": 0.9698,
+  "ens_pct": 0.976
+ },
+ "reasons": [
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "98% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "75% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.642,
+   "text": "Electricity bought is only 0.44x the minimum needed for the tonnes claimed (9 kWh/t against at least 20)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "71% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.45,
+   "text": "In 100% of billed months the units consumed cannot support the tonnes claimed"
+  },
+  {
+   "rule": "collectors_brand_new",
+   "group": "collectors",
+   "strength": 0.4,
+   "text": "98% of feedstock comes from collectors registered under 6 months before their first invoice"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.9836,
+   "population_percentile": 100.0,
+   "shap": -0.4038
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 3.0,
+   "population_percentile": 99.4,
+   "shap": -0.397
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 99.2,
+   "shap": -0.2877
+  },
+  {
+   "feature": "feed_vehicle_multi",
+   "label": "vehicles reused across plants the same day",
+   "value": 0.4597,
+   "population_percentile": 99.4,
+   "shap": -0.1973
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-SYQPKIS9 (Jul 2025: 4,267 kWh for 554.5 t claimed)",
+   "plastic/electricity_bills:BILL-SLD7OWQZ (Feb 2026: 4,405 kWh for 542.5 t claimed)",
+   "plastic/electricity_bills:BILL-45TY934I (Oct 2024: 4,157 kWh for 512.0 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-GYJAECB2I (02 Sep 2024, 5 t from COL-YVJ4G25)",
+   "plastic/feedstock_invoices:INV-T4OBK2SIW (05 Sep 2024, 21 t from COL-UIAA4GR)",
+   "plastic/feedstock_invoices:INV-C1V9EQT1P (06 Sep 2024, 3 t from COL-YVJ4G25)",
+   "plastic/feedstock_invoices:INV-Z60EW61YK (06 Sep 2024, 4 t from COL-Q2BY3V1)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-UIAA4GR (3,334 t supplied; declared capacity 34 t/month; 2 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-YVJ4G25 (2,924 t supplied; declared capacity 33 t/month; 1 vehicles; registered Apr 2024)",
+   "plastic/collectors:COL-Q2BY3V1 (2,235 t supplied; declared capacity 21 t/month; 2 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-L9ID0DZ (974 t supplied; declared capacity 39 t/month; 2 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-UDEZWHL (25 t supplied; declared capacity 127 t/month; 5 vehicles; registered Apr 2016)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-UJRDR38 Western Narmada Foods Pvt Ltd (1,093 t)",
+  "PIBO-EUAAAY6 Southern Beverages Pvt Ltd (249 t)",
+  "PIBO-BST7LUY Maa Pharma Pvt Ltd (220 t)",
+  "PIBO-4SQFE1B Deccan Snacks (194 t)",
+  "PIBO-S6WW9EO Everest FMCG LLP (190 t)"
+ ],
+ "inspection_checklist": [
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 61
+}

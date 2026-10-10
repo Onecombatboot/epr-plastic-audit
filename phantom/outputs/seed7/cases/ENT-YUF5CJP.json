@@ -1,0 +1,136 @@
+{
+ "entity_id": "ENT-YUF5CJP",
+ "profile": {
+  "name": "Maa Star Enviro Recycling & Co",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 2980.0,
+  "connected_load_kw": 179.0,
+  "epr_registered": "2024-02-24"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6453,
+  "dominant_score": 1.6417,
+  "ens_score": 0.9634,
+  "ens_pct": 0.9684
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (20% of its feedstock)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 62%, +60% versus what its process route can produce"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 3 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.54x the cost floor)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.599,
+   "text": "47% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2005,
+   "population_percentile": 98.7,
+   "shap": -0.3448
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3327
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 7.0,
+   "population_percentile": 99.7,
+   "shap": -0.3277
+  },
+  {
+   "feature": "net_recycler_in_degree",
+   "label": "net_recycler_in_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3046
+  }
+ ],
+ "evidence": {
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-XHOQD8NYX (03 Feb 2024, 1.5 t from COL-94TCRTE)",
+   "plastic/feedstock_invoices:INV-KU1WFQ4QX (06 Feb 2024, 1.5 t from COL-ILX3HLS)",
+   "plastic/feedstock_invoices:INV-ZNASO73BQ (10 Feb 2024, 11 t from ENT-N7A1AQQ)",
+   "plastic/feedstock_invoices:INV-EMSZ8KIT3 (29 Mar 2024, 19 t from ENT-N7A1AQQ)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-ZIONELV (690 t supplied; declared capacity 17 t/month; 5 vehicles; registered Sep 2021)",
+   "plastic/collectors:COL-OJGMEOP (667 t supplied; declared capacity 29 t/month; 3 vehicles; registered Apr 2016)",
+   "plastic/collectors:COL-2Z5SQ5J (401 t supplied; declared capacity 97 t/month; 5 vehicles; registered Nov 2021)",
+   "plastic/collectors:COL-0UPZFD9 (360 t supplied; declared capacity 20 t/month; 2 vehicles; registered Sep 2022)",
+   "plastic/collectors:COL-PVS6FPZ (288 t supplied; declared capacity 315 t/month; 1 vehicles; registered Feb 2023)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-02: 319 t of 4,606 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-N7A1AQQ (940 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-8UR5WUM (561 t bought)",
+   "plastic/offtakers:OFT-MQKLWXN (308 t bought)",
+   "plastic/offtakers:OFT-KGPG5BB (128 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 7, director 0, photos 3)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-U8D6URYZ6 (CAT_IV, Rs 734/t to PIBO-9C1I3GA)",
+   "plastic/certificate_sales:SALE-5QNU5GENF (CAT_IV, Rs 734/t to PIBO-9C1I3GA)",
+   "plastic/certificate_sales:SALE-O62PRQR20 (CAT_IV, Rs 734/t to PIBO-9C1I3GA)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-OGNNP23 Pragati Snacks (674 t)",
+  "PIBO-NE968QV Om FMCG Pvt Ltd (517 t)",
+  "PIBO-ENLZ35O Sterling Snacks LLP (208 t)",
+  "PIBO-OXXXX79 Southern Snacks & Co (198 t)",
+  "PIBO-UPUCJ2V Laxmi Foods (180 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 80
+}

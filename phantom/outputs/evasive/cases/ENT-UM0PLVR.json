@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-UM0PLVR",
+ "profile": {
+  "name": "Balaji Plast LLP",
+  "state": "Tamil Nadu",
+  "district": "Coimbatore",
+  "declared_capacity_tpa": 23690.0,
+  "connected_load_kw": 385.0,
+  "epr_registered": "2023-06-12"
+ },
+ "scores": {
+  "rule_score": 0.9997,
+  "iforest_score": 0.622,
+  "dominant_score": 2.6771,
+  "ens_score": 0.969,
+  "ens_pct": 0.9756
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 18% of expected)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.744,
+   "text": "Claimed tonnage in the busiest month would need 181% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.71,
+   "text": "54% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "capacity_needs_more_power",
+   "group": "energy",
+   "strength": 0.55,
+   "text": "Declared capacity of 23,690 t/yr needs about 2.5x the power the plant is connected for"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.508,
+   "text": "23% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "68% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.6777,
+   "population_percentile": 99.6,
+   "shap": -0.3588
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5439,
+   "population_percentile": 98.0,
+   "shap": -0.3462
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2851
+  },
+  {
+   "feature": "bill_energy_ratio_min",
+   "label": "worst bill charge vs units x tariff",
+   "value": 0.177,
+   "population_percentile": 1.1,
+   "shap": -0.1807
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-ORL9UL67 (Mar 2025: 435,334 kWh for 1,418.7 t claimed)",
+   "plastic/electricity_bills:BILL-OGX8U7TH (Jan 2025: 253,972 kWh for 820.1 t claimed)",
+   "plastic/electricity_bills:BILL-M6MKDIO7 (Feb 2024: 398,957 kWh for 1,276.3 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-YFXPY7HHU (01 Jun 2023, 10 t from COL-LYZ53MR)",
+   "plastic/feedstock_invoices:INV-Q2V7MAQJT (11 Jun 2023, 6.51 t from COL-LYZ53MR)",
+   "plastic/feedstock_invoices:INV-DBWXTX9KB (14 Jun 2023, 9 t from COL-Z8154M7)",
+   "plastic/feedstock_invoices:INV-5BCA8PAFZ (18 Jun 2023, 3.3 t from COL-3M9AW4G)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-LYZ53MR (6,218 t supplied; declared capacity 31 t/month; 2 vehicles; registered Dec 2022)",
+   "plastic/collectors:COL-HZB1BHX (1,984 t supplied; declared capacity 30 t/month; 2 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-Z8154M7 (1,648 t supplied; declared capacity 32 t/month; 1 vehicles; registered May 2023)",
+   "plastic/collectors:COL-0T7A67B (1,499 t supplied; declared capacity 135 t/month; 1 vehicles; registered Oct 2016)",
+   "plastic/collectors:COL-3ZK0O4Z (1,180 t supplied; declared capacity 124 t/month; 5 vehicles; registered Sep 2021)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 5,256 t of 18,168 t generated)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-DWBLYBP Prakriti Foods (1,200 t)",
+  "PIBO-2LDRMQ1 Sunrise Foods Pvt Ltd (781 t)",
+  "PIBO-Y0GK33L Green Ganga Pharma LLP (605 t)",
+  "PIBO-H5EWE09 Eco Beverages & Co (520 t)",
+  "PIBO-YDQV9PP Krishna Pharma LLP (484 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 62
+}

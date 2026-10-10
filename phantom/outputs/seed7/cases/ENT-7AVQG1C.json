@@ -1,0 +1,106 @@
+{
+ "entity_id": "ENT-7AVQG1C",
+ "profile": {
+  "name": "Balaji Polymers Pvt Ltd",
+  "state": "Madhya Pradesh",
+  "district": "Dhar",
+  "declared_capacity_tpa": 1940.0,
+  "connected_load_kw": 153.0,
+  "epr_registered": "2025-02-22"
+ },
+ "scores": {
+  "rule_score": 0.9984,
+  "iforest_score": 0.637,
+  "dominant_score": 1.8486,
+  "ens_score": 0.9566,
+  "ens_pct": 0.9604
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (11% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 64% of months"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.64x the cost floor)"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 11 other registered entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3583
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.1077,
+   "population_percentile": 98.2,
+   "shap": -0.3452
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 11.0,
+   "population_percentile": 99.5,
+   "shap": -0.3322
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3162
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-JMAS919G (Mar 2026: 57,342 kWh for 213.5 t claimed)",
+   "plastic/electricity_bills:BILL-1EUIKMPD (Nov 2025: 54,491 kWh for 200.7 t claimed)",
+   "plastic/electricity_bills:BILL-IWVL6TK5 (May 2025: 51,722 kWh for 190.5 t claimed)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-S5T9PUB (242 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 11, address 0, director 0, photos 0)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-6T84YQR7R (CAT_IV, Rs 957/t to PIBO-WGTI4FC)",
+   "plastic/certificate_sales:SALE-NF32OUNV5 (CAT_IV, Rs 957/t to PIBO-WGTI4FC)",
+   "plastic/certificate_sales:SALE-MSYY1I7QF (CAT_IV, Rs 966/t to PIBO-LBPKISZ)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-NVY1DDE Eco Metro Personal Care LLP (459 t)",
+  "PIBO-55OCS1N Green Eastern Dairy & Co (435 t)",
+  "PIBO-OLWKBCX Northern Pioneer Retail Pvt Ltd (302 t)",
+  "PIBO-Z096YCK Sterling Foods LLP (156 t)",
+  "PIBO-A9N7P67 Eastern Dairy LLP (76 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 100
+}

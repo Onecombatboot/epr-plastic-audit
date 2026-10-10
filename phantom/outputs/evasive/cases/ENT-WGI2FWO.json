@@ -1,0 +1,119 @@
+{
+ "entity_id": "ENT-WGI2FWO",
+ "profile": {
+  "name": "Balaji Recyclers Pvt Ltd",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 1820.0,
+  "connected_load_kw": 393.0,
+  "epr_registered": "2023-05-14"
+ },
+ "scores": {
+  "rule_score": 0.9995,
+  "iforest_score": 0.6192,
+  "dominant_score": 1.2794,
+  "ens_score": 0.9526,
+  "ens_pct": 0.9632
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 31% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 97% of months"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 46%, +44% versus what its process route can produce"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.576,
+   "text": "Sold products equal only 31% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 2 other registered entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3852
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 2.0,
+   "population_percentile": 98.7,
+   "shap": -0.3474
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3371
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2964
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-KGT7DQMY (Feb 2026: 372,411 kWh for 439.9 t claimed)",
+   "plastic/electricity_bills:BILL-KGC0V9EW (Oct 2025: 328,829 kWh for 387.7 t claimed)",
+   "plastic/electricity_bills:BILL-I49N119I (May 2024: 381,998 kWh for 449.7 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2023-11: 737 t of 13,996 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-6SRYAB1 (894 t bought)",
+   "plastic/offtakers:OFT-09108B5 (579 t bought)",
+   "plastic/offtakers:OFT-1BH8TIY (514 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 2, address 2, director 1, photos 0)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-OFJ766P Navjeevan Global Retail (1,146 t)",
+  "PIBO-H67RBF3 Earth Snacks LLP (976 t)",
+  "PIBO-A7RYM7E Vasundhara Southern Home Care & Co (792 t)",
+  "PIBO-EGQXRBX Sahyadri Global Personal Care (659 t)",
+  "PIBO-MQNUBJQ Balaji Personal Care LLP (642 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 93
+}

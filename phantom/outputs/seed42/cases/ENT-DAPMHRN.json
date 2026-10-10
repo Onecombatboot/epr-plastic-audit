@@ -1,0 +1,130 @@
+{
+ "entity_id": "ENT-DAPMHRN",
+ "profile": {
+  "name": "Global Polymers & Co",
+  "state": "Haryana",
+  "district": "Sonipat",
+  "declared_capacity_tpa": 9480.0,
+  "connected_load_kw": 24.0,
+  "epr_registered": "2024-02-05"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6356,
+  "dominant_score": 6.0052,
+  "ens_score": 0.9795,
+  "ens_pct": 0.9852
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 299% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 11% of expected)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.664,
+   "text": "52% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.615,
+   "text": "Certificates claim more than the declared monthly capacity in 23% of months"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.51x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.5,
+   "shap": -0.337
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5151,
+   "population_percentile": 98.2,
+   "shap": -0.2935
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 1.0,
+   "population_percentile": 98.0,
+   "shap": -0.2677
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.2308,
+   "population_percentile": 95.9,
+   "shap": -0.2503
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-AUZ55CBI (Feb 2026: 57,305 kWh for 2,623.3 t claimed)",
+   "plastic/electricity_bills:BILL-XIWLEVKV (Jan 2025: 21,998 kWh for 997.9 t claimed)",
+   "plastic/electricity_bills:BILL-OIBSY8M7 (Feb 2025: 50,882 kWh for 2,254.0 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-RIDMK8AW2 (07 Feb 2024, 1.5 t from COL-U3NUWM2)",
+   "plastic/feedstock_invoices:INV-L3ANRZDV3 (11 Feb 2024, 0.2 t from COL-3Q0P2GX)",
+   "plastic/feedstock_invoices:INV-MCC060GA7 (18 Feb 2024, 2.22 t from COL-U3NUWM2)",
+   "plastic/feedstock_invoices:INV-DVBWVGRHH (02 Mar 2024, 5.5 t from COL-T33S08G)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-U3NUWM2 (3,593 t supplied; declared capacity 9 t/month; 4 vehicles; registered Jan 2015)",
+   "plastic/collectors:COL-YHNB5N9 (1,791 t supplied; declared capacity 177 t/month; 1 vehicles; registered Feb 2018)",
+   "plastic/collectors:COL-T33S08G (1,454 t supplied; declared capacity 758 t/month; 6 vehicles; registered Aug 2022)",
+   "plastic/collectors:COL-V0KA112 (1,408 t supplied; declared capacity 129 t/month; 4 vehicles; registered Jun 2015)",
+   "plastic/collectors:COL-7T5ILIS (1,175 t supplied; declared capacity 1870 t/month; 3 vehicles; registered Sep 2016)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-ZVY89BR7R (CAT_IV, Rs 693/t to PIBO-FZD45GP)",
+   "plastic/certificate_sales:SALE-JF4Y4Y2SD (CAT_IV, Rs 693/t to PIBO-FZD45GP)",
+   "plastic/certificate_sales:SALE-9SFVHECNZ (CAT_IV, Rs 693/t to PIBO-FZD45GP)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-YTNPD37 Maa Sahyadri Retail LLP (1,043 t)",
+  "PIBO-YKXM7FA Green Everest Dairy (915 t)",
+  "PIBO-21B5ZA0 Earth FMCG Pvt Ltd (807 t)",
+  "PIBO-CYY28PO Pioneer Shri Beverages LLP (704 t)",
+  "PIBO-V4SXJ0Z Deccan Narmada Snacks (490 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 38
+}

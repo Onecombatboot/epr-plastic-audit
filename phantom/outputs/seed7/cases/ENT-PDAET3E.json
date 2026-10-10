@@ -1,0 +1,122 @@
+{
+ "entity_id": "ENT-PDAET3E",
+ "profile": {
+  "name": "Laxmi Polymers Pvt Ltd",
+  "state": "Maharashtra",
+  "district": "Palghar",
+  "declared_capacity_tpa": 580.0,
+  "connected_load_kw": 73.0,
+  "epr_registered": "2023-07-18"
+ },
+ "scores": {
+  "rule_score": 0.9992,
+  "iforest_score": 0.6253,
+  "dominant_score": 3.0419,
+  "ens_score": 0.9656,
+  "ens_pct": 0.9716
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (17% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 88% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 2 other plant(s)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.457,
+   "text": "Category III share of certificates is 32%, +30% versus what its process route can produce"
+  },
+  {
+   "rule": "shared_contacts",
+   "group": "identity",
+   "strength": 0.3,
+   "text": "Shares a contact phone number with 2 other registered entity(ies)"
+  },
+  {
+   "rule": "shell_offtakers",
+   "group": "output",
+   "strength": 0.206,
+   "text": "51% of product sales go to buyers incorporated under a year before the invoice"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3954
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.382
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.1702,
+   "population_percentile": 98.5,
+   "shap": -0.3532
+  },
+  {
+   "feature": "net_cycle_feed_share",
+   "label": "feedstock bought inside a loop",
+   "value": 0.1702,
+   "population_percentile": 98.5,
+   "shap": -0.3501
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-VFTGQ7OA (Oct 2024: 18,850 kWh for 71.1 t claimed)",
+   "plastic/electricity_bills:BILL-WCGANRQM (Oct 2023: 16,263 kWh for 61.2 t claimed)",
+   "plastic/electricity_bills:BILL-9IB9CY4G (Nov 2025: 17,833 kWh for 67.1 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2024-10: 104 t of 1,854 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-MPHRCLC (323 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-TU54LDW (594 t bought)",
+   "plastic/offtakers:OFT-MTNCJR2 (382 t bought)",
+   "plastic/offtakers:OFT-5LJ4TYI (215 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 2)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-78Y850A National Personal Care Pvt Ltd (156 t)",
+  "PIBO-SCAW08N Himalaya Western Retail Pvt Ltd (141 t)",
+  "PIBO-X81H1QN Green Pharma & Co (138 t)",
+  "PIBO-DJG04T2 Navjeevan Shree Home Care & Co (135 t)",
+  "PIBO-OQ44YKL Jai Snacks Pvt Ltd (102 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 72
+}

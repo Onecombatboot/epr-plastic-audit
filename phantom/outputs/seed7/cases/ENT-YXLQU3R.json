@@ -1,0 +1,117 @@
+{
+ "entity_id": "ENT-YXLQU3R",
+ "profile": {
+  "name": "Himalaya Poly Industries Ltd",
+  "state": "Maharashtra",
+  "district": "Aurangabad",
+  "declared_capacity_tpa": 600.0,
+  "connected_load_kw": 32.0,
+  "epr_registered": "2024-03-24"
+ },
+ "scores": {
+  "rule_score": 0.9998,
+  "iforest_score": 0.6094,
+  "dominant_score": 2.5141,
+  "ens_score": 0.959,
+  "ens_pct": 0.9632
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 96% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.736,
+   "text": "Electricity bought is only 0.36x the minimum needed for the tonnes claimed (107 kWh/t against at least 300)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.712,
+   "text": "Claimed tonnage in the busiest month would need 177% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 15% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.22x the cost floor)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.24x the market median price"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3525
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.96,
+   "population_percentile": 99.6,
+   "shap": -0.2976
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 98.8,
+   "shap": -0.2377
+  },
+  {
+   "feature": "cap_ratio_fy_max",
+   "label": "cap_ratio_fy_max",
+   "value": 2.4355,
+   "population_percentile": 99.5,
+   "shap": -0.2366
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-26MC38H7 (Aug 2024: 12,680 kWh for 123.4 t claimed)",
+   "plastic/electricity_bills:BILL-4GC6Y5L8 (Dec 2025: 13,844 kWh for 133.9 t claimed)",
+   "plastic/electricity_bills:BILL-0FLJHO6Z (Nov 2025: 11,166 kWh for 107.9 t claimed)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-PUKOPJ6 (84 t bought)",
+   "plastic/offtakers:OFT-Z67WSGD (80 t bought)",
+   "plastic/offtakers:OFT-BNQ3LOC (53 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-SD7WY480L (CAT_IV, Rs 298/t to PIBO-EJQJ5SC)",
+   "plastic/certificate_sales:SALE-LX6XLFJMU (CAT_IV, Rs 300/t to PIBO-ZETN5B5)",
+   "plastic/certificate_sales:SALE-WCQ4KXOY6 (CAT_IV, Rs 300/t to PIBO-1P8QGGV)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-S9SE2J3 Earth Snacks Ltd (249 t)",
+  "PIBO-HU9WXU4 Prime FMCG & Co (207 t)",
+  "PIBO-SJAIDDV Sunrise Himalaya FMCG Pvt Ltd (162 t)",
+  "PIBO-2376E3H Southern Om Home Care (138 t)",
+  "PIBO-81IFXXA Apex FMCG Pvt Ltd (132 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 93
+}

@@ -1,0 +1,130 @@
+{
+ "entity_id": "ENT-JTJ099M",
+ "profile": {
+  "name": "Bharat Shri Polymers Pvt Ltd",
+  "state": "Andhra Pradesh",
+  "district": "Tirupati",
+  "declared_capacity_tpa": 6680.0,
+  "connected_load_kw": 1454.0,
+  "epr_registered": "2023-06-08"
+ },
+ "scores": {
+  "rule_score": 0.9998,
+  "iforest_score": 0.5943,
+  "dominant_score": 3.3927,
+  "ens_score": 0.9623,
+  "ens_pct": 0.97
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 38% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 94% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "62% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.541,
+   "text": "24% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "shell_offtakers",
+   "group": "output",
+   "strength": 0.359,
+   "text": "66% of product sales go to buyers incorporated under a year before the invoice"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3839
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6159,
+   "population_percentile": 98.4,
+   "shap": -0.3548
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2993
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2929
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-21TYRTAU (Nov 2023: 1,311,336 kWh for 1,366.9 t claimed)",
+   "plastic/electricity_bills:BILL-RVNYE4GQ (May 2024: 1,124,464 kWh for 1,159.1 t claimed)",
+   "plastic/electricity_bills:BILL-DG6V40Y9 (Dec 2024: 1,148,397 kWh for 1,172.3 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-31NBM18TS (03 Jun 2023, 1 t from COL-YSBZJJR)",
+   "plastic/feedstock_invoices:INV-QAL8XB6B0 (04 Jun 2023, 7 t from COL-GHF8NX3)",
+   "plastic/feedstock_invoices:INV-GO67O9OFQ (09 Jun 2023, 17 t from COL-B1J2DDF)",
+   "plastic/feedstock_invoices:INV-CQ9E99V35 (09 Jun 2023, 5 t from COL-9SZ92QV)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-GHF8NX3 (7,991 t supplied; declared capacity 23 t/month; 1 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-B1J2DDF (5,679 t supplied; declared capacity 9 t/month; 1 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-9SZ92QV (5,428 t supplied; declared capacity 24 t/month; 2 vehicles; registered Jun 2023)",
+   "plastic/collectors:COL-VFNKO2P (3,255 t supplied; declared capacity 223 t/month; 3 vehicles; registered Apr 2018)",
+   "plastic/collectors:COL-45898BS (2,566 t supplied; declared capacity 26 t/month; 1 vehicles; registered Jan 2023)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-NJP0E35 (20,240 t bought)",
+   "plastic/offtakers:OFT-ITE89V3 (6,756 t bought)",
+   "plastic/offtakers:OFT-4I5NFNQ (3,201 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 1, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-QEJF16A Maa Home Care Pvt Ltd (1,934 t)",
+  "PIBO-QPUEUE1 Navjeevan Foods LLP (1,686 t)",
+  "PIBO-WBV7P21 Prime Foods Ltd (1,060 t)",
+  "PIBO-856VUO5 Vasundhara Consumer Products & Co (977 t)",
+  "PIBO-5U3K5HP Om Snacks & Co (798 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 76
+}

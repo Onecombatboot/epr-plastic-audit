@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-0YFKEYL",
+ "profile": {
+  "name": "Om Plastics LLP",
+  "state": "Tamil Nadu",
+  "district": "Krishnagiri",
+  "declared_capacity_tpa": 2980.0,
+  "connected_load_kw": 104.0,
+  "epr_registered": "2024-08-14"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6995,
+  "dominant_score": 4.5633,
+  "ens_score": 0.9969,
+  "ens_pct": 0.9984
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (24% of its feedstock)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 641% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.25x the minimum needed for the tonnes claimed (38 kWh/t against at least 150)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 90% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "70% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "59% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2823
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.236,
+   "population_percentile": 99.2,
+   "shap": -0.2625
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 3.0,
+   "population_percentile": 99.4,
+   "shap": -0.2523
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.242
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-2UGAMCHW (Feb 2026: 35,076 kWh for 3,246.6 t claimed)",
+   "plastic/electricity_bills:BILL-3Y3KGXLA (Mar 2026: 40,045 kWh for 2,523.3 t claimed)",
+   "plastic/electricity_bills:BILL-6CUIEKEU (Mar 2025: 33,258 kWh for 1,671.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-R5KJVKJXP (10 Aug 2024, 19 t from COL-GDG72ZO)",
+   "plastic/feedstock_invoices:INV-X73YEUDBX (15 Aug 2024, 4.5 t from COL-1ARJCAQ)",
+   "plastic/feedstock_invoices:INV-3EL9TV0I9 (31 Aug 2024, 9 t from COL-GDG72ZO)",
+   "plastic/feedstock_invoices:INV-OEYG7RRRS (31 Aug 2024, 15 t from COL-GDG72ZO)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-GDG72ZO (7,028 t supplied; declared capacity 36 t/month; 2 vehicles; registered Jun 2024)",
+   "plastic/collectors:COL-RGR5JOA (1,315 t supplied; declared capacity 6 t/month; 2 vehicles; registered Mar 2024)",
+   "plastic/collectors:COL-AZV8GGL (922 t supplied; declared capacity 155 t/month; 6 vehicles; registered Apr 2017)",
+   "plastic/collectors:COL-10H5K3I (854 t supplied; declared capacity 78 t/month; 6 vehicles; registered Sep 2018)",
+   "plastic/collectors:COL-N9XNGCA (435 t supplied; declared capacity 431 t/month; 4 vehicles; registered Feb 2019)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-9I4CFKR (3,670 t sold to this plant)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-B85IN7B Om Consumer Products (3,314 t)",
+  "PIBO-0XCG6BT Amrit Beverages LLP (1,167 t)",
+  "PIBO-W3PMY7S Sahyadri Sunrise Beverages Pvt Ltd (501 t)",
+  "PIBO-10ZN4MQ Durga Beverages Pvt Ltd (329 t)",
+  "PIBO-XKBWE75 Southern Sai FMCG Pvt Ltd (283 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 5
+}

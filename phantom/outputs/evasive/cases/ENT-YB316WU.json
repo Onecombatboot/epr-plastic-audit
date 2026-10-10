@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-YB316WU",
+ "profile": {
+  "name": "Balaji Enviro Recycling",
+  "state": "Gujarat",
+  "district": "Surat",
+  "declared_capacity_tpa": 3130.0,
+  "connected_load_kw": 481.0,
+  "epr_registered": "2025-03-03"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6177,
+  "dominant_score": 6.2553,
+  "ens_score": 0.9776,
+  "ens_pct": 0.9812
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 92% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "80% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "69% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "53% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.571,
+   "text": "97% of certificate tonnes were sold below the cost of recycling (average 0.82x the cost floor)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.502,
+   "text": "Electricity bought is only 0.56x the minimum needed for the tonnes claimed (168 kWh/t against at least 300)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8026,
+   "population_percentile": 99.3,
+   "shap": -0.3074
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 99.2,
+   "shap": -0.2948
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.9231,
+   "population_percentile": 98.1,
+   "shap": -0.2392
+  },
+  {
+   "feature": "feed_monthend_share",
+   "label": "feed_monthend_share",
+   "value": 0.3466,
+   "population_percentile": 99.6,
+   "shap": -0.1949
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-F3DADQYF (Oct 2025: 164,388 kWh for 1,022.9 t claimed)",
+   "plastic/electricity_bills:BILL-S4QYNV4T (Aug 2025: 127,984 kWh for 795.7 t claimed)",
+   "plastic/electricity_bills:BILL-6VFR7FRB (Dec 2025: 161,111 kWh for 987.0 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-CYJYJAS8Q (01 Mar 2025, 4 t from COL-ZBGBG4N)",
+   "plastic/feedstock_invoices:INV-BB0VOMKQ4 (01 Mar 2025, 13 t from COL-U5B7571)",
+   "plastic/feedstock_invoices:INV-FRUX79RVJ (04 Mar 2025, 9 t from COL-U5B7571)",
+   "plastic/feedstock_invoices:INV-U17OPJHPQ (05 Mar 2025, 12 t from COL-ESC4OA1)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-U5B7571 (3,930 t supplied; declared capacity 8 t/month; 1 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-OAMV0LZ (3,270 t supplied; declared capacity 37 t/month; 1 vehicles; registered Feb 2025)",
+   "plastic/collectors:COL-ESC4OA1 (1,521 t supplied; declared capacity 16 t/month; 1 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-5T5709L (316 t supplied; declared capacity 525 t/month; 4 vehicles; registered Dec 2020)",
+   "plastic/collectors:COL-LMJ5ENF (312 t supplied; declared capacity 67 t/month; 6 vehicles; registered Jan 2020)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-UHITIXRZS (CAT_IV, Rs 1,175/t to PIBO-E27WEOM)",
+   "plastic/certificate_sales:SALE-H5NA9KXEX (CAT_IV, Rs 1,176/t to PIBO-ADGSOUS)",
+   "plastic/certificate_sales:SALE-1AAMB30P6 (CAT_IV, Rs 1,182/t to PIBO-6HGG18P)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-X007685 Pragati Star Foods Ltd (736 t)",
+  "PIBO-I4RWZBX Om Jai Home Care Pvt Ltd (413 t)",
+  "PIBO-4SQFE1B Deccan Snacks (394 t)",
+  "PIBO-93E32T4 National Sunrise Dairy LLP (334 t)",
+  "PIBO-C7EV9YP National Pharma Pvt Ltd (274 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 48
+}

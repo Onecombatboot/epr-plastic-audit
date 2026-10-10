@@ -1,0 +1,61 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Phantom Plastic - serverless read API over precomputed scores (S3 + DynamoDB + Lambda + HTTP API)
+Parameters:
+  ModelId:
+    Type: String
+    Default: ''
+    Description: Bedrock model id or inference profile for case summaries (empty = template summaries)
+Resources:
+  ResultsBucket:
+    Type: AWS::S3::Bucket
+  SignalsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: entity_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: entity_id
+          KeyType: HASH
+  ApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambda_handler.handler
+      Runtime: python3.12
+      CodeUri: .
+      Timeout: 30
+      MemorySize: 512
+      Environment:
+        Variables:
+          TABLE: !Ref SignalsTable
+          BUCKET: !Ref ResultsBucket
+          PHANTOM_BEDROCK_MODEL: !Ref ModelId
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref SignalsTable
+        - S3ReadPolicy:
+            BucketName: !Ref ResultsBucket
+        - Statement:
+            - Effect: Allow
+              Action: [bedrock:InvokeModel, bedrock:Converse]
+              Resource: '*'
+      Events:
+        Top:
+          Type: HttpApi
+          Properties:
+            Path: /top
+            Method: get
+        Case:
+          Type: HttpApi
+          Properties:
+            Path: /case/{entity_id}
+            Method: get
+Outputs:
+  ApiUrl:
+    Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com'
+  Bucket:
+    Value: !Ref ResultsBucket
+  Table:
+    Value: !Ref SignalsTable

@@ -1,0 +1,133 @@
+{
+ "entity_id": "ENT-6OS21BU",
+ "profile": {
+  "name": "Sunrise Plast & Co",
+  "state": "Telangana",
+  "district": "Medchal",
+  "declared_capacity_tpa": 1530.0,
+  "connected_load_kw": 172.0,
+  "epr_registered": "2024-11-20"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6294,
+  "dominant_score": 1.4176,
+  "ens_score": 0.9589,
+  "ens_pct": 0.9628
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 16% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.784,
+   "text": "Certificates claim more than the declared monthly capacity in 29% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 46%, +44% versus what its process route can produce"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.604,
+   "text": "48% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.35x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3296
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.4777,
+   "population_percentile": 98.6,
+   "shap": -0.2906
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 3.0,
+   "population_percentile": 99.8,
+   "shap": -0.2892
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.2941,
+   "population_percentile": 97.0,
+   "shap": -0.2701
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-9EJLR2I5 (Feb 2026: 288,362 kWh for 546.3 t claimed)",
+   "plastic/electricity_bills:BILL-I83PMM3T (Feb 2025: 124,643 kWh for 227.9 t claimed)",
+   "plastic/electricity_bills:BILL-SS3QYE54 (Jan 2026: 118,631 kWh for 216.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-XO7FPLANJ (10 Nov 2024, 2.38 t from COL-J9FCZIW)",
+   "plastic/feedstock_invoices:INV-P1H28E9JU (15 Dec 2024, 6.12 t from COL-MUJLGO2)",
+   "plastic/feedstock_invoices:INV-77ZWN9JV7 (05 Jan 2025, 0.62 t from COL-04I6EIF)",
+   "plastic/feedstock_invoices:INV-LBB0BOCHY (26 Jan 2025, 7.43 t from COL-Y8OKVYU)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-ZNFKUG7 (369 t supplied; declared capacity 14 t/month; 1 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-Y8OKVYU (358 t supplied; declared capacity 344 t/month; 4 vehicles; registered Jul 2023)",
+   "plastic/collectors:COL-9RTCOGE (301 t supplied; declared capacity 19 t/month; 3 vehicles; registered Dec 2016)",
+   "plastic/collectors:COL-9FFYRLH (276 t supplied; declared capacity 4 t/month; 4 vehicles; registered Jul 2017)",
+   "plastic/collectors:COL-MUJLGO2 (264 t supplied; declared capacity 46 t/month; 5 vehicles; registered May 2018)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 1,126 t of 2,747 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-0NTQSFB8R (CAT_IV, Rs 514/t to PIBO-WAU6GPU)",
+   "plastic/certificate_sales:SALE-IL5QAK54X (CAT_IV, Rs 514/t to PIBO-WAU6GPU)",
+   "plastic/certificate_sales:SALE-K5ERI8KP1 (CAT_IV, Rs 514/t to PIBO-WAU6GPU)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-SMA3THX Ganesh Pharma Pvt Ltd (259 t)",
+  "PIBO-49A2J0W Eco Foods Pvt Ltd (231 t)",
+  "PIBO-4UPU3E1 Everest Pharma (194 t)",
+  "PIBO-LAVIY34 Bharat Royal Foods Pvt Ltd (155 t)",
+  "PIBO-AA23BYC Pioneer Laxmi Retail Pvt Ltd (142 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 94
+}

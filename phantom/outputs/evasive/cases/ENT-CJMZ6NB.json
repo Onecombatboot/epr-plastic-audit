@@ -1,0 +1,123 @@
+{
+ "entity_id": "ENT-CJMZ6NB",
+ "profile": {
+  "name": "Northern Sanjeevani Granules Pvt Ltd",
+  "state": "Delhi",
+  "district": "North West Delhi",
+  "declared_capacity_tpa": 11260.0,
+  "connected_load_kw": 857.0,
+  "epr_registered": "2024-02-02"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6582,
+  "dominant_score": 2.3692,
+  "ens_score": 0.981,
+  "ens_pct": 0.9848
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (22% of its feedstock)"
+  },
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 53% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 92% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.628,
+   "text": "Category III share of certificates is 39%, +37% versus what its process route can produce"
+  },
+  {
+   "rule": "shell_offtakers",
+   "group": "output",
+   "strength": 0.363,
+   "text": "66% of product sales go to buyers incorporated under a year before the invoice"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 99.3,
+   "shap": -0.3453
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2157,
+   "population_percentile": 99.6,
+   "shap": -0.3238
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.2989,
+   "population_percentile": 96.6,
+   "shap": -0.3021
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.2853
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-SN0Z7KW1 (Dec 2024: 531,783 kWh for 1,282.6 t claimed)",
+   "plastic/electricity_bills:BILL-ZFQC2VBK (Nov 2025: 606,858 kWh for 1,462.2 t claimed)",
+   "plastic/electricity_bills:BILL-9230GWRB (Apr 2025: 636,707 kWh for 1,532.0 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-01: 2,369 t of 31,614 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-MSY2UP9 (6,912 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-VTI7RVY (5,604 t bought)",
+   "plastic/offtakers:OFT-LHUI9JL (4,942 t bought)",
+   "plastic/offtakers:OFT-9ZT53E4 (4,226 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 1, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-9AJMCDZ Navjeevan Snacks Pvt Ltd (795 t)",
+  "PIBO-1EQ6SCG Unity Durga Pharma Pvt Ltd (698 t)",
+  "PIBO-OF1A7U1 Galaxy Pharma Pvt Ltd (529 t)",
+  "PIBO-KC1CPUT Shree Snacks Pvt Ltd (510 t)",
+  "PIBO-TAPUHWJ Unity Narmada Snacks Pvt Ltd (436 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 39
+}

@@ -1,0 +1,132 @@
+{
+ "entity_id": "ENT-PEI7TCN",
+ "profile": {
+  "name": "Ganga Hind Polytech",
+  "state": "Telangana",
+  "district": "Medchal",
+  "declared_capacity_tpa": 2440.0,
+  "connected_load_kw": 15.0,
+  "epr_registered": "2024-05-03"
+ },
+ "scores": {
+  "rule_score": 0.9995,
+  "iforest_score": 0.6372,
+  "dominant_score": 1.9245,
+  "ens_score": 0.9607,
+  "ens_pct": 0.9648
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (34% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 87% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.59x the cost floor)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.218,
+   "text": "Certificates sold at 0.65x the market median price"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.217,
+   "text": "21% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.358
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.3401,
+   "population_percentile": 99.6,
+   "shap": -0.3208
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3054
+  },
+  {
+   "feature": "net_cycle_feed_share",
+   "label": "feedstock bought inside a loop",
+   "value": 0.3401,
+   "population_percentile": 99.6,
+   "shap": -0.2993
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-AYXSTCTP (Oct 2024: 5,655 kWh for 312.2 t claimed)",
+   "plastic/electricity_bills:BILL-4LE6I8T2 (Mar 2025: 5,265 kWh for 285.3 t claimed)",
+   "plastic/electricity_bills:BILL-50I9RVL1 (Nov 2025: 5,625 kWh for 303.9 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-QCHH2C48F (04 May 2024, 14 t from ENT-KTX55YA)",
+   "plastic/feedstock_invoices:INV-70MX40OK2 (04 May 2024, 14 t from ENT-KTX55YA)",
+   "plastic/feedstock_invoices:INV-95JU2P4DX (09 Jun 2024, 6.72 t from ENT-KTX55YA)",
+   "plastic/feedstock_invoices:INV-KKBHPAWNF (10 Jun 2024, 11 t from ENT-KTX55YA)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-XKZCMPS (755 t supplied; declared capacity 41 t/month; 1 vehicles; registered Oct 2015)",
+   "plastic/collectors:COL-PFGESG1 (556 t supplied; declared capacity 47 t/month; 1 vehicles; registered Sep 2016)",
+   "plastic/collectors:COL-80I735C (318 t supplied; declared capacity 82 t/month; 6 vehicles; registered Oct 2019)",
+   "plastic/collectors:COL-7SNMU9Q (300 t supplied; declared capacity 42 t/month; 5 vehicles; registered Sep 2023)",
+   "plastic/collectors:COL-9GZGUD0 (274 t supplied; declared capacity 5 t/month; 4 vehicles; registered Feb 2018)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-KTX55YA (2,018 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-QB9XT2OVE (CAT_II, Rs 1,508/t to PIBO-O7OVZMB)",
+   "plastic/certificate_sales:SALE-YB59W6H5O (CAT_II, Rs 1,513/t to PIBO-NZ6HUMS)",
+   "plastic/certificate_sales:SALE-FQY7QVOQ7 (CAT_II, Rs 1,523/t to PIBO-M5V9SS0)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-KKV8CR2 Star Snacks Pvt Ltd (389 t)",
+  "PIBO-06KW09O Eco Retail LLP (350 t)",
+  "PIBO-I9W9N9E Sterling Beverages LLP (258 t)",
+  "PIBO-J7P4B2T Supreme Eco Consumer Products Pvt Ltd (244 t)",
+  "PIBO-2A5FYOP Vasundhara National Dairy Pvt Ltd (216 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 89
+}

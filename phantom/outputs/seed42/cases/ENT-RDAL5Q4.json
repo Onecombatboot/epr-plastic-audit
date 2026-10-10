@@ -1,0 +1,120 @@
+{
+ "entity_id": "ENT-RDAL5Q4",
+ "profile": {
+  "name": "Durga Poly Industries Pvt Ltd",
+  "state": "Haryana",
+  "district": "Panipat",
+  "declared_capacity_tpa": 10280.0,
+  "connected_load_kw": 420.0,
+  "epr_registered": "2025-07-06"
+ },
+ "scores": {
+  "rule_score": 0.9994,
+  "iforest_score": 0.5962,
+  "dominant_score": 4.4221,
+  "ens_score": 0.9564,
+  "ens_pct": 0.9644
+ },
+ "reasons": [
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.25x the minimum needed for the tonnes claimed (74 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 2% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.20x the cost floor)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.24x the market median price"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.365
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2878
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 89.7,
+   "shap": -0.2575
+  },
+  {
+   "feature": "energy_ratio_p10",
+   "label": "worst-month electricity vs needed",
+   "value": 0.2051,
+   "population_percentile": 0.8,
+   "shap": -0.2019
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-37B2TC8C (Feb 2026: 13,201 kWh for 238.9 t claimed)",
+   "plastic/electricity_bills:BILL-RTXZU503 (Dec 2025: 13,098 kWh for 193.2 t claimed)",
+   "plastic/electricity_bills:BILL-R8FNBQTA (Sep 2025: 12,945 kWh for 167.9 t claimed)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-9EQK6GZ (13 t bought)",
+   "plastic/offtakers:OFT-GMXQSVZ (5 t bought)",
+   "plastic/offtakers:OFT-4CYCGHB (3 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-QUVU9QLLD (CAT_IV, Rs 306/t to PIBO-UR80D7K)",
+   "plastic/certificate_sales:SALE-S6Q2O9RFO (CAT_IV, Rs 306/t to PIBO-UR80D7K)",
+   "plastic/certificate_sales:SALE-MACPTAK8F (CAT_IV, Rs 306/t to PIBO-UR80D7K)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-IFRU3OV Western Personal Care (256 t)",
+  "PIBO-IS3UUGB Metro Pioneer FMCG (101 t)",
+  "PIBO-X7L2JZO Maa Ganga Pharma LLP (97 t)",
+  "PIBO-MCQN848 Laxmi Deccan Retail LLP (95 t)",
+  "PIBO-RK3FKVL Laxmi Pharma Pvt Ltd (84 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 90
+}

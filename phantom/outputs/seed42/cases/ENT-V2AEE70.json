@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-V2AEE70",
+ "profile": {
+  "name": "Apex Everest Polymers Pvt Ltd",
+  "state": "Delhi",
+  "district": "West Delhi",
+  "declared_capacity_tpa": 2540.0,
+  "connected_load_kw": 47.0,
+  "epr_registered": "2024-01-06"
+ },
+ "scores": {
+  "rule_score": 0.9981,
+  "iforest_score": 0.6102,
+  "dominant_score": 4.3752,
+  "ens_score": 0.9558,
+  "ens_pct": 0.964
+ },
+ "reasons": [
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "60% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.44x the cost floor)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.593,
+   "text": "Certificates claim more than the declared monthly capacity in 22% of months"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.518,
+   "text": "24% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.412,
+   "text": "Certificates sold at 0.48x the market median price"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.382,
+   "text": "48% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6013,
+   "population_percentile": 98.5,
+   "shap": -0.3013
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.2222,
+   "population_percentile": 95.9,
+   "shap": -0.2577
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.4818,
+   "population_percentile": 96.7,
+   "shap": -0.2497
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 0.1538,
+   "population_percentile": 95.7,
+   "shap": -0.2274
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-OLJGZFXV (Mar 2026: 11,151 kWh for 879.0 t claimed)",
+   "plastic/electricity_bills:BILL-1GFBJG73 (Feb 2025: 10,528 kWh for 828.3 t claimed)",
+   "plastic/electricity_bills:BILL-8MY2XU8I (Feb 2026: 10,783 kWh for 790.3 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-SAU0GVYK3 (08 Jan 2024, 6 t from COL-7M0JLEJ)",
+   "plastic/feedstock_invoices:INV-UEFBHH6PZ (14 Jan 2024, 6.65 t from COL-EDK2G88)",
+   "plastic/feedstock_invoices:INV-1CU1DK8DQ (21 Jan 2024, 3.45 t from COL-FGNE0R1)",
+   "plastic/feedstock_invoices:INV-ALV7U4COF (24 Jan 2024, 6 t from COL-EDK2G88)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-EDK2G88 (1,545 t supplied; declared capacity 40 t/month; 1 vehicles; registered Sep 2023)",
+   "plastic/collectors:COL-VI8QD53 (1,160 t supplied; declared capacity 28 t/month; 1 vehicles; registered Dec 2023)",
+   "plastic/collectors:COL-7M0JLEJ (767 t supplied; declared capacity 11 t/month; 1 vehicles; registered Nov 2023)",
+   "plastic/collectors:COL-8SZB4UQ (557 t supplied; declared capacity 102 t/month; 6 vehicles; registered Dec 2021)",
+   "plastic/collectors:COL-SPEGLS3 (526 t supplied; declared capacity 61 t/month; 5 vehicles; registered May 2023)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 1,622 t of 7,019 t generated)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-6T45K44BM (CAT_IV, Rs 599/t to PIBO-JLLZI1U)",
+   "plastic/certificate_sales:SALE-DS0X9V63M (CAT_IV, Rs 600/t to PIBO-WSBQ2RC)",
+   "plastic/certificate_sales:SALE-R6TD18H6X (CAT_IV, Rs 603/t to PIBO-47PZJ1P)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-H0PVMI3 Northern Consumer Products Ltd (1,062 t)",
+  "PIBO-I6PSPF2 Himalaya Home Care Pvt Ltd (336 t)",
+  "PIBO-B85IN7B Om Consumer Products (263 t)",
+  "PIBO-RZ8M7F8 Sterling Bharat Retail Pvt Ltd (250 t)",
+  "PIBO-QKLDTUS Krishna Sanjeevani Consumer Products Pvt Ltd (249 t)"
+ ],
+ "inspection_checklist": [
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 91
+}

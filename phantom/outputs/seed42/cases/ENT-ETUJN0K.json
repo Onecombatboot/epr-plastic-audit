@@ -1,0 +1,135 @@
+{
+ "entity_id": "ENT-ETUJN0K",
+ "profile": {
+  "name": "Vasundhara Poly Industries Pvt Ltd",
+  "state": "Andhra Pradesh",
+  "district": "Visakhapatnam",
+  "declared_capacity_tpa": 29550.0,
+  "connected_load_kw": 477.0,
+  "epr_registered": "2022-12-24"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.5997,
+  "dominant_score": 4.0669,
+  "ens_score": 0.9611,
+  "ens_pct": 0.9684
+ },
+ "reasons": [
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.766,
+   "text": "58% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.58x the cost floor)"
+  },
+  {
+   "rule": "capacity_needs_more_power",
+   "group": "energy",
+   "strength": 0.55,
+   "text": "Declared capacity of 29,550 t/yr needs about 2.5x the power the plant is connected for"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.526,
+   "text": "24% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.3438
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5787,
+   "population_percentile": 98.4,
+   "shap": -0.3152
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 0.9714,
+   "population_percentile": 98.4,
+   "shap": -0.275
+  },
+  {
+   "feature": "out_round_share",
+   "label": "out_round_share",
+   "value": 0.0588,
+   "population_percentile": 90.0,
+   "shap": -0.2229
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-L787LUOL (May 2024: 158,585 kWh for 850.2 t claimed)",
+   "plastic/electricity_bills:BILL-VBIXXPNT (Jun 2025: 155,103 kWh for 828.9 t claimed)",
+   "plastic/electricity_bills:BILL-0VAZUM4L (Mar 2025: 147,092 kWh for 783.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-TBV1TIBXD (01 Apr 2023, 13 t from COL-HFFX8HK)",
+   "plastic/feedstock_invoices:INV-ADJIO82XM (18 Apr 2023, 5 t from COL-4XDPODP)",
+   "plastic/feedstock_invoices:INV-I9J78NEQ6 (19 Apr 2023, 12 t from COL-4XDPODP)",
+   "plastic/feedstock_invoices:INV-BISIVZ8PD (22 Apr 2023, 19 t from COL-7I53ZFK)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-HFFX8HK (5,857 t supplied; declared capacity 31 t/month; 1 vehicles; registered Jan 2023)",
+   "plastic/collectors:COL-7I53ZFK (5,828 t supplied; declared capacity 27 t/month; 1 vehicles; registered Nov 2022)",
+   "plastic/collectors:COL-4XDPODP (4,133 t supplied; declared capacity 5 t/month; 2 vehicles; registered Apr 2023)",
+   "plastic/collectors:COL-ATYBU11 (3,325 t supplied; declared capacity 193 t/month; 5 vehicles; registered Aug 2019)",
+   "plastic/collectors:COL-51YOEOG (1,497 t supplied; declared capacity 141 t/month; 2 vehicles; registered Aug 2015)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-OJIWIJK (4,668 t bought)",
+   "plastic/offtakers:OFT-3R66SXQ (2,175 t bought)",
+   "plastic/offtakers:OFT-6WVB56Y (1,964 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-151W95XAM (CAT_IV, Rs 733/t to PIBO-1A1FNVT)",
+   "plastic/certificate_sales:SALE-BW8PN6D1X (CAT_IV, Rs 733/t to PIBO-1QAPZ7Z)",
+   "plastic/certificate_sales:SALE-T908UEE2R (CAT_IV, Rs 734/t to PIBO-8Y184DY)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-IJ1IN4V Sterling Home Care LLP (1,421 t)",
+  "PIBO-4FQ43XF Western Home Care Pvt Ltd (1,421 t)",
+  "PIBO-34XGNS2 Galaxy Durga Dairy Pvt Ltd (1,407 t)",
+  "PIBO-TWY4K33 Ganga Beverages LLP (1,204 t)",
+  "PIBO-OP79L68 Prime FMCG Pvt Ltd (1,188 t)"
+ ],
+ "inspection_checklist": [
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 80
+}

@@ -1,0 +1,122 @@
+{
+ "entity_id": "ENT-REFGLJ3",
+ "profile": {
+  "name": "Ganesh Poly Industries & Co",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 2390.0,
+  "connected_load_kw": 553.0,
+  "epr_registered": "2025-10-03"
+ },
+ "scores": {
+  "rule_score": 0.9997,
+  "iforest_score": 0.6179,
+  "dominant_score": 9.5978,
+  "ens_score": 0.9712,
+  "ens_pct": 0.9796
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (6% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 33% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.67x the cost floor)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.528,
+   "text": "46% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.358,
+   "text": "46% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.4322
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.0605,
+   "population_percentile": 97.9,
+   "shap": -0.385
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3789
+  },
+  {
+   "feature": "net_recycler_in_degree",
+   "label": "net_recycler_in_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3673
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-YFKDI7XY (Mar 2026: 173,862 kWh for 227.9 t claimed)",
+   "plastic/electricity_bills:BILL-6ZPHHHYT (Feb 2026: 180,718 kWh for 228.5 t claimed)",
+   "plastic/electricity_bills:BILL-YSYJCP0G (Jan 2026: 183,683 kWh for 193.3 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 441 t of 962 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-DMLJG2Z (59 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-8IDWVS6EX (CAT_IV, Rs 965/t to PIBO-IXMXHH1)",
+   "plastic/certificate_sales:SALE-MPDSM0TG3 (CAT_IV, Rs 965/t to PIBO-IXMXHH1)",
+   "plastic/certificate_sales:SALE-MLQ7DELV0 (CAT_IV, Rs 985/t to PIBO-369COND)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-HAOPO4R Global Beverages Pvt Ltd (145 t)",
+  "PIBO-L3NTMX4 Shri Personal Care (104 t)",
+  "PIBO-864EPFD Narmada Beverages (89 t)",
+  "PIBO-00F00EZ Eco Snacks LLP (67 t)",
+  "PIBO-FN0E1QO Prime Retail Pvt Ltd (67 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 52
+}

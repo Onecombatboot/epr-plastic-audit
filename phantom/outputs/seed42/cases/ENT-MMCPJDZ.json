@@ -1,0 +1,134 @@
+{
+ "entity_id": "ENT-MMCPJDZ",
+ "profile": {
+  "name": "Green Plast LLP",
+  "state": "Haryana",
+  "district": "Gurugram",
+  "declared_capacity_tpa": 22990.0,
+  "connected_load_kw": 322.0,
+  "epr_registered": "2025-01-16"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6218,
+  "dominant_score": 3.8117,
+  "ens_score": 0.9682,
+  "ens_pct": 0.9732
+ },
+ "reasons": [
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.14x the minimum needed for the tonnes claimed (21 kWh/t against at least 150)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 3% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.33x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "50% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.38x the market median price"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.3501
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.3334
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 1.0,
+   "population_percentile": 98.0,
+   "shap": -0.3015
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2633
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-UUSXF8LH (Aug 2025: 13,752 kWh for 764.0 t claimed)",
+   "plastic/electricity_bills:BILL-TBIQ71P7 (Nov 2025: 13,494 kWh for 697.5 t claimed)",
+   "plastic/electricity_bills:BILL-IK5B4QOS (Dec 2025: 14,034 kWh for 700.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-7TO4EX06V (19 Jan 2025, 0.68 t from COL-TYYFF4L)",
+   "plastic/feedstock_invoices:INV-5H10LMFMN (25 Jun 2025, 3 t from COL-X1HR8GX)",
+   "plastic/feedstock_invoices:INV-X74Y760PA (03 Jan 2026, 2 t from COL-X1HR8GX)",
+   "plastic/feedstock_invoices:INV-AV1X97O1D (04 Jan 2026, 2.86 t from COL-RCRBGC8)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-ZLR54PN (49 t supplied; declared capacity 37 t/month; 6 vehicles; registered Mar 2021)",
+   "plastic/collectors:COL-0BKTDPR (36 t supplied; declared capacity 21 t/month; 6 vehicles; registered Sep 2017)",
+   "plastic/collectors:COL-X1HR8GX (36 t supplied; declared capacity 43 t/month; 1 vehicles; registered Oct 2018)",
+   "plastic/collectors:COL-TYYFF4L (33 t supplied; declared capacity 131 t/month; 5 vehicles; registered Dec 2015)",
+   "plastic/collectors:COL-RCRBGC8 (29 t supplied; declared capacity 50 t/month; 4 vehicles; registered Aug 2022)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-7K3R4UR (108 t bought)",
+   "plastic/offtakers:OFT-7NUM17U (7 t bought)",
+   "plastic/offtakers:OFT-L8NHGAF (3 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 1, director 1, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-QZU4HB8RT (CAT_IV, Rs 474/t to PIBO-2KQX8U8)",
+   "plastic/certificate_sales:SALE-MC8YDVP08 (CAT_IV, Rs 474/t to PIBO-2KQX8U8)",
+   "plastic/certificate_sales:SALE-6S18USCD7 (CAT_IV, Rs 474/t to PIBO-2KQX8U8)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-62BY5K6 Royal Foods Pvt Ltd (1,623 t)",
+  "PIBO-O22SD4Y Northern Snacks Ltd (544 t)",
+  "PIBO-ORMMOLV Hind Foods Pvt Ltd (527 t)",
+  "PIBO-6XFOBOZ Balaji Personal Care Pvt Ltd (312 t)",
+  "PIBO-3HLMBTZ Unity Navjeevan Home Care Pvt Ltd (298 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 68
+}

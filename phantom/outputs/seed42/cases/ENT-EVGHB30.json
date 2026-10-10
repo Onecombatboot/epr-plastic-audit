@@ -1,0 +1,119 @@
+{
+ "entity_id": "ENT-EVGHB30",
+ "profile": {
+  "name": "Northern Plast Pvt Ltd",
+  "state": "Maharashtra",
+  "district": "Raigad",
+  "declared_capacity_tpa": 4720.0,
+  "connected_load_kw": 17.0,
+  "epr_registered": "2025-05-15"
+ },
+ "scores": {
+  "rule_score": 0.9959,
+  "iforest_score": 0.6158,
+  "dominant_score": 3.4784,
+  "ens_score": 0.9531,
+  "ens_pct": 0.9608
+ },
+ "reasons": [
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.47x the cost floor)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.485,
+   "text": "Certificates claim more than the declared monthly capacity in 18% of months"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.438,
+   "text": "41% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.329,
+   "text": "Claimed tonnage in the busiest month would need 130% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.325,
+   "text": "Certificates sold at 0.56x the market median price"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3626
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.2973,
+   "population_percentile": 96.9,
+   "shap": -0.3143
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.1818,
+   "population_percentile": 95.5,
+   "shap": -0.2971
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 89.7,
+   "shap": -0.2417
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-BIFQHKZK (Mar 2026: 4,606 kWh for 807.7 t claimed)",
+   "plastic/electricity_bills:BILL-RPI01J5Z (Feb 2026: 4,870 kWh for 686.6 t claimed)",
+   "plastic/electricity_bills:BILL-JZDN1H2B (Jan 2026: 4,569 kWh for 345.3 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 1,138 t of 2,805 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-DBQAP0859 (CAT_IV, Rs 684/t to PIBO-2ANQO6G)",
+   "plastic/certificate_sales:SALE-ORB96ACVT (CAT_IV, Rs 684/t to PIBO-2ANQO6G)",
+   "plastic/certificate_sales:SALE-EN5XE3O2I (CAT_IV, Rs 684/t to PIBO-2ANQO6G)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-1V0563Y Ganga Consumer Products Pvt Ltd (398 t)",
+  "PIBO-LNK7W9J Ganesh Dairy Pvt Ltd (318 t)",
+  "PIBO-YTSG8OF Krishna Shri Beverages LLP (260 t)",
+  "PIBO-L021TAJ Sterling Deccan Home Care Pvt Ltd (167 t)",
+  "PIBO-OWXXK7F Balaji Pharma Pvt Ltd (151 t)"
+ ],
+ "inspection_checklist": [
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 99
+}

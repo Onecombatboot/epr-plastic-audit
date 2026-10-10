@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-I9S7PQP",
+ "profile": {
+  "name": "Krishna Polytech Pvt Ltd",
+  "state": "Andhra Pradesh",
+  "district": "Visakhapatnam",
+  "declared_capacity_tpa": 990.0,
+  "connected_load_kw": 126.0,
+  "epr_registered": "2024-07-09"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6327,
+  "dominant_score": 2.6999,
+  "ens_score": 0.9812,
+  "ens_pct": 0.9852
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "76% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 47%, +45% versus what its process route can produce"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "62% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.604,
+   "text": "Electricity bought is only 0.47x the minimum needed for the tonnes claimed (141 kWh/t against at least 300)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "43% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7636,
+   "population_percentile": 99.0,
+   "shap": -0.3033
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 99.2,
+   "shap": -0.2755
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 1.0,
+   "population_percentile": 99.5,
+   "shap": -0.2063
+  },
+  {
+   "feature": "out_young_offtaker_share",
+   "label": "product sales to newly formed buyers",
+   "value": 0.7945,
+   "population_percentile": 89.4,
+   "shap": -0.1867
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-98GWLLD9 (Nov 2025: 52,367 kWh for 389.0 t claimed)",
+   "plastic/electricity_bills:BILL-G9RSYXXZ (Dec 2024: 53,284 kWh for 390.3 t claimed)",
+   "plastic/electricity_bills:BILL-KC2ISJZE (May 2025: 45,492 kWh for 332.8 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-QNIT324YL (01 Jul 2024, 9 t from COL-KXXIQE7)",
+   "plastic/feedstock_invoices:INV-OP768ZH6G (07 Jul 2024, 11 t from COL-7JD7OG0)",
+   "plastic/feedstock_invoices:INV-UWXH3I8SJ (08 Jul 2024, 17 t from COL-VHJ3NJU)",
+   "plastic/feedstock_invoices:INV-YDEQZHQZB (11 Jul 2024, 6 t from COL-7JD7OG0)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-VHJ3NJU (2,449 t supplied; declared capacity 15 t/month; 1 vehicles; registered Jun 2024)",
+   "plastic/collectors:COL-7JD7OG0 (2,100 t supplied; declared capacity 35 t/month; 1 vehicles; registered Jun 2024)",
+   "plastic/collectors:COL-KXXIQE7 (605 t supplied; declared capacity 6 t/month; 2 vehicles; registered Feb 2024)",
+   "plastic/collectors:COL-Q5RKL81 (345 t supplied; declared capacity 163 t/month; 3 vehicles; registered Jan 2020)",
+   "plastic/collectors:COL-KR2B5FG (209 t supplied; declared capacity 27 t/month; 4 vehicles; registered Oct 2017)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-02: 578 t of 6,635 t generated)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-EOB8QWB Eastern Royal Pharma Pvt Ltd (736 t)",
+  "PIBO-FBJSPK5 Kaveri Beverages LLP (264 t)",
+  "PIBO-JFYV8QW Earth Snacks (222 t)",
+  "PIBO-JT3Q67F Global Retail & Co (191 t)",
+  "PIBO-QG540TC Green Snacks LLP (187 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 38
+}

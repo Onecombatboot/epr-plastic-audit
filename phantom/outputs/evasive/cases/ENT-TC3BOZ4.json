@@ -1,0 +1,125 @@
+{
+ "entity_id": "ENT-TC3BOZ4",
+ "profile": {
+  "name": "Unity Plast Pvt Ltd",
+  "state": "Tamil Nadu",
+  "district": "Chennai",
+  "declared_capacity_tpa": 1160.0,
+  "connected_load_kw": 202.0,
+  "epr_registered": "2023-03-22"
+ },
+ "scores": {
+  "rule_score": 0.9998,
+  "iforest_score": 0.6202,
+  "dominant_score": 2.041,
+  "ens_score": 0.9665,
+  "ens_pct": 0.9748
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 9% of expected)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "45% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 5% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "73% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "collectors_brand_new",
+   "group": "collectors",
+   "strength": 0.4,
+   "text": "95% of feedstock comes from collectors registered under 6 months before their first invoice"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.411
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.2554,
+   "population_percentile": 96.2,
+   "shap": -0.3698
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 3.0,
+   "population_percentile": 96.6,
+   "shap": -0.3501
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.3277
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-CUU7LUHD (Nov 2024: 97,007 kWh for 99.1 t claimed)",
+   "plastic/electricity_bills:BILL-63IDVZIJ (Aug 2025: 71,775 kWh for 73.2 t claimed)",
+   "plastic/electricity_bills:BILL-5BJAFFHZ (Aug 2023: 68,963 kWh for 70.1 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-894OSWCVZ (02 Apr 2023, 9 t from COL-IYFTHAK)",
+   "plastic/feedstock_invoices:INV-CIQ27ZBPM (05 Apr 2023, 10 t from COL-7XGRS68)",
+   "plastic/feedstock_invoices:INV-IGUAH38TG (06 Apr 2023, 10 t from COL-5NZ1JV8)",
+   "plastic/feedstock_invoices:INV-127W80YGT (08 Apr 2023, 2 t from COL-7QUOE18)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-7XGRS68 (726 t supplied; declared capacity 8 t/month; 2 vehicles; registered Dec 2022)",
+   "plastic/collectors:COL-JKKHJ7Y (521 t supplied; declared capacity 29 t/month; 1 vehicles; registered Dec 2022)",
+   "plastic/collectors:COL-5NZ1JV8 (459 t supplied; declared capacity 37 t/month; 1 vehicles; registered Jan 2023)",
+   "plastic/collectors:COL-IYFTHAK (315 t supplied; declared capacity 22 t/month; 2 vehicles; registered Jan 2023)",
+   "plastic/collectors:COL-8EB22LC (308 t supplied; declared capacity 21 t/month; 2 vehicles; registered Dec 2022)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-GFWMHVI (67 t bought)",
+   "plastic/offtakers:OFT-EJM6I79 (21 t bought)",
+   "plastic/offtakers:OFT-OPH8RSS (12 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-3UX099N Navjeevan Durga Dairy LLP (306 t)",
+  "PIBO-680R415 Bharat Shree Foods Pvt Ltd (192 t)",
+  "PIBO-F7TG7Q2 Metro Dairy Pvt Ltd (159 t)",
+  "PIBO-AL4NAKV Sanjeevani FMCG & Co (142 t)",
+  "PIBO-KKYCOM9 Everest Prime Pharma LLP (96 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers."
+ ],
+ "rank": 64
+}

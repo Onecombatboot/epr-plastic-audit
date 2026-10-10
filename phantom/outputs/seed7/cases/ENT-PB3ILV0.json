@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-PB3ILV0",
+ "profile": {
+  "name": "National Polytech LLP",
+  "state": "Karnataka",
+  "district": "Bengaluru Urban",
+  "declared_capacity_tpa": 2200.0,
+  "connected_load_kw": 458.0,
+  "epr_registered": "2024-08-04"
+ },
+ "scores": {
+  "rule_score": 0.9998,
+  "iforest_score": 0.6331,
+  "dominant_score": 5.6835,
+  "ens_score": 0.9753,
+  "ens_pct": 0.9836
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 65% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "67% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.663,
+   "text": "29% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.544,
+   "text": "Sold products equal only 33% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "68% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.477,
+   "text": "43% of all certificates were generated in a single month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.35,
+   "population_percentile": 88.7,
+   "shap": -0.2932
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 1.0,
+   "population_percentile": 99.0,
+   "shap": -0.2828
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6733,
+   "population_percentile": 99.2,
+   "shap": -0.2744
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.6779,
+   "population_percentile": 99.1,
+   "shap": -0.273
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-7R0L0YSF (Mar 2026: 131,053 kWh for 1,467.1 t claimed)",
+   "plastic/electricity_bills:BILL-0SWN6OUR (Feb 2026: 125,214 kWh for 1,175.7 t claimed)",
+   "plastic/electricity_bills:BILL-XQ2K4S33 (Feb 2025: 120,754 kWh for 787.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-3R8KEBR4G (03 Aug 2024, 4 t from COL-WFOXEFM)",
+   "plastic/feedstock_invoices:INV-GC1X0MDFW (06 Aug 2024, 7 t from COL-9F3ZDP1)",
+   "plastic/feedstock_invoices:INV-8U8NXI2QI (17 Aug 2024, 7 t from COL-H29UX3P)",
+   "plastic/feedstock_invoices:INV-JNCP1PIYG (22 Aug 2024, 4 t from COL-J8MOYO2)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-H29UX3P (2,243 t supplied; declared capacity 7 t/month; 1 vehicles; registered Mar 2024)",
+   "plastic/collectors:COL-9F3ZDP1 (821 t supplied; declared capacity 39 t/month; 2 vehicles; registered Feb 2024)",
+   "plastic/collectors:COL-BAW2A84 (787 t supplied; declared capacity 20 t/month; 1 vehicles; registered May 2024)",
+   "plastic/collectors:COL-6YAJALL (464 t supplied; declared capacity 82 t/month; 6 vehicles; registered Jun 2016)",
+   "plastic/collectors:COL-4KTU0MA (460 t supplied; declared capacity 58 t/month; 1 vehicles; registered Jul 2016)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 3,278 t of 7,653 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-9PLD4JF (1,015 t bought)",
+   "plastic/offtakers:OFT-D5NAQJY (757 t bought)",
+   "plastic/offtakers:OFT-9DZYTPP (142 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-CPZPC6J Durga Green Foods Pvt Ltd (307 t)",
+  "PIBO-T7UPQHG Pioneer Consumer Products Pvt Ltd (287 t)",
+  "PIBO-D3FBSV9 Hind Personal Care LLP (274 t)",
+  "PIBO-37RZFPQ Eastern Personal Care Pvt Ltd (268 t)",
+  "PIBO-CTB5KH8 Om Dairy LLP (257 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 42
+}

@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-N4Z5VZ6",
+ "profile": {
+  "name": "Western Sahyadri Enviro Recycling Pvt Ltd",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 2490.0,
+  "connected_load_kw": 215.0,
+  "epr_registered": "2024-12-26"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6369,
+  "dominant_score": 4.155,
+  "ens_score": 0.9868,
+  "ens_pct": 0.9912
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 290% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.13x the minimum needed for the tonnes claimed (40 kWh/t against at least 300)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "90% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 11% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "82% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3349
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 2.0,
+   "population_percentile": 98.6,
+   "shap": -0.2699
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8988,
+   "population_percentile": 99.8,
+   "shap": -0.2643
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.2636
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-YLVRU1TL (Mar 2026: 48,518 kWh for 1,253.5 t claimed)",
+   "plastic/electricity_bills:BILL-AURXBCGZ (Jul 2025: 45,220 kWh for 1,164.4 t claimed)",
+   "plastic/electricity_bills:BILL-I67K3CUS (Dec 2025: 58,998 kWh for 1,517.2 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-CHH4R07X8 (01 Dec 2024, 0.87 t from COL-DAMV6WT)",
+   "plastic/feedstock_invoices:INV-RLEYRSNR3 (01 Dec 2024, 4 t from COL-NNZJCUB)",
+   "plastic/feedstock_invoices:INV-DFNGLAB7B (01 Dec 2024, 9 t from COL-S581TCF)",
+   "plastic/feedstock_invoices:INV-3OW36Q3GO (02 Dec 2024, 12 t from COL-WNWGT1W)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-9G39Y29 (6,090 t supplied; declared capacity 19 t/month; 1 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-NNZJCUB (2,895 t supplied; declared capacity 30 t/month; 2 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-GLMSEID (2,748 t supplied; declared capacity 8 t/month; 2 vehicles; registered Jun 2024)",
+   "plastic/collectors:COL-WNWGT1W (2,594 t supplied; declared capacity 26 t/month; 1 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-7UJMLG8 (1,557 t supplied; declared capacity 6 t/month; 2 vehicles; registered Nov 2024)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-N2GH5BO (1,063 t bought)",
+   "plastic/offtakers:OFT-VRMAZBO (287 t bought)",
+   "plastic/offtakers:OFT-KWJXXPY (138 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-34XGNS2 Galaxy Durga Dairy Pvt Ltd (8,381 t)",
+  "PIBO-YCL7P2O Prime Personal Care Pvt Ltd (1,257 t)",
+  "PIBO-WD58K54 Metro Foods (1,026 t)",
+  "PIBO-H0PVMI3 Northern Consumer Products Ltd (923 t)",
+  "PIBO-YN6JZ23 Vasundhara Personal Care LLP (573 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 23
+}

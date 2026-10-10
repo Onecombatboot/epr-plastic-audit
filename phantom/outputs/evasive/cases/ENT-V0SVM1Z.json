@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-V0SVM1Z",
+ "profile": {
+  "name": "Pragati Pioneer Polymers",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 1600.0,
+  "connected_load_kw": 228.0,
+  "epr_registered": "2025-06-04"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6535,
+  "dominant_score": 4.0461,
+  "ens_score": 0.9934,
+  "ens_pct": 0.9976
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 206% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 50% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "82% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "49% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "54% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.74x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 8.0,
+   "population_percentile": 99.6,
+   "shap": -0.3129
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.2874
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.7231,
+   "population_percentile": 99.8,
+   "shap": -0.2787
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 5.0,
+   "population_percentile": 99.3,
+   "shap": -0.2784
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-YYIMJNG0 (Feb 2026: 78,131 kWh for 1,075.7 t claimed)",
+   "plastic/electricity_bills:BILL-98IR5MDQ (Jul 2025: 33,507 kWh for 87.0 t claimed)",
+   "plastic/electricity_bills:BILL-BAFU1CKX (Jun 2025: 29,317 kWh for 72.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-AGN12WUGP (02 Jun 2025, 0.5 t from COL-OJWTC01)",
+   "plastic/feedstock_invoices:INV-4Z9V9IB07 (05 Jun 2025, 5 t from COL-4WPMSE2)",
+   "plastic/feedstock_invoices:INV-754MUU0TW (08 Jun 2025, 5 t from COL-TQ4X0KN)",
+   "plastic/feedstock_invoices:INV-8397X87YA (14 Jun 2025, 13 t from COL-4WPMSE2)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-4WPMSE2 (1,001 t supplied; declared capacity 19 t/month; 1 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-O2D1DHN (777 t supplied; declared capacity 30 t/month; 1 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-UYI9S1I (365 t supplied; declared capacity 26 t/month; 2 vehicles; registered Jan 2025)",
+   "plastic/collectors:COL-TQ4X0KN (280 t supplied; declared capacity 10 t/month; 2 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-NS7190T (196 t supplied; declared capacity 36 t/month; 2 vehicles; registered Feb 2025)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-Q1X1CQQJO (CAT_IV, Rs 1,066/t to PIBO-Y1UM6DO)",
+   "plastic/certificate_sales:SALE-OBBCHDVTJ (CAT_IV, Rs 1,081/t to PIBO-3KYJPXE)",
+   "plastic/certificate_sales:SALE-24EWLGKSA (CAT_IV, Rs 1,105/t to PIBO-YDQV9PP)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-VTNN4VD Krishna Beverages Pvt Ltd (423 t)",
+  "PIBO-O52N59T Narmada Retail & Co (377 t)",
+  "PIBO-RK5BN2I Earth Sunrise Foods Pvt Ltd (210 t)",
+  "PIBO-2T5A8E3 Pragati Consumer Products Pvt Ltd (159 t)",
+  "PIBO-UFG9LBF Galaxy Consumer Products Pvt Ltd (150 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 7
+}

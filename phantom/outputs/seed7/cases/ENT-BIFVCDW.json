@@ -1,0 +1,117 @@
+{
+ "entity_id": "ENT-BIFVCDW",
+ "profile": {
+  "name": "Hind Sanjeevani Recyclers",
+  "state": "Maharashtra",
+  "district": "Aurangabad",
+  "declared_capacity_tpa": 1900.0,
+  "connected_load_kw": 180.0,
+  "epr_registered": "2023-05-01"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6881,
+  "dominant_score": 3.1578,
+  "ens_score": 0.9906,
+  "ens_pct": 0.994
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (26% of its feedstock)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 295% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 74% of months"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 56%, +54% versus what its process route can produce"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 1 other registered entity(ies)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.465,
+   "text": "57% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.26,
+   "population_percentile": 99.1,
+   "shap": -0.3008
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2978
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 96.7,
+   "shap": -0.2902
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2777
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-WVY35HQ7 (Mar 2025: 65,089 kWh for 1,291.7 t claimed)",
+   "plastic/electricity_bills:BILL-J0DJFY69 (Feb 2026: 61,410 kWh for 1,063.2 t claimed)",
+   "plastic/electricity_bills:BILL-PN2DBPBK (Mar 2026: 64,026 kWh for 1,076.4 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 3,073 t of 12,210 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-PDAET3E (3,233 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 1, director 0, photos 0)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-ES2EV6V Western Beverages Pvt Ltd (1,030 t)",
+  "PIBO-Y68FL6K Star Narmada Foods Ltd (593 t)",
+  "PIBO-COFQPTY Himalaya Consumer Products Pvt Ltd (574 t)",
+  "PIBO-6XO9X2O Ganga Retail Pvt Ltd (429 t)",
+  "PIBO-3WBZTUQ Pioneer Personal Care Pvt Ltd (388 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 16
+}

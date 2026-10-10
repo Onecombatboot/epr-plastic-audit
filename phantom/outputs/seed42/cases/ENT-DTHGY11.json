@@ -1,0 +1,130 @@
+{
+ "entity_id": "ENT-DTHGY11",
+ "profile": {
+  "name": "Prakriti Global Polytech Pvt Ltd",
+  "state": "Haryana",
+  "district": "Gurugram",
+  "declared_capacity_tpa": 2810.0,
+  "connected_load_kw": 591.0,
+  "epr_registered": "2023-01-03"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6665,
+  "dominant_score": 6.7779,
+  "ens_score": 0.9934,
+  "ens_pct": 0.9968
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "85% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 16% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "78% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.649,
+   "text": "Electricity bought is only 0.43x the minimum needed for the tonnes claimed (130 kWh/t against at least 300)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 3.0,
+   "population_percentile": 99.4,
+   "shap": -0.2919
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.2757
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.271
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8547,
+   "population_percentile": 99.6,
+   "shap": -0.2573
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-7R1U79XF (Jul 2025: 127,592 kWh for 1,030.9 t claimed)",
+   "plastic/electricity_bills:BILL-NJZZMBZ3 (Apr 2024: 123,587 kWh for 992.1 t claimed)",
+   "plastic/electricity_bills:BILL-6Y03RRAF (Jul 2024: 116,056 kWh for 929.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-PPVSG8F8S (01 Apr 2023, 7 t from COL-ALDY5QC)",
+   "plastic/feedstock_invoices:INV-XS1LE8K6G (02 Apr 2023, 19 t from COL-CD2OL63)",
+   "plastic/feedstock_invoices:INV-XL5N0TOLO (02 Apr 2023, 18 t from COL-G3Y520C)",
+   "plastic/feedstock_invoices:INV-ERYRR72DD (05 Apr 2023, 16 t from COL-ALDY5QC)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-CD2OL63 (13,643 t supplied; declared capacity 28 t/month; 1 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-G3Y520C (10,557 t supplied; declared capacity 33 t/month; 2 vehicles; registered Nov 2022)",
+   "plastic/collectors:COL-ALDY5QC (4,834 t supplied; declared capacity 6 t/month; 1 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-C70OOEQ (683 t supplied; declared capacity 54 t/month; 5 vehicles; registered Jun 2018)",
+   "plastic/collectors:COL-MHBAE9X (664 t supplied; declared capacity 65 t/month; 1 vehicles; registered Feb 2021)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-L9R0KIE (888 t bought)",
+   "plastic/offtakers:OFT-LCP78PH (748 t bought)",
+   "plastic/offtakers:OFT-ZREF2ZK (611 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 1, director 1, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-WQIQXTS Jai Beverages (17,771 t)",
+  "PIBO-UE91ZRW Unity Home Care Ltd (3,361 t)",
+  "PIBO-T6VLRWH Shree Green Retail LLP (892 t)",
+  "PIBO-JEGCCP3 Navjeevan FMCG & Co (669 t)",
+  "PIBO-7X3O06O Sanjeevani Dairy Pvt Ltd (471 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 9
+}

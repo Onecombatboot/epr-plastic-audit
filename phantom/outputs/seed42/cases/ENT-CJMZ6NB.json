@@ -1,0 +1,117 @@
+{
+ "entity_id": "ENT-CJMZ6NB",
+ "profile": {
+  "name": "Northern Sanjeevani Granules Pvt Ltd",
+  "state": "Delhi",
+  "district": "North West Delhi",
+  "declared_capacity_tpa": 10540.0,
+  "connected_load_kw": 857.0,
+  "epr_registered": "2024-02-02"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6794,
+  "dominant_score": 4.6712,
+  "ens_score": 0.9873,
+  "ens_pct": 0.992
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (23% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 42% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.655,
+   "text": "Category III share of certificates is 40%, +38% versus what its process route can produce"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.627,
+   "text": "Claimed tonnage in the busiest month would need 167% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.338,
+   "text": "44% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.306
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2287,
+   "population_percentile": 99.1,
+   "shap": -0.2907
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.2664
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2645
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-50T9OU2R (Mar 2025: 336,019 kWh for 3,476.0 t claimed)",
+   "plastic/electricity_bills:BILL-JYB5V971 (Mar 2026: 322,144 kWh for 3,099.6 t claimed)",
+   "plastic/electricity_bills:BILL-MD7YIWOC (Feb 2026: 349,771 kWh for 3,239.6 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 8,759 t of 31,614 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-VGRMKXH (7,347 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 1, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-UGSTSNR Northern Foods Ltd (1,828 t)",
+  "PIBO-T5FZYIS Supreme National Snacks Pvt Ltd (1,826 t)",
+  "PIBO-ZSNBRL1 Earth Snacks (950 t)",
+  "PIBO-FE168SW Green Pharma LLP (602 t)",
+  "PIBO-46UARLX Ganga Pharma Pvt Ltd (399 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 21
+}

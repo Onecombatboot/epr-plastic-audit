@@ -1,0 +1,113 @@
+{
+ "entity_id": "ENT-78O0DKL",
+ "profile": {
+  "name": "Western Pioneer Recyclers Pvt Ltd",
+  "state": "Karnataka",
+  "district": "Belagavi",
+  "declared_capacity_tpa": 3230.0,
+  "connected_load_kw": 244.0,
+  "epr_registered": "2023-03-03"
+ },
+ "scores": {
+  "rule_score": 0.9998,
+  "iforest_score": 0.6347,
+  "dominant_score": 3.5995,
+  "ens_score": 0.9704,
+  "ens_pct": 0.9748
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (19% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 94% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 3 other registered entity(ies)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.453,
+   "text": "Electricity bought is only 0.60x the minimum needed for the tonnes claimed (181 kWh/t against at least 300)"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.45,
+   "text": "In 100% of billed months the units consumed cannot support the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3845
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.1895,
+   "population_percentile": 98.9,
+   "shap": -0.3603
+  },
+  {
+   "feature": "net_cycle_feed_share",
+   "label": "feedstock bought inside a loop",
+   "value": 0.1895,
+   "population_percentile": 98.9,
+   "shap": -0.3377
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3172
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-LWIAYZ1P (Jul 2024: 83,586 kWh for 487.0 t claimed)",
+   "plastic/electricity_bills:BILL-VHLE2SHC (Jan 2026: 77,613 kWh for 446.3 t claimed)",
+   "plastic/electricity_bills:BILL-K8GVNMA5 (Apr 2025: 72,384 kWh for 414.6 t claimed)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-JPS2YQX (2,939 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 3, address 0, director 1, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-X4IMJMP Unity Snacks Pvt Ltd (701 t)",
+  "PIBO-BEC1VKN Apex Maa Foods Pvt Ltd (607 t)",
+  "PIBO-VOV1GCD Shri Snacks LLP (543 t)",
+  "PIBO-2DPIUG7 Bharat Ganesh Home Care Pvt Ltd (474 t)",
+  "PIBO-UD2887G Bharat Sanjeevani FMCG Pvt Ltd (375 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 64
+}

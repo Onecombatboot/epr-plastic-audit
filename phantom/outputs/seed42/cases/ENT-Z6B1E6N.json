@@ -1,0 +1,138 @@
+{
+ "entity_id": "ENT-Z6B1E6N",
+ "profile": {
+  "name": "Everest Poly Industries & Co",
+  "state": "Karnataka",
+  "district": "Mysuru",
+  "declared_capacity_tpa": 1130.0,
+  "connected_load_kw": 192.0,
+  "epr_registered": "2024-05-13"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6657,
+  "dominant_score": 1.7853,
+  "ens_score": 0.9727,
+  "ens_pct": 0.9764
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (31% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 30% of months"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.47x the cost floor)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.512,
+   "text": "42% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 1 other registered entity(ies)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.425,
+   "text": "Sold products equal only 44% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3347
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.3149,
+   "population_percentile": 99.4,
+   "shap": -0.3135
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.306
+  },
+  {
+   "feature": "net_cycle_feed_share",
+   "label": "feedstock bought inside a loop",
+   "value": 0.3149,
+   "population_percentile": 99.4,
+   "shap": -0.2801
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-HBND13MW (Mar 2026: 57,008 kWh for 520.1 t claimed)",
+   "plastic/electricity_bills:BILL-0ADZIG6H (Feb 2026: 60,555 kWh for 475.9 t claimed)",
+   "plastic/electricity_bills:BILL-F11Q1KB4 (Feb 2025: 58,429 kWh for 402.2 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-HW2U5UCPM (12 May 2024, 4.44 t from COL-NLRRZQ7)",
+   "plastic/feedstock_invoices:INV-7E5CUEDF8 (28 May 2024, 1 t from COL-H1VEE70)",
+   "plastic/feedstock_invoices:INV-DTIZGQ8O8 (30 May 2024, 6 t from COL-GM09I4U)",
+   "plastic/feedstock_invoices:INV-2RS4O5ISB (02 Jun 2024, 4.3 t from COL-NLRRZQ7)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-GM09I4U (562 t supplied; declared capacity 37 t/month; 1 vehicles; registered Jan 2024)",
+   "plastic/collectors:COL-NLRRZQ7 (436 t supplied; declared capacity 19 t/month; 1 vehicles; registered Feb 2024)",
+   "plastic/collectors:COL-2PE5KP1 (238 t supplied; declared capacity 162 t/month; 1 vehicles; registered Mar 2016)",
+   "plastic/collectors:COL-B38V7SC (234 t supplied; declared capacity 234 t/month; 3 vehicles; registered Sep 2017)",
+   "plastic/collectors:COL-BWQT97A (181 t supplied; declared capacity 240 t/month; 5 vehicles; registered Mar 2018)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-DGGGQ05 (1,092 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-A0V4DUT (323 t bought)",
+   "plastic/offtakers:OFT-3UU85MM (263 t bought)",
+   "plastic/offtakers:OFT-2BXEV92 (200 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 0, director 5, photos 0)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-NNG8THGT2 (CAT_IV, Rs 654/t to PIBO-FXE27LL)",
+   "plastic/certificate_sales:SALE-54RBFX3H7 (CAT_IV, Rs 654/t to PIBO-FXE27LL)",
+   "plastic/certificate_sales:SALE-EY41YB7OJ (CAT_IV, Rs 654/t to PIBO-FXE27LL)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-D8CW81F Star Personal Care Pvt Ltd (397 t)",
+  "PIBO-R1DINPS Shri Consumer Products Ltd (350 t)",
+  "PIBO-6ZPOGE1 Krishna Retail Pvt Ltd (172 t)",
+  "PIBO-K55FXEF Krishna Beverages Pvt Ltd (165 t)",
+  "PIBO-7GFUOAK Pragati Personal Care & Co (131 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 60
+}

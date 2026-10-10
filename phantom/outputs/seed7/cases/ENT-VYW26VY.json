@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-VYW26VY",
+ "profile": {
+  "name": "Vasundhara Everest Polytech",
+  "state": "Madhya Pradesh",
+  "district": "Bhopal",
+  "declared_capacity_tpa": 9070.0,
+  "connected_load_kw": 415.0,
+  "epr_registered": "2023-10-30"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6461,
+  "dominant_score": 4.3212,
+  "ens_score": 0.9873,
+  "ens_pct": 0.9908
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 203% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "73% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "62% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.37x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "48% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 1.0,
+   "population_percentile": 99.0,
+   "shap": -0.2745
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.3667,
+   "population_percentile": 88.8,
+   "shap": -0.27
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 1.0,
+   "population_percentile": 91.9,
+   "shap": -0.2665
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.2636
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-21MZMAJ1 (Feb 2025: 149,759 kWh for 2,045.9 t claimed)",
+   "plastic/electricity_bills:BILL-LKO2GQZJ (Mar 2025: 149,053 kWh for 1,833.5 t claimed)",
+   "plastic/electricity_bills:BILL-OVF33MT2 (Feb 2024: 148,006 kWh for 824.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-6V3L7QD74 (03 Oct 2023, 10 t from COL-AN922Z3)",
+   "plastic/feedstock_invoices:INV-CCN6BIES5 (04 Oct 2023, 4 t from COL-A5TJLH0)",
+   "plastic/feedstock_invoices:INV-150YA1YE1 (08 Oct 2023, 7 t from COL-DE6SVZZ)",
+   "plastic/feedstock_invoices:INV-JZRFY6A4H (18 Oct 2023, 6 t from COL-NNTKXZY)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-NNTKXZY (2,633 t supplied; declared capacity 19 t/month; 2 vehicles; registered Jun 2023)",
+   "plastic/collectors:COL-AN922Z3 (2,277 t supplied; declared capacity 34 t/month; 1 vehicles; registered May 2023)",
+   "plastic/collectors:COL-058OWDV (2,271 t supplied; declared capacity 20 t/month; 1 vehicles; registered Aug 2023)",
+   "plastic/collectors:COL-1HNB8H7 (1,581 t supplied; declared capacity 12 t/month; 2 vehicles; registered Aug 2023)",
+   "plastic/collectors:COL-DE6SVZZ (1,571 t supplied; declared capacity 19 t/month; 1 vehicles; registered Sep 2023)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 1, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-3W3F8OOWG (CAT_IV, Rs 478/t to PIBO-NM7WVXJ)",
+   "plastic/certificate_sales:SALE-3LPLZIGTE (CAT_IV, Rs 480/t to PIBO-F5NB9JB)",
+   "plastic/certificate_sales:SALE-FJXSRKW9C (CAT_IV, Rs 481/t to PIBO-Y1F3E2Q)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-N6VA5XX Himalaya Navjeevan Home Care LLP (1,816 t)",
+  "PIBO-RJXD4NO Pragati Pharma Pvt Ltd (1,259 t)",
+  "PIBO-4YRXDU1 Unity Navjeevan Snacks Pvt Ltd (714 t)",
+  "PIBO-U08T2P6 Durga Personal Care Pvt Ltd (608 t)",
+  "PIBO-YOOXIKG Eastern Retail Pvt Ltd (537 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 24
+}

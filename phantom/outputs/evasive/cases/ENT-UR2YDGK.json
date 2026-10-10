@@ -1,0 +1,121 @@
+{
+ "entity_id": "ENT-UR2YDGK",
+ "profile": {
+  "name": "Earth Galaxy Granules Pvt Ltd",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 3550.0,
+  "connected_load_kw": 102.0,
+  "epr_registered": "2024-03-10"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6255,
+  "dominant_score": 2.9197,
+  "ens_score": 0.9849,
+  "ens_pct": 0.9892
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 321% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 13% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 96% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "81% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "78% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "60% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 2.0,
+   "population_percentile": 98.7,
+   "shap": -0.3436
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3233
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8057,
+   "population_percentile": 99.4,
+   "shap": -0.2914
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2131
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-MVJ8TIDK (Mar 2026: 342,170 kWh for 761.1 t claimed)",
+   "plastic/electricity_bills:BILL-V02SGCH6 (Jan 2025: 304,554 kWh for 669.9 t claimed)",
+   "plastic/electricity_bills:BILL-XE5NZYM2 (Oct 2025: 297,576 kWh for 651.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-JWG2L8QLS (01 Mar 2024, 2.5 t from COL-TUM5ZSK)",
+   "plastic/feedstock_invoices:INV-OIX02ZKXA (01 Mar 2024, 11 t from COL-84BI67N)",
+   "plastic/feedstock_invoices:INV-VPMRYPPXV (01 Mar 2024, 6 t from COL-UCVLZQ3)",
+   "plastic/feedstock_invoices:INV-3RAA61PSW (02 Mar 2024, 3 t from COL-MDS9LE9)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-OL5XRA9 (5,094 t supplied; declared capacity 14 t/month; 1 vehicles; registered Jan 2024)",
+   "plastic/collectors:COL-UCVLZQ3 (3,688 t supplied; declared capacity 20 t/month; 1 vehicles; registered Nov 2023)",
+   "plastic/collectors:COL-CHGN4HL (1,844 t supplied; declared capacity 23 t/month; 2 vehicles; registered Dec 2023)",
+   "plastic/collectors:COL-84BI67N (888 t supplied; declared capacity 25 t/month; 2 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-P5PO6GM (716 t supplied; declared capacity 1310 t/month; 6 vehicles; registered Mar 2015)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-Z7MAOMO Bharat Dairy (1,994 t)",
+  "PIBO-7TSKP9M Maa Consumer Products & Co (526 t)",
+  "PIBO-0JFIJ1V Jai Consumer Products (391 t)",
+  "PIBO-9KX32AX Deccan Sterling Personal Care (307 t)",
+  "PIBO-3HZHH8Z Durga Sahyadri Snacks & Co (299 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 28
+}

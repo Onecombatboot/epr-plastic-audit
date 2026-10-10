@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-ANBJ600",
+ "profile": {
+  "name": "Krishna Polymers",
+  "state": "Rajasthan",
+  "district": "Jodhpur",
+  "declared_capacity_tpa": 370.0,
+  "connected_load_kw": 20.0,
+  "epr_registered": "2025-04-29"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6423,
+  "dominant_score": 2.4542,
+  "ens_score": 0.981,
+  "ens_pct": 0.9868
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 256% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.20x the minimum needed for the tonnes claimed (61 kWh/t against at least 300)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "50% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 10% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3285
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 1.0,
+   "population_percentile": 98.0,
+   "shap": -0.2679
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.2668
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 1.0,
+   "population_percentile": 99.5,
+   "shap": -0.2453
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-A6TMDHHV (Mar 2026: 6,435 kWh for 109.4 t claimed)",
+   "plastic/electricity_bills:BILL-7R2B2S0W (Sep 2025: 4,983 kWh for 84.7 t claimed)",
+   "plastic/electricity_bills:BILL-A4M05WAI (Aug 2025: 4,749 kWh for 80.2 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-T9HIUTOXF (16 Apr 2025, 4 t from COL-1IYT5AR)",
+   "plastic/feedstock_invoices:INV-LS9HF7QUZ (20 Apr 2025, 3 t from COL-E0II04J)",
+   "plastic/feedstock_invoices:INV-7ZOO8OUUL (21 Apr 2025, 9 t from COL-ETR94LK)",
+   "plastic/feedstock_invoices:INV-AZQ8BC02N (25 Apr 2025, 5 t from COL-4HRWTFC)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-ETR94LK (300 t supplied; declared capacity 10 t/month; 2 vehicles; registered Nov 2024)",
+   "plastic/collectors:COL-4HRWTFC (177 t supplied; declared capacity 22 t/month; 2 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-1IYT5AR (154 t supplied; declared capacity 33 t/month; 2 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-I16OFAO (132 t supplied; declared capacity 36 t/month; 2 vehicles; registered Apr 2025)",
+   "plastic/collectors:COL-JQU1SYV (91 t supplied; declared capacity 7 t/month; 2 vehicles; registered Dec 2024)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-QTLXZQV (66 t bought)",
+   "plastic/offtakers:OFT-HYGVA9Y (12 t bought)",
+   "plastic/offtakers:OFT-1IIQP5L (5 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-5XVDB2U Earth Vasundhara FMCG LLP (264 t)",
+  "PIBO-6XFOBOZ Balaji Personal Care Pvt Ltd (172 t)",
+  "PIBO-BYDV06T Sai Beverages Pvt Ltd (135 t)",
+  "PIBO-0L72IR4 Om Green Foods & Co (68 t)",
+  "PIBO-39NGXNL Prakriti FMCG Ltd (59 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 34
+}

@@ -1,0 +1,6 @@
+# Synthetic data generators (python -m synthdata.generate_all / synthdata.validate)
+numpy>=2.0
+pandas>=2.2
+pyarrow>=15
+PyYAML>=6.0
+networkx>=3.2

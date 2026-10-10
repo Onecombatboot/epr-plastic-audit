@@ -1,0 +1,122 @@
+{
+ "entity_id": "ENT-MPHRCLC",
+ "profile": {
+  "name": "Himalaya Poly Industries",
+  "state": "Telangana",
+  "district": "Medchal",
+  "declared_capacity_tpa": 2000.0,
+  "connected_load_kw": 374.0,
+  "epr_registered": "2025-11-23"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6399,
+  "dominant_score": 3.1375,
+  "ens_score": 0.9745,
+  "ens_pct": 0.9816
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (34% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 40% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "65% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "65% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.464,
+   "text": "84% of certificate tonnes were sold below the cost of recycling (average 0.88x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.3426,
+   "population_percentile": 99.6,
+   "shap": -0.3421
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3345
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3315
+  },
+  {
+   "feature": "net_recycler_in_degree",
+   "label": "net_recycler_in_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3089
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-0H66WAKM (Mar 2026: 95,106 kWh for 320.9 t claimed)",
+   "plastic/electricity_bills:BILL-AF0ANHBS (Feb 2026: 87,558 kWh for 290.7 t claimed)",
+   "plastic/electricity_bills:BILL-LUAMT8QL (Jan 2026: 74,331 kWh for 124.1 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 543 t of 832 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-1UR0PRL (291 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 7, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-00NJTJ0PA (CAT_IV, Rs 1,292/t to PIBO-05R1RU2)",
+   "plastic/certificate_sales:SALE-P4JJJJ1VO (CAT_IV, Rs 1,292/t to PIBO-05R1RU2)",
+   "plastic/certificate_sales:SALE-BA9BG8Q9M (CAT_IV, Rs 1,292/t to PIBO-05R1RU2)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-7IULV55 Navjeevan Supreme Home Care Pvt Ltd (627 t)",
+  "PIBO-O2LXYFP Vasundhara Shri Retail (44 t)",
+  "PIBO-6FIDQP5 Supreme Personal Care Pvt Ltd (34 t)",
+  "PIBO-BUB0GR3 Shri Retail LLP (20 t)",
+  "PIBO-7OA75GO Southern Dairy Pvt Ltd (18 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 47
+}

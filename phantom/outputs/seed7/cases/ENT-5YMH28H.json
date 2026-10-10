@@ -1,0 +1,130 @@
+{
+ "entity_id": "ENT-5YMH28H",
+ "profile": {
+  "name": "Sanjeevani Ganesh Granules Pvt Ltd",
+  "state": "Maharashtra",
+  "district": "Thane",
+  "declared_capacity_tpa": 670.0,
+  "connected_load_kw": 147.0,
+  "epr_registered": "2025-03-02"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6661,
+  "dominant_score": 7.3399,
+  "ens_score": 0.9973,
+  "ens_pct": 0.9996
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 241% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "77% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "61% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 76%, +74% versus what its process route can produce"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 16% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.283
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.2564
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.5756,
+   "population_percentile": 98.1,
+   "shap": -0.2168
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7729,
+   "population_percentile": 99.5,
+   "shap": -0.2106
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-NQFG2OJL (Mar 2026: 30,265 kWh for 861.8 t claimed)",
+   "plastic/electricity_bills:BILL-6DVRBWAZ (Feb 2026: 32,345 kWh for 825.2 t claimed)",
+   "plastic/electricity_bills:BILL-UT18OVC6 (Jan 2026: 33,157 kWh for 245.5 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-K5CJKZJBM (01 Mar 2025, 11 t from COL-SNJ4U3I)",
+   "plastic/feedstock_invoices:INV-4YK57A574 (01 Mar 2025, 3 t from COL-WYF2M2T)",
+   "plastic/feedstock_invoices:INV-0TSFLITW3 (02 Mar 2025, 2 t from COL-3GN54DJ)",
+   "plastic/feedstock_invoices:INV-8KYG38XE2 (08 Mar 2025, 15 t from COL-3GN54DJ)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-3GN54DJ (931 t supplied; declared capacity 9 t/month; 2 vehicles; registered Sep 2024)",
+   "plastic/collectors:COL-SNJ4U3I (401 t supplied; declared capacity 10 t/month; 1 vehicles; registered Jan 2025)",
+   "plastic/collectors:COL-VMZZANU (354 t supplied; declared capacity 31 t/month; 2 vehicles; registered Feb 2025)",
+   "plastic/collectors:COL-Z8QGQ3B (191 t supplied; declared capacity 7 t/month; 2 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-NUM2NAJ (139 t supplied; declared capacity 36 t/month; 1 vehicles; registered Dec 2024)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 1,538 t of 2,692 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-IM0COYO (117 t bought)",
+   "plastic/offtakers:OFT-C0IY289 (62 t bought)",
+   "plastic/offtakers:OFT-76LE8L8 (54 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-LGMSJFY Royal Snacks & Co (389 t)",
+  "PIBO-4UALU3R Sahyadri Pharma Pvt Ltd (295 t)",
+  "PIBO-TT6P1P1 Royal Ganesh Retail Pvt Ltd (253 t)",
+  "PIBO-R0ZAZVU Jai Snacks (241 t)",
+  "PIBO-M9Q30A1 Balaji Personal Care LLP (228 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 2
+}

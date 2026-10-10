@@ -1,0 +1,117 @@
+{
+ "entity_id": "ENT-3FPG3SW",
+ "profile": {
+  "name": "Bharat Sanjeevani Polymers LLP",
+  "state": "Gujarat",
+  "district": "Rajkot",
+  "declared_capacity_tpa": 970.0,
+  "connected_load_kw": 73.0,
+  "epr_registered": "2025-09-20"
+ },
+ "scores": {
+  "rule_score": 0.9975,
+  "iforest_score": 0.6013,
+  "dominant_score": 2.9059,
+  "ens_score": 0.9568,
+  "ens_pct": 0.966
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 86% of months"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.74x the cost floor)"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.45,
+   "text": "In 100% of billed months the units consumed cannot support the tonnes claimed"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.443,
+   "text": "Electricity bought is only 0.61x the minimum needed for the tonnes claimed (184 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.319,
+   "text": "Sold products equal only 53% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3762
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 99.2,
+   "shap": -0.3008
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.8571,
+   "population_percentile": 97.0,
+   "shap": -0.2675
+  },
+  {
+   "feature": "out_to_expected",
+   "label": "sold products vs expected output",
+   "value": 0.5264,
+   "population_percentile": 1.4,
+   "shap": -0.1813
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-LL3W8ZGU (Mar 2026: 25,035 kWh for 145.7 t claimed)",
+   "plastic/electricity_bills:BILL-AUL2VK6X (Dec 2025: 22,787 kWh for 128.2 t claimed)",
+   "plastic/electricity_bills:BILL-19Z9E6VA (Feb 2026: 26,498 kWh for 146.1 t claimed)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-HZR1FB8 (139 t bought)",
+   "plastic/offtakers:OFT-FJF65HY (88 t bought)",
+   "plastic/offtakers:OFT-EKG4EDR (50 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-Q3TYB8UZZ (CAT_IV, Rs 1,155/t to PIBO-G04VVEA)",
+   "plastic/certificate_sales:SALE-0ECQ2OGTH (CAT_IV, Rs 1,155/t to PIBO-G04VVEA)",
+   "plastic/certificate_sales:SALE-6JUWJPWSL (CAT_IV, Rs 1,155/t to PIBO-G04VVEA)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-8V9COLO Prime Sanjeevani Foods Pvt Ltd (500 t)",
+  "PIBO-QPUEUE1 Navjeevan Foods LLP (224 t)",
+  "PIBO-RTE5U0V Pragati Ganesh Retail LLP (22 t)",
+  "PIBO-Q3HU7ZE Ganesh FMCG Pvt Ltd (18 t)",
+  "PIBO-U4LJZDC Amrit Hind FMCG & Co (5 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 86
+}

@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-OQJAMK9",
+ "profile": {
+  "name": "Deccan Sai Recyclers",
+  "state": "Gujarat",
+  "district": "Morbi",
+  "declared_capacity_tpa": 3330.0,
+  "connected_load_kw": 164.0,
+  "epr_registered": "2024-08-11"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6245,
+  "dominant_score": 1.9791,
+  "ens_score": 0.9744,
+  "ens_pct": 0.9792
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 28% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 85% of months"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "59% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.691,
+   "text": "53% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.76x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "49% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3528
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 1.0,
+   "population_percentile": 98.2,
+   "shap": -0.3182
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.532,
+   "population_percentile": 97.9,
+   "shap": -0.2768
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 1.0,
+   "population_percentile": 98.0,
+   "shap": -0.2611
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-SMQ5CJIX (Nov 2025: 212,419 kWh for 363.5 t claimed)",
+   "plastic/electricity_bills:BILL-ZC0UD21L (Apr 2025: 220,714 kWh for 374.3 t claimed)",
+   "plastic/electricity_bills:BILL-9OO0P59I (May 2025: 190,403 kWh for 317.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-WUFQ60JDP (06 Aug 2024, 8 t from COL-2C7WU6D)",
+   "plastic/feedstock_invoices:INV-F5NUYM91B (09 Aug 2024, 3 t from COL-WAXAYW3)",
+   "plastic/feedstock_invoices:INV-AD7AA6UDE (10 Aug 2024, 5 t from COL-0YY7IWQ)",
+   "plastic/feedstock_invoices:INV-COTY43B6J (15 Aug 2024, 7 t from COL-0YY7IWQ)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-0YY7IWQ (1,974 t supplied; declared capacity 39 t/month; 1 vehicles; registered May 2024)",
+   "plastic/collectors:COL-QR97Q0N (858 t supplied; declared capacity 21 t/month; 1 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-G8L79BW (466 t supplied; declared capacity 59 t/month; 4 vehicles; registered Dec 2020)",
+   "plastic/collectors:COL-P1OE6MK (450 t supplied; declared capacity 34 t/month; 1 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-2C7WU6D (406 t supplied; declared capacity 15 t/month; 2 vehicles; registered Jun 2024)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-I3W284HBM (CAT_IV, Rs 1,054/t to PIBO-53GE8KU)",
+   "plastic/certificate_sales:SALE-Z49UZR2A5 (CAT_IV, Rs 1,056/t to PIBO-YYOFJZ4)",
+   "plastic/certificate_sales:SALE-ZI8UYBR3J (CAT_IV, Rs 1,057/t to PIBO-E62X4KG)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-C8CZ1DQ Navjeevan Retail LLP (1,289 t)",
+  "PIBO-J5IAAE2 Jai Eco FMCG Pvt Ltd (392 t)",
+  "PIBO-36JTQSA Earth Metro Personal Care Pvt Ltd (383 t)",
+  "PIBO-IPR9N35 Apex Retail LLP (282 t)",
+  "PIBO-EA825TR Sanjeevani Home Care Pvt Ltd (264 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 53
+}

@@ -1,0 +1,133 @@
+{
+ "entity_id": "ENT-M6MCYTG",
+ "profile": {
+  "name": "Everest Maa Poly Industries",
+  "state": "Karnataka",
+  "district": "Belagavi",
+  "declared_capacity_tpa": 1950.0,
+  "connected_load_kw": 312.0,
+  "epr_registered": "2025-11-07"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.651,
+  "dominant_score": 3.1942,
+  "ens_score": 0.9855,
+  "ens_pct": 0.9902
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 60% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "71% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 56%, +54% versus what its process route can produce"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "47% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.24x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.2996
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.6,
+   "population_percentile": 87.8,
+   "shap": -0.2374
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7142,
+   "population_percentile": 99.0,
+   "shap": -0.2107
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.6,
+   "population_percentile": 97.7,
+   "shap": -0.2023
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-H1BMGCQ8 (Feb 2026: 118,494 kWh for 633.3 t claimed)",
+   "plastic/electricity_bills:BILL-2GVSKC87 (Jan 2026: 88,603 kWh for 271.4 t claimed)",
+   "plastic/electricity_bills:BILL-VK6L1UIK (Dec 2025: 62,574 kWh for 93.8 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-UBLA6HLEV (03 Nov 2025, 7 t from COL-RUKUHPF)",
+   "plastic/feedstock_invoices:INV-G8IF7GMJP (12 Nov 2025, 4 t from COL-RHAZA29)",
+   "plastic/feedstock_invoices:INV-PTXE7NQO1 (23 Nov 2025, 5.99 t from COL-Z3MH0QC)",
+   "plastic/feedstock_invoices:INV-OA6HL3I9Z (23 Nov 2025, 5 t from COL-7ESEGU0)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-RUKUHPF (361 t supplied; declared capacity 24 t/month; 1 vehicles; registered Oct 2025)",
+   "plastic/collectors:COL-7VYNNE9 (262 t supplied; declared capacity 27 t/month; 1 vehicles; registered Nov 2025)",
+   "plastic/collectors:COL-7ESEGU0 (237 t supplied; declared capacity 19 t/month; 2 vehicles; registered Aug 2025)",
+   "plastic/collectors:COL-RHAZA29 (192 t supplied; declared capacity 17 t/month; 2 vehicles; registered May 2025)",
+   "plastic/collectors:COL-VPZVJII (140 t supplied; declared capacity 34 t/month; 2 vehicles; registered Jul 2025)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 1,295 t of 1,742 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 2, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-DV9X9OSOU (CAT_IV, Rs 350/t to PIBO-8TXPGZU)",
+   "plastic/certificate_sales:SALE-09P20XS9Y (CAT_IV, Rs 353/t to PIBO-F701CTA)",
+   "plastic/certificate_sales:SALE-7EISDBB2Y (CAT_IV, Rs 354/t to PIBO-MVZQ7YS)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-CBLVWXO Ganesh Pharma Pvt Ltd (220 t)",
+  "PIBO-CHICC3X Krishna Retail Pvt Ltd (146 t)",
+  "PIBO-9R5JHSA Pragati Prime Consumer Products Pvt Ltd (103 t)",
+  "PIBO-584OB1R Shri Hind Retail (90 t)",
+  "PIBO-4WJO6FA Southern Amrit Beverages Pvt Ltd (90 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 25
+}

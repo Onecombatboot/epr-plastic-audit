@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-U4M62T0",
+ "profile": {
+  "name": "Durga Sai Plastics LLP",
+  "state": "Gujarat",
+  "district": "Morbi",
+  "declared_capacity_tpa": 6890.0,
+  "connected_load_kw": 569.0,
+  "epr_registered": "2023-10-26"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6576,
+  "dominant_score": 4.5375,
+  "ens_score": 0.9885,
+  "ens_pct": 0.9916
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 97% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.76,
+   "text": "57% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "52% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.636,
+   "text": "Electricity bought is only 0.44x the minimum needed for the tonnes claimed (133 kWh/t against at least 300)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.521,
+   "text": "36% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2987,
+   "population_percentile": 99.8,
+   "shap": -0.3505
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 1.0,
+   "population_percentile": 98.2,
+   "shap": -0.3398
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 99.3,
+   "shap": -0.3326
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5749,
+   "population_percentile": 98.2,
+   "shap": -0.3188
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-3TIRFNXB (Mar 2025: 168,715 kWh for 1,357.6 t claimed)",
+   "plastic/electricity_bills:BILL-YQ924XI2 (Oct 2025: 167,099 kWh for 1,320.4 t claimed)",
+   "plastic/electricity_bills:BILL-SIY8UHXP (Nov 2024: 170,656 kWh for 1,342.0 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-FYSXNVALJ (04 Oct 2023, 13 t from ENT-YZBULQH)",
+   "plastic/feedstock_invoices:INV-OJ6LTS4QS (08 Oct 2023, 10 t from COL-P9B5ACK)",
+   "plastic/feedstock_invoices:INV-82J4SJ5X0 (08 Oct 2023, 7 t from COL-PS6NEOY)",
+   "plastic/feedstock_invoices:INV-2N93SQ7MN (12 Oct 2023, 9 t from COL-AZWXBS7)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-ATLMB9R (3,275 t supplied; declared capacity 30 t/month; 1 vehicles; registered Jul 2023)",
+   "plastic/collectors:COL-06ONW13 (3,271 t supplied; declared capacity 13 t/month; 1 vehicles; registered Jun 2023)",
+   "plastic/collectors:COL-AZWXBS7 (2,618 t supplied; declared capacity 36 t/month; 2 vehicles; registered Jun 2023)",
+   "plastic/collectors:COL-PS6NEOY (1,803 t supplied; declared capacity 38 t/month; 1 vehicles; registered Jul 2023)",
+   "plastic/collectors:COL-5OB50MO (1,312 t supplied; declared capacity 126 t/month; 3 vehicles; registered Jan 2020)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 0, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-12JWBJ3 Sanjeevani Royal Beverages LLP (1,690 t)",
+  "PIBO-SRT7RV9 Jai Dairy & Co (996 t)",
+  "PIBO-LYSZW20 Eco Consumer Products Pvt Ltd (425 t)",
+  "PIBO-Q1XIFOM Global Home Care Pvt Ltd (380 t)",
+  "PIBO-CRB9NGG Eastern Hind FMCG (350 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 22
+}

@@ -1,0 +1,116 @@
+{
+ "entity_id": "ENT-9Y32ZJM",
+ "profile": {
+  "name": "Krishna Granules Pvt Ltd",
+  "state": "Andhra Pradesh",
+  "district": "Tirupati",
+  "declared_capacity_tpa": 2050.0,
+  "connected_load_kw": 28.0,
+  "epr_registered": "2023-06-28"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.612,
+  "dominant_score": 3.4462,
+  "ens_score": 0.968,
+  "ens_pct": 0.9744
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.846,
+   "text": "Claimed tonnage in the busiest month would need 193% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.26x the minimum needed for the tonnes claimed (77 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.672,
+   "text": "Sold products equal only 22% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.31x the cost floor)"
+  },
+  {
+   "rule": "capacity_needs_more_power",
+   "group": "energy",
+   "strength": 0.55,
+   "text": "Declared capacity of 2,050 t/yr needs about 2.9x the power the plant is connected for"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.32x the market median price"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.387
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 96.7,
+   "shap": -0.3243
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 98.9,
+   "shap": -0.3167
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 3.0,
+   "population_percentile": 99.6,
+   "shap": -0.2918
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-TZWHWR7A (May 2025: 8,055 kWh for 112.3 t claimed)",
+   "plastic/electricity_bills:BILL-XLSUZPPW (Oct 2024: 6,699 kWh for 91.5 t claimed)",
+   "plastic/electricity_bills:BILL-FR7CUQCH (Feb 2026: 7,313 kWh for 99.6 t claimed)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-1J07H3F (183 t bought)",
+   "plastic/offtakers:OFT-P2QR10Z (94 t bought)",
+   "plastic/offtakers:OFT-8TJ04UG (58 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-616DF3N1Z (CAT_IV, Rs 407/t to PIBO-A6260G3)",
+   "plastic/certificate_sales:SALE-YKO81IKDB (CAT_IV, Rs 407/t to PIBO-A6260G3)",
+   "plastic/certificate_sales:SALE-NJ4Q9XLKO (CAT_IV, Rs 407/t to PIBO-A6260G3)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-B7JGBAI Sunrise Foods Pvt Ltd (515 t)",
+  "PIBO-6P5R968 Ganesh Beverages Pvt Ltd (268 t)",
+  "PIBO-JRCKZTU Pragati Dairy (224 t)",
+  "PIBO-OTZRA0N Prime Southern Foods Pvt Ltd (208 t)",
+  "PIBO-OT7OEIV Northern Dairy & Co (113 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 65
+}

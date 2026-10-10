@@ -1,0 +1,116 @@
+{
+ "entity_id": "ENT-TJ6G8Z1",
+ "profile": {
+  "name": "Northern Plast LLP",
+  "state": "Gujarat",
+  "district": "Valsad",
+  "declared_capacity_tpa": 260.0,
+  "connected_load_kw": 21.0,
+  "epr_registered": "2025-09-12"
+ },
+ "scores": {
+  "rule_score": 0.9996,
+  "iforest_score": 0.6165,
+  "dominant_score": 1.2749,
+  "ens_score": 0.9516,
+  "ens_pct": 0.9624
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 22% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 43% of months"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.622,
+   "text": "Claimed tonnage in the busiest month would need 166% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.38x the cost floor)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "66% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "66% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.3253
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.6561,
+   "population_percentile": 99.4,
+   "shap": -0.3236
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.1534,
+   "population_percentile": 95.2,
+   "shap": -0.3127
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.4286,
+   "population_percentile": 95.5,
+   "shap": -0.2204
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-H1VFE41V (Feb 2026: 36,253 kWh for 84.8 t claimed)",
+   "plastic/electricity_bills:BILL-8ZTSZLRP (Mar 2026: 31,297 kWh for 68.2 t claimed)",
+   "plastic/electricity_bills:BILL-SO3U3IP7 (Nov 2025: 6,881 kWh for 14.5 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 161 t of 245 t generated)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-RR8OSEIG2 (CAT_IV, Rs 569/t to PIBO-YQUA4B9)",
+   "plastic/certificate_sales:SALE-7O3PDVQRI (CAT_IV, Rs 569/t to PIBO-YQUA4B9)",
+   "plastic/certificate_sales:SALE-L3F6YHNU9 (CAT_IV, Rs 569/t to PIBO-YQUA4B9)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-VD1TJDT Prime Global Personal Care Pvt Ltd (132 t)",
+  "PIBO-81PNHD9 Everest Pharma Pvt Ltd (43 t)",
+  "PIBO-K9C4XTE Southern FMCG & Co (19 t)",
+  "PIBO-UIOKPR8 Sahyadri Consumer Products LLP (16 t)",
+  "PIBO-MTVNZG9 Western Consumer Products (11 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 95
+}

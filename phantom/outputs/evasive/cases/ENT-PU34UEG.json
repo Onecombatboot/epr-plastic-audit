@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-PU34UEG",
+ "profile": {
+  "name": "Maa Plast LLP",
+  "state": "Haryana",
+  "district": "Panipat",
+  "declared_capacity_tpa": 8530.0,
+  "connected_load_kw": 928.0,
+  "epr_registered": "2023-05-27"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6253,
+  "dominant_score": 3.0626,
+  "ens_score": 0.9795,
+  "ens_pct": 0.9836
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 25% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 91% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "73% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "65% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "51% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.596,
+   "text": "Sold products equal only 29% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3677
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.3305
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7334,
+   "population_percentile": 98.9,
+   "shap": -0.3178
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2409
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-CCSYIIUJ (Oct 2025: 1,027,025 kWh for 1,667.8 t claimed)",
+   "plastic/electricity_bills:BILL-VYL89WDK (Jan 2025: 791,205 kWh for 1,279.5 t claimed)",
+   "plastic/electricity_bills:BILL-HPVHBFEL (Jul 2024: 817,770 kWh for 1,315.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-MBSVGQFFU (01 May 2023, 21 t from COL-XJKPSLZ)",
+   "plastic/feedstock_invoices:INV-J34HUGWW4 (01 May 2023, 10 t from COL-IFTSO5C)",
+   "plastic/feedstock_invoices:INV-ITOPWPFVD (01 May 2023, 7 t from COL-XGPVLPL)",
+   "plastic/feedstock_invoices:INV-P3MXGDW0P (03 May 2023, 15 t from COL-XJKPSLZ)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-IFTSO5C (15,097 t supplied; declared capacity 32 t/month; 1 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-XJKPSLZ (5,215 t supplied; declared capacity 27 t/month; 1 vehicles; registered Jan 2023)",
+   "plastic/collectors:COL-FG571YI (4,190 t supplied; declared capacity 12 t/month; 1 vehicles; registered Apr 2023)",
+   "plastic/collectors:COL-QACC4MM (3,405 t supplied; declared capacity 35 t/month; 1 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-4CT6GLY (3,169 t supplied; declared capacity 39 t/month; 2 vehicles; registered Mar 2023)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-SG2OJNV (4,997 t bought)",
+   "plastic/offtakers:OFT-T2BK49K (4,805 t bought)",
+   "plastic/offtakers:OFT-6T9BKIT (28 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-12JWBJ3 Sanjeevani Royal Beverages LLP (5,315 t)",
+  "PIBO-36JTQSA Earth Metro Personal Care Pvt Ltd (1,905 t)",
+  "PIBO-T4ZMN0T Western Dairy LLP (1,295 t)",
+  "PIBO-ONQTS59 Sai Laxmi FMCG LLP (1,042 t)",
+  "PIBO-1W9L7RH Royal FMCG Pvt Ltd (970 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 42
+}

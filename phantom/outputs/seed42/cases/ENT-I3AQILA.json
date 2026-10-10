@@ -1,0 +1,133 @@
+{
+ "entity_id": "ENT-I3AQILA",
+ "profile": {
+  "name": "Ganesh Enviro Recycling LLP",
+  "state": "Gujarat",
+  "district": "Bharuch",
+  "declared_capacity_tpa": 4200.0,
+  "connected_load_kw": 288.0,
+  "epr_registered": "2025-07-11"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6236,
+  "dominant_score": 1.3601,
+  "ens_score": 0.9586,
+  "ens_pct": 0.9652
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 221% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 44% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "64% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.54x the cost floor)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "93% of all certificates were generated in a single month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6383,
+   "population_percentile": 98.8,
+   "shap": -0.2947
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.4444,
+   "population_percentile": 97.4,
+   "shap": -0.2763
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 2.0,
+   "population_percentile": 93.5,
+   "shap": -0.2639
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 2.0,
+   "population_percentile": 98.6,
+   "shap": -0.2599
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-UWS9P76O (Feb 2026: 97,425 kWh for 1,547.0 t claimed)",
+   "plastic/electricity_bills:BILL-GQPR078H (Mar 2026: 106,737 kWh for 1,450.4 t claimed)",
+   "plastic/electricity_bills:BILL-185W2JTB (Jan 2026: 94,343 kWh for 703.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-OZVU9853R (13 Jul 2025, 2.27 t from COL-K4OP1OS)",
+   "plastic/feedstock_invoices:INV-03XU4AVDX (20 Jul 2025, 1.97 t from COL-1Z2UJP3)",
+   "plastic/feedstock_invoices:INV-ZW3H921NA (07 Aug 2025, 2 t from COL-NNW286R)",
+   "plastic/feedstock_invoices:INV-X1K2IZ85U (24 Aug 2025, 3.72 t from COL-B9ILLW6)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-NNW286R (934 t supplied; declared capacity 95 t/month; 5 vehicles; registered Mar 2021)",
+   "plastic/collectors:COL-GL5SADF (869 t supplied; declared capacity 31 t/month; 6 vehicles; registered Sep 2019)",
+   "plastic/collectors:COL-1Z2UJP3 (425 t supplied; declared capacity 34 t/month; 5 vehicles; registered Jun 2020)",
+   "plastic/collectors:COL-745E49Y (404 t supplied; declared capacity 125 t/month; 5 vehicles; registered Jun 2021)",
+   "plastic/collectors:COL-K4OP1OS (358 t supplied; declared capacity 66 t/month; 3 vehicles; registered Apr 2022)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 4,973 t of 5,357 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 2, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-6JHNV1XHK (CAT_IV, Rs 788/t to PIBO-GCUMORG)",
+   "plastic/certificate_sales:SALE-34UT95SZJ (CAT_IV, Rs 792/t to PIBO-0315NDI)",
+   "plastic/certificate_sales:SALE-KHQG728AE (CAT_IV, Rs 792/t to PIBO-0315NDI)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-IO4SFY7 Bharat Pharma Pvt Ltd (604 t)",
+  "PIBO-A518N2Z Eco Snacks Pvt Ltd (578 t)",
+  "PIBO-ITBEEWL Sunrise FMCG Pvt Ltd (426 t)",
+  "PIBO-J6P64SO Sanjeevani Eastern FMCG LLP (322 t)",
+  "PIBO-UVUQ7WR Northern FMCG Ltd (261 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 88
+}

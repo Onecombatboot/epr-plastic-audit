@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-3D07CG8",
+ "profile": {
+  "name": "Sanjeevani Plast Pvt Ltd",
+  "state": "Haryana",
+  "district": "Sonipat",
+  "declared_capacity_tpa": 1050.0,
+  "connected_load_kw": 38.0,
+  "epr_registered": "2023-11-11"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6538,
+  "dominant_score": 1.4564,
+  "ens_score": 0.9639,
+  "ens_pct": 0.97
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (24% of its feedstock)"
+  },
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 36% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 90% of months"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.419,
+   "text": "Sold products equal only 44% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.389,
+   "text": "19% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3789
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2368,
+   "population_percentile": 99.0,
+   "shap": -0.3317
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3118
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3099
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-FVQRM64P (Mar 2024: 36,648 kWh for 100.8 t claimed)",
+   "plastic/electricity_bills:BILL-NN3CB4B7 (Oct 2024: 37,574 kWh for 103.2 t claimed)",
+   "plastic/electricity_bills:BILL-JF3DHZ3J (Nov 2025: 33,435 kWh for 91.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-1QVSSS22H (01 Nov 2023, 4 t from COL-Z455SBQ)",
+   "plastic/feedstock_invoices:INV-U8D4PSFBM (02 Nov 2023, 1 t from COL-417715K)",
+   "plastic/feedstock_invoices:INV-CW0BLR2AV (03 Nov 2023, 2 t from COL-7WUYSKP)",
+   "plastic/feedstock_invoices:INV-AXGNY42AE (05 Nov 2023, 0.89 t from COL-A5V9VZ1)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-6WYPUCC (585 t supplied; declared capacity 33 t/month; 2 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-Z455SBQ (357 t supplied; declared capacity 31 t/month; 1 vehicles; registered Sep 2023)",
+   "plastic/collectors:COL-XUNR0EI (236 t supplied; declared capacity 109 t/month; 4 vehicles; registered Jun 2022)",
+   "plastic/collectors:COL-1U4V23T (198 t supplied; declared capacity 113 t/month; 2 vehicles; registered Sep 2016)",
+   "plastic/collectors:COL-VKG3Z9U (191 t supplied; declared capacity 72 t/month; 3 vehicles; registered May 2015)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-RPGHKSP (672 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-TAEBZ98 (449 t bought)",
+   "plastic/offtakers:OFT-XTVL394 (247 t bought)",
+   "plastic/offtakers:OFT-I7QQSG4 (139 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-MZFLTOA Durga FMCG Pvt Ltd (244 t)",
+  "PIBO-9DX9OO7 Pragati Personal Care Pvt Ltd (208 t)",
+  "PIBO-4Y5Z58Q Ganesh Consumer Products (191 t)",
+  "PIBO-CTB5KH8 Om Dairy LLP (184 t)",
+  "PIBO-W01CIOX Vasundhara Beverages LLP (174 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 76
+}

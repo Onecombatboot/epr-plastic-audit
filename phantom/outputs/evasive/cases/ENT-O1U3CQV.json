@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-O1U3CQV",
+ "profile": {
+  "name": "Everest Plast Pvt Ltd",
+  "state": "Tamil Nadu",
+  "district": "Krishnagiri",
+  "declared_capacity_tpa": 400.0,
+  "connected_load_kw": 74.0,
+  "epr_registered": "2025-06-19"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6435,
+  "dominant_score": 1.8712,
+  "ens_score": 0.9766,
+  "ens_pct": 0.9808
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 26% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 90% of months"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "34% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "61% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.594,
+   "text": "Sold products equal only 29% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3642
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3407
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.3229
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 5.0,
+   "population_percentile": 99.8,
+   "shap": -0.269
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-T35JCNG1 (Jan 2026: 65,582 kWh for 93.8 t claimed)",
+   "plastic/electricity_bills:BILL-HINDOU8S (Sep 2025: 68,407 kWh for 97.6 t claimed)",
+   "plastic/electricity_bills:BILL-8R04ES4N (Oct 2025: 66,496 kWh for 93.9 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-GBHBTPCDV (08 Jun 2025, 4 t from COL-ZTCXS9U)",
+   "plastic/feedstock_invoices:INV-YSGK0ZW6X (30 Jun 2025, 4 t from COL-STDGPZF)",
+   "plastic/feedstock_invoices:INV-L4SVL59PL (30 Jun 2025, 1 t from COL-VWMGBDR)",
+   "plastic/feedstock_invoices:INV-LF5MCX0MC (30 Jun 2025, 11 t from COL-FI0932F)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-FI0932F (320 t supplied; declared capacity 36 t/month; 2 vehicles; registered Feb 2025)",
+   "plastic/collectors:COL-STDGPZF (125 t supplied; declared capacity 32 t/month; 2 vehicles; registered Jan 2025)",
+   "plastic/collectors:COL-ZTCXS9U (119 t supplied; declared capacity 36 t/month; 1 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-VWMGBDR (34 t supplied; declared capacity 34 t/month; 1 vehicles; registered Jun 2025)",
+   "plastic/collectors:COL-BE7SFXR (27 t supplied; declared capacity 11 t/month; 5 vehicles; registered May 2015)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-4YK5BVS (46 t bought)",
+   "plastic/offtakers:OFT-6LQ4OD3 (35 t bought)",
+   "plastic/offtakers:OFT-ZCE89CD (34 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 1, director 5, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-Q7WRFV0 Maa Galaxy FMCG Pvt Ltd (245 t)",
+  "PIBO-VTNN4VD Krishna Beverages Pvt Ltd (151 t)",
+  "PIBO-9011062 Southern Green Home Care Pvt Ltd (92 t)",
+  "PIBO-KB7WNFA Royal Beverages Pvt Ltd (55 t)",
+  "PIBO-GJX23QW Bharat Prime Consumer Products & Co (28 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 49
+}

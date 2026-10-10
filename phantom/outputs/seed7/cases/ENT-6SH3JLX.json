@@ -1,0 +1,130 @@
+{
+ "entity_id": "ENT-6SH3JLX",
+ "profile": {
+  "name": "Eco Plastics Pvt Ltd",
+  "state": "Maharashtra",
+  "district": "Thane",
+  "declared_capacity_tpa": 1580.0,
+  "connected_load_kw": 287.0,
+  "epr_registered": "2025-01-12"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6423,
+  "dominant_score": 4.2764,
+  "ens_score": 0.9865,
+  "ens_pct": 0.9904
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "75% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 16% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "72% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.63,
+   "text": "Electricity bought is only 0.45x the minimum needed for the tonnes claimed (135 kWh/t against at least 300)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.3475
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3004
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7525,
+   "population_percentile": 99.5,
+   "shap": -0.2497
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 1.0,
+   "population_percentile": 99.8,
+   "shap": -0.2458
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-WMGUN4W0 (May 2025: 93,257 kWh for 724.9 t claimed)",
+   "plastic/electricity_bills:BILL-DJRBP8B8 (Apr 2025: 95,545 kWh for 741.5 t claimed)",
+   "plastic/electricity_bills:BILL-1LY307YX (Jan 2026: 97,989 kWh for 760.1 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-MFCIQ2W4D (02 Jan 2025, 14 t from COL-NTCKR6Y)",
+   "plastic/feedstock_invoices:INV-9LIEDKW8J (02 Jan 2025, 10 t from COL-O82BZDR)",
+   "plastic/feedstock_invoices:INV-BLYK4A9HH (07 Jan 2025, 10 t from COL-GP1DWYA)",
+   "plastic/feedstock_invoices:INV-QL6BKPWCR (10 Jan 2025, 7 t from COL-NTCKR6Y)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-NTCKR6Y (4,244 t supplied; declared capacity 25 t/month; 1 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-O82BZDR (1,427 t supplied; declared capacity 35 t/month; 2 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-GP1DWYA (826 t supplied; declared capacity 17 t/month; 1 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-6GZ2TI4 (561 t supplied; declared capacity 18 t/month; 2 vehicles; registered Sep 2024)",
+   "plastic/collectors:COL-EKMMK5V (481 t supplied; declared capacity 30 t/month; 1 vehicles; registered Jan 2025)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-BWCLMCR (687 t bought)",
+   "plastic/offtakers:OFT-NK3X74B (285 t bought)",
+   "plastic/offtakers:OFT-ESUF1KZ (130 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 2, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-22WF0Q6 Shri Dairy Pvt Ltd (1,428 t)",
+  "PIBO-M4XFBY2 Shri Snacks (1,085 t)",
+  "PIBO-GMJV1D2 Metro Foods Pvt Ltd (622 t)",
+  "PIBO-56POAZF Sanjeevani Beverages Pvt Ltd (551 t)",
+  "PIBO-B7JGBAI Sunrise Foods Pvt Ltd (523 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 25
+}

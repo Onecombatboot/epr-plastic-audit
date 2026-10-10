@@ -1,0 +1,123 @@
+{
+ "entity_id": "ENT-CEHKGXT",
+ "profile": {
+  "name": "Jai Recyclers Pvt Ltd",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 680.0,
+  "connected_load_kw": 52.0,
+  "epr_registered": "2025-02-26"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6588,
+  "dominant_score": 2.2235,
+  "ens_score": 0.9798,
+  "ens_pct": 0.986
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (28% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 86% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 42%, +40% versus what its process route can produce"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.37x the cost floor)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.514,
+   "text": "Electricity bought is only 0.55x the minimum needed for the tonnes claimed (165 kWh/t against at least 300)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3265
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2778,
+   "population_percentile": 99.3,
+   "shap": -0.304
+  },
+  {
+   "feature": "net_cycle_feed_share",
+   "label": "feedstock bought inside a loop",
+   "value": 0.2778,
+   "population_percentile": 99.3,
+   "shap": -0.2893
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2621
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-7I936AUG (Jan 2026: 21,511 kWh for 138.9 t claimed)",
+   "plastic/electricity_bills:BILL-CPYW80XE (Jun 2025: 19,029 kWh for 122.4 t claimed)",
+   "plastic/electricity_bills:BILL-AJXNJDMJ (Nov 2025: 19,064 kWh for 119.5 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-03: 163 t of 1,426 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-7GEXRLB (402 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-3KQ2GADQ6 (CAT_II, Rs 1,007/t to PIBO-011I1QI)",
+   "plastic/certificate_sales:SALE-FINCGYS5Y (CAT_II, Rs 1,013/t to PIBO-F843R7W)",
+   "plastic/certificate_sales:SALE-6WKE1LGTD (CAT_II, Rs 1,013/t to PIBO-F843R7W)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-9H0FKDT Sai Shree Snacks Ltd (162 t)",
+  "PIBO-8XZSJ2G Vasundhara FMCG Pvt Ltd (157 t)",
+  "PIBO-QFZ62E2 National Consumer Products (142 t)",
+  "PIBO-WF6YPTX Bharat Hind Consumer Products & Co (108 t)",
+  "PIBO-MJKIDKR Bharat Home Care Pvt Ltd (72 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 36
+}

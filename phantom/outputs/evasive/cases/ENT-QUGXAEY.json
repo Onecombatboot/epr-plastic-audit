@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-QUGXAEY",
+ "profile": {
+  "name": "Maa Poly Industries Pvt Ltd",
+  "state": "Haryana",
+  "district": "Panipat",
+  "declared_capacity_tpa": 1560.0,
+  "connected_load_kw": 16.0,
+  "epr_registered": "2025-12-01"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6202,
+  "dominant_score": 6.1383,
+  "ens_score": 0.9827,
+  "ens_pct": 0.9872
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 16% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "77% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "66% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.83x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "62% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.77,
+   "population_percentile": 99.2,
+   "shap": -0.3198
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2569
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 1.0,
+   "population_percentile": 99.5,
+   "shap": -0.2532
+  },
+  {
+   "feature": "feed_vehicle_multi",
+   "label": "vehicles reused across plants the same day",
+   "value": 0.4266,
+   "population_percentile": 99.2,
+   "shap": -0.1681
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-0KY0I0TN (Mar 2026: 28,243 kWh for 603.6 t claimed)",
+   "plastic/electricity_bills:BILL-X9N6WUE3 (Dec 2025: 8,987 kWh for 184.5 t claimed)",
+   "plastic/electricity_bills:BILL-HJ6QKKPM (Jan 2026: 14,254 kWh for 288.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-5ITKCO8JZ (02 Dec 2025, 8 t from COL-RAWND78)",
+   "plastic/feedstock_invoices:INV-BJJOCRQZI (04 Dec 2025, 9 t from COL-HFP42CQ)",
+   "plastic/feedstock_invoices:INV-2GGVRR2MA (06 Dec 2025, 9 t from COL-HFP42CQ)",
+   "plastic/feedstock_invoices:INV-DIAX9JT6X (11 Dec 2025, 8 t from COL-VKPC0TO)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-C12EANY (494 t supplied; declared capacity 7 t/month; 1 vehicles; registered Oct 2025)",
+   "plastic/collectors:COL-HFP42CQ (266 t supplied; declared capacity 21 t/month; 1 vehicles; registered Oct 2025)",
+   "plastic/collectors:COL-VKPC0TO (175 t supplied; declared capacity 26 t/month; 2 vehicles; registered Oct 2025)",
+   "plastic/collectors:COL-XZ4VYH1 (116 t supplied; declared capacity 21 t/month; 2 vehicles; registered Aug 2025)",
+   "plastic/collectors:COL-PKTS6U8 (82 t supplied; declared capacity 6 t/month; 1 vehicles; registered Sep 2025)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-S664EMLG3 (CAT_II, Rs 2,229/t to PIBO-YSIATGB)",
+   "plastic/certificate_sales:SALE-SIS0MCNGG (CAT_II, Rs 2,258/t to PIBO-SHACMMB)",
+   "plastic/certificate_sales:SALE-4OCYV9U9Z (CAT_II, Rs 2,260/t to PIBO-0BBXTHZ)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-12JWBJ3 Sanjeevani Royal Beverages LLP (215 t)",
+  "PIBO-RO77JZ9 Sterling Snacks (190 t)",
+  "PIBO-XSJ9D2N Sunrise Dairy Pvt Ltd (136 t)",
+  "PIBO-W8PMY73 Eastern Balaji FMCG (81 t)",
+  "PIBO-B62095H Metro Home Care Pvt Ltd (72 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 33
+}

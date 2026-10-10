@@ -1,0 +1,132 @@
+{
+ "entity_id": "ENT-1J8EVNA",
+ "profile": {
+  "name": "Jai Green Granules Pvt Ltd",
+  "state": "Telangana",
+  "district": "Medchal",
+  "declared_capacity_tpa": 2150.0,
+  "connected_load_kw": 241.0,
+  "epr_registered": "2025-01-06"
+ },
+ "scores": {
+  "rule_score": 0.9979,
+  "iforest_score": 0.6241,
+  "dominant_score": 2.5704,
+  "ens_score": 0.9582,
+  "ens_pct": 0.962
+ },
+ "reasons": [
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.41x the cost floor)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "61% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.533,
+   "text": "Certificates claim more than the declared monthly capacity in 20% of months"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "66% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.438,
+   "text": "37% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 1.0,
+   "population_percentile": 91.9,
+   "shap": -0.2764
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.6645,
+   "population_percentile": 98.9,
+   "shap": -0.2581
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.3737,
+   "population_percentile": 98.2,
+   "shap": -0.2578
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.2,
+   "population_percentile": 96.1,
+   "shap": -0.232
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-M89CIQNE (Mar 2026: 78,746 kWh for 543.4 t claimed)",
+   "plastic/electricity_bills:BILL-JH90U6F4 (Feb 2026: 73,039 kWh for 421.3 t claimed)",
+   "plastic/electricity_bills:BILL-RISMO103 (Jan 2026: 71,467 kWh for 236.2 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-LO4TOCGYU (03 Jan 2025, 3 t from COL-ZWJH78J)",
+   "plastic/feedstock_invoices:INV-NPCERKNA0 (17 Jan 2025, 1 t from COL-1282OB8)",
+   "plastic/feedstock_invoices:INV-VIP3KEFPV (19 Jan 2025, 1.23 t from COL-9G5T3KC)",
+   "plastic/feedstock_invoices:INV-NY476B8HB (20 Jan 2025, 3 t from COL-S77I785)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-HRC6A2J (637 t supplied; declared capacity 94 t/month; 1 vehicles; registered Jan 2022)",
+   "plastic/collectors:COL-QNIL08R (415 t supplied; declared capacity 34 t/month; 2 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-21ZPFEL (285 t supplied; declared capacity 81 t/month; 2 vehicles; registered Jan 2017)",
+   "plastic/collectors:COL-M1KNWCS (259 t supplied; declared capacity 106 t/month; 1 vehicles; registered Nov 2019)",
+   "plastic/collectors:COL-152K52U (204 t supplied; declared capacity 74 t/month; 5 vehicles; registered Jun 2019)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 1,705 t of 2,810 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 1, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-1I5RJB87K (CAT_IV, Rs 591/t to PIBO-1P8QGGV)",
+   "plastic/certificate_sales:SALE-0UZQYP1V4 (CAT_IV, Rs 610/t to PIBO-42493GE)",
+   "plastic/certificate_sales:SALE-CP27W8RV8 (CAT_IV, Rs 616/t to PIBO-JBN4OI9)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-IXMXHH1 Om FMCG LLP (259 t)",
+  "PIBO-4JVDBOY Prime FMCG & Co (189 t)",
+  "PIBO-9BUGV13 National Retail Pvt Ltd (169 t)",
+  "PIBO-0HUTOVQ Sanjeevani Dairy Pvt Ltd (169 t)",
+  "PIBO-VH49UIT Prakriti Shri Beverages Pvt Ltd (154 t)"
+ ],
+ "inspection_checklist": [
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers."
+ ],
+ "rank": 96
+}

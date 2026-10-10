@@ -1,0 +1,134 @@
+{
+ "entity_id": "ENT-4ZQUNMS",
+ "profile": {
+  "name": "Supreme Enviro Recycling & Co",
+  "state": "Delhi",
+  "district": "North West Delhi",
+  "declared_capacity_tpa": 1200.0,
+  "connected_load_kw": 89.0,
+  "epr_registered": "2024-03-21"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6314,
+  "dominant_score": 4.4406,
+  "ens_score": 0.9812,
+  "ens_pct": 0.988
+ },
+ "reasons": [
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.724,
+   "text": "Electricity bought is only 0.37x the minimum needed for the tonnes claimed (110 kWh/t against at least 300)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "42% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 57%, +55% versus what its process route can produce"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 6% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.32x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "84% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3721
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.3548
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 1.0,
+   "population_percentile": 98.5,
+   "shap": -0.3343
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 2.0,
+   "population_percentile": 98.7,
+   "shap": -0.3217
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-4SB8ZTA6 (Mar 2024: 3,463 kWh for 50.2 t claimed)",
+   "plastic/electricity_bills:BILL-XVA1T9O3 (Jul 2024: 4,497 kWh for 48.6 t claimed)",
+   "plastic/electricity_bills:BILL-WT7AKG2C (Dec 2024: 4,966 kWh for 51.4 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-4Z8O9N4WJ (08 Mar 2024, 5 t from COL-RGIZ4U5)",
+   "plastic/feedstock_invoices:INV-TY38UMOQM (09 Mar 2024, 1 t from COL-II821ZS)",
+   "plastic/feedstock_invoices:INV-S9J8XHPZN (16 Mar 2024, 10 t from COL-V7R1TL2)",
+   "plastic/feedstock_invoices:INV-QWCOODQHJ (17 Mar 2024, 0.2 t from COL-YVXN4HT)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-87K1O76 (457 t supplied; declared capacity 35 t/month; 1 vehicles; registered Nov 2023)",
+   "plastic/collectors:COL-V7R1TL2 (216 t supplied; declared capacity 36 t/month; 1 vehicles; registered Dec 2023)",
+   "plastic/collectors:COL-OH0WHPM (195 t supplied; declared capacity 11 t/month; 1 vehicles; registered Mar 2024)",
+   "plastic/collectors:COL-RGIZ4U5 (105 t supplied; declared capacity 27 t/month; 2 vehicles; registered Feb 2024)",
+   "plastic/collectors:COL-HW9KSU9 (52 t supplied; declared capacity 25 t/month; 2 vehicles; registered Dec 2023)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-01: 86 t of 1,115 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-I7R1GZP (24 t bought)",
+   "plastic/offtakers:OFT-PIRYNRE (10 t bought)",
+   "plastic/offtakers:OFT-05QF531 (8 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-AIKIJNZPO (CAT_IV, Rs 442/t to PIBO-ON4KT3M)",
+   "plastic/certificate_sales:SALE-INI7NDQNF (CAT_IV, Rs 442/t to PIBO-ON4KT3M)",
+   "plastic/certificate_sales:SALE-HGWQBLIXT (CAT_IV, Rs 442/t to PIBO-ON4KT3M)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-VD5X3K0 Himalaya Krishna FMCG & Co (198 t)",
+  "PIBO-P4DMZQ0 Eastern Foods LLP (160 t)",
+  "PIBO-ZG8GVO1 Supreme Retail LLP (114 t)",
+  "PIBO-RJXD4NO Pragati Pharma Pvt Ltd (106 t)",
+  "PIBO-D63HDKV Pioneer Home Care Pvt Ltd (82 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 31
+}

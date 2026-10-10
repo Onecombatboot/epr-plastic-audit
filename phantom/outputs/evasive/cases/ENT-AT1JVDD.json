@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-AT1JVDD",
+ "profile": {
+  "name": "Metro Polymers Pvt Ltd",
+  "state": "Delhi",
+  "district": "North West Delhi",
+  "declared_capacity_tpa": 390.0,
+  "connected_load_kw": 15.0,
+  "epr_registered": "2023-05-20"
+ },
+ "scores": {
+  "rule_score": 0.9978,
+  "iforest_score": 0.5924,
+  "dominant_score": 3.2765,
+  "ens_score": 0.9544,
+  "ens_pct": 0.9644
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 54% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 91% of months"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.59x the cost floor)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.392,
+   "text": "19% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.294,
+   "text": "Certificates sold at 0.59x the market median price"
+  },
+  {
+   "rule": "very_young_company",
+   "group": "registry",
+   "strength": 0.191,
+   "text": "Company was only 171 days old when it registered under EPR"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.3994
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.3202
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.9143,
+   "population_percentile": 97.9,
+   "shap": -0.3076
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 1.0,
+   "population_percentile": 90.4,
+   "shap": -0.2876
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-5B6SF3FZ (Mar 2026: 3,154 kWh for 52.9 t claimed)",
+   "plastic/electricity_bills:BILL-3HZJBQ8N (Oct 2025: 3,215 kWh for 53.7 t claimed)",
+   "plastic/electricity_bills:BILL-DYGN702C (Oct 2024: 3,183 kWh for 52.8 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-QGK68ECOF (12 May 2023, 1 t from COL-QG0S66Z)",
+   "plastic/feedstock_invoices:INV-UUQQ2VRA3 (13 May 2023, 2 t from COL-H3VGQ14)",
+   "plastic/feedstock_invoices:INV-QV1N5P89J (17 May 2023, 2 t from COL-K018VCA)",
+   "plastic/feedstock_invoices:INV-WULFA6FWE (26 May 2023, 0.5 t from COL-H7QAQ4J)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-6VE96QY (254 t supplied; declared capacity 87 t/month; 3 vehicles; registered Jan 2020)",
+   "plastic/collectors:COL-OB2P7YI (231 t supplied; declared capacity 29 t/month; 1 vehicles; registered Mar 2023)",
+   "plastic/collectors:COL-K018VCA (212 t supplied; declared capacity 30 t/month; 1 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-8UORRZF (186 t supplied; declared capacity 17 t/month; 1 vehicles; registered Jan 2016)",
+   "plastic/collectors:COL-H3VGQ14 (179 t supplied; declared capacity 24 t/month; 1 vehicles; registered Apr 2023)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-0A60E6M0Q (CAT_IV, Rs 752/t to PIBO-GSM8X93)",
+   "plastic/certificate_sales:SALE-PYG6Z7ZMS (CAT_IV, Rs 752/t to PIBO-GSM8X93)",
+   "plastic/certificate_sales:SALE-53NYEDK3I (CAT_IV, Rs 752/t to PIBO-GSM8X93)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-4X9NJRW Ganga Apex Snacks & Co (139 t)",
+  "PIBO-MHQU48W Maa Amrit Beverages Pvt Ltd (91 t)",
+  "PIBO-9WFL5H9 Hind Pragati Personal Care LLP (91 t)",
+  "PIBO-EI3YT27 Western Kaveri Home Care Pvt Ltd (65 t)",
+  "PIBO-IJ5EIQB Shri Retail LLP (62 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Check the company's incorporation and registration history and the source of its capital."
+ ],
+ "rank": 90
+}

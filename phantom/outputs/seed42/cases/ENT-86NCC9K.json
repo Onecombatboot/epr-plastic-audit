@@ -1,0 +1,128 @@
+{
+ "entity_id": "ENT-86NCC9K",
+ "profile": {
+  "name": "Pioneer Poly Industries Pvt Ltd",
+  "state": "Punjab",
+  "district": "Mohali",
+  "declared_capacity_tpa": 4270.0,
+  "connected_load_kw": 89.0,
+  "epr_registered": "2023-09-30"
+ },
+ "scores": {
+  "rule_score": 0.9977,
+  "iforest_score": 0.6224,
+  "dominant_score": 4.2691,
+  "ens_score": 0.9606,
+  "ens_pct": 0.9668
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 42% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.707,
+   "text": "54% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.407,
+   "text": "51% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.376,
+   "text": "18% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "very_young_company",
+   "group": "registry",
+   "strength": 0.233,
+   "text": "Company was only 128 days old when it registered under EPR"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 6.0,
+   "population_percentile": 99.9,
+   "shap": -0.3312
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.4194,
+   "population_percentile": 97.4,
+   "shap": -0.3026
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5421,
+   "population_percentile": 98.3,
+   "shap": -0.3022
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.5074,
+   "population_percentile": 96.9,
+   "shap": -0.2356
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-82N6XY4H (Mar 2025: 25,392 kWh for 1,780.7 t claimed)",
+   "plastic/electricity_bills:BILL-5TF0NX5M (Feb 2026: 30,061 kWh for 1,801.7 t claimed)",
+   "plastic/electricity_bills:BILL-LVRJ4KRK (Mar 2026: 27,283 kWh for 1,627.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-ZQPQOFLRK (06 Sep 2023, 5 t from COL-I3NX2EZ)",
+   "plastic/feedstock_invoices:INV-FJAEV0EYE (08 Sep 2023, 11 t from COL-NJX8R74)",
+   "plastic/feedstock_invoices:INV-HAMVFMN6Z (09 Sep 2023, 1 t from COL-30Y9YK4)",
+   "plastic/feedstock_invoices:INV-INKTF5YPI (09 Sep 2023, 5 t from COL-C44K9O7)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-9UKC5F4 (2,641 t supplied; declared capacity 21 t/month; 1 vehicles; registered Aug 2023)",
+   "plastic/collectors:COL-MLN6QF4 (2,488 t supplied; declared capacity 182 t/month; 1 vehicles; registered Mar 2018)",
+   "plastic/collectors:COL-NJX8R74 (2,389 t supplied; declared capacity 18 t/month; 1 vehicles; registered May 2023)",
+   "plastic/collectors:COL-TE1I45J (1,708 t supplied; declared capacity 33 t/month; 2 vehicles; registered Jul 2023)",
+   "plastic/collectors:COL-I3NX2EZ (1,146 t supplied; declared capacity 5 t/month; 2 vehicles; registered Apr 2023)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 4,148 t of 17,424 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-TWY4K33 Ganga Beverages LLP (2,870 t)",
+  "PIBO-CBLVWXO Ganesh Pharma Pvt Ltd (1,735 t)",
+  "PIBO-YLR2REC Pioneer Beverages Pvt Ltd (1,143 t)",
+  "PIBO-YKXM7FA Green Everest Dairy (573 t)",
+  "PIBO-IXPJ1M5 Unity Retail LLP (420 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Check the company's incorporation and registration history and the source of its capital."
+ ],
+ "rank": 84
+}

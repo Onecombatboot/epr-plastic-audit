@@ -1,0 +1,127 @@
+{
+ "entity_id": "ENT-43UJ4QI",
+ "profile": {
+  "name": "Sterling Recyclers & Co",
+  "state": "Kerala",
+  "district": "Ernakulam",
+  "declared_capacity_tpa": 1070.0,
+  "connected_load_kw": 54.0,
+  "epr_registered": "2024-10-01"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6344,
+  "dominant_score": 3.3619,
+  "ens_score": 0.9824,
+  "ens_pct": 0.9868
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 229% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "68% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.741,
+   "text": "Certificates claim more than the declared monthly capacity in 28% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "63% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.482,
+   "text": "43% of all certificates were generated in a single month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6793,
+   "population_percentile": 98.7,
+   "shap": -0.3256
+  },
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.3191
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.6268,
+   "population_percentile": 99.1,
+   "shap": -0.3007
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 0.2941,
+   "population_percentile": 98.2,
+   "shap": -0.271
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-CUG3PNJ9 (Feb 2026: 20,286 kWh for 300.3 t claimed)",
+   "plastic/electricity_bills:BILL-9IVZN2X9 (Mar 2026: 19,132 kWh for 266.3 t claimed)",
+   "plastic/electricity_bills:BILL-FZ9XL2TK (Mar 2025: 18,179 kWh for 153.9 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-C4SP68ZXM (15 Oct 2024, 4 t from COL-4FDN0F2)",
+   "plastic/feedstock_invoices:INV-N3TOM8MHS (30 Oct 2024, 1.5 t from COL-NA65V3S)",
+   "plastic/feedstock_invoices:INV-9K7U2U1XH (26 Nov 2024, 2 t from COL-AWHG8VJ)",
+   "plastic/feedstock_invoices:INV-7PQMSFW5W (07 Dec 2024, 4 t from COL-4FDN0F2)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-4FDN0F2 (729 t supplied; declared capacity 23 t/month; 1 vehicles; registered Oct 2024)",
+   "plastic/collectors:COL-AWHG8VJ (302 t supplied; declared capacity 8 t/month; 2 vehicles; registered May 2024)",
+   "plastic/collectors:COL-NA65V3S (85 t supplied; declared capacity 12 t/month; 3 vehicles; registered Jan 2023)",
+   "plastic/collectors:COL-O5AHUMJ (82 t supplied; declared capacity 23 t/month; 2 vehicles; registered Jun 2016)",
+   "plastic/collectors:COL-WO8KXVS (65 t supplied; declared capacity 15 t/month; 6 vehicles; registered Aug 2022)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 643 t of 1,490 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-CLOX0OK Shree Sai Retail Pvt Ltd (416 t)",
+  "PIBO-DD2ZP7S Sterling Sai Foods LLP (290 t)",
+  "PIBO-WEQPVXJ Bharat Home Care Pvt Ltd (128 t)",
+  "PIBO-CDX1T70 Royal Himalaya Home Care LLP (114 t)",
+  "PIBO-CFXXC9D Vasundhara Pharma LLP (58 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 34
+}

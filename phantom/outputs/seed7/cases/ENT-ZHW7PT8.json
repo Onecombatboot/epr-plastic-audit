@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-ZHW7PT8",
+ "profile": {
+  "name": "National Sahyadri Recyclers Pvt Ltd",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 5240.0,
+  "connected_load_kw": 690.0,
+  "epr_registered": "2025-06-14"
+ },
+ "scores": {
+  "rule_score": 0.9995,
+  "iforest_score": 0.6251,
+  "dominant_score": 3.0127,
+  "ens_score": 0.9666,
+  "ens_pct": 0.9732
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 30% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.778,
+   "text": "59% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "79% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.55x the cost floor)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "79% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.37,
+   "text": "18% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 3.0,
+   "population_percentile": 99.8,
+   "shap": -0.2722
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.7897,
+   "population_percentile": 99.9,
+   "shap": -0.27
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.586,
+   "population_percentile": 99.0,
+   "shap": -0.267
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 0.2,
+   "population_percentile": 96.9,
+   "shap": -0.2274
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-5SGUN1RT (Mar 2026: 214,162 kWh for 1,849.7 t claimed)",
+   "plastic/electricity_bills:BILL-LP61OC1D (Feb 2026: 228,535 kWh for 1,489.6 t claimed)",
+   "plastic/electricity_bills:BILL-R6R7A31U (Jan 2026: 255,954 kWh for 951.8 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-N1J9SM7U9 (15 Jun 2025, 7 t from COL-XWOSGCQ)",
+   "plastic/feedstock_invoices:INV-KZ7HV1250 (22 Jun 2025, 1.08 t from COL-W5MLEBL)",
+   "plastic/feedstock_invoices:INV-744N81G2H (22 Jun 2025, 9 t from COL-PG1K0E6)",
+   "plastic/feedstock_invoices:INV-D6Y57GDRD (23 Jun 2025, 9 t from COL-PG1K0E6)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-PG1K0E6 (1,910 t supplied; declared capacity 12 t/month; 2 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-XWOSGCQ (1,666 t supplied; declared capacity 8 t/month; 2 vehicles; registered Dec 2024)",
+   "plastic/collectors:COL-CPDOGUW (518 t supplied; declared capacity 157 t/month; 4 vehicles; registered Dec 2015)",
+   "plastic/collectors:COL-EEBLWSU (391 t supplied; declared capacity 110 t/month; 2 vehicles; registered Oct 2020)",
+   "plastic/collectors:COL-VL2FC5A (324 t supplied; declared capacity 82 t/month; 1 vehicles; registered Mar 2019)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 5,128 t of 6,494 t generated)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-45YWUXI2U (CAT_IV, Rs 851/t to PIBO-BNFXDPH)",
+   "plastic/certificate_sales:SALE-370TNXTWZ (CAT_IV, Rs 851/t to PIBO-BNFXDPH)",
+   "plastic/certificate_sales:SALE-FOE9X6KBU (CAT_IV, Rs 851/t to PIBO-BNFXDPH)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-UYKAAF7 Om Foods & Co (1,484 t)",
+  "PIBO-PV6V38E Northern Himalaya FMCG LLP (559 t)",
+  "PIBO-QFZ62E2 National Consumer Products (482 t)",
+  "PIBO-B4XTXEE Shree Western Consumer Products Pvt Ltd (446 t)",
+  "PIBO-YHFIXU6 Pragati FMCG Pvt Ltd (417 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 68
+}

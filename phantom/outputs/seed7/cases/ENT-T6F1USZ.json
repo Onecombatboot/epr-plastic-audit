@@ -1,0 +1,125 @@
+{
+ "entity_id": "ENT-T6F1USZ",
+ "profile": {
+  "name": "Sahyadri Poly Industries LLP",
+  "state": "Delhi",
+  "district": "West Delhi",
+  "declared_capacity_tpa": 1190.0,
+  "connected_load_kw": 60.0,
+  "epr_registered": "2023-11-18"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6552,
+  "dominant_score": 1.8598,
+  "ens_score": 0.9726,
+  "ens_pct": 0.9804
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (26% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 86% of months"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 51%, +49% versus what its process route can produce"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.53x the cost floor)"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.48,
+   "text": "Electricity bought is only 0.58x the minimum needed for the tonnes claimed (174 kWh/t against at least 300)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3427
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.2627,
+   "population_percentile": 99.2,
+   "shap": -0.3176
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2887
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.2882
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-EBDE2SVD (May 2024: 21,363 kWh for 130.9 t claimed)",
+   "plastic/electricity_bills:BILL-K727RJQ9 (Mar 2024: 21,682 kWh for 130.1 t claimed)",
+   "plastic/electricity_bills:BILL-T730U87U (May 2025: 20,405 kWh for 122.2 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 203 t of 3,192 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-VJJF16F (850 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-7MRU21B (549 t bought)",
+   "plastic/offtakers:OFT-F8DHRTS (231 t bought)",
+   "plastic/offtakers:OFT-GM4G4II (204 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-FWA0XJXGH (CAT_IV, Rs 720/t to PIBO-6V4F803)",
+   "plastic/certificate_sales:SALE-TT0SL4WKB (CAT_IV, Rs 720/t to PIBO-6V4F803)",
+   "plastic/certificate_sales:SALE-WO0HSTJ8W (CAT_IV, Rs 720/t to PIBO-6V4F803)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-JJLGTYY Balaji Northern Retail LLP (574 t)",
+  "PIBO-4L6WGMD Metro Home Care LLP (370 t)",
+  "PIBO-4YRXDU1 Unity Navjeevan Snacks Pvt Ltd (251 t)",
+  "PIBO-2MIBW6D Eastern Home Care Pvt Ltd (205 t)",
+  "PIBO-IP0QJPS Pioneer Snacks & Co (199 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 50
+}

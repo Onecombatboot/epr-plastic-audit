@@ -1,0 +1,109 @@
+{
+ "entity_id": "ENT-YZBULQH",
+ "profile": {
+  "name": "Bharat Shree Plast Pvt Ltd",
+  "state": "Punjab",
+  "district": "Mohali",
+  "declared_capacity_tpa": 1560.0,
+  "connected_load_kw": 235.0,
+  "epr_registered": "2023-08-21"
+ },
+ "scores": {
+  "rule_score": 0.9968,
+  "iforest_score": 0.6166,
+  "dominant_score": 4.431,
+  "ens_score": 0.9637,
+  "ens_pct": 0.9712
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 50% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 91% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 1 other registered entity(ies)"
+  },
+  {
+   "rule": "shell_offtakers",
+   "group": "output",
+   "strength": 0.208,
+   "text": "51% of product sales go to buyers incorporated under a year before the invoice"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 99.3,
+   "shap": -0.4057
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.274,
+   "population_percentile": 99.7,
+   "shap": -0.3789
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.1579,
+   "population_percentile": 95.3,
+   "shap": -0.3785
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 1.0,
+   "population_percentile": 98.2,
+   "shap": -0.3723
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-M6BPPAAI (Mar 2026: 165,835 kWh for 177.8 t claimed)",
+   "plastic/electricity_bills:BILL-YK6EHDKM (Dec 2025: 151,398 kWh for 160.7 t claimed)",
+   "plastic/electricity_bills:BILL-U913VMSO (Jun 2024: 173,043 kWh for 183.7 t claimed)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-5ZZ2FJM (1,256 t bought)",
+   "plastic/offtakers:OFT-ZMCNOSQ (1,016 t bought)",
+   "plastic/offtakers:OFT-TFLBDR9 (963 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 0, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-1OW3PWT Deccan Personal Care & Co (686 t)",
+  "PIBO-ACLOS3W Amrit Snacks (591 t)",
+  "PIBO-AMDNKNX Metro Retail LLP (363 t)",
+  "PIBO-XJ69QPN Pioneer Deccan Pharma & Co (344 t)",
+  "PIBO-AZ72QMK Prakriti Personal Care (342 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 73
+}

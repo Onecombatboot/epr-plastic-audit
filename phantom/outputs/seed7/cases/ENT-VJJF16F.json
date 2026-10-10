@@ -1,0 +1,124 @@
+{
+ "entity_id": "ENT-VJJF16F",
+ "profile": {
+  "name": "Maa Polymers & Co",
+  "state": "Kerala",
+  "district": "Ernakulam",
+  "declared_capacity_tpa": 5520.0,
+  "connected_load_kw": 112.0,
+  "epr_registered": "2023-12-13"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6657,
+  "dominant_score": 26.2602,
+  "ens_score": 0.9952,
+  "ens_pct": 0.998
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (86% of its feedstock)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.22x the minimum needed for the tonnes claimed (66 kWh/t against at least 300)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 5% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.26x the cost floor)"
+  },
+  {
+   "rule": "capacity_needs_more_power",
+   "group": "energy",
+   "strength": 0.542,
+   "text": "Declared capacity of 5,520 t/yr needs about 2.0x the power the plant is connected for"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.8566,
+   "population_percentile": 99.8,
+   "shap": -0.3289
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3131
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2991
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 1.0,
+   "population_percentile": 98.2,
+   "shap": -0.271
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-HLNYMXSF (Mar 2026: 6,521 kWh for 310.2 t claimed)",
+   "plastic/electricity_bills:BILL-M31U3FI7 (Feb 2025: 7,014 kWh for 327.8 t claimed)",
+   "plastic/electricity_bills:BILL-R46ATFBG (Feb 2026: 6,833 kWh for 290.0 t claimed)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-303T1FW (669 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-T6ZX57D (30 t bought)",
+   "plastic/offtakers:OFT-OZIG2UC (24 t bought)",
+   "plastic/offtakers:OFT-I1D19VJ (14 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 0, director 1, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-QTQJDNVC5 (CAT_IV, Rs 337/t to PIBO-5E74L49)",
+   "plastic/certificate_sales:SALE-AMA6UWETM (CAT_IV, Rs 337/t to PIBO-5E74L49)",
+   "plastic/certificate_sales:SALE-ASPAQIH60 (CAT_IV, Rs 337/t to PIBO-5E74L49)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-FRHHQK0 Deccan Dairy (288 t)",
+  "PIBO-GNX9HLB Maa FMCG Pvt Ltd (228 t)",
+  "PIBO-LTRHM4A Sunrise Snacks LLP (170 t)",
+  "PIBO-WT9FFSB Amrit FMCG Pvt Ltd (168 t)",
+  "PIBO-F3M5AHC Eco Shree Dairy (156 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 6
+}

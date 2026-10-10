@@ -1,0 +1,119 @@
+{
+ "entity_id": "ENT-303T1FW",
+ "profile": {
+  "name": "Star Enviro Recycling",
+  "state": "Kerala",
+  "district": "Ernakulam",
+  "declared_capacity_tpa": 1830.0,
+  "connected_load_kw": 25.0,
+  "epr_registered": "2025-03-16"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6654,
+  "dominant_score": 8.5371,
+  "ens_score": 0.9948,
+  "ens_pct": 0.9968
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (60% of its feedstock)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 231% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 85% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.22x the cost floor)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.26x the market median price"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.322
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.5955,
+   "population_percentile": 99.8,
+   "shap": -0.3175
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2861
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 1.0,
+   "population_percentile": 98.2,
+   "shap": -0.2777
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-OS1J9DHJ (Feb 2026: 7,875 kWh for 1,406.1 t claimed)",
+   "plastic/electricity_bills:BILL-83MDZ9PN (Jan 2026: 8,162 kWh for 573.2 t claimed)",
+   "plastic/electricity_bills:BILL-6Z2W2QIO (Mar 2025: 2,720 kWh for 130.7 t claimed)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-96GGU3Z (1,873 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 0, director 1, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-FZ2WX5XDO (CAT_II, Rs 597/t to PIBO-V69ZGZU)",
+   "plastic/certificate_sales:SALE-R756M7CDD (CAT_II, Rs 597/t to PIBO-C1P5DG6)",
+   "plastic/certificate_sales:SALE-FGXCB0DD7 (CAT_II, Rs 598/t to PIBO-QACRBQ7)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-VR95JFO Bharat Balaji Dairy LLP (550 t)",
+  "PIBO-82QIQY5 Sanjeevani Shree Pharma Pvt Ltd (386 t)",
+  "PIBO-QFZ62E2 National Consumer Products (382 t)",
+  "PIBO-TNR42EF Durga Dairy (332 t)",
+  "PIBO-22WF0Q6 Shri Dairy Pvt Ltd (269 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 9
+}

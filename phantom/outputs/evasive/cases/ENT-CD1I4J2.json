@@ -1,0 +1,131 @@
+{
+ "entity_id": "ENT-CD1I4J2",
+ "profile": {
+  "name": "Eastern Plastics Pvt Ltd",
+  "state": "West Bengal",
+  "district": "Howrah",
+  "declared_capacity_tpa": 2770.0,
+  "connected_load_kw": 247.0,
+  "epr_registered": "2025-08-13"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6102,
+  "dominant_score": 10.5495,
+  "ens_score": 0.9745,
+  "ens_pct": 0.9796
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 12% of expected)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "64% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "52% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.82x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "74% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "shell_offtakers",
+   "group": "output",
+   "strength": 0.5,
+   "text": "89% of product sales go to buyers incorporated under a year before the invoice"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6431,
+   "population_percentile": 98.5,
+   "shap": -0.384
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3497
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 2.0,
+   "population_percentile": 93.5,
+   "shap": -0.3185
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 3.0,
+   "population_percentile": 99.5,
+   "shap": -0.2963
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-F5EZRIQR (Jan 2026: 89,884 kWh for 171.5 t claimed)",
+   "plastic/electricity_bills:BILL-3ZM3SL3E (Nov 2025: 84,171 kWh for 158.4 t claimed)",
+   "plastic/electricity_bills:BILL-WYKRO4HA (Sep 2025: 81,961 kWh for 153.5 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-AORSZDEPS (04 Aug 2025, 11 t from COL-TCO5QEV)",
+   "plastic/feedstock_invoices:INV-OM03FV28T (05 Aug 2025, 2 t from COL-QCH4VYU)",
+   "plastic/feedstock_invoices:INV-F9UTEYP2T (05 Aug 2025, 8 t from COL-QCH4VYU)",
+   "plastic/feedstock_invoices:INV-KJXCLH8JR (09 Aug 2025, 6 t from COL-QCH4VYU)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-QCH4VYU (844 t supplied; declared capacity 27 t/month; 2 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-351BDIF (303 t supplied; declared capacity 27 t/month; 2 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-TCO5QEV (84 t supplied; declared capacity 8 t/month; 2 vehicles; registered Apr 2025)",
+   "plastic/collectors:COL-I57K59V (32 t supplied; declared capacity 28 t/month; 1 vehicles; registered May 2025)",
+   "plastic/collectors:COL-97IJ8Z5 (9 t supplied; declared capacity 61 t/month; 2 vehicles; registered May 2019)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-1RR2MMQ (473 t bought)",
+   "plastic/offtakers:OFT-I59YACU (424 t bought)",
+   "plastic/offtakers:OFT-VA6T06A (74 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-PHKYDCWYT (CAT_IV, Rs 1,180/t to PIBO-YDQV9PP)",
+   "plastic/certificate_sales:SALE-0AII6JFC6 (CAT_IV, Rs 1,184/t to PIBO-BB0FDBO)",
+   "plastic/certificate_sales:SALE-OF2W2U49A (CAT_IV, Rs 1,184/t to PIBO-BB0FDBO)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-69PONSZ Sterling Consumer Products Pvt Ltd (404 t)",
+  "PIBO-6RUDQ4N Vasundhara FMCG (225 t)",
+  "PIBO-A2762EM Laxmi Pharma Pvt Ltd (138 t)",
+  "PIBO-7A0UGP1 Global Consumer Products & Co (75 t)",
+  "PIBO-3OV2GSX Sanjeevani Pharma Pvt Ltd (65 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 52
+}

@@ -1,0 +1,127 @@
+{
+ "entity_id": "ENT-PRK2DV5",
+ "profile": {
+  "name": "Kaveri Hind Recyclers Pvt Ltd",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 4180.0,
+  "connected_load_kw": 140.0,
+  "epr_registered": "2023-02-10"
+ },
+ "scores": {
+  "rule_score": 0.9998,
+  "iforest_score": 0.6141,
+  "dominant_score": 6.0495,
+  "ens_score": 0.969,
+  "ens_pct": 0.976
+ },
+ "reasons": [
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "67% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 51%, +49% versus what its process route can produce"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 3 other plant(s)"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.497,
+   "text": "23% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.48,
+   "text": "Sold products equal only 39% of the output expected from the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 7.0,
+   "population_percentile": 99.7,
+   "shap": -0.3528
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6725,
+   "population_percentile": 99.2,
+   "shap": -0.3406
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.327
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 3.0,
+   "population_percentile": 99.8,
+   "shap": -0.308
+  }
+ ],
+ "evidence": {
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-1Q01EYE1Y (06 Apr 2023, 5 t from COL-6QCT1FN)",
+   "plastic/feedstock_invoices:INV-2OM6ANFGB (09 Apr 2023, 5 t from COL-WBLREV1)",
+   "plastic/feedstock_invoices:INV-NKCFKBM1N (10 Apr 2023, 6 t from COL-6QCT1FN)",
+   "plastic/feedstock_invoices:INV-1VDD6S4GD (06 May 2023, 9 t from COL-6QCT1FN)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-6QCT1FN (3,998 t supplied; declared capacity 30 t/month; 1 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-WBLREV1 (602 t supplied; declared capacity 9 t/month; 2 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-KIS34A6 (313 t supplied; declared capacity 21 t/month; 3 vehicles; registered Feb 2017)",
+   "plastic/collectors:COL-ZWZHINH (301 t supplied; declared capacity 77 t/month; 6 vehicles; registered May 2015)",
+   "plastic/collectors:COL-5HR7KXO (256 t supplied; declared capacity 412 t/month; 2 vehicles; registered Jul 2022)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-05: 410 t of 6,732 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-FWG17FT (1,759 t bought)",
+   "plastic/offtakers:OFT-ZLUTXR8 (200 t bought)",
+   "plastic/offtakers:OFT-KVWH70S (4 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 7, director 0, photos 3)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-6IBFIMZ Narmada FMCG Pvt Ltd (449 t)",
+  "PIBO-D8QGIE3 Green Home Care & Co (412 t)",
+  "PIBO-31138F2 Maa FMCG Pvt Ltd (410 t)",
+  "PIBO-COFQPTY Himalaya Consumer Products Pvt Ltd (343 t)",
+  "PIBO-IP7RUB3 Amrit Bharat Consumer Products Pvt Ltd (263 t)"
+ ],
+ "inspection_checklist": [
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 61
+}

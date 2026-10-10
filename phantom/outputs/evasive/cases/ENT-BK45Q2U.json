@@ -1,0 +1,128 @@
+{
+ "entity_id": "ENT-BK45Q2U",
+ "profile": {
+  "name": "Southern Shree Plastics Pvt Ltd",
+  "state": "Uttar Pradesh",
+  "district": "Agra",
+  "declared_capacity_tpa": 27840.0,
+  "connected_load_kw": 638.0,
+  "epr_registered": "2023-04-02"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6662,
+  "dominant_score": 32.1505,
+  "ens_score": 0.9985,
+  "ens_pct": 0.9996
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 5 recyclers trading the same material (83% of its feedstock)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 235% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 11% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 92% of months"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "32% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 99.3,
+   "shap": -0.3671
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.8287,
+   "population_percentile": 100.0,
+   "shap": -0.3418
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 3.0,
+   "population_percentile": 99.0,
+   "shap": -0.3212
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 2.0,
+   "population_percentile": 93.5,
+   "shap": -0.2775
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-LV4XKXUQ (Nov 2025: 1,949,914 kWh for 2,901.5 t claimed)",
+   "plastic/electricity_bills:BILL-70PYN9WS (May 2025: 2,125,040 kWh for 3,160.7 t claimed)",
+   "plastic/electricity_bills:BILL-FEWVQ7OP (Jul 2024: 1,891,340 kWh for 2,811.3 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-SI2J3V2NJ (03 Apr 2023, 8 t from ENT-F2HDA74)",
+   "plastic/feedstock_invoices:INV-9JRR11WEP (03 Apr 2023, 5 t from ENT-F2HDA74)",
+   "plastic/feedstock_invoices:INV-IAJXRKNHI (04 Apr 2023, 3 t from ENT-F2HDA74)",
+   "plastic/feedstock_invoices:INV-VWT91MDJK (04 Apr 2023, 16 t from ENT-F2HDA74)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-47V3I2Y (1,931 t supplied; declared capacity 238 t/month; 2 vehicles; registered Jun 2016)",
+   "plastic/collectors:COL-E17NWGS (1,575 t supplied; declared capacity 91 t/month; 3 vehicles; registered Oct 2020)",
+   "plastic/collectors:COL-RGSKVH5 (1,029 t supplied; declared capacity 103 t/month; 6 vehicles; registered Sep 2018)",
+   "plastic/collectors:COL-3RY92UP (986 t supplied; declared capacity 174 t/month; 4 vehicles; registered May 2020)",
+   "plastic/collectors:COL-ZPSIZXZ (608 t supplied; declared capacity 56 t/month; 5 vehicles; registered Oct 2016)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-F2HDA74 (50,770 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 3, address 0, director 2, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-LL4CS6A Maa Dairy (1,496 t)",
+  "PIBO-2LDRMQ1 Sunrise Foods Pvt Ltd (1,141 t)",
+  "PIBO-Z7YNJT7 Deccan Southern FMCG & Co (978 t)",
+  "PIBO-G50ZL64 Sunrise Sterling Pharma (633 t)",
+  "PIBO-OFJ766P Navjeevan Global Retail (618 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 2
+}

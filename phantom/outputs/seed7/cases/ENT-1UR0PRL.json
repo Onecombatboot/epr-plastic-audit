@@ -1,0 +1,118 @@
+{
+ "entity_id": "ENT-1UR0PRL",
+ "profile": {
+  "name": "Sai Recyclers Pvt Ltd",
+  "state": "Haryana",
+  "district": "Sonipat",
+  "declared_capacity_tpa": 920.0,
+  "connected_load_kw": 83.0,
+  "epr_registered": "2024-12-16"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6496,
+  "dominant_score": 1.7077,
+  "ens_score": 0.9673,
+  "ens_pct": 0.974
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (16% of its feedstock)"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.677,
+   "text": "Category III share of certificates is 41%, +39% versus what its process route can produce"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.667,
+   "text": "Certificates claim more than the declared monthly capacity in 25% of months"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.49x the cost floor)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "44% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.462,
+   "text": "56% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3574
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.158,
+   "population_percentile": 98.4,
+   "shap": -0.3086
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3068
+  },
+  {
+   "feature": "net_recycler_in_degree",
+   "label": "net_recycler_in_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2943
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-3K1FFZH3 (Mar 2026: 14,994 kWh for 176.1 t claimed)",
+   "plastic/electricity_bills:BILL-98YSU6PK (Feb 2026: 15,914 kWh for 170.7 t claimed)",
+   "plastic/electricity_bills:BILL-WDHKY87M (Jan 2026: 14,561 kWh for 87.4 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 442 t of 1,001 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-BIFVCDW (161 t sold to this plant)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-64WXKMUSA (CAT_IV, Rs 715/t to PIBO-JFIHEIT)",
+   "plastic/certificate_sales:SALE-LUBQMRNUN (CAT_IV, Rs 719/t to PIBO-RJXD4NO)",
+   "plastic/certificate_sales:SALE-TJH4TYDDT (CAT_IV, Rs 719/t to PIBO-RJXD4NO)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-UXYSQIV Galaxy Dairy (185 t)",
+  "PIBO-RO6BQ7X Supreme Beverages LLP (149 t)",
+  "PIBO-APX2FY8 National Star FMCG Pvt Ltd (141 t)",
+  "PIBO-HQFRPMC Eastern FMCG Pvt Ltd (64 t)",
+  "PIBO-4UALU3R Sahyadri Pharma Pvt Ltd (56 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 66
+}

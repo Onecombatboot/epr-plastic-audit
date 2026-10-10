@@ -1,0 +1,128 @@
+{
+ "entity_id": "ENT-KZ7N9I7",
+ "profile": {
+  "name": "Northern Earth Granules Pvt Ltd",
+  "state": "Tamil Nadu",
+  "district": "Krishnagiri",
+  "declared_capacity_tpa": 2070.0,
+  "connected_load_kw": 42.0,
+  "epr_registered": "2025-08-30"
+ },
+ "scores": {
+  "rule_score": 0.9992,
+  "iforest_score": 0.6388,
+  "dominant_score": 35.127,
+  "ens_score": 0.9746,
+  "ens_pct": 0.9792
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (92% of its feedstock)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.28x the cost floor)"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.5,
+   "text": "Certificates sold at 0.32x the market median price"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.5,
+   "text": "35% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.45,
+   "text": "In 50% of billed months the units consumed cannot support the tonnes claimed"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.385,
+   "text": "19% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 98.4,
+   "shap": -0.3741
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.368
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3473
+  },
+  {
+   "feature": "net_cycle_feed_share",
+   "label": "feedstock bought inside a loop",
+   "value": 0.9232,
+   "population_percentile": 100.0,
+   "shap": -0.3389
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-IIHPIA5D (Aug 2025: 2,386 kWh for 123.1 t claimed)",
+   "plastic/electricity_bills:BILL-T1LHA541 (Feb 2026: 2,883 kWh for 123.0 t claimed)",
+   "plastic/electricity_bills:BILL-E9WO64SP (Jan 2026: 2,819 kWh for 118.9 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-T7YAFM4D3 (08 Aug 2025, 24 t from ENT-0YFKEYL)",
+   "plastic/feedstock_invoices:INV-48E3Q50FW (25 Aug 2025, 7 t from ENT-0YFKEYL)",
+   "plastic/feedstock_invoices:INV-80XU2K0N6 (06 Sep 2025, 9 t from ENT-0YFKEYL)",
+   "plastic/feedstock_invoices:INV-68M80I3LF (14 Sep 2025, 15.99 t from ENT-0YFKEYL)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-DRYNTYG (9 t supplied; declared capacity 28 t/month; 5 vehicles; registered Mar 2016)",
+   "plastic/collectors:COL-IWQ8EU0 (6 t supplied; declared capacity 126 t/month; 1 vehicles; registered May 2022)",
+   "plastic/collectors:COL-Z0S8WUW (4 t supplied; declared capacity 20 t/month; 4 vehicles; registered Sep 2017)",
+   "plastic/collectors:COL-4JRJIY9 (4 t supplied; declared capacity 152 t/month; 5 vehicles; registered Nov 2022)",
+   "plastic/collectors:COL-MIY5JR1 (4 t supplied; declared capacity 104 t/month; 1 vehicles; registered Nov 2017)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-0YFKEYL (489 t sold to this plant)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-P8TL2TY07 (CAT_II, Rs 756/t to PIBO-438DMFZ)",
+   "plastic/certificate_sales:SALE-36VIUKG3I (CAT_II, Rs 757/t to PIBO-H62CXHE)",
+   "plastic/certificate_sales:SALE-FLG3WXRH5 (CAT_II, Rs 757/t to PIBO-89Q2604)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-WBC78A6 Vasundhara Pharma Pvt Ltd (386 t)",
+  "PIBO-C8P4UUM Balaji Dairy Pvt Ltd (280 t)",
+  "PIBO-WSSXZH8 Western Navjeevan Consumer Products (43 t)",
+  "PIBO-U1LNPOP Himalaya Pharma (20 t)",
+  "PIBO-JMRE2YG Metro Snacks Pvt Ltd (19 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 53
+}

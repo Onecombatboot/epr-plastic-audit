@@ -1,0 +1,127 @@
+{
+ "entity_id": "ENT-UC5WOZO",
+ "profile": {
+  "name": "Galaxy Shri Enviro Recycling & Co",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 42280.0,
+  "connected_load_kw": 77.0,
+  "epr_registered": "2024-09-13"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6642,
+  "dominant_score": 3.1043,
+  "ens_score": 0.9855,
+  "ens_pct": 0.9896
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (37% of its feedstock)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "77% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "66% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.609,
+   "text": "Electricity bought is only 0.47x the minimum needed for the tonnes claimed (9 kWh/t against at least 20)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "41% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.3683,
+   "population_percentile": 99.4,
+   "shap": -0.3432
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.336
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3205
+  },
+  {
+   "feature": "net_cycle_feed_share",
+   "label": "feedstock bought inside a loop",
+   "value": 0.3683,
+   "population_percentile": 99.4,
+   "shap": -0.3041
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-F1XADEH1 (Feb 2025: 4,486 kWh for 560.3 t claimed)",
+   "plastic/electricity_bills:BILL-XM8NFMLT (Jul 2025: 4,588 kWh for 554.5 t claimed)",
+   "plastic/electricity_bills:BILL-FYBC3KFO (Jan 2025: 4,675 kWh for 564.2 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-9DXVDE40C (02 Sep 2024, 11 t from COL-YLXDKLM)",
+   "plastic/feedstock_invoices:INV-LP8CTGKAB (06 Sep 2024, 16 t from ENT-OQJAMK9)",
+   "plastic/feedstock_invoices:INV-UJ6GO0PNO (06 Sep 2024, 13 t from COL-RBRHYOE)",
+   "plastic/feedstock_invoices:INV-ZL6I0WY3D (08 Sep 2024, 19.89 t from ENT-OQJAMK9)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-YLXDKLM (1,126 t supplied; declared capacity 27 t/month; 2 vehicles; registered Apr 2024)",
+   "plastic/collectors:COL-3UZ5PO0 (1,083 t supplied; declared capacity 15 t/month; 1 vehicles; registered Mar 2024)",
+   "plastic/collectors:COL-RR2ABXP (938 t supplied; declared capacity 17 t/month; 1 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-BP7VAXD (796 t supplied; declared capacity 27 t/month; 2 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-0F9RAJV (772 t supplied; declared capacity 10 t/month; 1 vehicles; registered Jun 2024)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-OQJAMK9 (3,558 t sold to this plant)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-HSGKBJ9 Unity FMCG (886 t)",
+  "PIBO-TG9AMFT Hind Retail LLP (433 t)",
+  "PIBO-1V0563Y Ganga Consumer Products Pvt Ltd (371 t)",
+  "PIBO-WD58K54 Metro Foods (289 t)",
+  "PIBO-X1SO4GI Shree Retail LLP (263 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 27
+}

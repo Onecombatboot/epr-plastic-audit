@@ -1,0 +1,116 @@
+{
+ "entity_id": "ENT-7VI9JA5",
+ "profile": {
+  "name": "Ganga Poly Industries LLP",
+  "state": "Haryana",
+  "district": "Gurugram",
+  "declared_capacity_tpa": 27850.0,
+  "connected_load_kw": 639.0,
+  "epr_registered": "2023-01-02"
+ },
+ "scores": {
+  "rule_score": 0.9982,
+  "iforest_score": 0.6174,
+  "dominant_score": 5.4414,
+  "ens_score": 0.961,
+  "ens_pct": 0.9678
+ },
+ "reasons": [
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.708,
+   "text": "Electricity bought is only 0.38x the minimum needed for the tonnes claimed (114 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 19% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.45,
+   "text": "In 100% of billed months the units consumed cannot support the tonnes claimed"
+  },
+  {
+   "rule": "capacity_needs_more_power",
+   "group": "energy",
+   "strength": 0.416,
+   "text": "Declared capacity of 27,850 t/yr needs about 1.8x the power the plant is connected for"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.403,
+   "text": "77% of certificate tonnes were sold below the cost of recycling (average 0.83x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_signatory",
+   "label": "shared signatory",
+   "value": 3.0,
+   "population_percentile": 99.4,
+   "shap": -0.3995
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.3929
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.353
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 5.0,
+   "population_percentile": 99.3,
+   "shap": -0.3359
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-YVD0SYDL (Jun 2024: 211,159 kWh for 1,963.6 t claimed)",
+   "plastic/electricity_bills:BILL-HHTAN5IG (Apr 2024: 187,066 kWh for 1,699.0 t claimed)",
+   "plastic/electricity_bills:BILL-AJV0XOQW (Nov 2023: 199,921 kWh for 1,809.7 t claimed)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-HTW48E7 (3,151 t bought)",
+   "plastic/offtakers:OFT-DA1OSBI (1,094 t bought)",
+   "plastic/offtakers:OFT-CWMN8RR (979 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-FYV37B8XH (CAT_IV, Rs 1,050/t to PIBO-NXM299S)",
+   "plastic/certificate_sales:SALE-8190LCYOW (CAT_IV, Rs 1,053/t to PIBO-PA413JE)",
+   "plastic/certificate_sales:SALE-KZ96K4UT7 (CAT_IV, Rs 1,053/t to PIBO-S1YZ3T1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-34XGNS2 Galaxy Durga Dairy Pvt Ltd (7,446 t)",
+  "PIBO-TAX46C0 Pragati Pragati FMCG (2,438 t)",
+  "PIBO-TQIW34I Bharat FMCG (2,225 t)",
+  "PIBO-KCNS43M Shree Snacks Pvt Ltd (1,923 t)",
+  "PIBO-1V0563Y Ganga Consumer Products Pvt Ltd (1,598 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 81
+}

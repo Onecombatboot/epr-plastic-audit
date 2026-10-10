@@ -1,0 +1,127 @@
+{
+ "entity_id": "ENT-PU89SOX",
+ "profile": {
+  "name": "Prime Plast Pvt Ltd",
+  "state": "Maharashtra",
+  "district": "Raigad",
+  "declared_capacity_tpa": 2070.0,
+  "connected_load_kw": 181.0,
+  "epr_registered": "2025-10-30"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6442,
+  "dominant_score": 4.4313,
+  "ens_score": 0.9924,
+  "ens_pct": 0.9968
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 20% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 50% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "71% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "55% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.616,
+   "text": "Claimed tonnage in the busiest month would need 165% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.19x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.6667,
+   "population_percentile": 89.1,
+   "shap": -0.3128
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.8535,
+   "population_percentile": 100.0,
+   "shap": -0.2799
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7087,
+   "population_percentile": 98.8,
+   "shap": -0.2568
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2499
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-NNOTHXRW (Feb 2026: 213,439 kWh for 587.7 t claimed)",
+   "plastic/electricity_bills:BILL-A0AOA75H (Jan 2026: 104,459 kWh for 271.5 t claimed)",
+   "plastic/electricity_bills:BILL-F4YEPBHP (Dec 2025: 52,553 kWh for 131.2 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-MGRHEJ3DQ (01 Oct 2025, 1 t from COL-KECABMU)",
+   "plastic/feedstock_invoices:INV-7TH7XI9U2 (03 Oct 2025, 15 t from COL-TK4TJT6)",
+   "plastic/feedstock_invoices:INV-0U6Z01UL5 (14 Oct 2025, 5 t from COL-OEQM7GG)",
+   "plastic/feedstock_invoices:INV-T5297T27B (18 Oct 2025, 10 t from COL-KECABMU)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-TK4TJT6 (511 t supplied; declared capacity 22 t/month; 2 vehicles; registered May 2025)",
+   "plastic/collectors:COL-KECABMU (396 t supplied; declared capacity 5 t/month; 1 vehicles; registered Sep 2025)",
+   "plastic/collectors:COL-SUUFWVB (288 t supplied; declared capacity 10 t/month; 2 vehicles; registered Jul 2025)",
+   "plastic/collectors:COL-OEQM7GG (166 t supplied; declared capacity 13 t/month; 2 vehicles; registered May 2025)",
+   "plastic/collectors:COL-NDDX3NX (87 t supplied; declared capacity 30 t/month; 4 vehicles; registered Jan 2019)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-BVUFGU1OG (CAT_IV, Rs 276/t to PIBO-M1HDI26)",
+   "plastic/certificate_sales:SALE-Q9F24BCOG (CAT_IV, Rs 277/t to PIBO-NV100OD)",
+   "plastic/certificate_sales:SALE-2O11Z3GRT (CAT_IV, Rs 277/t to PIBO-FY0Z4UT)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-HPOMGIQ Prime Home Care Pvt Ltd (907 t)",
+  "PIBO-SRLTFWA Kaveri Consumer Products Pvt Ltd (206 t)",
+  "PIBO-90X2TRY Eastern Home Care Pvt Ltd (128 t)",
+  "PIBO-JNQBX5O Sai Beverages LLP (71 t)",
+  "PIBO-VYXJ0O0 Kaveri Western Pharma LLP (70 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 9
+}

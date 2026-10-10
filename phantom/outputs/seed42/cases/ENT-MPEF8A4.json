@@ -1,0 +1,120 @@
+{
+ "entity_id": "ENT-MPEF8A4",
+ "profile": {
+  "name": "Sunrise Granules Ltd",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 4570.0,
+  "connected_load_kw": 207.0,
+  "epr_registered": "2025-09-20"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.619,
+  "dominant_score": 4.4097,
+  "ens_score": 0.9774,
+  "ens_pct": 0.9828
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 208% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.762,
+   "text": "Certificates claim more than the declared monthly capacity in 29% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.732,
+   "text": "Electricity bought is only 0.36x the minimum needed for the tonnes claimed (108 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 16% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.25x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.3093
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 8.0,
+   "population_percentile": 99.6,
+   "shap": -0.2813
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.2857,
+   "population_percentile": 96.6,
+   "shap": -0.2639
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.7106,
+   "population_percentile": 99.2,
+   "shap": -0.2405
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-3IS3ZWZ7 (Feb 2026: 69,416 kWh for 1,021.3 t claimed)",
+   "plastic/electricity_bills:BILL-RY0C0T9E (Nov 2025: 54,007 kWh for 123.8 t claimed)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-7VONV0E (146 t bought)",
+   "plastic/offtakers:OFT-MY76PJU (82 t bought)",
+   "plastic/offtakers:OFT-SI42T0G (49 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 8, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-KMDOB79RQ (CAT_IV, Rs 369/t to PIBO-OIINU7B)",
+   "plastic/certificate_sales:SALE-UN61KWFS4 (CAT_IV, Rs 369/t to PIBO-OIINU7B)",
+   "plastic/certificate_sales:SALE-NJBW4YHPQ (CAT_IV, Rs 369/t to PIBO-OIINU7B)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-JEGCCP3 Navjeevan FMCG & Co (1,665 t)",
+  "PIBO-NZOARH6 Narmada Home Care Pvt Ltd (720 t)",
+  "PIBO-YCL7P2O Prime Personal Care Pvt Ltd (207 t)",
+  "PIBO-7TD67C0 Everest Foods (69 t)",
+  "PIBO-ISMWTVU Global FMCG & Co (52 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 44
+}

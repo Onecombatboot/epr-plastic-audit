@@ -1,0 +1,115 @@
+{
+ "entity_id": "ENT-9LAYX5S",
+ "profile": {
+  "name": "Bharat Star Recyclers LLP",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 640.0,
+  "connected_load_kw": 97.0,
+  "epr_registered": "2025-06-14"
+ },
+ "scores": {
+  "rule_score": 0.9981,
+  "iforest_score": 0.6415,
+  "dominant_score": 11.5916,
+  "ens_score": 0.9763,
+  "ens_pct": 0.9804
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 80% of months"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.63,
+   "text": "Sold products equal only 26% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 8 other registered entity(ies)"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.45,
+   "text": "In 71% of billed months the units consumed cannot support the tonnes claimed"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.357,
+   "text": "Electricity bought is only 0.69x the minimum needed for the tonnes claimed (206 kWh/t against at least 300)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 99.3,
+   "shap": -0.3787
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3388
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 8.0,
+   "population_percentile": 99.6,
+   "shap": -0.3342
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.5884,
+   "population_percentile": 99.9,
+   "shap": -0.3274
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-NXI8ZIOM (Nov 2025: 18,921 kWh for 99.8 t claimed)",
+   "plastic/electricity_bills:BILL-3JVXU3NG (Jan 2026: 20,025 kWh for 102.8 t claimed)",
+   "plastic/electricity_bills:BILL-5TEIM04H (Mar 2026: 19,462 kWh for 98.1 t claimed)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-6RQVQFL (55 t bought)",
+   "plastic/offtakers:OFT-LQ8D0Z4 (46 t bought)",
+   "plastic/offtakers:OFT-1GVH3AC (25 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 8, address 1, director 0, photos 0)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-SNRILSJ Narmada Sai Snacks Pvt Ltd (538 t)",
+  "PIBO-O52N59T Narmada Retail & Co (64 t)",
+  "PIBO-6JZNJDA Pioneer Personal Care LLP (45 t)",
+  "PIBO-S05H2LC Western FMCG Pvt Ltd (33 t)",
+  "PIBO-0FSWAPI Prime Royal Consumer Products LLP (25 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 50
+}

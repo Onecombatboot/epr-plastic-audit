@@ -1,0 +1,127 @@
+{
+ "entity_id": "ENT-HZME3DR",
+ "profile": {
+  "name": "Amrit Global Poly Industries",
+  "state": "Andhra Pradesh",
+  "district": "Tirupati",
+  "declared_capacity_tpa": 2040.0,
+  "connected_load_kw": 379.0,
+  "epr_registered": "2023-07-11"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6484,
+  "dominant_score": 5.3902,
+  "ens_score": 0.9891,
+  "ens_pct": 0.9928
+ },
+ "reasons": [
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "97% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "61% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 3% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 72%, +70% versus what its process route can produce"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "67% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.2808
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.2791
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.9709,
+   "population_percentile": 100.0,
+   "shap": -0.2669
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.5608,
+   "population_percentile": 97.8,
+   "shap": -0.2283
+  }
+ ],
+ "evidence": {
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-363F6ND4V (10 Jul 2023, 2 t from COL-IY4XPD6)",
+   "plastic/feedstock_invoices:INV-KCX1X0AE1 (12 Jul 2023, 3 t from COL-VXHWNMR)",
+   "plastic/feedstock_invoices:INV-26MKVHZMW (13 Jul 2023, 2 t from COL-WFYY18T)",
+   "plastic/feedstock_invoices:INV-U6XFGCP7R (31 Jul 2023, 5 t from COL-0QANACK)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-HSSFHQS (1,974 t supplied; declared capacity 6 t/month; 2 vehicles; registered Feb 2023)",
+   "plastic/collectors:COL-0QANACK (908 t supplied; declared capacity 33 t/month; 2 vehicles; registered Jun 2023)",
+   "plastic/collectors:COL-VXHWNMR (627 t supplied; declared capacity 9 t/month; 2 vehicles; registered May 2023)",
+   "plastic/collectors:COL-IY4XPD6 (451 t supplied; declared capacity 32 t/month; 2 vehicles; registered May 2023)",
+   "plastic/collectors:COL-WFYY18T (370 t supplied; declared capacity 28 t/month; 1 vehicles; registered Feb 2023)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 1,360 t of 4,376 t generated)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-QPMBKVI (31 t bought)",
+   "plastic/offtakers:OFT-2PA9H9O (18 t bought)",
+   "plastic/offtakers:OFT-QMY5H58 (17 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-WPK6C8I Om Pragati Dairy Pvt Ltd (181 t)",
+  "PIBO-MBSO60B Jai Dairy LLP (176 t)",
+  "PIBO-KKV8CR2 Star Snacks Pvt Ltd (158 t)",
+  "PIBO-9XUM1FQ Himalaya Northern Personal Care Pvt Ltd (139 t)",
+  "PIBO-1SJUM46 Pragati Retail LLP (120 t)"
+ ],
+ "inspection_checklist": [
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 19
+}

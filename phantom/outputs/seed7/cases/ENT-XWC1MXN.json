@@ -1,0 +1,123 @@
+{
+ "entity_id": "ENT-XWC1MXN",
+ "profile": {
+  "name": "Navjeevan Recyclers LLP",
+  "state": "Maharashtra",
+  "district": "Raigad",
+  "declared_capacity_tpa": 1430.0,
+  "connected_load_kw": 273.0,
+  "epr_registered": "2025-07-17"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6757,
+  "dominant_score": 50.894,
+  "ens_score": 0.9963,
+  "ens_pct": 0.9988
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 4 recyclers trading the same material (93% of its feedstock)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 33% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.708,
+   "text": "Electricity bought is only 0.38x the minimum needed for the tonnes claimed (114 kWh/t against at least 300)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 4% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "78% of all certificates were generated in a single month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3503
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3064
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.9334,
+   "population_percentile": 99.9,
+   "shap": -0.2848
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.2838
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-8RTBTJHC (Mar 2026: 17,382 kWh for 397.5 t claimed)",
+   "plastic/electricity_bills:BILL-472HMEM6 (Jan 2026: 17,658 kWh for 120.0 t claimed)",
+   "plastic/electricity_bills:BILL-H01EGQ4X (Aug 2025: 14,567 kWh for 23.9 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 795 t of 1,022 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-MMN18KT (509 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-7HPRPQQ (16 t bought)",
+   "plastic/offtakers:OFT-AD3YGFV (5 t bought)",
+   "plastic/offtakers:OFT-O7VVX3X (3 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 2, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-T9ZLEFE Maa Consumer Products Pvt Ltd (270 t)",
+  "PIBO-MUF50VA Everest Shri Foods Pvt Ltd (184 t)",
+  "PIBO-XBXY08X Durga Beverages LLP (95 t)",
+  "PIBO-BDK8H20 Northern Shree Foods Pvt Ltd (77 t)",
+  "PIBO-GQFREPV Galaxy Sterling Beverages & Co (70 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 4
+}

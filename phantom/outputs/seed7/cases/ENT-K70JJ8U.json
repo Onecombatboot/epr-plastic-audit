@@ -1,0 +1,129 @@
+{
+ "entity_id": "ENT-K70JJ8U",
+ "profile": {
+  "name": "Western Polytech Pvt Ltd",
+  "state": "Haryana",
+  "district": "Sonipat",
+  "declared_capacity_tpa": 1660.0,
+  "connected_load_kw": 354.0,
+  "epr_registered": "2025-01-20"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.6309,
+  "dominant_score": 3.4599,
+  "ens_score": 0.9751,
+  "ens_pct": 0.9828
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 60% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "62% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 50%, +48% versus what its process route can produce"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.6,
+   "text": "57% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.52,
+   "text": "24% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.509,
+   "text": "89% of certificate tonnes were sold below the cost of recycling (average 0.83x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.4,
+   "population_percentile": 88.8,
+   "shap": -0.2886
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6173,
+   "population_percentile": 99.1,
+   "shap": -0.2818
+  },
+  {
+   "feature": "id_shared_director",
+   "label": "shared director",
+   "value": 1.0,
+   "population_percentile": 91.9,
+   "shap": -0.2803
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.5874,
+   "population_percentile": 98.2,
+   "shap": -0.2515
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-LI1V5FRW (Feb 2026: 95,041 kWh for 800.2 t claimed)",
+   "plastic/electricity_bills:BILL-7MFDM5X7 (Mar 2026: 114,456 kWh for 832.6 t claimed)",
+   "plastic/electricity_bills:BILL-O4IRRPOF (Jan 2026: 109,421 kWh for 315.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-NIMWQZFL4 (05 Jan 2025, 6 t from COL-Q48QIHO)",
+   "plastic/feedstock_invoices:INV-JTIJNG0A6 (16 Jan 2025, 6 t from COL-W0DRIXM)",
+   "plastic/feedstock_invoices:INV-FJT0NFDP3 (20 Jan 2025, 12 t from COL-PG8YNCZ)",
+   "plastic/feedstock_invoices:INV-A6G6YXYZJ (27 Jan 2025, 11 t from COL-TLCHN0A)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-PG8YNCZ (646 t supplied; declared capacity 7 t/month; 1 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-TLCHN0A (582 t supplied; declared capacity 23 t/month; 1 vehicles; registered Dec 2024)",
+   "plastic/collectors:COL-LK23N0E (442 t supplied; declared capacity 10 t/month; 1 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-W0DRIXM (317 t supplied; declared capacity 31 t/month; 1 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-Q48QIHO (298 t supplied; declared capacity 26 t/month; 1 vehicles; registered Dec 2024)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 2,092 t of 3,643 t generated)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-BKTVHALI4 (CAT_IV, Rs 1,256/t to PIBO-AZQM7KE)",
+   "plastic/certificate_sales:SALE-3HCJ24FQP (CAT_IV, Rs 1,256/t to PIBO-AZQM7KE)",
+   "plastic/certificate_sales:SALE-M9M8V7TRW (CAT_IV, Rs 1,256/t to PIBO-AZQM7KE)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-NZEJXQA Eco Personal Care LLP (1,154 t)",
+  "PIBO-DWP49WM Laxmi Personal Care LLP (301 t)",
+  "PIBO-UE8F7EA Star Apex Home Care Ltd (175 t)",
+  "PIBO-DSPX38C Western Beverages (147 t)",
+  "PIBO-JSOREYG Earth Foods Pvt Ltd (142 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 44
+}

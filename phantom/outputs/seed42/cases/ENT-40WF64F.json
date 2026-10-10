@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-40WF64F",
+ "profile": {
+  "name": "Star Enviro Recycling",
+  "state": "Gujarat",
+  "district": "Morbi",
+  "declared_capacity_tpa": 3510.0,
+  "connected_load_kw": 313.0,
+  "epr_registered": "2025-07-28"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6324,
+  "dominant_score": 3.4522,
+  "ens_score": 0.9759,
+  "ens_pct": 0.9808
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 89% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "80% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.747,
+   "text": "Electricity bought is only 0.35x the minimum needed for the tonnes claimed (104 kWh/t against at least 300)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "66% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.664,
+   "text": "Sold products equal only 23% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "55% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 88.1,
+   "shap": -0.2933
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.8889,
+   "population_percentile": 98.8,
+   "shap": -0.2786
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8006,
+   "population_percentile": 99.3,
+   "shap": -0.2603
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.2453
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-C0B4MULF (Dec 2025: 76,929 kWh for 787.8 t claimed)",
+   "plastic/electricity_bills:BILL-DTD6HANV (Jan 2026: 84,092 kWh for 830.2 t claimed)",
+   "plastic/electricity_bills:BILL-JAS6ME3N (Aug 2025: 46,365 kWh for 375.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-7F9MLQMJT (06 Jul 2025, 6 t from COL-8H1N5LJ)",
+   "plastic/feedstock_invoices:INV-VMMO044DC (10 Jul 2025, 12 t from COL-8H1N5LJ)",
+   "plastic/feedstock_invoices:INV-MDS4Z7E85 (11 Jul 2025, 12 t from COL-8H1N5LJ)",
+   "plastic/feedstock_invoices:INV-7D76SM876 (11 Jul 2025, 12 t from COL-UW2A377)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-UW2A377 (2,572 t supplied; declared capacity 38 t/month; 1 vehicles; registered May 2025)",
+   "plastic/collectors:COL-8H1N5LJ (2,353 t supplied; declared capacity 28 t/month; 1 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-H42WFFB (289 t supplied; declared capacity 673 t/month; 6 vehicles; registered Aug 2019)",
+   "plastic/collectors:COL-CTTVU27 (195 t supplied; declared capacity 176 t/month; 6 vehicles; registered Dec 2015)",
+   "plastic/collectors:COL-USMCUNY (166 t supplied; declared capacity 74 t/month; 4 vehicles; registered Jun 2023)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-98BEH4G (286 t bought)",
+   "plastic/offtakers:OFT-5JC5LB0 (177 t bought)",
+   "plastic/offtakers:OFT-GQE9XKA (161 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-99KUGI4 Laxmi Personal Care Pvt Ltd (343 t)",
+  "PIBO-FYIOV8H Krishna Galaxy Dairy Pvt Ltd (267 t)",
+  "PIBO-L021TAJ Sterling Deccan Home Care Pvt Ltd (262 t)",
+  "PIBO-N9XXDBP Jai Retail LLP (241 t)",
+  "PIBO-0A89FA1 Durga Foods Pvt Ltd (235 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 49
+}

@@ -1,0 +1,119 @@
+{
+ "entity_id": "ENT-39TG93F",
+ "profile": {
+  "name": "Pragati Enviro Recycling Pvt Ltd",
+  "state": "Uttar Pradesh",
+  "district": "Ghaziabad",
+  "declared_capacity_tpa": 4680.0,
+  "connected_load_kw": 766.0,
+  "epr_registered": "2024-06-04"
+ },
+ "scores": {
+  "rule_score": 0.9998,
+  "iforest_score": 0.6514,
+  "dominant_score": 3.1881,
+  "ens_score": 0.9753,
+  "ens_pct": 0.98
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (17% of its feedstock)"
+  },
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 87% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.727,
+   "text": "Certificates claim more than the declared monthly capacity in 27% of months"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.66x the cost floor)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "63% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.298,
+   "text": "32% of all certificates were generated in a single month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3754
+  },
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.1709,
+   "population_percentile": 98.8,
+   "shap": -0.3495
+  },
+  {
+   "feature": "net_in_cycle",
+   "label": "membership of a closed trading loop",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3417
+  },
+  {
+   "feature": "net_recycler_in_degree",
+   "label": "net_recycler_in_degree",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.3321
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-WHUN3X4Z (Mar 2025: 691,123 kWh for 758.9 t claimed)",
+   "plastic/electricity_bills:BILL-OUGF3SRC (Jan 2026: 428,956 kWh for 458.0 t claimed)",
+   "plastic/electricity_bills:BILL-7BVYL1Z2 (Oct 2025: 333,050 kWh for 351.7 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 2,932 t of 9,054 t generated)"
+  ],
+  "ring_partners": [
+   "registry/entities:ENT-Z6B1E6N (1,573 t sold to this plant)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-YWT1LO8D1 (CAT_IV, Rs 899/t to PIBO-ZKPONET)",
+   "plastic/certificate_sales:SALE-0HRRQR194 (CAT_IV, Rs 903/t to PIBO-E7BIKIK)",
+   "plastic/certificate_sales:SALE-194KUITYV (CAT_IV, Rs 903/t to PIBO-RCW06JH)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-18W9G5X Sanjeevani Beverages Pvt Ltd (2,219 t)",
+  "PIBO-97O6H6B Balaji FMCG & Co (1,403 t)",
+  "PIBO-LYS3GQ1 Hind Pioneer FMCG LLP (383 t)",
+  "PIBO-FGN48JK Sanjeevani Beverages (363 t)",
+  "PIBO-TNC3UZF National Dairy & Co (325 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 51
+}

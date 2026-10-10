@@ -1,0 +1,126 @@
+{
+ "entity_id": "ENT-QM40JQX",
+ "profile": {
+  "name": "Himalaya Vasundhara Poly Industries Pvt Ltd",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 6590.0,
+  "connected_load_kw": 627.0,
+  "epr_registered": "2024-03-11"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6521,
+  "dominant_score": 5.6968,
+  "ens_score": 0.9963,
+  "ens_pct": 0.9992
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 234% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.8,
+   "text": "Electricity bought is only 0.24x the minimum needed for the tonnes claimed (73 kWh/t against at least 300)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "88% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 14% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "83% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3467
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.289
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.8764,
+   "population_percentile": 99.7,
+   "shap": -0.2744
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 1.0,
+   "population_percentile": 99.2,
+   "shap": -0.2487
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-0IDYA1ZT (Oct 2025: 207,916 kWh for 2,948.2 t claimed)",
+   "plastic/electricity_bills:BILL-ZHNDTBC8 (Feb 2026: 201,559 kWh for 2,833.4 t claimed)",
+   "plastic/electricity_bills:BILL-CYL7S3LI (Jun 2025: 197,294 kWh for 2,768.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-3C6PYU8QW (01 Mar 2024, 14 t from COL-EWPE1HE)",
+   "plastic/feedstock_invoices:INV-9JTKWFAA8 (01 Mar 2024, 8 t from COL-P9O0XT8)",
+   "plastic/feedstock_invoices:INV-RZUNOFYXU (01 Mar 2024, 9 t from COL-P9O0XT8)",
+   "plastic/feedstock_invoices:INV-V05HDW95U (02 Mar 2024, 18 t from COL-EWPE1HE)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-LMYZG7W (30,787 t supplied; declared capacity 11 t/month; 2 vehicles; registered Jan 2024)",
+   "plastic/collectors:COL-P9O0XT8 (16,124 t supplied; declared capacity 19 t/month; 1 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-EWPE1HE (12,993 t supplied; declared capacity 39 t/month; 2 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-8NHKSO7 (1,491 t supplied; declared capacity 186 t/month; 3 vehicles; registered Oct 2018)",
+   "plastic/collectors:COL-2XDEKYH (1,356 t supplied; declared capacity 340 t/month; 3 vehicles; registered Jun 2022)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-60721OV (2,511 t bought)",
+   "plastic/offtakers:OFT-8WQ51RU (2,071 t bought)",
+   "plastic/offtakers:OFT-MWKG7Z5 (1,327 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-4GDBDER Eastern Personal Care LLP (439 t)",
+  "PIBO-8U287AE Maa Consumer Products LLP (405 t)",
+  "PIBO-LCJQMB2 Navjeevan Galaxy Foods Pvt Ltd (386 t)",
+  "PIBO-H1NYNRN Narmada Retail Ltd (296 t)",
+  "PIBO-C5Z5DBP Laxmi Snacks Pvt Ltd (229 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 3
+}

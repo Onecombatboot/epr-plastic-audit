@@ -1,0 +1,113 @@
+{
+ "entity_id": "ENT-BFSE9XC",
+ "profile": {
+  "name": "Shree Royal Polytech Pvt Ltd",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 1210.0,
+  "connected_load_kw": 15.0,
+  "epr_registered": "2023-02-26"
+ },
+ "scores": {
+  "rule_score": 0.9999,
+  "iforest_score": 0.633,
+  "dominant_score": 3.5038,
+  "ens_score": 0.9712,
+  "ens_pct": 0.9756
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 502% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 100% of months"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.721,
+   "text": "Electricity bought is only 0.37x the minimum needed for the tonnes claimed (7 kWh/t against at least 20)"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.5,
+   "text": "65% of certificate tonnes were generated more than 45 days after the processing month"
+  },
+  {
+   "rule": "energy_low_months",
+   "group": "energy",
+   "strength": 0.424,
+   "text": "In 47% of billed months the units consumed cannot support the tonnes claimed"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 1.0,
+   "population_percentile": 95.1,
+   "shap": -0.3548
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 1.0,
+   "population_percentile": 99.5,
+   "shap": -0.3019
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 1.0,
+   "population_percentile": 98.0,
+   "shap": -0.2696
+  },
+  {
+   "feature": "energy_low_month_share",
+   "label": "energy_low_month_share",
+   "value": 0.4737,
+   "population_percentile": 97.6,
+   "shap": -0.2533
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-9Q9HFXL4 (Mar 2026: 3,559 kWh for 2,254.8 t claimed)",
+   "plastic/electricity_bills:BILL-AVQ1T50A (Feb 2025: 3,280 kWh for 2,038.4 t claimed)",
+   "plastic/electricity_bills:BILL-L7846S9C (Jan 2024: 3,035 kWh for 646.0 t claimed)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 5,795 t of 20,714 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 1, director 0, photos 1)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-0346CUP Pragati Personal Care Pvt Ltd (1,736 t)",
+  "PIBO-E93AJ64 Western Snacks Pvt Ltd (859 t)",
+  "PIBO-O4CVZ6V Narmada Deccan Home Care (477 t)",
+  "PIBO-RTPR0QP Star Amrit Consumer Products Pvt Ltd (472 t)",
+  "PIBO-Q69IZKB Southern Pharma Pvt Ltd (460 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers."
+ ],
+ "rank": 62
+}

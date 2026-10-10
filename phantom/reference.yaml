@@ -1,0 +1,23 @@
+# Domain reference values used by the detectors. These are the detector's *prior knowledge* (what an
+# auditor would know from published guidance). They are NOT read from labels.
+# ASSUMPTION: values mirror the synthetic-data calibration; cite published figures before quoting.
+fy_start_month: 4
+cert_cost_floor_inr_per_t: {CAT_I: 3500, CAT_II: 2800, CAT_III: 5000, CAT_IV: 1500}
+eol_kwh_per_t:                      # (min, max) electricity per tonne processed
+  recycling: [300, 1000]
+  waste_to_oil: [150, 350]
+  co_processing: [20, 80]
+  waste_to_energy: [30, 120]
+eol_expected_cat_mix:               # expected certificate category mix by end-of-life route (CAT_I..CAT_IV)
+  recycling: [0.62, 0.34, 0.02, 0.02]
+  waste_to_oil: [0.10, 0.55, 0.35, 0.00]
+  co_processing: [0.05, 0.35, 0.60, 0.00]
+  waste_to_energy: [0.10, 0.45, 0.45, 0.00]
+eol_yield:                          # expected saleable output share of input tonnes (min, max)
+  recycling: [0.75, 0.90]
+  waste_to_oil: [0.40, 0.60]
+  co_processing: [0.0, 0.0]
+  waste_to_energy: [0.0, 0.0]
+hours_per_month: 730
+max_utilisation: 0.85
+eway_threshold_inr: 50000

@@ -1,0 +1,131 @@
+{
+ "entity_id": "ENT-KGQRTD6",
+ "profile": {
+  "name": "Green Polytech & Co",
+  "state": "Gujarat",
+  "district": "Morbi",
+  "declared_capacity_tpa": 4480.0,
+  "connected_load_kw": 90.0,
+  "epr_registered": "2025-09-14"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6181,
+  "dominant_score": 2.396,
+  "ens_score": 0.9711,
+  "ens_pct": 0.9768
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 33% of expected)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "47% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.22x the cost floor)"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "56% of high-value consignments have no e-way bill"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.555,
+   "text": "Sold products equal only 32% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "capacity_needs_more_power",
+   "group": "energy",
+   "strength": 0.55,
+   "text": "Declared capacity of 4,480 t/yr needs about 2.0x the power the plant is connected for"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.4167
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.4122,
+   "population_percentile": 97.2,
+   "shap": -0.3215
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2758
+  },
+  {
+   "feature": "out_round_share",
+   "label": "out_round_share",
+   "value": 0.0412,
+   "population_percentile": 87.9,
+   "shap": -0.1914
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-PZSELVOY (Mar 2026: 67,892 kWh for 158.9 t claimed)",
+   "plastic/electricity_bills:BILL-EGDEX0R1 (Dec 2025: 78,305 kWh for 182.3 t claimed)",
+   "plastic/electricity_bills:BILL-R5UIVQ6X (Feb 2026: 71,250 kWh for 163.3 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-OWCLA6I2T (02 Sep 2025, 1 t from COL-S3DA6NY)",
+   "plastic/feedstock_invoices:INV-YNPKK8OTK (10 Sep 2025, 8 t from COL-YX6TPIV)",
+   "plastic/feedstock_invoices:INV-4M1RAWAA1 (12 Sep 2025, 2 t from COL-PIRL0C9)",
+   "plastic/feedstock_invoices:INV-LF4TVE1IT (18 Sep 2025, 3 t from COL-KWFGPLK)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-YX6TPIV (390 t supplied; declared capacity 34 t/month; 1 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-RXH1UDX (83 t supplied; declared capacity 39 t/month; 2 vehicles; registered Jul 2025)",
+   "plastic/collectors:COL-KWFGPLK (78 t supplied; declared capacity 17 t/month; 1 vehicles; registered Aug 2025)",
+   "plastic/collectors:COL-HOWSDL8 (53 t supplied; declared capacity 18 t/month; 1 vehicles; registered Jun 2025)",
+   "plastic/collectors:COL-1CLVCFL (47 t supplied; declared capacity 503 t/month; 6 vehicles; registered Jun 2017)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-L449F1W (57 t bought)",
+   "plastic/offtakers:OFT-9IK39VC (54 t bought)",
+   "plastic/offtakers:OFT-JJ8AAQC (29 t bought)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-L7AHU54DJ (CAT_IV, Rs 322/t to PIBO-8WBKK5F)",
+   "plastic/certificate_sales:SALE-8HHL2XSM2 (CAT_IV, Rs 322/t to PIBO-8WBKK5F)",
+   "plastic/certificate_sales:SALE-F6JTQ3APY (CAT_IV, Rs 322/t to PIBO-8WBKK5F)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-8A79SBD Southern Foods (306 t)",
+  "PIBO-4CIRK8T Krishna Star Foods LLP (101 t)",
+  "PIBO-WCGBMIP Apex Global Pharma Pvt Ltd (65 t)",
+  "PIBO-TIE9S92 Sai Dairy (59 t)",
+  "PIBO-BZO1WMY National Sahyadri Beverages Pvt Ltd (48 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage."
+ ],
+ "rank": 59
+}

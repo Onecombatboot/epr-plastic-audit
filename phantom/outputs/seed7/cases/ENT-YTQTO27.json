@@ -1,0 +1,132 @@
+{
+ "entity_id": "ENT-YTQTO27",
+ "profile": {
+  "name": "Sanjeevani Pioneer Polytech LLP",
+  "state": "West Bengal",
+  "district": "Paschim Bardhaman",
+  "declared_capacity_tpa": 1680.0,
+  "connected_load_kw": 15.0,
+  "epr_registered": "2025-06-20"
+ },
+ "scores": {
+  "rule_score": 0.9995,
+  "iforest_score": 0.6213,
+  "dominant_score": 5.0233,
+  "ens_score": 0.9689,
+  "ens_pct": 0.9752
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 40% of months"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.49x the cost floor)"
+  },
+  {
+   "rule": "deadline_burst",
+   "group": "cert",
+   "strength": 0.599,
+   "text": "50% of all certificates were generated in a single month"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.554,
+   "text": "45% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "late_batching",
+   "group": "cert",
+   "strength": 0.4,
+   "text": "50% of certificate tonnes were generated more than 45 days after the processing month"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.4461,
+   "population_percentile": 98.4,
+   "shap": -0.3022
+  },
+  {
+   "feature": "id_shared_phone",
+   "label": "shared contact phone",
+   "value": 3.0,
+   "population_percentile": 99.8,
+   "shap": -0.2999
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.4996,
+   "population_percentile": 97.1,
+   "shap": -0.2784
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.4,
+   "population_percentile": 97.4,
+   "shap": -0.2574
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-4K5NBDHW (Feb 2026: 3,636 kWh for 623.6 t claimed)",
+   "plastic/electricity_bills:BILL-8HWRTR2K (Mar 2026: 3,886 kWh for 613.2 t claimed)",
+   "plastic/electricity_bills:BILL-JSD4RGD1 (Jan 2026: 3,948 kWh for 248.2 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-OFX423GW7 (19 Jul 2025, 1 t from COL-O2G76CL)",
+   "plastic/feedstock_invoices:INV-FI5KA5JI6 (14 Sep 2025, 0.29 t from COL-LXR8VDM)",
+   "plastic/feedstock_invoices:INV-QTO2Z7XAC (08 Oct 2025, 9 t from COL-LXR8VDM)",
+   "plastic/feedstock_invoices:INV-8KOLCQARD (12 Oct 2025, 0.45 t from COL-KAUXM8K)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-OY0WF8L (296 t supplied; declared capacity 50 t/month; 1 vehicles; registered Oct 2020)",
+   "plastic/collectors:COL-JQQYTA9 (294 t supplied; declared capacity 98 t/month; 1 vehicles; registered Apr 2018)",
+   "plastic/collectors:COL-Q5AN42J (293 t supplied; declared capacity 26 t/month; 4 vehicles; registered May 2018)",
+   "plastic/collectors:COL-L76OC8O (270 t supplied; declared capacity 23 t/month; 3 vehicles; registered Feb 2021)",
+   "plastic/collectors:COL-ZKEUVRA (251 t supplied; declared capacity 68 t/month; 6 vehicles; registered Jul 2017)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2026-06: 1,134 t of 2,269 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-H5GQGFR4S (CAT_II, Rs 1,349/t to PIBO-XITRZKW)",
+   "plastic/certificate_sales:SALE-R42B9U377 (CAT_II, Rs 1,352/t to PIBO-SOZNTZB)",
+   "plastic/certificate_sales:SALE-OY6FOTZ8J (CAT_II, Rs 1,353/t to PIBO-R3ANOZB)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-BQPQIU3 Royal Snacks (424 t)",
+  "PIBO-4UPU3E1 Everest Pharma (333 t)",
+  "PIBO-5J8A9HN Southern Om Snacks Pvt Ltd (294 t)",
+  "PIBO-TX8PK2G Pioneer Pharma (219 t)",
+  "PIBO-DSICSEJ Pioneer Snacks Pvt Ltd (151 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers."
+ ],
+ "rank": 63
+}

@@ -1,0 +1,133 @@
+{
+ "entity_id": "ENT-4AXHLJ1",
+ "profile": {
+  "name": "Amrit Plastics Pvt Ltd",
+  "state": "Gujarat",
+  "district": "Bharuch",
+  "declared_capacity_tpa": 3300.0,
+  "connected_load_kw": 479.0,
+  "epr_registered": "2024-12-29"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.641,
+  "dominant_score": 2.6855,
+  "ens_score": 0.9793,
+  "ens_pct": 0.9856
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 42% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 88% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.788,
+   "text": "59% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.7,
+   "text": "Category III share of certificates is 43%, +41% versus what its process route can produce"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.41x the cost floor)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 1.0,
+   "population_percentile": 98.2,
+   "shap": -0.343
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3097
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 98.4,
+   "shap": -0.306
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5926,
+   "population_percentile": 99.0,
+   "shap": -0.2781
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-BO3YJYCE (Feb 2026: 362,429 kWh for 414.6 t claimed)",
+   "plastic/electricity_bills:BILL-FV4D33RV (Nov 2025: 331,597 kWh for 377.2 t claimed)",
+   "plastic/electricity_bills:BILL-S7UVMPHR (Jan 2026: 326,028 kWh for 366.6 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-OIEZHTP4J (06 Dec 2024, 11 t from COL-CAOGEJU)",
+   "plastic/feedstock_invoices:INV-N92NFOH4C (16 Dec 2024, 12 t from COL-CAOGEJU)",
+   "plastic/feedstock_invoices:INV-KRP5XP9OQ (18 Dec 2024, 20 t from COL-CAOGEJU)",
+   "plastic/feedstock_invoices:INV-98EJMF8K2 (18 Dec 2024, 9 t from COL-9Z3LA55)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-CAOGEJU (2,324 t supplied; declared capacity 15 t/month; 1 vehicles; registered Aug 2024)",
+   "plastic/collectors:COL-9Z3LA55 (834 t supplied; declared capacity 9 t/month; 2 vehicles; registered Jul 2024)",
+   "plastic/collectors:COL-2YCSSL3 (428 t supplied; declared capacity 96 t/month; 5 vehicles; registered Mar 2017)",
+   "plastic/collectors:COL-EZ1IHLQ (337 t supplied; declared capacity 107 t/month; 2 vehicles; registered Aug 2020)",
+   "plastic/collectors:COL-ER638U0 (291 t supplied; declared capacity 438 t/month; 2 vehicles; registered May 2015)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-09: 590 t of 5,243 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-I5BDN4UMC (CAT_IV, Rs 580/t to PIBO-H6TAWV4)",
+   "plastic/certificate_sales:SALE-0QXJDYGRD (CAT_IV, Rs 580/t to PIBO-2XKBXXT)",
+   "plastic/certificate_sales:SALE-3QGENVFKW (CAT_IV, Rs 580/t to PIBO-2XKBXXT)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-XXWL279 Sanjeevani Foods LLP (1,202 t)",
+  "PIBO-12R7GIH Narmada Pharma Pvt Ltd (270 t)",
+  "PIBO-4ZJCUBY Amrit Shree Beverages (186 t)",
+  "PIBO-UPUCJ2V Laxmi Foods (181 t)",
+  "PIBO-HLGY06H Amrit Retail (160 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred."
+ ],
+ "rank": 37
+}

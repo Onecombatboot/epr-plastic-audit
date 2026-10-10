@@ -1,0 +1,118 @@
+{
+ "entity_id": "ENT-O72BZCW",
+ "profile": {
+  "name": "Hind Granules Pvt Ltd",
+  "state": "Karnataka",
+  "district": "Bengaluru Urban",
+  "declared_capacity_tpa": 4900.0,
+  "connected_load_kw": 318.0,
+  "epr_registered": "2025-09-15"
+ },
+ "scores": {
+  "rule_score": 0.9983,
+  "iforest_score": 0.6172,
+  "dominant_score": 5.6455,
+  "ens_score": 0.9642,
+  "ens_pct": 0.9704
+ },
+ "reasons": [
+  {
+   "rule": "round_trip_ring",
+   "group": "network",
+   "strength": 0.95,
+   "text": "Buys feedstock inside a closed loop of 3 recyclers trading the same material (31% of its feedstock)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.46x the cost floor)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.503,
+   "text": "Sold products equal only 37% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "output_low_months",
+   "group": "output",
+   "strength": 0.5,
+   "text": "In 100% of months, product sales fall far short of the claimed input"
+  },
+  {
+   "rule": "underpriced_vs_market",
+   "group": "price",
+   "strength": 0.352,
+   "text": "Certificates sold at 0.53x the market median price"
+  },
+  {
+   "rule": "shared_address",
+   "group": "identity",
+   "strength": 0.3,
+   "text": "Registered at an address shared with 2 other entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "feed_from_recyclers",
+   "label": "feed_from_recyclers",
+   "value": 0.3125,
+   "population_percentile": 99.5,
+   "shap": -0.4228
+  },
+  {
+   "feature": "net_recycler_out_degree",
+   "label": "net_recycler_out_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.4152
+  },
+  {
+   "feature": "id_shared_address",
+   "label": "shared address",
+   "value": 2.0,
+   "population_percentile": 99.0,
+   "shap": -0.4045
+  },
+  {
+   "feature": "net_recycler_in_degree",
+   "label": "net_recycler_in_degree",
+   "value": 1.0,
+   "population_percentile": 97.9,
+   "shap": -0.3848
+  }
+ ],
+ "evidence": {
+  "ring_partners": [
+   "registry/entities:ENT-5CKKJU6 (389 t sold to this plant)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-64H8095 (96 t bought)",
+   "plastic/offtakers:OFT-I2L12UT (78 t bought)",
+   "plastic/offtakers:OFT-X2N2ZF0 (38 t bought)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 2, director 0, photos 0)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-2V4F6JT7Y (CAT_IV, Rs 665/t to PIBO-93QOQ0J)",
+   "plastic/certificate_sales:SALE-EWNTZ012Q (CAT_IV, Rs 665/t to PIBO-93QOQ0J)",
+   "plastic/certificate_sales:SALE-KEZK0LQJX (CAT_IV, Rs 669/t to PIBO-JOZOBYG)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-UR2795A Unity Krishna FMCG Ltd (255 t)",
+  "PIBO-J0FJS3F Galaxy Dairy (199 t)",
+  "PIBO-HKZ3VBK Unity Himalaya Snacks (99 t)",
+  "PIBO-SQ16J6B Kaveri Beverages LLP (82 t)",
+  "PIBO-GYKIV8H Narmada Royal Foods LLP (76 t)"
+ ],
+ "inspection_checklist": [
+  "Trace the material flow between the plants in the loop (weighbridge slips, vehicle GPS); the same tonnes may be invoiced round a ring.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 75
+}

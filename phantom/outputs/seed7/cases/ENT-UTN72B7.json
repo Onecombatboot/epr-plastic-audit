@@ -1,0 +1,132 @@
+{
+ "entity_id": "ENT-UTN72B7",
+ "profile": {
+  "name": "Eco Plastics Pvt Ltd",
+  "state": "Delhi",
+  "district": "North West Delhi",
+  "declared_capacity_tpa": 990.0,
+  "connected_load_kw": 15.0,
+  "epr_registered": "2023-12-26"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6292,
+  "dominant_score": 2.2895,
+  "ens_score": 0.9708,
+  "ens_pct": 0.9792
+ },
+ "reasons": [
+  {
+   "rule": "impossible_load",
+   "group": "energy",
+   "strength": 0.9,
+   "text": "Claimed tonnage in the busiest month would need 255% of the plant's connected load running non-stop (above 100% is physically impossible)"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.736,
+   "text": "56% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "category_3_inflation",
+   "group": "cert",
+   "strength": 0.691,
+   "text": "Category III share of certificates is 42%, +40% versus what its process route can produce"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.61x the cost floor)"
+  },
+  {
+   "rule": "capacity_needs_more_power",
+   "group": "energy",
+   "strength": 0.55,
+   "text": "Declared capacity of 990 t/yr needs about 2.7x the power the plant is connected for"
+  },
+  {
+   "rule": "shared_bank_account",
+   "group": "identity",
+   "strength": 0.5,
+   "text": "Shares a bank account with 1 other registered entity(ies)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 1.0,
+   "population_percentile": 98.2,
+   "shap": -0.2955
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.5597,
+   "population_percentile": 98.9,
+   "shap": -0.2678
+  },
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 0.3214,
+   "population_percentile": 88.5,
+   "shap": -0.2569
+  },
+  {
+   "feature": "cert_late_batch_share",
+   "label": "certificates batched late",
+   "value": 0.5635,
+   "population_percentile": 97.9,
+   "shap": -0.2022
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-NRKAU6ZG (Feb 2026: 4,862 kWh for 81.1 t claimed)",
+   "plastic/electricity_bills:BILL-RU0ZR4I8 (Mar 2025: 5,805 kWh for 93.1 t claimed)",
+   "plastic/electricity_bills:BILL-NCR7GCT1 (Mar 2026: 5,558 kWh for 78.9 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-BHYYIJZ77 (05 Dec 2023, 1 t from COL-Q5TA7QA)",
+   "plastic/feedstock_invoices:INV-VLDJZ2IG8 (04 Jan 2024, 3 t from COL-7RVGKDB)",
+   "plastic/feedstock_invoices:INV-53IWGUEDC (12 Jan 2024, 5 t from COL-Q5TA7QA)",
+   "plastic/feedstock_invoices:INV-M4UTDSYZH (24 Feb 2024, 7 t from COL-7RVGKDB)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-Q5TA7QA (285 t supplied; declared capacity 16 t/month; 2 vehicles; registered Oct 2023)",
+   "plastic/collectors:COL-7RVGKDB (171 t supplied; declared capacity 17 t/month; 1 vehicles; registered Jun 2023)",
+   "plastic/collectors:COL-FS8E3X8 (120 t supplied; declared capacity 25 t/month; 6 vehicles; registered Aug 2019)",
+   "plastic/collectors:COL-OE1S5UM (36 t supplied; declared capacity 35 t/month; 2 vehicles; registered Oct 2016)",
+   "plastic/collectors:COL-F8HHKLS (32 t supplied; declared capacity 7 t/month; 1 vehicles; registered Nov 2021)"
+  ],
+  "certificate_lots": [
+   "plastic/certificate_lots (month 2025-06: 195 t of 796 t generated)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 1, address 0, director 0, photos 0)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-JKQ4HJONE (CAT_IV, Rs 812/t to PIBO-T31E7J3)",
+   "plastic/certificate_sales:SALE-3D6HLK3G5 (CAT_IV, Rs 812/t to PIBO-T31E7J3)",
+   "plastic/certificate_sales:SALE-FO7EAHBZK (CAT_IV, Rs 812/t to PIBO-T31E7J3)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-VR95JFO Bharat Balaji Dairy LLP (108 t)",
+  "PIBO-22WF0Q6 Shri Dairy Pvt Ltd (103 t)",
+  "PIBO-09CDAXE Royal FMCG (85 t)",
+  "PIBO-I7W187E Navjeevan Consumer Products Pvt Ltd (75 t)",
+  "PIBO-V9LXSCH Hind Home Care Pvt Ltd (66 t)"
+ ],
+ "inspection_checklist": [
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Cross-check the certificate generation dates and category mix against the plant's process route and stock registers.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection."
+ ],
+ "rank": 53
+}

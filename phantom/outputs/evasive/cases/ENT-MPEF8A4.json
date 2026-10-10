@@ -1,0 +1,125 @@
+{
+ "entity_id": "ENT-MPEF8A4",
+ "profile": {
+  "name": "Sunrise Granules Ltd",
+  "state": "Telangana",
+  "district": "Sangareddy",
+  "declared_capacity_tpa": 2290.0,
+  "connected_load_kw": 207.0,
+  "epr_registered": "2025-09-20"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6376,
+  "dominant_score": 2.733,
+  "ens_score": 0.9861,
+  "ens_pct": 0.9904
+ },
+ "reasons": [
+  {
+   "rule": "doctored_bills",
+   "group": "bills",
+   "strength": 0.85,
+   "text": "Energy charges do not match units x tariff on 100% of bills (worst bill charged 18% of expected)"
+  },
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 86% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "76% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.7,
+   "text": "68% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  },
+  {
+   "rule": "output_shortfall",
+   "group": "output",
+   "strength": 0.7,
+   "text": "Sold products equal only 18% of the output expected from the tonnes claimed"
+  },
+  {
+   "rule": "no_eway_bills",
+   "group": "feedstock",
+   "strength": 0.6,
+   "text": "55% of high-value consignments have no e-way bill"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.364
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.7581,
+   "population_percentile": 99.0,
+   "shap": -0.3032
+  },
+  {
+   "feature": "id_shared_bank",
+   "label": "shared bank account",
+   "value": 8.0,
+   "population_percentile": 99.6,
+   "shap": -0.296
+  },
+  {
+   "feature": "bill_inconsistent_share",
+   "label": "bills whose charges do not match units x tariff",
+   "value": 1.0,
+   "population_percentile": 93.8,
+   "shap": -0.2398
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-YJIAZM9Y (Mar 2026: 381,048 kWh for 542.1 t claimed)",
+   "plastic/electricity_bills:BILL-7RZMYG97 (Feb 2026: 401,479 kWh for 554.8 t claimed)",
+   "plastic/electricity_bills:BILL-JP30KFO1 (Jan 2026: 342,155 kWh for 458.7 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-YXYTLEGMG (01 Sep 2025, 19 t from COL-66BEB5X)",
+   "plastic/feedstock_invoices:INV-73BCPRG9G (02 Sep 2025, 14 t from COL-66BEB5X)",
+   "plastic/feedstock_invoices:INV-Z03NZXDZA (02 Sep 2025, 7 t from COL-L03U4YI)",
+   "plastic/feedstock_invoices:INV-S62CNJHLU (17 Sep 2025, 0.5 t from COL-YXKYAK0)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-66BEB5X (734 t supplied; declared capacity 26 t/month; 2 vehicles; registered Jun 2025)",
+   "plastic/collectors:COL-L03U4YI (608 t supplied; declared capacity 20 t/month; 1 vehicles; registered Mar 2025)",
+   "plastic/collectors:COL-UISR2C8 (456 t supplied; declared capacity 11 t/month; 1 vehicles; registered Sep 2025)",
+   "plastic/collectors:COL-H190WB5 (401 t supplied; declared capacity 37 t/month; 2 vehicles; registered Jul 2025)",
+   "plastic/collectors:COL-MX8D8Q3 (237 t supplied; declared capacity 39 t/month; 1 vehicles; registered Sep 2025)"
+  ],
+  "output_buyers": [
+   "plastic/offtakers:OFT-50M1EGG (351 t bought)",
+   "plastic/offtakers:OFT-N00OAEU (28 t bought)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-2FWCR9M Royal Foods (524 t)",
+  "PIBO-82GA4G4 Western Foods LLP (453 t)",
+  "PIBO-Q4MLSKH Western Personal Care Pvt Ltd (348 t)",
+  "PIBO-YQUA4B9 Deccan FMCG Pvt Ltd (120 t)",
+  "PIBO-ZMHEZ0E Sanjeevani Home Care Pvt Ltd (118 t)"
+ ],
+ "inspection_checklist": [
+  "Verify the electricity bills directly with the DISCOM (units, tariff, amount); the uploaded copies do not reconcile.",
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs).",
+  "Reconcile product sales with processed tonnes; contact the product buyers listed and verify that they received the material."
+ ],
+ "rank": 25
+}

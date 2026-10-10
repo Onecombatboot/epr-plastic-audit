@@ -1,0 +1,130 @@
+{
+ "entity_id": "ENT-M6G01UY",
+ "profile": {
+  "name": "Vasundhara Sterling Plastics Pvt Ltd",
+  "state": "Gujarat",
+  "district": "Rajkot",
+  "declared_capacity_tpa": 4500.0,
+  "connected_load_kw": 279.0,
+  "epr_registered": "2023-11-14"
+ },
+ "scores": {
+  "rule_score": 1.0,
+  "iforest_score": 0.6155,
+  "dominant_score": 2.6427,
+  "ens_score": 0.9691,
+  "ens_pct": 0.9764
+ },
+ "reasons": [
+  {
+   "rule": "over_declared_capacity",
+   "group": "capacity",
+   "strength": 0.8,
+   "text": "Certificates claim more than the declared monthly capacity in 97% of months"
+  },
+  {
+   "rule": "collectors_over_capacity",
+   "group": "collectors",
+   "strength": 0.8,
+   "text": "68% of feedstock comes from collectors invoicing far beyond their declared capacity"
+  },
+  {
+   "rule": "duplicate_plant_photos",
+   "group": "identity",
+   "strength": 0.7,
+   "text": "Uploaded plant photos are near-duplicates of photos registered by 1 other plant(s)"
+  },
+  {
+   "rule": "energy_deficit",
+   "group": "energy",
+   "strength": 0.66,
+   "text": "Electricity bought is only 0.42x the minimum needed for the tonnes claimed (127 kWh/t against at least 300)"
+  },
+  {
+   "rule": "below_cost_certificates",
+   "group": "price",
+   "strength": 0.6,
+   "text": "100% of certificate tonnes were sold below the cost of recycling (average 0.49x the cost floor)"
+  },
+  {
+   "rule": "round_tonnage_invoices",
+   "group": "feedstock",
+   "strength": 0.565,
+   "text": "25% of purchase invoices have suspiciously round tonnages (typical plant: about 2%)"
+  }
+ ],
+ "model_signals": [
+  {
+   "feature": "out_month_low_share",
+   "label": "months with output far below input",
+   "value": 1.0,
+   "population_percentile": 89.2,
+   "shap": -0.3097
+  },
+  {
+   "feature": "feed_collector_over_cap",
+   "label": "feedstock from over-capacity collectors",
+   "value": 0.6836,
+   "population_percentile": 99.2,
+   "shap": -0.2808
+  },
+  {
+   "feature": "over_cap_month_share",
+   "label": "months above declared capacity",
+   "value": 0.9655,
+   "population_percentile": 99.8,
+   "shap": -0.242
+  },
+  {
+   "feature": "id_photo_near_dups",
+   "label": "plant photos duplicated at other plants",
+   "value": 1.0,
+   "population_percentile": 90.4,
+   "shap": -0.2292
+  }
+ ],
+ "evidence": {
+  "electricity_bills": [
+   "plastic/electricity_bills:BILL-V7H3NNZ1 (May 2024: 100,781 kWh for 843.6 t claimed)",
+   "plastic/electricity_bills:BILL-N68AXE3B (Nov 2024: 106,753 kWh for 885.9 t claimed)",
+   "plastic/electricity_bills:BILL-7BQOBA8P (Aug 2024: 83,513 kWh for 684.3 t claimed)"
+  ],
+  "feedstock_invoices": [
+   "plastic/feedstock_invoices:INV-0OE1B1X00 (01 Nov 2023, 3 t from COL-O217VDL)",
+   "plastic/feedstock_invoices:INV-4GDFLOSRE (05 Nov 2023, 9 t from COL-00M70II)",
+   "plastic/feedstock_invoices:INV-56I857F9F (08 Nov 2023, 3 t from COL-URWR9VT)",
+   "plastic/feedstock_invoices:INV-9HGCDNSFO (11 Nov 2023, 12 t from COL-00M70II)"
+  ],
+  "top_collectors": [
+   "plastic/collectors:COL-VG38RLS (4,538 t supplied; declared capacity 39 t/month; 2 vehicles; registered Aug 2023)",
+   "plastic/collectors:COL-00M70II (4,120 t supplied; declared capacity 29 t/month; 1 vehicles; registered Aug 2023)",
+   "plastic/collectors:COL-URWR9VT (3,240 t supplied; declared capacity 15 t/month; 2 vehicles; registered Sep 2023)",
+   "plastic/collectors:COL-0X6I9HE (2,255 t supplied; declared capacity 9 t/month; 2 vehicles; registered Jul 2023)",
+   "plastic/collectors:COL-O217VDL (895 t supplied; declared capacity 263 t/month; 2 vehicles; registered Feb 2023)"
+  ],
+  "identity": [
+   "registry: shares identifiers with other entities (bank 0, address 0, director 0, photos 1)"
+  ],
+  "cheapest_sales": [
+   "plastic/certificate_sales:SALE-AA816YHUR (CAT_IV, Rs 644/t to PIBO-UYQNXUB)",
+   "plastic/certificate_sales:SALE-29DAXT3FW (CAT_IV, Rs 644/t to PIBO-UYQNXUB)",
+   "plastic/certificate_sales:SALE-QQRKTR9H6 (CAT_IV, Rs 644/t to PIBO-UYQNXUB)"
+  ]
+ },
+ "brands_exposed": [
+  "PIBO-X7WNXM5 Supreme Dairy Pvt Ltd (2,035 t)",
+  "PIBO-T94ZUK0 Eastern FMCG Pvt Ltd (2,030 t)",
+  "PIBO-NKDIWRH Pragati Ganesh Pharma LLP (1,627 t)",
+  "PIBO-KTX7ZZZ Navjeevan Narmada Home Care Pvt Ltd (1,498 t)",
+  "PIBO-638CI87 Green Star Foods Pvt Ltd (725 t)"
+ ],
+ "inspection_checklist": [
+  "Check installed machinery and shift records against the declared capacity; request production registers for the flagged months.",
+  "Visit the named collectors: confirm premises, vehicles and storage; check their registration dates and sales to other buyers.",
+  "Compare the plant against the entities sharing its identifiers (bank, address, director, photos); consider a joint inspection.",
+  "Obtain the DISCOM consumption statement and meter readings for the flagged months; compare connected machinery (kW) against the claimed tonnage.",
+  "Ask for the plant's cost sheet; certificates priced below the cost of recycling imply the processing cost was never incurred.",
+  "Physically verify a sample of purchase invoices with the sellers (weighbridge slips, e-way bills, vehicle logs)."
+ ],
+ "rank": 60
+}
