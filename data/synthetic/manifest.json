@@ -1,0 +1,690 @@
+{
+  "generator_version": "1.0.0",
+  "scale": "large",
+  "seed": 42,
+  "timings_s": {
+    "registry": 5.9,
+    "plastic": 223.1,
+    "yield": 11.1,
+    "ocems": 8.1,
+    "bmw": 93.9
+  },
+  "total_s": 342.1,
+  "tables": {
+    "registry/entities.parquet": {
+      "rows": 4550,
+      "cols": [
+        "entity_id",
+        "stream",
+        "legal_name",
+        "constitution",
+        "pan",
+        "gstin",
+        "state",
+        "district",
+        "estate",
+        "lat",
+        "lon",
+        "incorporation_date",
+        "epr_registration_date",
+        "process_type",
+        "declared_capacity_tpa",
+        "connected_load_kw",
+        "declared_staff",
+        "captive_solar_kw",
+        "address",
+        "contact_phone",
+        "contact_email",
+        "bank_ifsc",
+        "bank_account",
+        "consultant_id",
+        "filing_phone",
+        "filing_email",
+        "authorised_signatory_id"
+      ],
+      "bytes": 585701
+    },
+    "registry/people.parquet": {
+      "rows": 10010,
+      "cols": [
+        "person_id",
+        "din",
+        "name",
+        "pan",
+        "phone",
+        "email",
+        "residential_city"
+      ],
+      "bytes": 446494
+    },
+    "registry/entity_directors.parquet": {
+      "rows": 8514,
+      "cols": [
+        "entity_id",
+        "person_id",
+        "role",
+        "appointed_date"
+      ],
+      "bytes": 126852
+    },
+    "registry/consultants.parquet": {
+      "rows": 120,
+      "cols": [
+        "consultant_id",
+        "firm_name",
+        "phone",
+        "email",
+        "state"
+      ],
+      "bytes": 7267
+    },
+    "registry/plant_photos.parquet": {
+      "rows": 28143,
+      "cols": [
+        "photo_id",
+        "entity_id",
+        "photo_type",
+        "exif_present",
+        "exif_lat",
+        "exif_lon",
+        "exif_datetime",
+        "phash",
+        "upload_date"
+      ],
+      "bytes": 1121659
+    },
+    "labels/registry/entity_labels.parquet": {
+      "rows": 4550,
+      "cols": [
+        "entity_id",
+        "stream",
+        "is_fraud",
+        "operator_id",
+        "operator_size",
+        "difficulty",
+        "hollow_fraction",
+        "is_migration_shell",
+        "true_capacity_tpa",
+        "benign_group_id",
+        "confounders",
+        "ghost_feedstock",
+        "underprice",
+        "cat3_inflation",
+        "deadline_burst",
+        "round_trip",
+        "output_fabrication",
+        "doctored_bill",
+        "capacity_inflated",
+        "photo_reuse"
+      ],
+      "bytes": 67752
+    },
+    "labels/registry/entity_physics.parquet": {
+      "rows": 4550,
+      "cols": [
+        "entity_id",
+        "stream",
+        "process_type",
+        "true_capacity_tpa",
+        "kwh_per_t",
+        "utilization_base",
+        "solar_fraction",
+        "hollow_fraction",
+        "is_fraud",
+        "difficulty",
+        "fast_grower",
+        "ghost_feedstock",
+        "underprice",
+        "cat3_inflation",
+        "deadline_burst",
+        "round_trip",
+        "output_fabrication",
+        "doctored_bill",
+        "capacity_inflated",
+        "photo_reuse"
+      ],
+      "bytes": 104163
+    },
+    "labels/registry/same_operator_pairs.parquet": {
+      "rows": 735,
+      "cols": [
+        "entity_a",
+        "entity_b",
+        "operator_id",
+        "difficulty"
+      ],
+      "bytes": 6885
+    },
+    "labels/registry/benign_link_pairs.parquet": {
+      "rows": 292,
+      "cols": [
+        "entity_a",
+        "entity_b",
+        "benign_group_id"
+      ],
+      "bytes": 5105
+    },
+    "labels/registry/photo_origin.parquet": {
+      "rows": 28143,
+      "cols": [
+        "photo_id",
+        "entity_id",
+        "origin"
+      ],
+      "bytes": 277985
+    },
+    "registry/tariff_reference.parquet": {
+      "rows": 51,
+      "cols": [
+        "state",
+        "fy",
+        "energy_rate_inr_per_kwh",
+        "fixed_rate_inr_per_kw_month",
+        "duty_rate"
+      ],
+      "bytes": 4535
+    },
+    "plastic/collectors.parquet": {
+      "rows": 25607,
+      "cols": [
+        "collector_id",
+        "name",
+        "collector_type",
+        "state",
+        "district",
+        "gstin",
+        "address",
+        "lat",
+        "lon",
+        "phone",
+        "registration_date",
+        "declared_monthly_capacity_t",
+        "vehicle_count"
+      ],
+      "bytes": 1584670
+    },
+    "plastic/feedstock_invoices.parquet": {
+      "rows": 2572616,
+      "cols": [
+        "invoice_id",
+        "invoice_date",
+        "seller_id",
+        "seller_type",
+        "buyer_id",
+        "category",
+        "tonnes",
+        "rate_inr_per_t",
+        "taxable_value_inr",
+        "gst_inr",
+        "vehicle_reg",
+        "eway_bill_no",
+        "distance_km",
+        "seller_state"
+      ],
+      "bytes": 71358954
+    },
+    "plastic/monthly_processing_reported.parquet": {
+      "rows": 296739,
+      "cols": [
+        "entity_id",
+        "month",
+        "category",
+        "eol_type",
+        "processed_t_reported"
+      ],
+      "bytes": 1147327
+    },
+    "plastic/certificate_lots.parquet": {
+      "rows": 289275,
+      "cols": [
+        "lot_id",
+        "recycler_id",
+        "period_month",
+        "category",
+        "eol_type",
+        "tonnes",
+        "generated_on",
+        "fy"
+      ],
+      "bytes": 3592093
+    },
+    "plastic/certificate_sales.parquet": {
+      "rows": 646106,
+      "cols": [
+        "sale_id",
+        "transaction_id",
+        "lot_id",
+        "seller_id",
+        "buyer_id",
+        "category",
+        "fy",
+        "sale_date",
+        "tonnes",
+        "price_inr_per_t",
+        "amount_inr"
+      ],
+      "bytes": 18783346
+    },
+    "plastic/brands.parquet": {
+      "rows": 12000,
+      "cols": [
+        "brand_id",
+        "name",
+        "pibo_type",
+        "sector",
+        "state",
+        "gstin",
+        "registration_date"
+      ],
+      "bytes": 311226
+    },
+    "plastic/brand_obligations.parquet": {
+      "rows": 132588,
+      "cols": [
+        "brand_id",
+        "fy",
+        "category",
+        "obligation_t"
+      ],
+      "bytes": 873545
+    },
+    "plastic/offtakers.parquet": {
+      "rows": 4110,
+      "cols": [
+        "offtaker_id",
+        "name",
+        "state",
+        "gstin",
+        "address",
+        "incorporation_date"
+      ],
+      "bytes": 157246
+    },
+    "plastic/output_invoices.parquet": {
+      "rows": 815347,
+      "cols": [
+        "invoice_id",
+        "invoice_date",
+        "seller_id",
+        "buyer_id",
+        "product",
+        "tonnes",
+        "rate_inr_per_t",
+        "taxable_value_inr"
+      ],
+      "bytes": 13716139
+    },
+    "plastic/electricity_bills.parquet": {
+      "rows": 73719,
+      "cols": [
+        "bill_id",
+        "entity_id",
+        "billing_month",
+        "discom",
+        "consumer_no",
+        "sanctioned_load_kw",
+        "units_kwh",
+        "fixed_charge_inr",
+        "energy_charge_inr",
+        "duty_inr",
+        "total_amount_inr"
+      ],
+      "bytes": 2612121
+    },
+    "labels/plastic/collector_labels.parquet": {
+      "rows": 25607,
+      "cols": [
+        "collector_id",
+        "is_ghost",
+        "ghost_for_entity",
+        "operator_id"
+      ],
+      "bytes": 189356
+    },
+    "labels/plastic/invoice_labels.parquet": {
+      "rows": 2572616,
+      "cols": [
+        "invoice_id",
+        "kind"
+      ],
+      "bytes": 17517565
+    },
+    "labels/plastic/output_invoice_labels.parquet": {
+      "rows": 815347,
+      "cols": [
+        "invoice_id",
+        "kind"
+      ],
+      "bytes": 5560903
+    },
+    "labels/plastic/offtaker_labels.parquet": {
+      "rows": 4110,
+      "cols": [
+        "offtaker_id",
+        "is_shell",
+        "operator_id"
+      ],
+      "bytes": 30492
+    },
+    "labels/plastic/lot_labels.parquet": {
+      "rows": 289275,
+      "cols": [
+        "lot_id",
+        "hollow_tonnes",
+        "hollow_share"
+      ],
+      "bytes": 2170910
+    },
+    "labels/plastic/brand_labels.parquet": {
+      "rows": 12000,
+      "cols": [
+        "brand_id",
+        "procurement_style",
+        "obligation_t",
+        "bought_t",
+        "hollow_t",
+        "true_hollow_exposure",
+        "compliance_ratio"
+      ],
+      "bytes": 331187
+    },
+    "labels/plastic/monthly_truth.parquet": {
+      "rows": 296739,
+      "cols": [
+        "entity_id",
+        "month",
+        "category",
+        "true_t",
+        "hollow_t"
+      ],
+      "bytes": 2767089
+    },
+    "labels/plastic/recycler_extra_labels.parquet": {
+      "rows": 2500,
+      "cols": [
+        "entity_id",
+        "legit_cat3_recycler",
+        "efficient_low_price_legit",
+        "certificate_markup",
+        "round_trip_ring"
+      ],
+      "bytes": 26391
+    },
+    "labels/plastic/round_trip_edges.parquet": {
+      "rows": 41,
+      "cols": [
+        "seller_id",
+        "buyer_id",
+        "ring_id"
+      ],
+      "bytes": 2935
+    },
+    "yield/operations_monthly.parquet": {
+      "rows": 55115,
+      "cols": [
+        "entity_id",
+        "stream",
+        "process_type",
+        "month",
+        "input_t_reported",
+        "certificates_t"
+      ],
+      "bytes": 848650
+    },
+    "yield/outputs_monthly.parquet": {
+      "rows": 209534,
+      "cols": [
+        "entity_id",
+        "month",
+        "product",
+        "tonnes_sold",
+        "value_inr"
+      ],
+      "bytes": 2085002
+    },
+    "yield/electricity_bills.parquet": {
+      "rows": 53734,
+      "cols": [
+        "bill_id",
+        "entity_id",
+        "billing_month",
+        "discom",
+        "consumer_no",
+        "sanctioned_load_kw",
+        "units_kwh",
+        "fixed_charge_inr",
+        "energy_charge_inr",
+        "duty_inr",
+        "total_amount_inr"
+      ],
+      "bytes": 1935345
+    },
+    "labels/yield/monthly_truth.parquet": {
+      "rows": 55115,
+      "cols": [
+        "entity_id",
+        "month",
+        "true_input_t",
+        "hollow_t"
+      ],
+      "bytes": 451768
+    },
+    "labels/yield/entity_extra_labels.parquet": {
+      "rows": 2050,
+      "cols": [
+        "entity_id",
+        "campaign_processor",
+        "atypical_legit_yield",
+        "true_yields"
+      ],
+      "bytes": 52886
+    },
+    "ocems/units.parquet": {
+      "rows": 300,
+      "cols": [
+        "unit_id",
+        "name",
+        "industry",
+        "state",
+        "district",
+        "estate",
+        "lat",
+        "lon",
+        "design_flow_m3h",
+        "operating_schedule",
+        "std_cod_mgl",
+        "std_bod_mgl",
+        "std_tss_mgl",
+        "std_ph_min",
+        "std_ph_max",
+        "analyzer_model"
+      ],
+      "bytes": 22769
+    },
+    "ocems/readings.parquet": {
+      "rows": 3456000,
+      "cols": [
+        "unit_id",
+        "ts",
+        "ph",
+        "cod_mgl",
+        "bod_mgl",
+        "tss_mgl",
+        "flow_m3h",
+        "status"
+      ],
+      "bytes": 27574382
+    },
+    "labels/ocems/row_labels.parquet": {
+      "rows": 3456000,
+      "cols": [
+        "unit_id",
+        "ts",
+        "tamper_type",
+        "fault_type",
+        "true_exceedance",
+        "hidden_exceedance",
+        "true_cod_mgl",
+        "true_bod_mgl",
+        "true_flow_m3h"
+      ],
+      "bytes": 46432194
+    },
+    "labels/ocems/tamper_episodes.parquet": {
+      "rows": 162,
+      "cols": [
+        "unit_id",
+        "start_ts",
+        "end_ts",
+        "tamper_type",
+        "difficulty",
+        "params_affected"
+      ],
+      "bytes": 7393
+    },
+    "labels/ocems/benign_fault_episodes.parquet": {
+      "rows": 25,
+      "cols": [
+        "unit_id",
+        "start_ts",
+        "end_ts",
+        "fault_type",
+        "param"
+      ],
+      "bytes": 4110
+    },
+    "labels/ocems/unit_labels.parquet": {
+      "rows": 300,
+      "cols": [
+        "unit_id",
+        "is_tamper_unit",
+        "difficulty"
+      ],
+      "bytes": 4232
+    },
+    "bmw/facilities.parquet": {
+      "rows": 20000,
+      "cols": [
+        "facility_id",
+        "name",
+        "facility_type",
+        "beds",
+        "avg_daily_patients",
+        "state",
+        "district",
+        "lat",
+        "lon",
+        "cbwtf_id",
+        "pickup_schedule",
+        "authorisation_no"
+      ],
+      "bytes": 763599
+    },
+    "bmw/cbwtfs.parquet": {
+      "rows": 200,
+      "cols": [
+        "cbwtf_id",
+        "name",
+        "state",
+        "district",
+        "lat",
+        "lon",
+        "incinerator_kg_per_hr",
+        "permitted_kg_per_day",
+        "n_vehicles"
+      ],
+      "bytes": 12715
+    },
+    "bmw/facility_changes.parquet": {
+      "rows": 499,
+      "cols": [
+        "facility_id",
+        "effective_date",
+        "change_type",
+        "old_value",
+        "new_value"
+      ],
+      "bytes": 8886
+    },
+    "bmw/pickups.parquet": {
+      "rows": 4652377,
+      "cols": [
+        "pickup_id",
+        "facility_id",
+        "cbwtf_id",
+        "vehicle_id",
+        "pickup_date",
+        "yellow_kg",
+        "red_kg",
+        "white_kg",
+        "blue_kg",
+        "n_bags",
+        "gps_lat",
+        "gps_lon",
+        "gps_arrival",
+        "dwell_min"
+      ],
+      "bytes": 176364543
+    },
+    "bmw/cbwtf_daily_treatment.parquet": {
+      "rows": 71905,
+      "cols": [
+        "cbwtf_id",
+        "date",
+        "intake_kg",
+        "incinerated_kg_reported",
+        "autoclaved_kg_reported",
+        "incinerator_hours_reported",
+        "diesel_litres_purchased"
+      ],
+      "bytes": 1257818
+    },
+    "labels/bmw/facility_labels.parquet": {
+      "rows": 20000,
+      "cols": [
+        "facility_id",
+        "under_handover",
+        "handover_fraction",
+        "intermittent",
+        "difficulty",
+        "true_kg_rate",
+        "true_occupancy_base"
+      ],
+      "bytes": 261370
+    },
+    "labels/bmw/cbwtf_labels.parquet": {
+      "rows": 200,
+      "cols": [
+        "cbwtf_id",
+        "ghost_pickups",
+        "weight_padding",
+        "overcapacity",
+        "difficulty"
+      ],
+      "bytes": 4621
+    },
+    "labels/bmw/pickup_labels.parquet": {
+      "rows": 4652377,
+      "cols": [
+        "pickup_id",
+        "facility_id",
+        "pickup_date",
+        "true_accumulated_kg",
+        "handed_kg",
+        "padding_factor",
+        "is_ghost"
+      ],
+      "bytes": 64966988
+    },
+    "labels/bmw/cbwtf_treatment_truth.parquet": {
+      "rows": 71905,
+      "cols": [
+        "cbwtf_id",
+        "date",
+        "true_incinerated_kg",
+        "untreated_kg"
+      ],
+      "bytes": 348312
+    }
+  }
+}
