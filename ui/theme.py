@@ -25,7 +25,7 @@ def apply_theme():
 def sidebar(pages, config: Settings, current_page: str):
     with st.sidebar:
         st.html('''<div class="audit-shell" data-theme="audit">
-          <div class="workspace-brand">Waste<span>Audit.</span></div>
+          <div class="workspace-brand">Trace<span>WAI.</span></div>
           <p class="workspace-caption">Evidence for every inspection.</p>
           <div class="nav-label">Workspace</div>
         </div>''')

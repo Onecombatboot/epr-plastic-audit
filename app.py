@@ -11,7 +11,7 @@ if str(ROOT) not in sys.path:
 from ui.settings import settings
 from ui.theme import apply_theme, masthead, sidebar
 
-st.set_page_config(page_title="Waste Audit", layout="wide", initial_sidebar_state="auto")
+st.set_page_config(page_title="TraceWAI", layout="wide", initial_sidebar_state="auto")
 apply_theme()
 config = settings()
 pages = [
