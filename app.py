@@ -21,8 +21,8 @@ pages = [
     st.Page("ui/pages/chemical.py", title="Chemical", url_path="chemical"),
 ]
 legacy_pages = [
-    st.Page("ui/pages/plastic_legacy.py", title="Plastic", url_path="phantom_plastic", visibility="hidden"),
-    st.Page("ui/pages/biomedical_legacy.py", title="Biomedical", url_path="biomedical_waste", visibility="hidden"),
+    st.Page("ui/pages/plastic_legacy.py", title="Plastic", url_path="phantom_plastic"),
+    st.Page("ui/pages/biomedical_legacy.py", title="Biomedical", url_path="biomedical_waste"),
 ]
 page = st.navigation(pages + legacy_pages, position="hidden")
 sidebar(pages, config, page.title)

@@ -45,7 +45,6 @@ def render(run_path: Path | str = ROOT / "yieldbal/outputs/seed42",
 
     st.title("Mass-Balance & Yield")
     st.caption("Recycling certificates should be backed by products, electricity and plant capacity.")
-    st.warning("All data is synthetic. Detectors were designed knowing the planted mechanisms. Results do not establish real-world accuracy; configured yields, tariffs and energy limits are assumptions.")
     if not (RUN/"scores.parquet").exists():
         st.info("Run `python -m yieldbal.run_eval` from the repository root to create the audit results.")
         st.stop()

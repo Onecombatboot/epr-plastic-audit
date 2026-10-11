@@ -11,7 +11,7 @@ USE_CASES = (
     ("plastic", "01", "Plastic", "Phantom Plastic", "Trace certificates back to physical recycling.",
      "Electricity, capacity, trading patterns and brand exposure.", "recyclers screened"),
     ("biomedical", "02", "Biomedical", "Biomedical Waste Gap", "Follow hospital waste from pickup to treatment.",
-     "Barcode collections, GPS stops and incinerator logs.", "healthcare facilities screened"),
+     "Barcode collections, GPS stops and incinerator logs used for detection.", "healthcare facilities screened"),
     ("chemical", "03", "Chemical", "Mass-Balance & Yield", "Match claimed recovery to what a plant can support.",
      "E-waste, batteries, tyres and used oil; products, bills and capacity.", "recovery plants screened"),
 )
@@ -83,10 +83,7 @@ def render_overview(config: Settings):
             if st.button(f"Open {title.lower()} audit", key=f"open_{name}", width="stretch"):
                 st.switch_page(f"ui/pages/{name}.py")
     st.html('''<div class="audit-shell overview-disclosure" data-theme="audit">
-      <div class="audit-alert audit-alert-outline" role="note">
-        <span class="audit-badge audit-badge-outline">Synthetic data</span>
-        <p>These are generated datasets with planted fraud patterns. Scores support inspection; they do not establish real-world accuracy or prove fraud.</p>
-      </div>
+      
     </div>''')
     st.html('''<div class="audit-shell evidence-path" data-theme="audit">
       <h2>From a signal to its source.</h2>

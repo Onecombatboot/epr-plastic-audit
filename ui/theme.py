@@ -34,9 +34,6 @@ def sidebar(pages, config: Settings, current_page: str):
             with st.container(key="active_navigation" if page.title == current_page else f"navigation_{number}"):
                 st.page_link(page, label=label)
         st.html('''<div class="audit-shell sidebar-note" data-theme="audit">
-          <div class="sidebar-rule"></div>
-          <span class="audit-badge audit-badge-outline">Synthetic data</span>
-          <p>Inspection ranks are not fraud probabilities. Review the source evidence before drawing conclusions.</p>
         </div>''')
         with st.expander("Data sources"):
             st.caption("The workspace reads saved audit results. Each use case keeps its own scoring policy.")
