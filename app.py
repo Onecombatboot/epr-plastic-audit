@@ -1,39 +1,30 @@
-"""National Waste Compliance Audit Portal.
+"""Unified waste-audit workspace. Start with: streamlit run app.py."""
+from pathlib import Path
+import sys
 
-Unified Inspector Dashboard uniting two autonomous audit agents:
-1. Phantom Plastic: Unsupervised detection of hollow EPR plastic recycling certificates
-2. Biomedical Waste Gap: Detection of hospital waste dumping and treatment plant fraud
-"""
 import streamlit as st
 
-st.set_page_config(
-    page_title="National Waste Compliance Audit",
-    page_icon="⚖️",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+ROOT = Path(__file__).resolve().parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
-phantom_page = st.Page(
-    "phantom/app.py",
-    title="Phantom Plastic (EPR Fraud)",
-    icon="♻️",
-    default=True,
-    url_path="phantom_plastic"
-)
+from ui.settings import settings
+from ui.theme import apply_theme, masthead, sidebar
 
-biomed_page = st.Page(
-    "biomed/app.py",
-    title="Biomedical Waste Gap",
-    icon="🏥",
-    url_path="biomedical_waste"
-)
-
-pg = st.navigation({
-    "Audit Agents": [phantom_page, biomed_page]
-})
-
-st.sidebar.markdown("---")
-st.sidebar.caption("⚖️ **National Waste Compliance Audit**")
-st.sidebar.caption("Built for WeMakeDevs Environmental Hacks (Waste & Energy Track)")
-
-pg.run()
+st.set_page_config(page_title="Waste Audit", layout="wide", initial_sidebar_state="auto")
+apply_theme()
+config = settings()
+pages = [
+    st.Page("ui/pages/overview.py", title="Overview", default=True),
+    st.Page("ui/pages/plastic.py", title="Plastic", url_path="plastic"),
+    st.Page("ui/pages/biomedical.py", title="Biomedical", url_path="biomedical"),
+    st.Page("ui/pages/chemical.py", title="Chemical", url_path="chemical"),
+]
+legacy_pages = [
+    st.Page("ui/pages/plastic_legacy.py", title="Plastic", url_path="phantom_plastic", visibility="hidden"),
+    st.Page("ui/pages/biomedical_legacy.py", title="Biomedical", url_path="biomedical_waste", visibility="hidden"),
+]
+page = st.navigation(pages + legacy_pages, position="hidden")
+sidebar(pages, config, page.title)
+masthead(page.title)
+page.run()

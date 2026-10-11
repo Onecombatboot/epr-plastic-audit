@@ -25,6 +25,6 @@ IP=$(curl -s http://checkip.amazonaws.com || echo "YOUR-EC2-PUBLIC-IP")
 echo "=========================================================="
 echo " National Waste Compliance Audit Portal is running!"
 echo " Access the live portal at: http://${IP}:8501"
-echo " (Includes both Phantom Plastic and Biomedical Waste Gap)"
+echo " (Includes Plastic, Biomedical and Chemical audits)"
 echo " Check logs with: tail -f streamlit.log"
 echo "=========================================================="

@@ -1,0 +1,99 @@
+{
+  "automated_tests": {
+    "passed": 63,
+    "failed": 0,
+    "skipped": 0,
+    "runtime_s": 69.5
+  },
+  "standalone_dashboard_regression": [
+    {
+      "dashboard": "yieldbal",
+      "pass": true,
+      "tabs": 4,
+      "selectors": 4,
+      "reruns": 36
+    },
+    {
+      "dashboard": "phantom",
+      "pass": true,
+      "tabs": 5,
+      "selectors": 2,
+      "reruns": 12
+    },
+    {
+      "dashboard": "biomed",
+      "pass": true,
+      "tabs": 5,
+      "selectors": 3,
+      "reruns": 15
+    },
+    {
+      "dashboard": "yieldbal",
+      "pass": true,
+      "tabs": 4,
+      "selectors": 4,
+      "reruns": 36
+    }
+  ],
+  "standalone_dashboard_reruns": 99,
+  "fresh_dashboard_environment": {
+    "pages": {
+      "overview": {
+        "pass": true,
+        "buttons": 3
+      },
+      "plastic": {
+        "pass": true,
+        "tabs": 5
+      },
+      "biomedical": {
+        "pass": true,
+        "tabs": 5
+      },
+      "chemical": {
+        "pass": true,
+        "tabs": 4
+      },
+      "plastic_legacy": {
+        "pass": true,
+        "tabs": 5
+      },
+      "biomedical_legacy": {
+        "pass": true,
+        "tabs": 5
+      }
+    },
+    "only_requirements_app_installed": true,
+    "torch_installed": false,
+    "aws_packages_installed": false
+  },
+  "fresh_environment_pip_check": "passed",
+  "browser": {
+    "pages_verified": [
+      "Overview",
+      "Plastic",
+      "Biomedical",
+      "Chemical"
+    ],
+    "phone_width_px": 390,
+    "phone_height_px": 844,
+    "phone_page_width_px": 390,
+    "horizontal_overflow": false,
+    "mobile_navigation_open_close": "passed",
+    "chemical_csv_rows": 2050,
+    "chemical_csv_matches_saved_rankings": true
+  },
+  "scope": {
+    "detector_code_changes": 0,
+    "data_changes": 0,
+    "stored_result_changes": 0,
+    "existing_deployment_setup_preserved": true
+  },
+  "css_build": {
+    "tailwind": "4.3.3",
+    "daisyui": "5.7.47",
+    "bundled_locally": true,
+    "passed": true
+  },
+  "cloud_deployed": false
+}

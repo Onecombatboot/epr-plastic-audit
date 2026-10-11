@@ -1,0 +1,5 @@
+"""Keep the original deployment's biomedical URL working."""
+from ui.auditors import render_auditor
+from ui.settings import settings
+
+render_auditor("biomedical", settings())
