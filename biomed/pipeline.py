@@ -59,7 +59,7 @@ def run(data_dir=DEFAULT_DATA, out_dir="biomed/outputs/seed42", top_cases=300, v
     n_sig = 0
     low_ids = pr.sort_values("r").groupby("fcode").head(3)[["fcode", "pickup_id"]].groupby("fcode")["pickup_id"].apply(list)
     with open(out / "signals.jsonl", "w", encoding="utf-8") as fh:
-        for fid, row in fac[fac["score"] >= EMIT_THRESHOLD].sort_values("score", ascending=False).iterrows():
+        for fid, row in fac[fac["tier"] != "none"].sort_values("score", ascending=False).iterrows():
             fcode = f.index[f["facility_id"] == fid][0]
             spec = ref["types"][row["facility_type"]]
             norm = (spec["kg_per_unit_day"][0] * (ref["occupancy"][0] if spec["basis"] == "beds" else 1.0), spec["kg_per_unit_day"][1] * (ref["occupancy"][1] if spec["basis"] == "beds" else 1.0))

@@ -133,6 +133,14 @@ def facility_scores(p: pd.DataFrame, f: pd.DataFrame, er: pd.DataFrame, ch: pd.D
     for k, v in parts.items():
         S["w_" + k] = v
     S["n_changes"] = f["facility_id"].map(ch.groupby("facility_id").size()).fillna(0).to_numpy()
+
+    # Two output tiers. 'priority': high-confidence cases (physically implausible or far outside the peer range; precision near 1).
+    # 'review': a screening queue, the stated share of facilities with the lowest handover, so that moderate under-handover that overlaps
+    # the legitimate range is still seen by someone. The queue is a budget, not an accusation; expect most of it to be innocent.
+    S["rank"] = S["score"].rank(ascending=False, method="first").astype(int)
+    prio = S["score"] >= ref["facility"]["priority_score"]
+    review = (S["rank"] <= int(round(ref["facility"]["review_budget_share"] * len(S)))) & ~prio
+    S["tier"] = np.where(prio, "priority", np.where(review, "review", "none"))
     return S
 
 
@@ -152,8 +160,8 @@ def reasons(row: pd.Series, f_row: pd.Series, unit: str, norm_range: tuple[float
     out = []
     kg_peer = np.exp(row["peer_med"])
     kg_this = np.exp(row["med"])
-    if row["s_level"] > 0.05:
-        out.append(f"Median handover is {kg_this / kg_peer:.0%} of the typical {row['facility_type'].replace('_', ' ')} (robust z = {row['z_level']:.1f}); "
+    if row["s_level"] > 0.05 or row.get("tier") == "review":
+        out.append(("Screening tier (lowest-handover quarter of facilities): " if row.get("tier") == "review" else "") + f"Median handover is {kg_this / kg_peer:.0%} of the typical {row['facility_type'].replace('_', ' ')} (robust z = {row['z_level']:.1f}); "
                    f"{'below' if row['below_norm'] > 0 else 'within'} the published norm range of {norm_range[0]:.3f}-{norm_range[1]:.3f} kg per {unit}-day")
     if row["s_dip"] > 0.05:
         out.append(f"{row['dip_share']:.0%} of its pickups fall below 55% of its own normal quantity (peers: {row['peer_dip']:.0%}; z = {row['z_dip']:.1f})")

@@ -52,8 +52,7 @@ phantom/     Phantom Plastic: features, rules, models, graph, exposure, evidence
 phantom/aws/ Bedrock summaries, Strands agent tools, Textract bill extraction, SAM template (written, not deployed)
 biomed/      Biomedical Waste Gap: prep, ghosts, facility, cbwtf, pipeline, evaluate, run_eval, dashboard
 synthdata/   seeded synthetic data generators and validation
-data/        DATA_CARD.md; synthetic/ (seed 42, all streams), synthetic_seed7/ and synthetic_evasive/ (plastic held-out and evasive-fraud worlds)
+data/        DATA_CARD.md; synthetic/ (seed 42, all streams), synthetic_seed7/ (held-out world, plastic and biomedical) and synthetic_evasive/ (plastic, fraudsters hiding their tracks)
 ```
 
-Data documentation: `data/DATA_CARD.md`. The biomedical held-out world (seed 7) is regenerated with
-`python -m synthdata.generate_all --scale large --seed 7 --only bmw --out data/synthetic_seed7`.
+Data documentation: `data/DATA_CARD.md`. In the stored datasets `bmw/pickups.parquet` is a directory of part files (GitHub's 100 MB file limit); readers treat it like a single file.

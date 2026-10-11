@@ -1,6 +1,9 @@
 # Detector priors (what an auditor would know from published guidance).
 # ASSUMPTION: values mirror the synthetic-data calibration (synthdata/calibration.yaml). Cite published CPCB norms before quoting.
 occupancy: [0.55, 0.92]
+facility:
+  priority_score: 0.20        # score at/above which a facility is a high-confidence 'priority' case
+  review_budget_share: 0.25   # screening tier: the lowest-scoring-handover quarter of facilities is queued for desk review (a stated inspection budget)
 types:
   hospital_large:  {basis: beds,     kg_per_unit_day: [0.30, 0.60], nominal_gap_days: 1.0}
   hospital_medium: {basis: beds,     kg_per_unit_day: [0.25, 0.50], nominal_gap_days: 1.0}

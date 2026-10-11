@@ -48,11 +48,14 @@ def evaluate(data_dir=DEFAULT_DATA, run_dir="biomed/outputs/seed42") -> dict:
     s = fac["score"]
     res["facility"] = {"auc": auc(s, y), "precision": {k: p_at_k(s, y, k) for k in (10, 25, 50, 100, 300)},
                        "n_positive": int(y.sum())}
-    emitted = s >= EMIT
+    emitted = fac["tier"] == "priority"                  # high-confidence tier
+    queued = fac["tier"] != "none"                        # priority + screening (review) tier
     res["facility"]["emitted"] = int(emitted.sum())
     res["facility"]["precision_of_emitted"] = float(y[emitted].mean())
+    res["facility"]["review_queue"] = {"flagged": int(queued.sum()), "precision": float(y[queued].mean())}
     tier = fl["difficulty"].reindex(fac.index)
     res["facility"]["recall_by_tier_at_emit"] = {t: float(emitted[(tier == t) & y].mean()) for t in ["obvious", "moderate", "subtle"]}
+    res["facility"]["recall_by_tier_review_queue"] = {t: float(queued[(tier == t) & y].mean()) for t in ["obvious", "moderate", "subtle"]}
     kpos = int(y.sum())
     top = set(s.sort_values(ascending=False).index[:kpos])
     res["facility"]["recall_by_tier_at_k_positives"] = {t: float(np.mean([i in top for i in y.index[(tier == t) & y]])) for t in ["obvious", "moderate", "subtle"]}
@@ -64,6 +67,7 @@ def evaluate(data_dir=DEFAULT_DATA, run_dir="biomed/outputs/seed42") -> dict:
                                                    **{t: float(np.mean([i in top_k for i in y.index[(tier == t) & y]])) for t in ["obvious", "moderate", "subtle"]}}
     inter = fl["intermittent"].reindex(fac.index)
     res["facility"]["recall_at_emit_persistent_vs_intermittent"] = {"persistent": float(emitted[y & ~inter].mean()), "intermittent": float(emitted[y & inter].mean())}
+    res["facility"]["recall_review_queue_persistent_vs_intermittent"] = {"persistent": float(queued[y & ~inter].mean()), "intermittent": float(queued[y & inter].mean())}
     res["facility"]["auc_by_tier"] = {t: auc(s[(tier == t) | ~y], y[(tier == t) | ~y]) for t in ["obvious", "moderate", "subtle"]}
     res["facility"]["component_auc"] = {c: auc(fac[c], y) for c in ["w_level", "w_dips", "w_shift"]}
 
@@ -74,6 +78,7 @@ def evaluate(data_dir=DEFAULT_DATA, run_dir="biomed/outputs/seed42") -> dict:
     clean = ~y
     fpr = lambda m: {"n": int((clean & m).sum()), "flagged": int((emitted & clean & m).sum()), "rate": float((emitted & clean & m).sum() / max((clean & m).sum(), 1))}
     idx = pd.Series(fac.index, index=fac.index)
+    emitted = emitted                                      # false positives below are for the priority tier
     res["facility"]["false_positives"] = {
         "all clean facilities": fpr(pd.Series(True, index=fac.index)),
         "declared bed expansion": fpr(idx.isin(exp_f)), "declared temporary closure": fpr(idx.isin(clo_f)),
@@ -99,10 +104,16 @@ def evaluate(data_dir=DEFAULT_DATA, run_dir="biomed/outputs/seed42") -> dict:
     sc = cb["score"]
     res["cbwtf"] = {"auc_any": auc(sc, yc), "precision": {k: p_at_k(sc, yc, k) for k in (10, 25, 50)}, "n_positive": int(yc.sum())}
     tc = cl["difficulty"].reindex(cb.index)
+    # A plant labelled overcapacity whose true intake never exceeded its incinerator has no overcapacity in its data at all (zero untreated
+    # kg in the truth table): the label is vacuous there, so it is not counted as a positive. Raw counts are reported alongside.
+    truth = pd.read_parquet(L / "cbwtf_treatment_truth.parquet").groupby("cbwtf_id")["untreated_kg"].sum().reindex(cb.index).fillna(0)
+    cl_eff = cl.copy()
+    cl_eff["overcapacity_effective"] = cl["overcapacity"] & (truth.reindex(cl.index).fillna(0) > 0)
+    res["cbwtf"]["overcapacity_label_artifacts"] = int((cl["overcapacity"] & ~cl_eff["overcapacity_effective"]).sum())
     comp = {"ghost_pickups": "w_ghost", "weight_padding": "w_padding", "overcapacity": "w_capacity"}
     res["cbwtf"]["by_pattern"] = {}
     for pat, col in comp.items():
-        yp = cl[pat].reindex(cb.index)
+        yp = (cl_eff["overcapacity_effective"] if pat == "overcapacity" else cl[pat]).reindex(cb.index)
         det = cb[col] >= 0.2
         res["cbwtf"]["by_pattern"][pat] = {"n": int(yp.sum()), "auc_component": auc(cb[col], yp), "recall": float(det[yp].mean()),
                                            "false_alarms_on_clean_plants": int((det & ~yc).sum()),
@@ -126,6 +137,8 @@ def print_table(res: dict):
     print("  AUC by tier           " + "  ".join(f"{k}: {v:.3f}" for k, v in f["auc_by_tier"].items()))
     print("  recall at emit        " + "  ".join(f"{k}: {v:.2f}" for k, v in f["recall_by_tier_at_emit"].items()) + "    (persistent/intermittent: " +
           " / ".join(f"{v:.2f}" for v in f["recall_at_emit_persistent_vs_intermittent"].values()) + ")")
+    rq = f["recall_by_tier_review_queue"]
+    print(f"  + screening queue     flagged {f['review_queue']['flagged']} (precision {f['review_queue']['precision']:.2f})   recall " + "  ".join(f"{k}: {v:.2f}" for k, v in rq.items()))
     print("  recall at k=positives " + "  ".join(f"{k}: {v:.2f}" for k, v in f["recall_by_tier_at_k_positives"].items()))
     print("  inspection budget k -> precision | recall obvious / moderate / subtle")
     for k, v in f["inspection_budget"].items():
@@ -135,6 +148,7 @@ def print_table(res: dict):
         print(f"      {k:28s} {v['flagged']:4d} / {v['n']:5d}  = {v['rate']:.3%}")
     print(f"Ghost pickups             planted {g['planted']:,}   flagged {g['flagged']:,}   recall {g['recall']:.3f}   false-alarm rate on clean {g['false_alarm_rate_on_clean']:.4%} ({g['false_alarms']} pickups)")
     print("  planted ghosts failing each test: " + "  ".join(f"{k}: {v:.0%}" for k, v in g["share_of_planted_failing_each_test"].items()))
+    print(f"  (overcapacity positives exclude {c.get('overcapacity_label_artifacts', 0)} plant(s) whose true intake never exceeded capacity)")
     print(f"CBWTF (any fraud)         AUC {c['auc_any']:.3f}   positives {c['n_positive']}   emitted {c['emitted']} (precision {c['precision_of_emitted']:.2f})   precision@10/25/50: " +
           " / ".join(f"{v:.2f}" for v in c["precision"].values()))
     for pat, v in c["by_pattern"].items():

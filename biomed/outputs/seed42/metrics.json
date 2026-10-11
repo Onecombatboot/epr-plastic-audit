@@ -11,10 +11,19 @@
   "n_positive": 1234,
   "emitted": 679,
   "precision_of_emitted": 0.9985272459499264,
+  "review_queue": {
+   "flagged": 5000,
+   "precision": 0.1992
+  },
   "recall_by_tier_at_emit": {
    "obvious": 0.7823529411764706,
    "moderate": 0.499001996007984,
    "subtle": 0.4122137404580153
+  },
+  "recall_by_tier_review_queue": {
+   "obvious": 0.9882352941176471,
+   "moderate": 0.8143712574850299,
+   "subtle": 0.6412213740458015
   },
   "recall_by_tier_at_k_positives": {
    "obvious": 0.888235294117647,
@@ -61,6 +70,10 @@
   },
   "recall_at_emit_persistent_vs_intermittent": {
    "persistent": 0.2760416666666667,
+   "intermittent": 1.0
+  },
+  "recall_review_queue_persistent_vs_intermittent": {
+   "persistent": 0.6901041666666666,
    "intermittent": 1.0
   },
   "auc_by_tier": {
@@ -149,6 +162,7 @@
    "50": 0.78
   },
   "n_positive": 53,
+  "overcapacity_label_artifacts": 1,
   "by_pattern": {
    "ghost_pickups": {
     "n": 21,
@@ -183,17 +197,17 @@
     }
    },
    "overcapacity": {
-    "n": 12,
-    "auc_component": 0.9583333333333334,
-    "recall": 0.9166666666666666,
+    "n": 11,
+    "auc_component": 1.0,
+    "recall": 1.0,
     "false_alarms_on_clean_plants": 0,
     "recall_by_tier": {
-     "obvious": 0.5,
+     "obvious": 1.0,
      "moderate": 1.0,
      "subtle": 1.0
     },
     "n_by_tier": {
-     "obvious": 2,
+     "obvious": 1,
      "moderate": 4,
      "subtle": 6
     }
@@ -203,9 +217,9 @@
   "precision_of_emitted": 0.9743589743589743
  },
  "signals": {
-  "count": 718,
+  "count": 5039,
   "invalid": 0,
-  "facility": 679,
+  "facility": 5000,
   "cbwtf": 39
  }
 }

@@ -56,11 +56,12 @@ tab_rank, tab_fac, tab_cb, tab_map, tab_method = st.tabs(["Ranked lists", "Facil
 
 # ------------------------------------------------------------------------------------------ ranked lists
 with tab_rank:
-    n_f = int((fac["score"] >= 0.2).sum())
+    n_f = int((fac["tier"] == "priority").sum())
+    n_r = int((fac["tier"] == "review").sum())
     n_c = int((cb["score"] >= 0.2).sum())
     c1, c2, c3, c4 = st.columns(4)
     c1.metric("Facilities screened", f"{len(fac):,}")
-    c2.metric("Facilities flagged", f"{n_f:,}")
+    c2.metric("Priority facilities", f"{n_f:,}", help=f"High-confidence cases. A further {n_r:,} facilities with the lowest handover are in the desk-review screening queue; expect most of those to be innocent.")
     c3.metric("Treatment plants flagged", f"{n_c:,} of {len(cb)}")
     c4.metric("Pickups failing a physical test", f"{int(flagged['ghost'].sum()):,}")
     left, right = st.columns(2)
@@ -75,7 +76,7 @@ with tab_rank:
             d = d[d["state"].isin(stt)]
         d = d.sort_values("score", ascending=False).head(100)
         d["why"] = [(sig[i]["reasons"][0] if i in sig else "") for i in d.index]
-        st.dataframe(d.rename_axis("facility_id").reset_index()[["facility_id", "name", "facility_type", "state", "score", "why"]], width="stretch", height=420,
+        st.dataframe(d.rename_axis("facility_id").reset_index()[["facility_id", "name", "facility_type", "state", "tier", "score", "why"]], width="stretch", height=420,
                      column_config={"score": st.column_config.ProgressColumn(min_value=0.0, max_value=1.0, format="%.2f")})
     with right:
         st.subheader("Treatment plants (CBWTFs)")
@@ -214,7 +215,8 @@ No model was trained on fraud labels; all detectors use physical limits and robu
         st.dataframe(pd.DataFrame([
             {"check": "Facility under-handover: precision@25 / @50 / @100", "result": " / ".join(f"{fm['precision'][k]:.2f}" for k in ("25", "50", "100"))},
             {"check": "Facility under-handover: AUC (obvious / moderate / subtle)", "result": " / ".join(f"{fm['auc_by_tier'][k]:.2f}" for k in ("obvious", "moderate", "subtle"))},
-            {"check": "Facility recall at flagging threshold (obvious / moderate / subtle)", "result": " / ".join(f"{fm['recall_by_tier_at_emit'][k]:.2f}" for k in ("obvious", "moderate", "subtle"))},
+            {"check": "Facility recall, priority tier only (obvious / moderate / subtle)", "result": " / ".join(f"{fm['recall_by_tier_at_emit'][k]:.2f}" for k in ("obvious", "moderate", "subtle"))},
+            {"check": f"Facility recall, priority + screening queue of {fm['review_queue']['flagged']:,} (precision {fm['review_queue']['precision']:.2f})", "result": " / ".join(f"{fm['recall_by_tier_review_queue'][k]:.2f}" for k in ("obvious", "moderate", "subtle"))},
             {"check": "Ghost pickups: recall / false-alarm rate on clean pickups", "result": f"{gm['recall']:.3f} / {gm['false_alarm_rate_on_clean']:.4%}"},
             {"check": "Plants: ghost / padding / overcapacity recall", "result": " / ".join(f"{cm['by_pattern'][k]['recall']:.2f}" for k in ("ghost_pickups", "weight_padding", "overcapacity"))},
         ]), width="stretch", hide_index=True)

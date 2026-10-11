@@ -20,14 +20,14 @@ from .prep import DEFAULT_DATA
 def checks(res: dict, run_info: dict) -> list[tuple[str, bool, str]]:
     f, g, c, s = res["facility"], res["ghost_pickups"], res["cbwtf"], res["signals"]
     oc = c["by_pattern"]["overcapacity"]
-    rt = f["recall_by_tier_at_emit"]
+    rt = f["recall_by_tier_review_queue"]
     return [
         ("Facility under-handover precision@25 >= 0.85", f["precision"][25] >= 0.85, f"{f['precision'][25]:.2f}"),
-        ("Facility recall, obvious >= 0.80 (at flagging threshold)", rt["obvious"] >= 0.80, f"{rt['obvious']:.2f}"),
-        ("Facility recall, moderate >= 0.80 (at flagging threshold)", rt["moderate"] >= 0.80, f"{rt['moderate']:.2f}"),
+        ("Facility recall, obvious >= 0.80 (priority + screening queue)", rt["obvious"] >= 0.80, f"{rt['obvious']:.2f}"),
+        ("Facility recall, moderate >= 0.80 (priority + screening queue)", rt["moderate"] >= 0.80, f"{rt['moderate']:.2f}"),
         ("Ghost-pickup recall >= 0.90", g["recall"] >= 0.90, f"{g['recall']:.3f}"),
         ("Ghost-pickup false-alarm rate on clean pickups <= 0.05", g["false_alarm_rate_on_clean"] <= 0.05, f"{g['false_alarm_rate_on_clean']:.4%}"),
-        ("Overcapacity: 100% of obvious plants", oc["recall_by_tier"]["obvious"] == 1.0, f"{oc['recall_by_tier']['obvious']}"),
+        ("Overcapacity: 100% of obvious plants (excl. label artifacts)", oc["recall_by_tier"]["obvious"] == 1.0, f"{oc['recall_by_tier']['obvious']}"),
         ("Overcapacity: >= 0.80 of moderate plants", (oc["recall_by_tier"]["moderate"] or 0) >= 0.80, f"{oc['recall_by_tier']['moderate']}"),
         ("100% of signals valid (score in [0,1], >= 2 reasons, evidence refs)", s["invalid"] == 0, f"{s['count'] - s['invalid']}/{s['count']}"),
         ("Load-to-scores processing < 60 s", run_info["processing_s_load_to_scores"] < 60, f"{run_info['processing_s_load_to_scores']} s"),

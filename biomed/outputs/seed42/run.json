@@ -1,7 +1,7 @@
 {
  "version": "1.0.0",
  "n_pickups": 4652377,
- "n_signals": 718,
+ "n_signals": 5039,
  "calendar_factors": {
   "month": [
    0.956,
@@ -29,12 +29,12 @@
  },
  "gps_tolerance_m": 1000.0,
  "timings_s": {
-  "load": 1.4,
-  "ghost_flags": 4.9,
-  "accumulation": 9.2,
-  "scoring": 4.2,
-  "signals": 7.3
+  "load": 1.2,
+  "ghost_flags": 4.6,
+  "accumulation": 10.7,
+  "scoring": 4.7,
+  "signals": 11.7
  },
- "total_s": 27.3,
- "processing_s_load_to_scores": 19.8
+ "total_s": 33.2,
+ "processing_s_load_to_scores": 21.3
 }
