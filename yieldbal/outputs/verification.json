@@ -1,0 +1,38 @@
+{
+  "unit_and_integration_tests": {
+    "passed": 48,
+    "failed": 0,
+    "runtime_s": 9.49
+  },
+  "dashboard_verification": {
+    "seed42_yield": {"tabs": 4, "selectors": 4, "reruns": 36, "exceptions": 0},
+    "seed7_yield": {"tabs": 4, "selectors": 4, "reruns": 36, "exceptions": 0},
+    "phantom": {"tabs": 5, "selectors": 2, "reruns": 12, "exceptions": 0},
+    "biomed": {"tabs": 5, "selectors": 3, "reruns": 15, "exceptions": 0}
+  },
+  "config_only_stream": {"stream": "foam", "yaml_lines": 12, "detector_code_changes": 0, "passed": true},
+  "offline_pdf_checks": {"sample_bills": 10, "deliberately_doctored": 2, "numeric_roundtrip_passed": true, "energy_ceiling_checked": true, "cloud_ocr_tested": false},
+  "biomed_regression": {
+    "pickups": 4652377,
+    "facilities": 20000,
+    "treatment_plants": 200,
+    "load_to_scores_s": 14.6,
+    "full_pipeline_s": 20.0,
+    "complete_score_tables_match": true,
+    "max_facility_score_difference": 6.505213034913027e-19,
+    "max_treatment_score_difference": 0.0
+  },
+  "phantom_regression": {
+    "recyclers": 2500,
+    "epochs": 200,
+    "full_pipeline_s": 311.2,
+    "brand_exposure_rows": 12000,
+    "complete_feature_table_match": true,
+    "max_rule_score_difference": 0.0,
+    "max_forest_score_difference": 0.0,
+    "graph_and_ensemble_scores_finite": true
+  },
+  "final_yield_score_tables_unchanged_by_ui_and_validation": true,
+  "changes_outside_yieldbal": 0,
+  "live_aws_tested": false
+}

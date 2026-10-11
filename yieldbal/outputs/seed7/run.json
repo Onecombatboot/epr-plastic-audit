@@ -1,0 +1,48 @@
+{
+  "entities": 2050,
+  "entity_months": 54974,
+  "streams": [
+    "battery",
+    "ewaste",
+    "tyre",
+    "used_oil"
+  ],
+  "runtime_s": 12.305,
+  "priority": 57,
+  "screening_including_priority": 123,
+  "signals": 123,
+  "suspected_hollow_t": 1022389.0667152202,
+  "synthetic": true,
+  "reference": {
+    "assumption": true,
+    "output_windows": [
+      3,
+      6
+    ],
+    "sales_lag_months": 2,
+    "minimum_window_months": 3,
+    "hours_per_month": 730,
+    "max_load_utilisation": 0.9,
+    "solar_hours_per_month": 150,
+    "solar_conversion_efficiency": 0.85,
+    "base_load_quantile": 0.1,
+    "base_load_cap_fraction": 0.2,
+    "bill_relative_tolerance": 0.03,
+    "deficit_tolerance": 0.05,
+    "priority_min_deficit": 0.15,
+    "priority_min_groups": 2,
+    "screening_min_deficit": 0.05,
+    "baseline_min_months": 6,
+    "baseline_drift_tolerance": 0.25,
+    "iforest_trees": 200,
+    "iforest_seed": 0,
+    "weights": {
+      "energy": 2.0,
+      "output": 2.0,
+      "capacity": 1.0,
+      "bill": 1.0,
+      "drift": 0.5
+    }
+  },
+  "label_access": "none"
+}

@@ -1,0 +1,43 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Mass-Balance and Yield read API over precomputed inspection signals
+Resources:
+  ResultsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+  ApiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambda_handler.handler
+      Runtime: python3.12
+      CodeUri: .
+      Timeout: 30
+      MemorySize: 256
+      Environment:
+        Variables:
+          RESULTS_BUCKET: !Ref ResultsBucket
+          RESULTS_KEY: yieldbal/signals.jsonl
+      Policies:
+        - S3ReadPolicy:
+            BucketName: !Ref ResultsBucket
+      Events:
+        Top:
+          Type: HttpApi
+          Properties:
+            Path: /top
+            Method: get
+        Case:
+          Type: HttpApi
+          Properties:
+            Path: /case/{entity_id}
+            Method: get
+Outputs:
+  ApiUrl:
+    Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com'
+  Bucket:
+    Value: !Ref ResultsBucket

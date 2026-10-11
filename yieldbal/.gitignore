@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+aws/samples/
+aws/.aws-sam/
+outputs/*/monthly_checks.parquet
+outputs/*/features.parquet

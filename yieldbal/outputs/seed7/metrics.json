@@ -1,0 +1,664 @@
+{
+  "synthetic": true,
+  "pooled": {
+    "entities": 2050,
+    "fraudsters": 160,
+    "auc": 0.8982308201058201,
+    "precision_at_k": {
+      "10": 1.0,
+      "25": 1.0,
+      "50": 0.94
+    },
+    "auc_by_tier": {
+      "obvious": 0.998841017888637,
+      "moderate": 0.9516704459561602,
+      "subtle": 0.8133962119469366
+    },
+    "policies": {
+      "priority": {
+        "flagged": 57,
+        "precision": 1.0,
+        "recall_by_tier": {
+          "obvious": 0.9523809523809523,
+          "moderate": 0.24285714285714285,
+          "subtle": 0.2898550724637681
+        }
+      },
+      "screening": {
+        "flagged": 123,
+        "precision": 0.8536585365853658,
+        "recall_by_tier": {
+          "obvious": 1.0,
+          "moderate": 0.7571428571428571,
+          "subtle": 0.4492753623188406
+        }
+      }
+    },
+    "hollow_tonnes_recall_at_k": {
+      "10": 0.044610408173053714,
+      "25": 0.35907513605517466,
+      "50": 0.6523330133102965,
+      "100": 0.7982103450930722,
+      "250": 0.8973552585183283
+    },
+    "auc_by_behaviour": {
+      "lazy": {
+        "n": 81,
+        "auc": 0.986178065190411
+      },
+      "output_fabrication": {
+        "n": 79,
+        "auc": 0.8080570624874422
+      },
+      "doctored_bill": {
+        "n": 33,
+        "auc": 0.9550905884239218
+      },
+      "capacity_inflated": {
+        "n": 83,
+        "auc": 0.8868744820552049
+      }
+    },
+    "single_features": {
+      "energy_pressure": {
+        "auc": 0.8158730158730159,
+        "subtle_auc": 0.6698642742121003
+      },
+      "output_pressure": {
+        "auc": 0.787744708994709,
+        "subtle_auc": 0.6775477340694732
+      },
+      "capacity_pressure": {
+        "auc": 0.5327050264550265,
+        "subtle_auc": 0.4390690897937275
+      },
+      "bill_error": {
+        "auc": 0.583287037037037,
+        "subtle_auc": 0.6395905221992179
+      }
+    }
+  },
+  "per_stream": {
+    "battery": {
+      "entities": 450,
+      "fraudsters": 32,
+      "auc": 0.8611692583732057,
+      "precision_at_k": {
+        "10": 0.9,
+        "25": 0.64,
+        "50": 0.4
+      },
+      "auc_by_tier": {
+        "obvious": 1.0,
+        "moderate": 0.9810452705189547,
+        "subtle": 0.7531663383056572
+      },
+      "policies": {
+        "priority": {
+          "flagged": 10,
+          "precision": 1.0,
+          "recall_by_tier": {
+            "obvious": 1.0,
+            "moderate": 0.3076923076923077,
+            "subtle": 0.23529411764705882
+          }
+        },
+        "screening": {
+          "flagged": 24,
+          "precision": 0.875,
+          "recall_by_tier": {
+            "obvious": 1.0,
+            "moderate": 0.9230769230769231,
+            "subtle": 0.4117647058823529
+          }
+        }
+      },
+      "hollow_tonnes_recall_at_k": {
+        "10": 0.3310418333619517,
+        "25": 0.7158702453794694,
+        "50": 0.7868526335421142,
+        "100": 0.82577568883588,
+        "250": 0.8599677813220018
+      },
+      "auc_by_behaviour": {
+        "lazy": {
+          "n": 13,
+          "auc": 0.9885903570114096
+        },
+        "output_fabrication": {
+          "n": 19,
+          "auc": 0.7739864014102241
+        },
+        "doctored_bill": {
+          "n": 8,
+          "auc": 0.9691985645933014
+        },
+        "capacity_inflated": {
+          "n": 15,
+          "auc": 0.8210526315789474
+        }
+      },
+      "single_features": {
+        "energy_pressure": {
+          "auc": 0.7701106459330143,
+          "subtle_auc": 0.6241204615817619
+        },
+        "output_pressure": {
+          "auc": 0.7674940191387559,
+          "subtle_auc": 0.7058823529411764
+        },
+        "capacity_pressure": {
+          "auc": 0.5583133971291866,
+          "subtle_auc": 0.4670700816211652
+        },
+        "bill_error": {
+          "auc": 0.5608552631578948,
+          "subtle_auc": 0.5291303124120461
+        }
+      }
+    },
+    "ewaste": {
+      "entities": 600,
+      "fraudsters": 42,
+      "auc": 0.9132957842635262,
+      "precision_at_k": {
+        "10": 1.0,
+        "25": 0.92,
+        "50": 0.58
+      },
+      "auc_by_tier": {
+        "obvious": 0.9986061330147352,
+        "moderate": 0.9873608753065459,
+        "subtle": 0.7579365079365079
+      },
+      "policies": {
+        "priority": {
+          "flagged": 19,
+          "precision": 1.0,
+          "recall_by_tier": {
+            "obvious": 0.8888888888888888,
+            "moderate": 0.3157894736842105,
+            "subtle": 0.35714285714285715
+          }
+        },
+        "screening": {
+          "flagged": 39,
+          "precision": 0.7692307692307693,
+          "recall_by_tier": {
+            "obvious": 1.0,
+            "moderate": 0.8421052631578947,
+            "subtle": 0.35714285714285715
+          }
+        }
+      },
+      "hollow_tonnes_recall_at_k": {
+        "10": 0.3401349879851559,
+        "25": 0.9422414035562519,
+        "50": 0.9730864202506592,
+        "100": 0.9781830207086046,
+        "250": 0.9945381583027638
+      },
+      "auc_by_behaviour": {
+        "lazy": {
+          "n": 25,
+          "auc": 0.9976344086021506
+        },
+        "output_fabrication": {
+          "n": 17,
+          "auc": 0.7892683955302552
+        },
+        "doctored_bill": {
+          "n": 10,
+          "auc": 0.9439068100358423
+        },
+        "capacity_inflated": {
+          "n": 21,
+          "auc": 0.926352619901007
+        }
+      },
+      "single_features": {
+        "energy_pressure": {
+          "auc": 0.8492916880013655,
+          "subtle_auc": 0.6546338965693804
+        },
+        "output_pressure": {
+          "auc": 0.7920293565454855,
+          "subtle_auc": 0.5197132616487455
+        },
+        "capacity_pressure": {
+          "auc": 0.6116658132787166,
+          "subtle_auc": 0.4982078853046595
+        },
+        "bill_error": {
+          "auc": 0.6136286055640894,
+          "subtle_auc": 0.681131592421915
+        }
+      }
+    },
+    "tyre": {
+      "entities": 700,
+      "fraudsters": 56,
+      "auc": 0.9144576308784382,
+      "precision_at_k": {
+        "10": 0.9,
+        "25": 0.8,
+        "50": 0.52
+      },
+      "auc_by_tier": {
+        "obvious": 1.0,
+        "moderate": 0.9180231312914972,
+        "subtle": 0.8994565217391305
+      },
+      "policies": {
+        "priority": {
+          "flagged": 16,
+          "precision": 1.0,
+          "recall_by_tier": {
+            "obvious": 1.0,
+            "moderate": 0.20689655172413793,
+            "subtle": 0.2916666666666667
+          }
+        },
+        "screening": {
+          "flagged": 39,
+          "precision": 0.8974358974358975,
+          "recall_by_tier": {
+            "obvious": 1.0,
+            "moderate": 0.6206896551724138,
+            "subtle": 0.5833333333333334
+          }
+        }
+      },
+      "hollow_tonnes_recall_at_k": {
+        "10": 0.530728797156985,
+        "25": 0.7276896861996603,
+        "50": 0.7453985859543171,
+        "100": 0.8572110848488881,
+        "250": 0.9914777021935981
+      },
+      "auc_by_behaviour": {
+        "lazy": {
+          "n": 25,
+          "auc": 0.9822360248447205
+        },
+        "output_fabrication": {
+          "n": 31,
+          "auc": 0.8597976357443398
+        },
+        "doctored_bill": {
+          "n": 10,
+          "auc": 0.9509316770186335
+        },
+        "capacity_inflated": {
+          "n": 28,
+          "auc": 0.8827085181898846
+        }
+      },
+      "single_features": {
+        "energy_pressure": {
+          "auc": 0.812361357586513,
+          "subtle_auc": 0.6961050724637682
+        },
+        "output_pressure": {
+          "auc": 0.7765916149068324,
+          "subtle_auc": 0.7069746376811594
+        },
+        "capacity_pressure": {
+          "auc": 0.48269742679680566,
+          "subtle_auc": 0.5100284679089027
+        },
+        "bill_error": {
+          "auc": 0.6065051020408163,
+          "subtle_auc": 0.7341485507246377
+        }
+      }
+    },
+    "used_oil": {
+      "entities": 300,
+      "fraudsters": 30,
+      "auc": 0.8839506172839505,
+      "precision_at_k": {
+        "10": 0.9,
+        "25": 0.72,
+        "50": 0.38
+      },
+      "auc_by_tier": {
+        "obvious": 0.9978835978835978,
+        "moderate": 0.931275720164609,
+        "subtle": 0.7965608465608466
+      },
+      "policies": {
+        "priority": {
+          "flagged": 12,
+          "precision": 1.0,
+          "recall_by_tier": {
+            "obvious": 1.0,
+            "moderate": 0.1111111111111111,
+            "subtle": 0.2857142857142857
+          }
+        },
+        "screening": {
+          "flagged": 21,
+          "precision": 0.9047619047619048,
+          "recall_by_tier": {
+            "obvious": 1.0,
+            "moderate": 0.7777777777777778,
+            "subtle": 0.35714285714285715
+          }
+        }
+      },
+      "hollow_tonnes_recall_at_k": {
+        "10": 0.4620551847247607,
+        "25": 0.8953003549177768,
+        "50": 0.8958024546749755,
+        "100": 0.9901218091460336,
+        "250": 0.9989782587849839
+      },
+      "auc_by_behaviour": {
+        "lazy": {
+          "n": 18,
+          "auc": 0.971604938271605
+        },
+        "output_fabrication": {
+          "n": 12,
+          "auc": 0.7524691358024691
+        },
+        "doctored_bill": {
+          "n": 5,
+          "auc": 0.9666666666666666
+        },
+        "capacity_inflated": {
+          "n": 19,
+          "auc": 0.8976608187134503
+        }
+      },
+      "single_features": {
+        "energy_pressure": {
+          "auc": 0.8469135802469135,
+          "subtle_auc": 0.7132275132275132
+        },
+        "output_pressure": {
+          "auc": 0.8271604938271605,
+          "subtle_auc": 0.7407407407407408
+        },
+        "capacity_pressure": {
+          "auc": 0.4964197530864197,
+          "subtle_auc": 0.24074074074074073
+        },
+        "bill_error": {
+          "auc": 0.5649382716049383,
+          "subtle_auc": 0.6952380952380953
+        }
+      }
+    }
+  },
+  "runtime_s": 12.305,
+  "suspected_hollow_t": 1022389.0667152202,
+  "signals": {
+    "count": 123,
+    "invalid": 0,
+    "valid_rate": 1.0
+  },
+  "raw_grid_energy_baseline": {
+    "pooled": {
+      "auc": 0.7775099206349206,
+      "auc_by_tier": {
+        "obvious": 0.974779541446208,
+        "moderate": 0.8530536659108088,
+        "subtle": 0.6408327582240626
+      }
+    },
+    "battery": {
+      "auc": 0.7229366028708134,
+      "auc_by_tier": {
+        "obvious": 0.986842105263158,
+        "moderate": 0.854619065145381,
+        "subtle": 0.5911905432029272
+      }
+    },
+    "ewaste": {
+      "auc": 0.7883171189622802,
+      "auc_by_tier": {
+        "obvious": 0.9922341696535245,
+        "moderate": 0.8172986229013394,
+        "subtle": 0.6178955453149002
+      }
+    },
+    "tyre": {
+      "auc": 0.7935614463176575,
+      "auc_by_tier": {
+        "obvious": 1.0,
+        "moderate": 0.8798993360462626,
+        "subtle": 0.6634316770186335
+      }
+    },
+    "used_oil": {
+      "auc": 0.8059259259259259,
+      "auc_by_tier": {
+        "obvious": 0.9455026455026454,
+        "moderate": 0.9168724279835391,
+        "subtle": 0.6648148148148147
+      }
+    }
+  },
+  "false_positives": {
+    "priority": {
+      "campaign": {
+        "n": 227,
+        "flagged": 0,
+        "rate": 0.0
+      },
+      "atypical_yield": {
+        "n": 110,
+        "flagged": 0,
+        "rate": 0.0
+      },
+      "declared_solar": {
+        "n": 235,
+        "flagged": 0,
+        "rate": 0.0
+      },
+      "undeclared_solar": {
+        "n": 50,
+        "flagged": 0,
+        "rate": 0.0
+      },
+      "new_company": {
+        "n": 109,
+        "flagged": 0,
+        "rate": 0.0
+      },
+      "fast_growing": {
+        "n": 88,
+        "flagged": 0,
+        "rate": 0.0
+      },
+      "ordinary": {
+        "n": 1205,
+        "flagged": 0,
+        "rate": 0.0
+      }
+    },
+    "screening": {
+      "campaign": {
+        "n": 227,
+        "flagged": 15,
+        "rate": 0.06607929515418502
+      },
+      "atypical_yield": {
+        "n": 110,
+        "flagged": 1,
+        "rate": 0.00909090909090909
+      },
+      "declared_solar": {
+        "n": 235,
+        "flagged": 0,
+        "rate": 0.0
+      },
+      "undeclared_solar": {
+        "n": 50,
+        "flagged": 3,
+        "rate": 0.06
+      },
+      "new_company": {
+        "n": 109,
+        "flagged": 2,
+        "rate": 0.01834862385321101
+      },
+      "fast_growing": {
+        "n": 88,
+        "flagged": 2,
+        "rate": 0.022727272727272728
+      },
+      "ordinary": {
+        "n": 1205,
+        "flagged": 0,
+        "rate": 0.0
+      }
+    }
+  },
+  "monthly": {
+    "positive_months": 3362,
+    "flagged": 1374,
+    "precision": 0.8413391557496361,
+    "recall": 0.3438429506246282,
+    "true_hollow_t": 1557819.102,
+    "estimated_hollow_t": 1022389.0667152201,
+    "absolute_error_t": 573688.0384521072
+  },
+  "label_audit": {
+    "raw_fraud": 160,
+    "realised_hollow_entities": 160,
+    "vacuous_hollow_labels": 0,
+    "capacity_inflated_labels": 83,
+    "capacity_label_with_no_declared_overrun": 72,
+    "note": "Capacity inflation does not imply declared capacity overrun; labels remain unchanged."
+  },
+  "ablations": {
+    "without_energy": {
+      "auc": 0.8423082010582009,
+      "auc_by_tier": {
+        "obvious": 0.9849332325522803,
+        "moderate": 0.8859334845049132,
+        "subtle": 0.7546430488459474
+      },
+      "precision_at_25": 0.96
+    },
+    "only_energy": {
+      "auc": 0.8121941137566138,
+      "auc_by_tier": {
+        "obvious": 0.9990173847316705,
+        "moderate": 0.9037528344671202,
+        "subtle": 0.6624491986810828
+      },
+      "precision_at_25": 1.0
+    },
+    "without_output": {
+      "auc": 0.8533994708994709,
+      "auc_by_tier": {
+        "obvious": 0.9786596119929453,
+        "moderate": 0.8890551776266062,
+        "subtle": 0.7791043631623341
+      },
+      "precision_at_25": 0.92
+    },
+    "only_output": {
+      "auc": 0.779032738095238,
+      "auc_by_tier": {
+        "obvious": 0.9975308641975309,
+        "moderate": 0.8275850340136055,
+        "subtle": 0.6632773560309791
+      },
+      "precision_at_25": 1.0
+    },
+    "without_capacity": {
+      "auc": 0.8855489417989417,
+      "auc_by_tier": {
+        "obvious": 0.9991181657848325,
+        "moderate": 0.9362736205593349,
+        "subtle": 0.7995245763361706
+      },
+      "precision_at_25": 1.0
+    },
+    "only_capacity": {
+      "auc": 0.6448115079365079,
+      "auc_by_tier": {
+        "obvious": 0.8699168556311414,
+        "moderate": 0.6619652305366592,
+        "subtle": 0.5588988574495821
+      },
+      "precision_at_25": 1.0
+    },
+    "without_bill": {
+      "auc": 0.874755291005291,
+      "auc_by_tier": {
+        "obvious": 0.9998236331569665,
+        "moderate": 0.9473469387755102,
+        "subtle": 0.7630473123226746
+      },
+      "precision_at_25": 1.0
+    },
+    "only_bill": {
+      "auc": 0.5847337962962964,
+      "auc_by_tier": {
+        "obvious": 0.5159360040312422,
+        "moderate": 0.5327059712773998,
+        "subtle": 0.6584541062801933
+      },
+      "precision_at_25": 1.0
+    },
+    "without_drift": {
+      "auc": 0.9043882275132274,
+      "auc_by_tier": {
+        "obvious": 0.999798437893676,
+        "moderate": 0.9590627362055933,
+        "subtle": 0.8198834445211256
+      },
+      "precision_at_25": 1.0
+    },
+    "only_drift": {
+      "auc": 0.5495701058201058,
+      "auc_by_tier": {
+        "obvious": 0.5271604938271606,
+        "moderate": 0.5418896447467876,
+        "subtle": 0.5641821946169773
+      },
+      "precision_at_25": 0.16
+    }
+  },
+  "acceptance": {
+    "precision_at_25": {
+      "pass": true,
+      "value": 1.0
+    },
+    "recall_obvious_moderate_screening": {
+      "pass": false,
+      "value": {
+        "obvious": 1.0,
+        "moderate": 0.7571428571428571,
+        "subtle": 0.4492753623188406
+      },
+      "precision": 0.8536585365853658
+    },
+    "subtle_auc_over_0_84": {
+      "pass": false,
+      "value": 0.8133962119469366
+    },
+    "campaign_fpr_within_2x": {
+      "pass": true,
+      "value": 0.0
+    },
+    "declared_solar_fpr_within_2x": {
+      "pass": true,
+      "value": 0.0
+    },
+    "all_signals_valid": {
+      "pass": true,
+      "value": 1.0
+    },
+    "runtime_under_30s": {
+      "pass": true,
+      "value": 12.305
+    }
+  }
+}
