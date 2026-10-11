@@ -1,0 +1,211 @@
+{
+ "facility": {
+  "auc": 0.8991530061839969,
+  "precision": {
+   "10": 1.0,
+   "25": 1.0,
+   "50": 1.0,
+   "100": 1.0,
+   "300": 1.0
+  },
+  "n_positive": 1189,
+  "emitted": 653,
+  "precision_of_emitted": 0.996937212863706,
+  "recall_by_tier_at_emit": {
+   "obvious": 0.7735294117647059,
+   "moderate": 0.488,
+   "subtle": 0.41260744985673353
+  },
+  "recall_by_tier_at_k_positives": {
+   "obvious": 0.8735294117647059,
+   "moderate": 0.582,
+   "subtle": 0.4670487106017192
+  },
+  "inspection_budget": {
+   "500": {
+    "precision": 1.0,
+    "obvious": 0.5852941176470589,
+    "moderate": 0.366,
+    "subtle": 0.33810888252148996
+   },
+   "1000": {
+    "precision": 0.734,
+    "obvious": 0.8558823529411764,
+    "moderate": 0.568,
+    "subtle": 0.45558739255014324
+   },
+   "1234": {
+    "precision": 0.6142625607779578,
+    "obvious": 0.8794117647058823,
+    "moderate": 0.588,
+    "subtle": 0.47277936962750716
+   },
+   "2000": {
+    "precision": 0.402,
+    "obvious": 0.9117647058823529,
+    "moderate": 0.634,
+    "subtle": 0.5071633237822349
+   },
+   "3000": {
+    "precision": 0.2916666666666667,
+    "obvious": 0.961764705882353,
+    "moderate": 0.702,
+    "subtle": 0.5644699140401146
+   },
+   "5000": {
+    "precision": 0.1966,
+    "obvious": 0.9941176470588236,
+    "moderate": 0.832,
+    "subtle": 0.6561604584527221
+   }
+  },
+  "recall_at_emit_persistent_vs_intermittent": {
+   "persistent": 0.25895316804407714,
+   "intermittent": 1.0
+  },
+  "auc_by_tier": {
+   "obvious": 0.9870511465444186,
+   "moderate": 0.9088035192174791,
+   "subtle": 0.7996956301402017
+  },
+  "component_auc": {
+   "w_level": 0.6020049647060202,
+   "w_dips": 0.700505993866928,
+   "w_shift": 0.5304113616753149
+  },
+  "false_positives": {
+   "all clean facilities": {
+    "n": 18811,
+    "flagged": 2,
+    "rate": 0.00010632076976237308
+   },
+   "declared bed expansion": {
+    "n": 200,
+    "flagged": 0,
+    "rate": 0.0
+   },
+   "declared temporary closure": {
+    "n": 283,
+    "flagged": 0,
+    "rate": 0.0
+   },
+   "type=clinic": {
+    "n": 7148,
+    "flagged": 1,
+    "rate": 0.0001398992725237829
+   },
+   "type=dental": {
+    "n": 1671,
+    "flagged": 1,
+    "rate": 0.0005984440454817474
+   },
+   "type=hospital_large": {
+    "n": 595,
+    "flagged": 0,
+    "rate": 0.0
+   },
+   "type=hospital_medium": {
+    "n": 1931,
+    "flagged": 0,
+    "rate": 0.0
+   },
+   "type=lab": {
+    "n": 2352,
+    "flagged": 0,
+    "rate": 0.0
+   },
+   "type=nursing_home": {
+    "n": 4153,
+    "flagged": 0,
+    "rate": 0.0
+   },
+   "type=veterinary": {
+    "n": 961,
+    "flagged": 0,
+    "rate": 0.0
+   }
+  }
+ },
+ "ghost_pickups": {
+  "planted": 10091,
+  "flagged": 9597,
+  "recall": 0.9509463878703796,
+  "false_alarm_rate_on_clean": 2.1536987083191998e-07,
+  "false_alarms": 1,
+  "share_of_planted_failing_each_test": {
+   "in_closure": 0.014369239916757507,
+   "off_cadence": 0.8132989792884748,
+   "displaced": 0.40184322663759786,
+   "short_dwell": 0.3743930234862749,
+   "duplicate_copy": 0.02190070359726489,
+   "gps_missing": 0.4180953324744822
+  }
+ },
+ "cbwtf": {
+  "auc_any": 0.8927653108929406,
+  "precision": {
+   "10": 1.0,
+   "25": 1.0,
+   "50": 0.96
+  },
+  "n_positive": 62,
+  "by_pattern": {
+   "ghost_pickups": {
+    "n": 33,
+    "auc_component": 0.9696969696969697,
+    "recall": 0.9393939393939394,
+    "false_alarms_on_clean_plants": 0,
+    "recall_by_tier": {
+     "obvious": 1.0,
+     "moderate": 0.9333333333333333,
+     "subtle": 0.8571428571428571
+    },
+    "n_by_tier": {
+     "obvious": 11,
+     "moderate": 15,
+     "subtle": 7
+    }
+   },
+   "weight_padding": {
+    "n": 14,
+    "auc_component": 0.707613814756672,
+    "recall": 0.35714285714285715,
+    "false_alarms_on_clean_plants": 1,
+    "recall_by_tier": {
+     "obvious": 0.75,
+     "moderate": 0.5,
+     "subtle": 0.0
+    },
+    "n_by_tier": {
+     "obvious": 4,
+     "moderate": 4,
+     "subtle": 6
+    }
+   },
+   "overcapacity": {
+    "n": 16,
+    "auc_component": 0.875,
+    "recall": 0.75,
+    "false_alarms_on_clean_plants": 0,
+    "recall_by_tier": {
+     "obvious": 0.8333333333333334,
+     "moderate": 0.75,
+     "subtle": 0.6666666666666666
+    },
+    "n_by_tier": {
+     "obvious": 6,
+     "moderate": 4,
+     "subtle": 6
+    }
+   }
+  },
+  "emitted": 54,
+  "precision_of_emitted": 0.9074074074074074
+ },
+ "signals": {
+  "count": 707,
+  "invalid": 0,
+  "facility": 653,
+  "cbwtf": 54
+ }
+}

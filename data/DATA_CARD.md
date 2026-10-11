@@ -123,6 +123,8 @@ Signals: production schedule → ETP retention smoothing → AR(1) noise → gen
 
 ## 7. Biomedical waste (`bmw/`), the BMW Gap agent
 
+> Storage note: in this repository `bmw/pickups.parquet` is a directory of part files (GitHub's 100 MB file limit); `pandas.read_parquet` and `pyarrow` read it exactly like the single file the generator writes.
+
 | Table | Grain | Notes |
 |---|---|---|
 | `facilities` | healthcare facility | type, beds / avg daily patients, state, lat/lon, assigned CBWTF, pickup schedule |

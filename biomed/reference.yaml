@@ -1,0 +1,19 @@
+# Detector priors (what an auditor would know from published guidance).
+# ASSUMPTION: values mirror the synthetic-data calibration (synthdata/calibration.yaml). Cite published CPCB norms before quoting.
+occupancy: [0.55, 0.92]
+types:
+  hospital_large:  {basis: beds,     kg_per_unit_day: [0.30, 0.60], nominal_gap_days: 1.0}
+  hospital_medium: {basis: beds,     kg_per_unit_day: [0.25, 0.50], nominal_gap_days: 1.0}
+  nursing_home:    {basis: beds,     kg_per_unit_day: [0.20, 0.45], nominal_gap_days: 1.0}
+  clinic:          {basis: patients, kg_per_unit_day: [0.004, 0.015], nominal_gap_days: 2.0}
+  lab:             {basis: patients, kg_per_unit_day: [0.003, 0.010], nominal_gap_days: 2.0}
+  dental:          {basis: patients, kg_per_unit_day: [0.004, 0.012], nominal_gap_days: 3.5}
+  veterinary:      {basis: patients, kg_per_unit_day: [0.006, 0.020], nominal_gap_days: 3.5}
+ghost:
+  min_dwell_min: 3.0          # a collection stop shorter than this is not a collection
+  gps_failure_baseline: 0.03  # share of stops where the GPS unit fails (device failure, not evidence)
+  displacement_km: 1.0        # a fix further than this from the facility cannot be GPS noise
+  duplicate_min_kg: 15.0      # a repeat of all four weights only counts above this size: in small pickups identical values occur by chance
+cbwtf:
+  diesel_l_per_kg: [0.08, 0.20]
+  max_incinerator_hours: 24

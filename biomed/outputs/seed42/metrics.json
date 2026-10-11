@@ -1,0 +1,211 @@
+{
+ "facility": {
+  "auc": 0.8929204183364825,
+  "precision": {
+   "10": 1.0,
+   "25": 1.0,
+   "50": 1.0,
+   "100": 1.0,
+   "300": 1.0
+  },
+  "n_positive": 1234,
+  "emitted": 679,
+  "precision_of_emitted": 0.9985272459499264,
+  "recall_by_tier_at_emit": {
+   "obvious": 0.7823529411764706,
+   "moderate": 0.499001996007984,
+   "subtle": 0.4122137404580153
+  },
+  "recall_by_tier_at_k_positives": {
+   "obvious": 0.888235294117647,
+   "moderate": 0.6087824351297405,
+   "subtle": 0.4732824427480916
+  },
+  "inspection_budget": {
+   "500": {
+    "precision": 1.0,
+    "obvious": 0.6029411764705882,
+    "moderate": 0.3393213572854291,
+    "subtle": 0.31806615776081426
+   },
+   "1000": {
+    "precision": 0.765,
+    "obvious": 0.8647058823529412,
+    "moderate": 0.5808383233532934,
+    "subtle": 0.4580152671755725
+   },
+   "1234": {
+    "precision": 0.6426256077795786,
+    "obvious": 0.888235294117647,
+    "moderate": 0.6087824351297405,
+    "subtle": 0.4732824427480916
+   },
+   "2000": {
+    "precision": 0.424,
+    "obvious": 0.9323529411764706,
+    "moderate": 0.6606786427145709,
+    "subtle": 0.5089058524173028
+   },
+   "3000": {
+    "precision": 0.30033333333333334,
+    "obvious": 0.9588235294117647,
+    "moderate": 0.7145708582834331,
+    "subtle": 0.5521628498727735
+   },
+   "5000": {
+    "precision": 0.1992,
+    "obvious": 0.9882352941176471,
+    "moderate": 0.8143712574850299,
+    "subtle": 0.6412213740458015
+   }
+  },
+  "recall_at_emit_persistent_vs_intermittent": {
+   "persistent": 0.2760416666666667,
+   "intermittent": 1.0
+  },
+  "auc_by_tier": {
+   "obvious": 0.9869269204004739,
+   "moderate": 0.90850234945222,
+   "subtle": 0.791727649403298
+  },
+  "component_auc": {
+   "w_level": 0.6055156865817021,
+   "w_dips": 0.6939770984837401,
+   "w_shift": 0.525594647618689
+  },
+  "false_positives": {
+   "all clean facilities": {
+    "n": 18766,
+    "flagged": 1,
+    "rate": 5.328786102525844e-05
+   },
+   "declared bed expansion": {
+    "n": 187,
+    "flagged": 0,
+    "rate": 0.0
+   },
+   "declared temporary closure": {
+    "n": 280,
+    "flagged": 0,
+    "rate": 0.0
+   },
+   "type=clinic": {
+    "n": 7100,
+    "flagged": 1,
+    "rate": 0.00014084507042253522
+   },
+   "type=dental": {
+    "n": 1699,
+    "flagged": 0,
+    "rate": 0.0
+   },
+   "type=hospital_large": {
+    "n": 560,
+    "flagged": 0,
+    "rate": 0.0
+   },
+   "type=hospital_medium": {
+    "n": 1908,
+    "flagged": 0,
+    "rate": 0.0
+   },
+   "type=lab": {
+    "n": 2350,
+    "flagged": 0,
+    "rate": 0.0
+   },
+   "type=nursing_home": {
+    "n": 4168,
+    "flagged": 0,
+    "rate": 0.0
+   },
+   "type=veterinary": {
+    "n": 981,
+    "flagged": 0,
+    "rate": 0.0
+   }
+  }
+ },
+ "ghost_pickups": {
+  "planted": 8145,
+  "flagged": 7814,
+  "recall": 0.9588704726826274,
+  "false_alarm_rate_on_clean": 8.612834156433184e-07,
+  "false_alarms": 4,
+  "share_of_planted_failing_each_test": {
+   "in_closure": 0.019030079803560467,
+   "off_cadence": 0.8023327194597912,
+   "displaced": 0.2904849600982198,
+   "short_dwell": 0.5228974831184776,
+   "duplicate_copy": 0.025537139349294045,
+   "gps_missing": 0.3262124002455494
+  }
+ },
+ "cbwtf": {
+  "auc_any": 0.8675394686176358,
+  "precision": {
+   "10": 1.0,
+   "25": 1.0,
+   "50": 0.78
+  },
+  "n_positive": 53,
+  "by_pattern": {
+   "ghost_pickups": {
+    "n": 21,
+    "auc_component": 0.9760551948051948,
+    "recall": 0.9523809523809523,
+    "false_alarms_on_clean_plants": 0,
+    "recall_by_tier": {
+     "obvious": 1.0,
+     "moderate": 1.0,
+     "subtle": 0.8333333333333334
+    },
+    "n_by_tier": {
+     "obvious": 6,
+     "moderate": 9,
+     "subtle": 6
+    }
+   },
+   "weight_padding": {
+    "n": 23,
+    "auc_component": 0.782608695652174,
+    "recall": 0.43478260869565216,
+    "false_alarms_on_clean_plants": 0,
+    "recall_by_tier": {
+     "obvious": 0.25,
+     "moderate": 0.6153846153846154,
+     "subtle": 0.16666666666666666
+    },
+    "n_by_tier": {
+     "obvious": 4,
+     "moderate": 13,
+     "subtle": 6
+    }
+   },
+   "overcapacity": {
+    "n": 12,
+    "auc_component": 0.9583333333333334,
+    "recall": 0.9166666666666666,
+    "false_alarms_on_clean_plants": 0,
+    "recall_by_tier": {
+     "obvious": 0.5,
+     "moderate": 1.0,
+     "subtle": 1.0
+    },
+    "n_by_tier": {
+     "obvious": 2,
+     "moderate": 4,
+     "subtle": 6
+    }
+   }
+  },
+  "emitted": 39,
+  "precision_of_emitted": 0.9743589743589743
+ },
+ "signals": {
+  "count": 718,
+  "invalid": 0,
+  "facility": 679,
+  "cbwtf": 39
+ }
+}
