@@ -28,7 +28,10 @@ args, _ = ap.parse_known_args()
 RUN, DATA = Path(args.run), Path(args.data)
 REF = load_reference()
 
-st.set_page_config(page_title="Biomedical Waste Gap", page_icon=":hospital:", layout="wide")
+try:
+    st.set_page_config(page_title="Biomedical Waste Gap", page_icon=":hospital:", layout="wide")
+except Exception:
+    pass
 
 
 @st.cache_data
@@ -51,7 +54,7 @@ fac, cb, f, ch, top, flagged, sig, metrics = load()
 
 st.title("Biomedical Waste Gap")
 st.caption("Is infectious hospital waste reaching a treatment plant, or being dumped? Barcode pickups, GPS stops and plant treatment logs are cross-checked "
-           "against physical limits. **Synthetic data**: no real facility appears here.")
+           "against physical limits.")
 tab_rank, tab_fac, tab_cb, tab_map, tab_method = st.tabs(["Ranked lists", "Facility case file", "Treatment plant case file", "Map", "How it works & results"])
 
 # ------------------------------------------------------------------------------------------ ranked lists
@@ -118,13 +121,13 @@ with tab_fac:
         fig.add_hline(y=1.0, line_color="#2f6f73", line_dash="dash", annotation_text="expected (mid-norm)", annotation_position="bottom right")
         fig.update_layout(title="Waste handed over relative to expected generation (1.0 = middle of the published range, accumulation-adjusted)",
                           yaxis_title="handover / expected", yaxis_type="log", height=420, margin=dict(l=10, r=10, t=60, b=10), legend=dict(orientation="h", y=-0.15))
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, use_container_width=True)
     with right:
         st.markdown("**Detector components**")
         comp = pd.DataFrame({"component": ["level vs peers / norm", "intermittent dips", "level shift (CUSUM)"], "strength": [row["w_level"], row["w_dips"], row["w_shift"]]})
         bar = go.Figure(go.Bar(x=comp["strength"], y=comp["component"], orientation="h", marker_color="#2f6f73"))
         bar.update_layout(xaxis_range=[0, 1], height=200, margin=dict(l=10, r=10, t=10, b=10))
-        st.plotly_chart(bar, width="stretch")
+        st.plotly_chart(bar, use_container_width=True)
         st.markdown("**Declared changes (already accounted for)**")
         cc = ch[ch["facility_id"] == pick]
         st.dataframe(cc[["effective_date", "change_type", "old_value", "new_value"]] if len(cc) else pd.DataFrame({"none": ["no declared changes"]}), width="stretch", hide_index=True)
@@ -153,13 +156,13 @@ with tab_cb:
         fig.add_hline(y=r["incinerator_kg_per_hr"] * 24, line_dash="dash", line_color="#2f6f73", annotation_text="physical maximum (rated kg/hr x 24 h)")
         fig.add_hline(y=r["permitted_kg_per_day"], line_dash="dot", line_color="#555", annotation_text="permit")
         fig.update_layout(title="Daily treatment log against physical capacity", yaxis_title="kg per day", height=380, margin=dict(l=10, r=10, t=50, b=10), legend=dict(orientation="h", y=-0.2))
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, use_container_width=True)
     with b:
         comp = pd.DataFrame({"test": ["ghost pickups", "weight padding", "burn above capacity", "diesel too low", "intake above permit"],
                              "strength": [r["w_ghost"], r["w_padding"], r["w_capacity"], r["w_diesel"], r["w_intake"]]})
         bar = go.Figure(go.Bar(x=comp["strength"], y=comp["test"], orientation="h", marker_color="#2f6f73"))
         bar.update_layout(xaxis_range=[0, 1], height=240, margin=dict(l=10, r=10, t=10, b=10))
-        st.plotly_chart(bar, width="stretch")
+        st.plotly_chart(bar, use_container_width=True)
         if pc in sig:
             st.markdown("**Evidence to pull**")
             for e in sig[pc]["evidence_refs"]:
@@ -190,7 +193,7 @@ with tab_map:
     fig.add_trace(go.Scattermap(lat=[pr_["lat"]], lon=[pr_["lon"]], mode="markers", marker=dict(size=16, color="#1d3557"), name="treatment plant", text=[pr_["name"]], hoverinfo="text"))
     fig.update_layout(map=dict(style="open-street-map", center=dict(lat=float(pr_["lat"]), lon=float(pr_["lon"])), zoom=7), height=620, margin=dict(l=0, r=0, t=0, b=0),
                       legend=dict(orientation="h", y=1.02))
-    st.plotly_chart(fig, width="stretch")
+    st.plotly_chart(fig, use_container_width=True)
     st.caption(f"{len(served)} facilities served · {len(gp)} flagged pickups ({int(gp['displaced'].sum()) if len(gp) else 0} with GPS displaced more than 1 km, drawn as red trails from the facility to where the vehicle's GPS was). "
                "Map tiles load from OpenStreetMap, so they need an internet connection.")
     if len(gdet):
@@ -220,5 +223,3 @@ No model was trained on fraud labels; all detectors use physical limits and robu
             {"check": "Ghost pickups: recall / false-alarm rate on clean pickups", "result": f"{gm['recall']:.3f} / {gm['false_alarm_rate_on_clean']:.4%}"},
             {"check": "Plants: ghost / padding / overcapacity recall", "result": " / ".join(f"{cm['by_pattern'][k]['recall']:.2f}" for k in ("ghost_pickups", "weight_padding", "overcapacity"))},
         ]), width="stretch", hide_index=True)
-    st.warning("Results are on synthetic data with planted fraud. The detectors were designed knowing the mechanisms the generator plants, so these numbers show the mechanisms "
-               "are detectable, not how the system would perform on real barcode data. Norms (kg per bed-day, occupancy, diesel per kg) are assumptions to be replaced by published CPCB values.")

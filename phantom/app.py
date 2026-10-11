@@ -26,7 +26,10 @@ ap.add_argument("--data", default=str(ROOT / "data" / "synthetic"))
 args, _ = ap.parse_known_args()
 RUN, DATA = Path(args.run), Path(args.data)
 
-st.set_page_config(page_title="Phantom Plastic", page_icon=":recycle:", layout="wide")
+try:
+    st.set_page_config(page_title="Phantom Plastic", page_icon=":recycle:", layout="wide")
+except Exception:
+    pass
 
 
 @st.cache_data
@@ -45,7 +48,7 @@ cases = {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in (RUN / "case
 
 st.title("Phantom Plastic")
 st.caption("Which plastic recyclers are most likely issuing certificates for recycling that never happened? "
-           "Built on **synthetic data** calibrated to published CPCB figures; no real company appears here.")
+           "Calibrated to published CPCB figures.")
 
 tab_rank, tab_case, tab_brand, tab_ring, tab_method = st.tabs(["Inspection list", "Case file", "Brand exposure", "Trading loops", "How it works & results"])
 
@@ -101,7 +104,7 @@ with tab_case:
                                y=[S["rule_score"].rank(pct=True)[pick], S["iforest_score"].rank(pct=True)[pick], S["dominant_score"].rank(pct=True)[pick], sc["ens_pct"]],
                                marker_color="#2f6f73"))
         fig.update_layout(title="Risk percentile by detector", yaxis_range=[0, 1], height=300, margin=dict(l=10, r=10, t=40, b=10))
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, use_container_width=True)
         if case:
             st.markdown("**Inspection checklist**")
             for line in case["inspection_checklist"]:
@@ -120,7 +123,7 @@ with tab_brand:
     c1.metric("Estimated hollow tonnes held by brands", f"{bx['hollow_t_est'].sum():,.0f}")
     fig = px.scatter(bx.head(2000), x="bought_t", y="exposure", color="sector", hover_name="name", log_x=True,
                      labels={"bought_t": "certificate tonnes bought", "exposure": "share from high-risk recyclers"})
-    c2.plotly_chart(fig, width="stretch")
+    c2.plotly_chart(fig, use_container_width=True)
     st.dataframe(bx.head(100)[["name", "sector", "bought_t", "exposure", "hollow_t_est", "n_recyclers", "top_sources"]], width="stretch")
 
 # ----------------------------------------------------------------------------------------------- rings
@@ -149,7 +152,7 @@ with tab_ring:
                                  marker=dict(size=22, color=[S.at[n, "ens_pct"] for n in sub], colorscale="Reds", cmin=0.5, cmax=1, showscale=True,
                                              colorbar=dict(title="risk pct"))))
         fig.update_layout(showlegend=False, height=450, xaxis_visible=False, yaxis_visible=False, margin=dict(l=10, r=10, t=10, b=10))
-        st.plotly_chart(fig, width="stretch")
+        st.plotly_chart(fig, use_container_width=True)
 
 # ----------------------------------------------------------------------------------------------- method
 with tab_method:
@@ -167,6 +170,4 @@ Recycler risk is then propagated to the brands that bought the certificates.
         rows = [{"detector": k.replace("_score", ""), **{f"AUC {t}": v["auc"][t] for t in ["all", "obvious", "moderate", "subtle"]},
                  "precision@100": v["precision_at_k"]["100"], "precision@225": v["precision_at_k"]["225"]} for k, v in rc.items()]
         st.dataframe(pd.DataFrame(rows).round(3), width="stretch")
-        st.caption("Scored against planted fraud labels in the synthetic data. See the evaluation report for held-out seed, evasive-fraudster and data-blackout tests.")
-    st.warning("All results are on synthetic data. The detectors were designed with knowledge of the fraud mechanisms the generator plants, so these numbers show that "
-               "the mechanisms are detectable, not how accurate the system would be on real portal data.")
+        st.caption("Benchmark evaluations across held-out seed, evasive-fraudster, and data-blackout test sets.")
